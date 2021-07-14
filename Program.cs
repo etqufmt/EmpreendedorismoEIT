@@ -1,5 +1,6 @@
 using EmpreendedorismoEIT.Data;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -34,9 +35,11 @@ namespace EmpreendedorismoEIT
                 try
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
+                    var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
                     context.Database.EnsureCreated();
                     //Preencher banco com dados de teste
                     DbInitializer.Initialize(context);
+                    DbInitializer.AddDefaultUser(userManager);
                 }
                 catch (Exception ex)
                 {

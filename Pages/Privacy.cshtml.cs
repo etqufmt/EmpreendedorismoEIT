@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace EmpreendedorismoEIT.Pages
 {
-    [Authorize]
     public class PrivacyModel : PageModel
     {
         private readonly ILogger<PrivacyModel> _logger;
