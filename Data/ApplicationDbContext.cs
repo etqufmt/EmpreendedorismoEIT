@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EmpreendedorismoEIT.Models;
 
 namespace EmpreendedorismoEIT.Data
 {
@@ -12,5 +13,6 @@ namespace EmpreendedorismoEIT.Data
             : base(options)
         {
         }
+        public DbSet<EmpreendedorismoEIT.Models.Tag> Tags { get; set; }
     }
 }

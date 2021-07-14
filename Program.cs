@@ -35,7 +35,8 @@ namespace EmpreendedorismoEIT
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     context.Database.EnsureCreated();
-                    // DbInitializer.Initialize(context);
+                    //Preencher banco com dados de teste
+                    DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)
                 {

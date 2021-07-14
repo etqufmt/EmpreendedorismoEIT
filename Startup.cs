@@ -31,7 +31,7 @@ namespace EmpreendedorismoEIT
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
 
@@ -74,7 +74,7 @@ namespace EmpreendedorismoEIT
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<IdentityUser> userManager)
         {
             if (env.IsDevelopment())
             {
@@ -95,6 +95,8 @@ namespace EmpreendedorismoEIT
 
             app.UseAuthentication();
             app.UseAuthorization();
+            //Criar usuário de teste
+            DbInitializer.AddDefaultUser(userManager);
 
             app.UseEndpoints(endpoints =>
             {
