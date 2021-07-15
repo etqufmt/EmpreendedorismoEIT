@@ -34,6 +34,11 @@ namespace EmpreendedorismoEIT
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
+            //Restringir parte administrativa
+            //services.AddRazorPages(options =>
+            //{
+            //    options.Conventions.AuthorizeAreaFolder("Admin", "/");
+            //});
 
             services.Configure<IdentityOptions>(options =>
             {
