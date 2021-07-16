@@ -3,7 +3,8 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Pages/Shared/_Layout.cshtml";
+    ViewData["Section"] = "Tags";
+    ViewData["SectionTitle"] = "Gerenciamento de tags";
 }
 
 <h1>Index</h1>
@@ -30,7 +31,7 @@
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cor)
+                #@Html.DisplayFor(modelItem => item.Cor)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
