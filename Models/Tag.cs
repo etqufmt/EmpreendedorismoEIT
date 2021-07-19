@@ -21,7 +21,8 @@ namespace EmpreendedorismoEIT.Models
             get { return _cor; }
             set { _cor = value.ToUpper(); }
         }
-
         private string _cor;
+
+        public ICollection<EmpresaTag> EmpresasAssociadas { get; set; }
     }
 }
