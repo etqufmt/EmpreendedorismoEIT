@@ -1,2 +1,16 @@
 ﻿<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/js/jquery.validate.pt-br.js"></script>
+<script type="text/javascript">
+    $(document).on('change', '.custom-file-input', function (evt) {
+        $(this).next('.custom-file-label').html(evt.target.files[0].name);
+    })
+
+    $(document).on('keypress', '.number-only', function (evt) {
+        console.log("debug teste")
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+            return false;
+        return true;
+    })
+</script>

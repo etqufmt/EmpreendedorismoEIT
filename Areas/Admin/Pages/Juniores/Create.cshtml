@@ -1,0 +1,78 @@
+﻿@page
+@model EmpreendedorismoEIT.Areas.Admin.Pages.Juniores.CreateModel
+@using EmpreendedorismoEIT.Models
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["Section"] = "Juniores";
+    ViewData["SectionTitle"] = "Criar nova empresa júnior";
+}
+
+<div class="row">
+    <div class="col-md-5">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EmpresaJuniorVM.Nome" class="control-label"></label>
+                <input asp-for="EmpresaJuniorVM.Nome" class="form-control" />
+                <span asp-validation-for="EmpresaJuniorVM.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpresaJuniorVM.DescricaoCurta" class="control-label"></label>
+                <input asp-for="EmpresaJuniorVM.DescricaoCurta" class="form-control" />
+                <span asp-validation-for="EmpresaJuniorVM.DescricaoCurta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpresaJuniorVM.DescricaoLonga" class="control-label"></label>
+                <input asp-for="EmpresaJuniorVM.DescricaoLonga" class="form-control" />
+                <span asp-validation-for="EmpresaJuniorVM.DescricaoLonga" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpresaJuniorVM.Endereco" class="control-label"></label>
+                <input asp-for="EmpresaJuniorVM.Endereco" class="form-control" />
+                <span asp-validation-for="EmpresaJuniorVM.Endereco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpresaJuniorVM.Telefone" class="control-label"></label>
+                <input asp-for="EmpresaJuniorVM.Telefone" class="form-control number-only" />
+                <span asp-validation-for="EmpresaJuniorVM.Telefone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpresaJuniorVM.Email" class="control-label"></label>
+                <input asp-for="EmpresaJuniorVM.Email" class="form-control" />
+                <span asp-validation-for="EmpresaJuniorVM.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpresaJuniorVM.Logo" class="control-label"></label>
+                <div class="custom-file">
+                    <input asp-for="EmpresaJuniorVM.Logo" class="custom-file-input" id="customFile" alt="">
+                    <label class="custom-file-label text-truncate" for="customFile"></label>
+                </div>
+                <span asp-validation-for="EmpresaJuniorVM.Logo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpresaJuniorVM.Situacao" class="control-label"></label>
+                <select asp-for="EmpresaJuniorVM.Situacao" class="form-control" asp-items="@Html.GetEnumSelectList<Situacao>()"></select>
+                <span asp-validation-for="EmpresaJuniorVM.Situacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpresaJuniorVM.Campus" class="control-label"></label>
+                <select asp-for="EmpresaJuniorVM.Campus" class="form-control" asp-items="@Html.GetEnumSelectList<Campus>()"></select>
+                <span asp-validation-for="EmpresaJuniorVM.Campus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpresaJuniorVM.Instituto" class="control-label"></label>
+                <input asp-for="EmpresaJuniorVM.Instituto" class="form-control" />
+                <span asp-validation-for="EmpresaJuniorVM.Instituto" class="text-danger"></span>
+            </div>
+            <div class="form-group text-right">
+                <a asp-page="Index" class="btn btn-secondary">Voltar</a>
+                <input type="submit" value="Criar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

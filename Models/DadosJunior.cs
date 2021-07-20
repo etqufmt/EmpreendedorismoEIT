@@ -7,11 +7,6 @@ using System.Threading.Tasks;
 
 namespace EmpreendedorismoEIT.Models
 {
-    public enum Campus
-    {
-        CUIABA, ARAGUAIA, SINOP, VGRANDE
-    }
-
     [Table("DadosJuniores")]
     public class DadosJunior
     {
@@ -27,4 +22,20 @@ namespace EmpreendedorismoEIT.Models
 
         public Empresa Empresa { get; set; }
     }
+
+    public enum Campus
+    {
+        [Display(Name = "Cuiabá")]
+        CUIABA,
+
+        [Display(Name = "Araguaia")]
+        ARAGUAIA,
+
+        [Display(Name = "Sinop")]
+        SINOP,
+
+        [Display(Name = "Várzea Grande")]
+        VGRANDE
+    }
+
 }

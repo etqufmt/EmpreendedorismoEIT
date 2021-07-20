@@ -1,0 +1,81 @@
+﻿@page
+@model EmpreendedorismoEIT.Areas.Admin.Pages.Juniores.EditModel
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["Section"] = "Juniores";
+    ViewData["SectionTitle"] = "Gerenciamento de empresas juniores";
+}
+
+
+<h4>Empresa</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Empresa.ID" />
+            <div class="form-group">
+                <label asp-for="Empresa.Nome" class="control-label"></label>
+                <input asp-for="Empresa.Nome" class="form-control" />
+                <span asp-validation-for="Empresa.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Empresa.Tipo" class="control-label"></label>
+                <select asp-for="Empresa.Tipo" class="form-control"></select>
+                <span asp-validation-for="Empresa.Tipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Empresa.DescricaoCurta" class="control-label"></label>
+                <input asp-for="Empresa.DescricaoCurta" class="form-control" />
+                <span asp-validation-for="Empresa.DescricaoCurta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Empresa.DescricaoLonga" class="control-label"></label>
+                <input asp-for="Empresa.DescricaoLonga" class="form-control" />
+                <span asp-validation-for="Empresa.DescricaoLonga" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Empresa.Endereco" class="control-label"></label>
+                <input asp-for="Empresa.Endereco" class="form-control" />
+                <span asp-validation-for="Empresa.Endereco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Empresa.Telefone" class="control-label"></label>
+                <input asp-for="Empresa.Telefone" class="form-control" />
+                <span asp-validation-for="Empresa.Telefone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Empresa.Email" class="control-label"></label>
+                <input asp-for="Empresa.Email" class="form-control" />
+                <span asp-validation-for="Empresa.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Empresa.Logo" class="control-label"></label>
+                <input asp-for="Empresa.Logo" class="form-control" />
+                <span asp-validation-for="Empresa.Logo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Empresa.Situacao" class="control-label"></label>
+                <select asp-for="Empresa.Situacao" class="form-control"></select>
+                <span asp-validation-for="Empresa.Situacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Empresa.UltimaModificacao" class="control-label"></label>
+                <input asp-for="Empresa.UltimaModificacao" class="form-control" />
+                <span asp-validation-for="Empresa.UltimaModificacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

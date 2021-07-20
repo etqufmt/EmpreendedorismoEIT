@@ -1,27 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace EmpreendedorismoEIT.Models
 {
-    public enum Tipo
-    {
-        JUNIOR, INCUBADA
-    }
-
-    public enum Situacao
-    {
-        ATIVA, INATIVA, SUSPENSA
-    }
-
+    [Table("Empresas")]
     public class Empresa
     {
         public int ID { get; set; }
 
         [Required]
-        [StringLength(50, MinimumLength = 3)]
+        [StringLength(50)]
         public string Nome { get; set; }
 
         [Required]
@@ -36,8 +28,7 @@ namespace EmpreendedorismoEIT.Models
         [StringLength(200)]
         public string Endereco { get; set; }
 
-        [StringLength(11, MinimumLength = 11)]
-        [RegularExpression("([0-9]+)")]
+        [StringLength(11)]
         public string Telefone { get; set; }
 
         [EmailAddress]
@@ -50,7 +41,6 @@ namespace EmpreendedorismoEIT.Models
         [Required]
         public Situacao Situacao { get; set; }
 
-        [Required]
         [DataType(DataType.Date)]
         public DateTime UltimaModificacao { get; set; }
 
@@ -60,5 +50,26 @@ namespace EmpreendedorismoEIT.Models
         public ICollection<RedeSocial> RedesSociais { get; set; }
         public ICollection<ProdutoServico> ProdutosServicos { get; set; }
         public ICollection<EmpresaTag> TagsAssociadas { get; set; }
+    }
+
+    public enum Tipo
+    {
+        [Display(Name = "Empresa Júnior")]
+        JUNIOR,
+
+        [Display(Name = "Empresa Incubada")]
+        INCUBADA
+    }
+
+    public enum Situacao
+    {
+        [Display(Name = "Ativa")]
+        ATIVA,
+
+        [Display(Name = "Inativa")]
+        INATIVA,
+
+        [Display(Name = "Suspensa")]
+        SUSPENSA
     }
 }

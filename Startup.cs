@@ -35,10 +35,10 @@ namespace EmpreendedorismoEIT
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
             //Restringir parte administrativa
-            services.AddRazorPages(options =>
-            {
-                options.Conventions.AuthorizeAreaFolder("Admin", "/");
-            });
+            //services.AddRazorPages(options =>
+            //{
+            //    options.Conventions.AuthorizeAreaFolder("Admin", "/");
+            //});
 
             services.Configure<IdentityOptions>(options =>
             {

@@ -7,11 +7,6 @@ using System.Threading.Tasks;
 
 namespace EmpreendedorismoEIT.Models
 {
-    public enum Plataforma
-    {
-        FACEBOOK, INSTAGRAM, WHATSAPP, TWITTER, WEBSITE
-    }
-
     [Table("RedesSociais")]
     public class RedeSocial
     {
@@ -29,5 +24,23 @@ namespace EmpreendedorismoEIT.Models
 
         [Required]
         public Empresa Empresa { get; set; }
+    }
+
+    public enum Plataforma
+    {
+        [Display(Name = "Facebook")]
+        FACEBOOK,
+
+        [Display(Name = "Instagram")]
+        INSTAGRAM,
+
+        [Display(Name = "Whatsapp")]
+        WHATSAPP,
+
+        [Display(Name = "Twitter")]
+        TWITTER,
+
+        [Display(Name = "Website")]
+        WEBSITE
     }
 }
