@@ -1,4 +1,5 @@
 using EmpreendedorismoEIT.Data;
+using EmpreendedorismoEIT.Resources;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,6 +40,10 @@ namespace EmpreendedorismoEIT
             //{
             //    options.Conventions.AuthorizeAreaFolder("Admin", "/");
             //});
+            services.AddMvc().AddDataAnnotationsLocalization(options => {
+                options.DataAnnotationLocalizerProvider = (type, factory) =>
+                    factory.Create(typeof(ValidationResources));
+            });
 
             services.Configure<IdentityOptions>(options =>
             {
