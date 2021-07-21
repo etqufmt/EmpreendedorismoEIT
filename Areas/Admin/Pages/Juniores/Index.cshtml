@@ -5,6 +5,7 @@
     ViewData["Title"] = "Index";
     ViewData["Section"] = "Juniores";
     ViewData["SectionTitle"] = "Lista de empresas juniores";
+    var emptyImage = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 }
 
 
@@ -27,10 +28,10 @@
     <tbody>
 @foreach (var item in Model.EmpresaJunior) {
         <tr>
-            <td class="align-middle"><img src="~/images/@item.Empresa.Logo"
+            <td class="align-middle"><img src="@(String.IsNullOrEmpty(item.Empresa.Logo)? emptyImage : "~/images/" + item.Empresa.Logo)"
                  class="rounded-circle"
                  height="40" width="40"
-                 asp-append-version="true" /></td>
+                 asp-append-version="true"/></td>
             <td class="align-middle">
                 @Html.DisplayFor(modelItem => item.Empresa.Nome)
             </td>
