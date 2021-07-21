@@ -2,15 +2,22 @@
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/js/jquery.validate.pt-br.js"></script>
 <script type="text/javascript">
+    //Exibir nome de arquivo na caixa de seleção (upload)
     $(document).on('change', '.custom-file-input', function (evt) {
         $(this).next('.custom-file-label').html(evt.target.files[0].name);
     })
 
+    //Cria classe "number-only" que pode utilizada em qualquer campo de formulário
     $(document).on('keypress', '.number-only', function (evt) {
-        console.log("debug teste")
         var ASCIICode = (evt.which) ? evt.which : evt.keyCode
         if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
             return false;
         return true;
+    })
+    $(document).on('paste', '.number-only', function (evt) {
+        evt.preventDefault()
+        var paste = (event.clipboardData || window.clipboardData).getData('text')
+        paste = paste.replace(/([^0-9]+)/g, "")
+        document.execCommand("insertHTML", false, paste)
     })
 </script>

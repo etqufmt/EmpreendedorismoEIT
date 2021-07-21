@@ -32,7 +32,8 @@ namespace EmpreendedorismoEIT.Utils
 
         public string GetErrorMessage()
         {
-            return $"Tamanho máximo permitido é de { _maxFileSize / 1048576 }MB";
+            var maxMB = Math.Round(Convert.ToDecimal(_maxFileSize) / 1048576, 2);
+            return $"Tamanho máximo permitido é de {maxMB}MB";
         }
     }
 }
