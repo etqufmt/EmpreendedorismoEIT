@@ -52,7 +52,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
             EmpresaJuniorVM = new EmpresaJuniorVM
             {
-                ID = EJ.ID,
+                ID = EJ.EmpresaID,
                 Nome = EJ.Empresa.Nome,
                 DescricaoCurta = EJ.Empresa.DescricaoCurta,
                 DescricaoLonga = EJ.Empresa.DescricaoLonga,
@@ -89,7 +89,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
             _context.Entry(EJ).Reference(e => e.Empresa).Load();
 
-            EJ.ID = EmpresaJuniorVM.ID;
+            EJ.EmpresaID = EmpresaJuniorVM.ID;
             EJ.Empresa.Nome = EmpresaJuniorVM.Nome;
             EJ.Empresa.DescricaoCurta = EmpresaJuniorVM.DescricaoCurta;
             EJ.Empresa.DescricaoLonga = EmpresaJuniorVM.DescricaoLonga;

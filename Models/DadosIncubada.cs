@@ -10,8 +10,8 @@ namespace EmpreendedorismoEIT.Models
     [Table("DadosIncubadas")]
     public class DadosIncubada
     {
-        [ForeignKey("Empresa")]
-        public int ID { get; set; }
+        [Key]
+        public int EmpresaID { get; set; }
 
         [Required]
         [StringLength(100)]

@@ -10,8 +10,8 @@ namespace EmpreendedorismoEIT.Models
     [Table("DadosJuniores")]
     public class DadosJunior
     {
-        [ForeignKey("Empresa")]
-        public int ID { get; set; }
+        [Key]
+        public int EmpresaID { get; set; }
 
         [Required]
         public Campus Campus { get; set; }
