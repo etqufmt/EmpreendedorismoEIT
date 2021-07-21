@@ -28,19 +28,19 @@ namespace EmpreendedorismoEIT.Models
 
     public enum Plataforma
     {
+        [Display(Name = "Website")]
+        WEBSITE = 1,
+
         [Display(Name = "Facebook")]
-        FACEBOOK,
+        FACEBOOK = 2,
 
         [Display(Name = "Instagram")]
-        INSTAGRAM,
+        INSTAGRAM = 3,
 
         [Display(Name = "Whatsapp")]
-        WHATSAPP,
+        WHATSAPP = 4,
 
         [Display(Name = "Twitter")]
-        TWITTER,
-
-        [Display(Name = "Website")]
-        WEBSITE
+        TWITTER = 5
     }
 }

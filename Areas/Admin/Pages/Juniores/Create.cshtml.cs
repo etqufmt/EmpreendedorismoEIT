@@ -47,7 +47,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 Endereco = EmpresaJuniorVM.Endereco,
                 Telefone = EmpresaJuniorVM.Telefone,
                 Email = EmpresaJuniorVM.Email,
-                Logo = Upload.SalvarArquivo(_webHostEnvironment, EmpresaJuniorVM.Logo),
+                Logo = LogoManager.SalvarImagem(_webHostEnvironment, EmpresaJuniorVM.Logo),
                 Situacao = EmpresaJuniorVM.Situacao,
                 DadosJunior = new DadosJunior
                 {

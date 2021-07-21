@@ -26,16 +26,16 @@ namespace EmpreendedorismoEIT.Models
     public enum Campus
     {
         [Display(Name = "Cuiabá")]
-        CUIABA,
+        CUIABA = 1,
 
         [Display(Name = "Araguaia")]
-        ARAGUAIA,
+        ARAGUAIA = 2,
 
         [Display(Name = "Sinop")]
-        SINOP,
+        SINOP = 3,
 
         [Display(Name = "Várzea Grande")]
-        VGRANDE
+        VGRANDE = 4
     }
 
 }

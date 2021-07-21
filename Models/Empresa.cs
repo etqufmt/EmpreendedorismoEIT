@@ -22,7 +22,7 @@ namespace EmpreendedorismoEIT.Models
         [StringLength(140)]
         public string DescricaoCurta { get; set; }
 
-        [StringLength(400)]
+        [StringLength(500)]
         public string DescricaoLonga { get; set; }
 
         [StringLength(200)]
@@ -55,21 +55,21 @@ namespace EmpreendedorismoEIT.Models
     public enum Tipo
     {
         [Display(Name = "Empresa Júnior")]
-        JUNIOR,
+        JUNIOR = 1,
 
         [Display(Name = "Empresa Incubada")]
-        INCUBADA
+        INCUBADA = 2
     }
 
     public enum Situacao
     {
         [Display(Name = "Ativa")]
-        ATIVA,
+        ATIVA = 1,
 
         [Display(Name = "Inativa")]
-        INATIVA,
+        INATIVA = 2,
 
         [Display(Name = "Suspensa")]
-        SUSPENSA
+        SUSPENSA = 3
     }
 }

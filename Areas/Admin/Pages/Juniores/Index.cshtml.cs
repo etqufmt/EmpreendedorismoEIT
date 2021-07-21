@@ -19,11 +19,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             _context = context;
         }
 
-        public IList<DadosJunior> EmpresaJunior { get;set; }
+        public IList<DadosJunior> ListaEJ { get;set; }
 
         public async Task OnGetAsync()
         {
-            EmpresaJunior = await _context.DadosJuniores.Include(dj => dj.Empresa).AsNoTracking().ToListAsync();
+            ListaEJ = await _context.DadosJuniores.Include(dj => dj.Empresa).AsNoTracking().ToListAsync();
         }
     }
 }

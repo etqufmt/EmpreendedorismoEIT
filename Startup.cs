@@ -35,11 +35,14 @@ namespace EmpreendedorismoEIT
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
+            
             //Restringir parte administrativa
-            //services.AddRazorPages(options =>
-            //{
-            //    options.Conventions.AuthorizeAreaFolder("Admin", "/");
-            //});
+            services.AddRazorPages(options =>
+            {
+                options.Conventions.AuthorizeAreaFolder("Admin", "/");
+            });
+            
+            //Utilizar tabela para mensagens de validação
             services.AddMvc().AddDataAnnotationsLocalization(options => {
                 options.DataAnnotationLocalizerProvider = (type, factory) =>
                     factory.Create(typeof(ValidationResources));
@@ -56,7 +59,7 @@ namespace EmpreendedorismoEIT
                 options.Password.RequiredUniqueChars = 1;
 
                 // Lockout settings.
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.AllowedForNewUsers = true;
 

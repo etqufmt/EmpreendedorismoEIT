@@ -5,9 +5,9 @@ using System.IO;
 
 namespace EmpreendedorismoEIT.Utils
 {
-    public static class Upload
+    public static class LogoManager
     {
-        public static string SalvarArquivo(IWebHostEnvironment webHostEnvironment, IFormFile arquivo)
+        public static string SalvarImagem(IWebHostEnvironment webHostEnvironment, IFormFile arquivo)
         {
             string uniqueFileName = null;
 
@@ -23,6 +23,20 @@ namespace EmpreendedorismoEIT.Utils
             }
 
             return uniqueFileName;
+        }
+
+        public static void ExcluirImagem(IWebHostEnvironment webHostEnvironment, string arquivo)
+        {
+            if (arquivo != null)
+            {
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                string filePath = Path.Combine(uploadsFolder, arquivo);
+                File.Delete(filePath);
+            }
+            else
+            {
+                throw new ArgumentNullException("Arquivo não pode ser nulo");
+            }
         }
     }
 }

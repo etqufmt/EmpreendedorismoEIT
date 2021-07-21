@@ -3,14 +3,14 @@
 @using EmpreendedorismoEIT.Models
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Criar EJ";
     ViewData["Section"] = "Juniores";
     ViewData["SectionTitle"] = "Criar nova empresa júnior";
 }
 
-<div class="row">
-    <div class="col-md-5">
-        <form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-5">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="EmpresaJuniorVM.Nome" class="control-label"></label>
@@ -19,12 +19,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="EmpresaJuniorVM.DescricaoCurta" class="control-label"></label>
-                <input asp-for="EmpresaJuniorVM.DescricaoCurta" class="form-control" />
+                <textarea asp-for="EmpresaJuniorVM.DescricaoCurta" class="form-control" rows="2"></textarea>
                 <span asp-validation-for="EmpresaJuniorVM.DescricaoCurta" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="EmpresaJuniorVM.DescricaoLonga" class="control-label"></label>
-                <input asp-for="EmpresaJuniorVM.DescricaoLonga" class="form-control" />
+                <textarea asp-for="EmpresaJuniorVM.DescricaoLonga" class="form-control" rows="4"></textarea>
                 <span asp-validation-for="EmpresaJuniorVM.DescricaoLonga" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -37,6 +37,8 @@
                 <input asp-for="EmpresaJuniorVM.Telefone" class="form-control number-only" />
                 <span asp-validation-for="EmpresaJuniorVM.Telefone" class="text-danger"></span>
             </div>
+        </div>
+        <div class="col-md-5">
             <div class="form-group">
                 <label asp-for="EmpresaJuniorVM.Email" class="control-label"></label>
                 <input asp-for="EmpresaJuniorVM.Email" class="form-control" />
@@ -69,9 +71,9 @@
                 <a asp-page="Index" class="btn btn-secondary">Voltar</a>
                 <input type="submit" value="Criar" class="btn btn-primary" />
             </div>
-        </form>
+        </div>
     </div>
-</div>
+</form>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

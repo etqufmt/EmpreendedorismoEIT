@@ -1,80 +1,80 @@
-﻿@page
+﻿@page "{id:int?}"
 @model EmpreendedorismoEIT.Areas.Admin.Pages.Juniores.EditModel
+@using EmpreendedorismoEIT.Models
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Editar EJ";
     ViewData["Section"] = "Juniores";
-    ViewData["SectionTitle"] = "Gerenciamento de empresas juniores";
+    ViewData["SectionTitle"] = "Editar empresa júnior";
 }
 
-
-<h4>Empresa</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
+<form method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-5">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Empresa.ID" />
+            <input type="hidden" asp-for="EmpresaJuniorVM.ID" />
             <div class="form-group">
-                <label asp-for="Empresa.Nome" class="control-label"></label>
-                <input asp-for="Empresa.Nome" class="form-control" />
-                <span asp-validation-for="Empresa.Nome" class="text-danger"></span>
+                <label asp-for="EmpresaJuniorVM.Nome" class="control-label"></label>
+                <input asp-for="EmpresaJuniorVM.Nome" class="form-control" />
+                <span asp-validation-for="EmpresaJuniorVM.Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Empresa.Tipo" class="control-label"></label>
-                <select asp-for="Empresa.Tipo" class="form-control"></select>
-                <span asp-validation-for="Empresa.Tipo" class="text-danger"></span>
+                <label asp-for="EmpresaJuniorVM.DescricaoCurta" class="control-label"></label>
+                <textarea asp-for="EmpresaJuniorVM.DescricaoCurta" class="form-control" rows="2"></textarea>
+                <span asp-validation-for="EmpresaJuniorVM.DescricaoCurta" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Empresa.DescricaoCurta" class="control-label"></label>
-                <input asp-for="Empresa.DescricaoCurta" class="form-control" />
-                <span asp-validation-for="Empresa.DescricaoCurta" class="text-danger"></span>
+                <label asp-for="EmpresaJuniorVM.DescricaoLonga" class="control-label"></label>
+                <textarea asp-for="EmpresaJuniorVM.DescricaoLonga" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="EmpresaJuniorVM.DescricaoLonga" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Empresa.DescricaoLonga" class="control-label"></label>
-                <input asp-for="Empresa.DescricaoLonga" class="form-control" />
-                <span asp-validation-for="Empresa.DescricaoLonga" class="text-danger"></span>
+                <label asp-for="EmpresaJuniorVM.Endereco" class="control-label"></label>
+                <input asp-for="EmpresaJuniorVM.Endereco" class="form-control" />
+                <span asp-validation-for="EmpresaJuniorVM.Endereco" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Empresa.Endereco" class="control-label"></label>
-                <input asp-for="Empresa.Endereco" class="form-control" />
-                <span asp-validation-for="Empresa.Endereco" class="text-danger"></span>
+                <label asp-for="EmpresaJuniorVM.Telefone" class="control-label"></label>
+                <input asp-for="EmpresaJuniorVM.Telefone" class="form-control number-only" />
+                <span asp-validation-for="EmpresaJuniorVM.Telefone" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+                <label asp-for="EmpresaJuniorVM.Email" class="control-label"></label>
+                <input asp-for="EmpresaJuniorVM.Email" class="form-control" />
+                <span asp-validation-for="EmpresaJuniorVM.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Empresa.Telefone" class="control-label"></label>
-                <input asp-for="Empresa.Telefone" class="form-control" />
-                <span asp-validation-for="Empresa.Telefone" class="text-danger"></span>
+                <label asp-for="EmpresaJuniorVM.Logo" class="control-label"></label>
+                <div class="custom-file">
+                    <input asp-for="EmpresaJuniorVM.Logo" class="custom-file-input" id="customFile" alt="">
+                    <label class="custom-file-label text-truncate" for="customFile"></label>
+                </div>
+                <span asp-validation-for="EmpresaJuniorVM.Logo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Empresa.Email" class="control-label"></label>
-                <input asp-for="Empresa.Email" class="form-control" />
-                <span asp-validation-for="Empresa.Email" class="text-danger"></span>
+                <label asp-for="EmpresaJuniorVM.Situacao" class="control-label"></label>
+                <select asp-for="EmpresaJuniorVM.Situacao" class="form-control" asp-items="@Html.GetEnumSelectList<Situacao>()"></select>
+                <span asp-validation-for="EmpresaJuniorVM.Situacao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Empresa.Logo" class="control-label"></label>
-                <input asp-for="Empresa.Logo" class="form-control" />
-                <span asp-validation-for="Empresa.Logo" class="text-danger"></span>
+                <label asp-for="EmpresaJuniorVM.Campus" class="control-label"></label>
+                <select asp-for="EmpresaJuniorVM.Campus" class="form-control" asp-items="@Html.GetEnumSelectList<Campus>()"></select>
+                <span asp-validation-for="EmpresaJuniorVM.Campus" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Empresa.Situacao" class="control-label"></label>
-                <select asp-for="Empresa.Situacao" class="form-control"></select>
-                <span asp-validation-for="Empresa.Situacao" class="text-danger"></span>
+                <label asp-for="EmpresaJuniorVM.Instituto" class="control-label"></label>
+                <input asp-for="EmpresaJuniorVM.Instituto" class="form-control" />
+                <span asp-validation-for="EmpresaJuniorVM.Instituto" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Empresa.UltimaModificacao" class="control-label"></label>
-                <input asp-for="Empresa.UltimaModificacao" class="form-control" />
-                <span asp-validation-for="Empresa.UltimaModificacao" class="text-danger"></span>
+            <div class="form-group text-right">
+                <a asp-page="Index" class="btn btn-secondary">Voltar</a>
+                <input type="submit" value="Salvar" class="btn btn-primary" />
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
+</form>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

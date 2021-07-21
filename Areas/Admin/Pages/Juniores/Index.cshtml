@@ -10,23 +10,23 @@
 
 
 <p>
-    <a asp-page="Create">Adicionar</a>
+    <a asp-page="Create" class="btn btn-outline-primary">Adicionar</a>
 </p>
 <table class="table table-hover">
     <thead>
         <tr>
             <th></th>
             <th>
-                @Html.DisplayNameFor(model => model.EmpresaJunior[0].Empresa.Nome)
+                @Html.DisplayNameFor(model => model.ListaEJ[0].Empresa.Nome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmpresaJunior[0].Campus)
+                @Html.DisplayNameFor(model => model.ListaEJ[0].Campus)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.EmpresaJunior) {
+@foreach (var item in Model.ListaEJ) {
         <tr>
             <td class="align-middle"><img src="@(String.IsNullOrEmpty(item.Empresa.Logo)? emptyImage : "~/images/" + item.Empresa.Logo)"
                  class="rounded-circle"

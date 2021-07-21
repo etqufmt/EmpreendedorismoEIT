@@ -63,27 +63,36 @@ namespace EmpreendedorismoEIT.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Endereço de email inválido.
         /// </summary>
-        public static string Email {
+        public static string ErrEmail {
             get {
-                return ResourceManager.GetString("Email", resourceCulture);
+                return ResourceManager.GetString("ErrEmail", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Especifique o instituto ou faculdade.
         /// </summary>
-        public static string Instituto {
+        public static string ErrInstituto {
             get {
-                return ResourceManager.GetString("Instituto", resourceCulture);
+                return ResourceManager.GetString("ErrInstituto", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Selecione um logotipo para a empresa.
         /// </summary>
-        public static string Logo {
+        public static string ErrLogotipo {
             get {
-                return ResourceManager.GetString("Logo", resourceCulture);
+                return ResourceManager.GetString("ErrLogotipo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deve incluir o DDD.
+        /// </summary>
+        public static string ErrTelefone {
+            get {
+                return ResourceManager.GetString("ErrTelefone", resourceCulture);
             }
         }
         
@@ -120,15 +129,6 @@ namespace EmpreendedorismoEIT.Resources {
         public static string Tamanho {
             get {
                 return ResourceManager.GetString("Tamanho", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Deve incluir o DDD.
-        /// </summary>
-        public static string Telefone {
-            get {
-                return ResourceManager.GetString("Telefone", resourceCulture);
             }
         }
     }
