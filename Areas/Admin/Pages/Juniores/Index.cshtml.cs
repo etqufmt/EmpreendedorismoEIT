@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
+using EmpreendedorismoEIT.ViewModels;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 {
@@ -19,11 +20,18 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             _context = context;
         }
 
-        public IList<DadosJunior> ListaEJ { get;set; }
+        public IList<JunioresListaVM> ListaEJ { get;set; }
 
         public async Task OnGetAsync()
         {
-            ListaEJ = await _context.DadosJuniores.Include(dj => dj.Empresa).AsNoTracking().ToListAsync();
+            //Faz um inner join em vez de buscar tudo
+            ListaEJ = await _context.DadosJuniores.Select(e => new JunioresListaVM
+            {
+                ID = e.EmpresaID,
+                Logo = e.Empresa.Logo,
+                Nome = e.Empresa.Nome,
+                Campus = e.Campus
+            }).ToListAsync();
         }
     }
 }

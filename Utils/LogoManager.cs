@@ -33,10 +33,6 @@ namespace EmpreendedorismoEIT.Utils
                 string filePath = Path.Combine(uploadsFolder, arquivo);
                 File.Delete(filePath);
             }
-            else
-            {
-                throw new ArgumentNullException("Arquivo não pode ser nulo");
-            }
         }
     }
 }

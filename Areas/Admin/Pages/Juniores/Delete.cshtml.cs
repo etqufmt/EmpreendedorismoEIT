@@ -7,34 +7,60 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
+using Microsoft.Extensions.Logging;
+using EmpreendedorismoEIT.ViewModels;
+using EmpreendedorismoEIT.Utils;
+using Microsoft.AspNetCore.Hosting;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 {
     public class DeleteModel : PageModel
     {
         private readonly EmpreendedorismoEIT.Data.ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public DeleteModel(EmpreendedorismoEIT.Data.ApplicationDbContext context)
+        public DeleteModel(EmpreendedorismoEIT.Data.ApplicationDbContext context,
+            IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [BindProperty]
-        public Empresa Empresa { get; set; }
+        public JunioresVM EmpresaJuniorVM { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, bool? error = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Empresa = await _context.Empresas.FirstOrDefaultAsync(m => m.ID == id);
+            var EJ = await _context.DadosJuniores.FindAsync(id);
 
-            if (Empresa == null)
+            if (EJ == null)
             {
                 return NotFound();
             }
+
+            if (error.GetValueOrDefault())
+            {
+                ErrorMessage = Resources.ValidationResources.ErrDelete;
+            }
+
+            _context.Entry(EJ).Reference(e => e.Empresa).Load();
+
+            EmpresaJuniorVM = new JunioresVM
+            {
+                ID = EJ.Empresa.ID,
+                Nome = EJ.Empresa.Nome,
+                Campus = EJ.Campus,
+                DescricaoCurta = EJ.Empresa.DescricaoCurta,
+                Situacao = EJ.Empresa.Situacao,
+                UltimaModificacao = EJ.Empresa.UltimaModificacao,
+            };
+
             return Page();
         }
 
@@ -45,12 +71,23 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 return NotFound();
             }
 
-            Empresa = await _context.Empresas.FindAsync(id);
+            var empresa = await _context.Empresas.FindAsync(id);
+            var logoAtual = empresa.Logo;
 
-            if (Empresa != null)
+            if (empresa == null)
             {
-                _context.Empresas.Remove(Empresa);
+                return NotFound();
+            }
+
+            try
+            {
+                _context.Empresas.Remove(empresa);
                 await _context.SaveChangesAsync();
+                LogoManager.ExcluirImagem(_webHostEnvironment, logoAtual);
+            }
+            catch (DbUpdateException)
+            {
+                return RedirectToPage("./Delete", new { id, error = true });
             }
 
             return RedirectToPage("./Index");

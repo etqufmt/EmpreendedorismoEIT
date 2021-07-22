@@ -8,7 +8,6 @@
     var emptyImage = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 }
 
-
 <p>
     <a asp-page="Create" class="btn btn-outline-primary">Adicionar</a>
 </p>
@@ -17,7 +16,7 @@
         <tr>
             <th></th>
             <th>
-                @Html.DisplayNameFor(model => model.ListaEJ[0].Empresa.Nome)
+                @Html.DisplayNameFor(model => model.ListaEJ[0].Nome)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ListaEJ[0].Campus)
@@ -28,20 +27,20 @@
     <tbody>
 @foreach (var item in Model.ListaEJ) {
         <tr>
-            <td class="align-middle"><img src="@(String.IsNullOrEmpty(item.Empresa.Logo)? emptyImage : "~/images/" + item.Empresa.Logo)"
+            <td class="align-middle"><img src="@(String.IsNullOrEmpty(item.Logo)? emptyImage : "~/images/" + item.Logo)"
                  class="rounded-circle"
                  height="40" width="40"
                  asp-append-version="true"/></td>
             <td class="align-middle">
-                @Html.DisplayFor(modelItem => item.Empresa.Nome)
+                <a asp-page="./Details" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Nome)</a>
             </td>
             <td class="align-middle">
                 @Html.DisplayFor(modelItem => item.Campus)
             </td>
             <td class="align-middle text-right">
-                <a asp-page="./Details" asp-route-id="@item.EmpresaID">Detalhes</a> |
-                <a asp-page="./Edit" asp-route-id="@item.EmpresaID">Editar</a> |
-                <a asp-page="./Delete" asp-route-id="@item.EmpresaID">Excluir</a>
+                <a asp-page="./Tags" asp-route-id="@item.ID" class="btn btn-outline-primary my-1">Tags</a>
+                <a asp-page="./Produtos" asp-route-id="@item.ID" class="btn btn-outline-primary my-1">Produtos</a>
+                <a asp-page="./Redes" asp-route-id="@item.ID" class="btn btn-outline-primary my-1">Redes Sociais</a>
             </td>
         </tr>
 }

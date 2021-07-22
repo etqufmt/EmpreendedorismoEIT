@@ -61,6 +61,24 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Não foi possível realizar a adição. Tente mais tarde..
+        /// </summary>
+        public static string ErrCreate {
+            get {
+                return ResourceManager.GetString("ErrCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Não foi possível realizar a exclusão. Tente mais tarde..
+        /// </summary>
+        public static string ErrDelete {
+            get {
+                return ResourceManager.GetString("ErrDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Endereço de email inválido.
         /// </summary>
         public static string ErrEmail {
@@ -93,6 +111,15 @@ namespace EmpreendedorismoEIT.Resources {
         public static string ErrTelefone {
             get {
                 return ResourceManager.GetString("ErrTelefone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Não foi possível realizar a atualização. Tente mais tarde..
+        /// </summary>
+        public static string ErrUpdate {
+            get {
+                return ResourceManager.GetString("ErrUpdate", resourceCulture);
             }
         }
         

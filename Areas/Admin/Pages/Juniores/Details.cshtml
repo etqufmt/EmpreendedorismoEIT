@@ -1,10 +1,10 @@
-﻿@page
+﻿@page "{id:int?}"
 @model EmpreendedorismoEIT.Areas.Admin.Pages.Juniores.DetailsModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Dados EJ";
     ViewData["Section"] = "Juniores";
-    ViewData["SectionTitle"] = "Gerenciamento de empresas juniores";
+    ViewData["SectionTitle"] = "Dados da empresa júnior";
 }
 
 <div>
@@ -74,6 +74,7 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Empresa.ID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index" class="btn btn-secondary">Voltar</a>
+    <a asp-page="./Delete" asp-route-id="@Model.Empresa.ID" class="btn btn-primary">Excluir</a>
+    <a asp-page="./Edit" asp-route-id="@Model.Empresa.ID" class="btn btn-primary">Editar</a>
 </div>

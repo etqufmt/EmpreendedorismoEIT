@@ -8,6 +8,7 @@ using EmpreendedorismoEIT.Models;
 using EmpreendedorismoEIT.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using EmpreendedorismoEIT.Utils;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 {
@@ -24,7 +25,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         }
 
         [BindProperty]
-        public EmpresaJuniorVM EmpresaJuniorVM { get; set; }
+        public JunioresVM EmpresaJuniorVM { get; set; }
 
         public IActionResult OnGet()
         {
@@ -57,8 +58,16 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 UltimaModificacao = DateTime.Now
             };
 
-            _context.Empresas.Add(novaEmpresa);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Empresas.Add(novaEmpresa);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrCreate);
+                return Page();
+            }
 
             return RedirectToPage("./Index");
         }

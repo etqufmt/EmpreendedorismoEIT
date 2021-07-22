@@ -27,7 +27,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         }
 
         [BindProperty]
-        public EmpresaJuniorVM EmpresaJuniorVM { get; set; }
+        public JunioresVM EmpresaJuniorVM { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -50,7 +50,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
             _context.Entry(EJ).Reference(e => e.Empresa).Load();
 
-            EmpresaJuniorVM = new EmpresaJuniorVM
+            EmpresaJuniorVM = new JunioresVM
             {
                 ID = EJ.EmpresaID,
                 Nome = EJ.Empresa.Nome,
@@ -90,6 +90,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             _context.Entry(EJ).Reference(e => e.Empresa).Load();
 
             EJ.EmpresaID = EmpresaJuniorVM.ID;
+            EJ.Campus = EmpresaJuniorVM.Campus;
+            EJ.Instituto = EmpresaJuniorVM.Instituto;
             EJ.Empresa.Nome = EmpresaJuniorVM.Nome;
             EJ.Empresa.DescricaoCurta = EmpresaJuniorVM.DescricaoCurta;
             EJ.Empresa.DescricaoLonga = EmpresaJuniorVM.DescricaoLonga;
@@ -97,12 +99,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             EJ.Empresa.Telefone = EmpresaJuniorVM.Telefone;
             EJ.Empresa.Email = EmpresaJuniorVM.Email;
             EJ.Empresa.Situacao = EmpresaJuniorVM.Situacao;
-            EJ.Campus = EmpresaJuniorVM.Campus;
-            EJ.Instituto = EmpresaJuniorVM.Instituto;
+            EJ.Empresa.UltimaModificacao = DateTime.Now;
 
+            var logoAntigo = EJ.Empresa.Logo;
             if (EmpresaJuniorVM.Logo != null)
             {
-                LogoManager.ExcluirImagem(_webHostEnvironment, EJ.Empresa.Logo);
                 EJ.Empresa.Logo = LogoManager.SalvarImagem(_webHostEnvironment, EmpresaJuniorVM.Logo);
             }
 
@@ -111,9 +112,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             try
             {
                 await _context.SaveChangesAsync();
+                LogoManager.ExcluirImagem(_webHostEnvironment, logoAntigo);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateException)
             {
+                ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
                 return Page();
             }
 

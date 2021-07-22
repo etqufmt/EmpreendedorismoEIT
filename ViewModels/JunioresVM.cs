@@ -2,12 +2,13 @@
 using EmpreendedorismoEIT.Resources;
 using EmpreendedorismoEIT.Utils;
 using Microsoft.AspNetCore.Http;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 
 namespace EmpreendedorismoEIT.ViewModels
 {
-    public class EmpresaJuniorVM
+    public class JunioresVM
     {
         public int ID { get; set; }
 
@@ -18,6 +19,7 @@ namespace EmpreendedorismoEIT.ViewModels
 
 
         [Display(Name = "Descrição curta")]
+        [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
         [StringLength(140, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         public string DescricaoCurta { get; set; }
 
@@ -68,5 +70,9 @@ namespace EmpreendedorismoEIT.ViewModels
         [StringLength(50, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         [Required(ErrorMessageResourceName = "ErrInstituto", ErrorMessageResourceType = typeof(ValidationResources))]
         public string Instituto { get; set; }
+
+        [Display(Name = "Modificado")]
+        [DataType(DataType.Date)]
+        public DateTime UltimaModificacao { get; set; }
     }
 }
