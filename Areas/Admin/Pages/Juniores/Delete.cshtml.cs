@@ -27,7 +27,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         }
 
         [BindProperty]
-        public JunioresVM EmpresaJuniorVM { get; set; }
+        public JunioresVM JuniorVM { get; set; }
         public string ErrorMessage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id, bool? error = false)
@@ -51,7 +51,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
             _context.Entry(EJ).Reference(e => e.Empresa).Load();
 
-            EmpresaJuniorVM = new JunioresVM
+            JuniorVM = new JunioresVM
             {
                 ID = EJ.Empresa.ID,
                 Nome = EJ.Empresa.Nome,
@@ -71,17 +71,19 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 return NotFound();
             }
 
-            var empresa = await _context.Empresas.FindAsync(id);
-            var logoAtual = empresa.Logo;
+            var EJ = await _context.DadosJuniores.FindAsync(id);
 
-            if (empresa == null)
+            if (EJ == null)
             {
                 return NotFound();
             }
 
+            _context.Entry(EJ).Reference(e => e.Empresa).Load();
+            var logoAtual = EJ.Empresa.Logo;
+
             try
             {
-                _context.Empresas.Remove(empresa);
+                _context.Empresas.Remove(EJ.Empresa);
                 await _context.SaveChangesAsync();
                 LogoManager.ExcluirImagem(_webHostEnvironment, logoAtual);
             }

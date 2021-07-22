@@ -20,7 +20,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             _context = context;
         }
 
-        public JunioresVM EmpresaJuniorVM { get; set; }
+        public JunioresVM JuniorVM { get; set; }
         public string Logo { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -39,7 +39,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
             _context.Entry(EJ).Reference(e => e.Empresa).Load();
 
-            EmpresaJuniorVM = new JunioresVM
+            JuniorVM = new JunioresVM
             {
                 ID = EJ.EmpresaID,
                 Nome = EJ.Empresa.Nome,

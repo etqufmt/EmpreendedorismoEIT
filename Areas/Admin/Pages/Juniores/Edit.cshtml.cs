@@ -27,7 +27,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         }
 
         [BindProperty]
-        public JunioresVM EmpresaJuniorVM { get; set; }
+        public JunioresVM JuniorVM { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -50,9 +50,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
             _context.Entry(EJ).Reference(e => e.Empresa).Load();
 
-            EmpresaJuniorVM = new JunioresVM
+            JuniorVM = new JunioresVM
             {
                 ID = EJ.EmpresaID,
+                Campus = EJ.Campus,
+                Instituto = EJ.Instituto,
                 Nome = EJ.Empresa.Nome,
                 DescricaoCurta = EJ.Empresa.DescricaoCurta,
                 DescricaoLonga = EJ.Empresa.DescricaoLonga,
@@ -60,9 +62,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 Telefone = EJ.Empresa.Telefone,
                 Email = EJ.Empresa.Email,
                 Logo = null,
-                Situacao = EJ.Empresa.Situacao,
-                Campus = EJ.Campus,
-                Instituto = EJ.Instituto
+                Situacao = EJ.Empresa.Situacao
             };
 
             return Page();
@@ -89,26 +89,26 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
             _context.Entry(EJ).Reference(e => e.Empresa).Load();
 
-            EJ.EmpresaID = EmpresaJuniorVM.ID;
-            EJ.Campus = EmpresaJuniorVM.Campus;
-            EJ.Instituto = EmpresaJuniorVM.Instituto;
-            EJ.Empresa.Nome = EmpresaJuniorVM.Nome;
-            EJ.Empresa.DescricaoCurta = EmpresaJuniorVM.DescricaoCurta;
-            EJ.Empresa.DescricaoLonga = EmpresaJuniorVM.DescricaoLonga;
-            EJ.Empresa.Endereco = EmpresaJuniorVM.Endereco;
-            EJ.Empresa.Telefone = EmpresaJuniorVM.Telefone;
-            EJ.Empresa.Email = EmpresaJuniorVM.Email;
-            EJ.Empresa.Situacao = EmpresaJuniorVM.Situacao;
+            EJ.EmpresaID = JuniorVM.ID;
+            EJ.Campus = JuniorVM.Campus;
+            EJ.Instituto = JuniorVM.Instituto;
+            EJ.Empresa.Nome = JuniorVM.Nome;
+            EJ.Empresa.DescricaoCurta = JuniorVM.DescricaoCurta;
+            EJ.Empresa.DescricaoLonga = JuniorVM.DescricaoLonga;
+            EJ.Empresa.Endereco = JuniorVM.Endereco;
+            EJ.Empresa.Telefone = JuniorVM.Telefone;
+            EJ.Empresa.Email = JuniorVM.Email;
+            EJ.Empresa.Situacao = JuniorVM.Situacao;
             EJ.Empresa.UltimaModificacao = DateTime.Now;
 
             string logoAntigo = null;
-            if (EmpresaJuniorVM.Logo != null)
+            if (JuniorVM.Logo != null)
             {
                 logoAntigo = EJ.Empresa.Logo;
-                EJ.Empresa.Logo = LogoManager.SalvarImagem(_webHostEnvironment, EmpresaJuniorVM.Logo);
+                EJ.Empresa.Logo = LogoManager.SalvarImagem(_webHostEnvironment, JuniorVM.Logo);
             }
 
-            _context.Attach(EJ.Empresa).State = EntityState.Modified;
+            _context.Attach(EJ).State = EntityState.Modified;
 
             try
             {
@@ -121,7 +121,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 return Page();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Details", new { id });
         }
     }
 }

@@ -25,7 +25,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         }
 
         [BindProperty]
-        public JunioresVM EmpresaJuniorVM { get; set; }
+        public JunioresVM JuniorVM { get; set; }
 
         public IActionResult OnGet()
         {
@@ -41,19 +41,19 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
             var novaEmpresa = new Empresa
             {
-                Nome = EmpresaJuniorVM.Nome,
+                Nome = JuniorVM.Nome,
                 Tipo = Tipo.JUNIOR,
-                DescricaoCurta = EmpresaJuniorVM.DescricaoCurta,
-                DescricaoLonga = EmpresaJuniorVM.DescricaoLonga,
-                Endereco = EmpresaJuniorVM.Endereco,
-                Telefone = EmpresaJuniorVM.Telefone,
-                Email = EmpresaJuniorVM.Email,
-                Logo = LogoManager.SalvarImagem(_webHostEnvironment, EmpresaJuniorVM.Logo),
-                Situacao = EmpresaJuniorVM.Situacao,
+                DescricaoCurta = JuniorVM.DescricaoCurta,
+                DescricaoLonga = JuniorVM.DescricaoLonga,
+                Endereco = JuniorVM.Endereco,
+                Telefone = JuniorVM.Telefone,
+                Email = JuniorVM.Email,
+                Logo = LogoManager.SalvarImagem(_webHostEnvironment, JuniorVM.Logo),
+                Situacao = JuniorVM.Situacao,
                 DadosJunior = new DadosJunior
                 {
-                    Campus = EmpresaJuniorVM.Campus,
-                    Instituto = EmpresaJuniorVM.Instituto
+                    Campus = JuniorVM.Campus,
+                    Instituto = JuniorVM.Instituto
                 },
                 UltimaModificacao = DateTime.Now
             };
