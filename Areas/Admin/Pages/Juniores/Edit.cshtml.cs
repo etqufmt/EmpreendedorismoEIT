@@ -101,9 +101,10 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             EJ.Empresa.Situacao = EmpresaJuniorVM.Situacao;
             EJ.Empresa.UltimaModificacao = DateTime.Now;
 
-            var logoAntigo = EJ.Empresa.Logo;
+            string logoAntigo = null;
             if (EmpresaJuniorVM.Logo != null)
             {
+                logoAntigo = EJ.Empresa.Logo;
                 EJ.Empresa.Logo = LogoManager.SalvarImagem(_webHostEnvironment, EmpresaJuniorVM.Logo);
             }
 

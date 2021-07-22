@@ -19,22 +19,25 @@ namespace EmpreendedorismoEIT.ViewModels
 
 
         [Display(Name = "Descrição curta")]
-        [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
+        [DisplayFormat(NullDisplayText = "[Não informado]")]
         [StringLength(140, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         public string DescricaoCurta { get; set; }
 
 
         [Display(Name = "Descrição longa")]
+        [DisplayFormat(NullDisplayText = "[Não informado]")]
         [StringLength(500, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         public string DescricaoLonga { get; set; }
 
 
         [Display(Name = "Endereço")]
+        [DisplayFormat(NullDisplayText = "[Não informado]")]
         [StringLength(200, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         public string Endereco { get; set; }
 
 
         [Display(Name = "Telefone")]
+        [DisplayFormat(NullDisplayText = "[Não informado]")]
         [DataType(DataType.PhoneNumber)]
         [RegularExpression("([0-9]+)", ErrorMessageResourceName = "Numero", ErrorMessageResourceType = typeof(ValidationResources))]
         [StringLength(11, MinimumLength = 10, ErrorMessageResourceName = "ErrTelefone", ErrorMessageResourceType = typeof(ValidationResources))]
@@ -42,6 +45,7 @@ namespace EmpreendedorismoEIT.ViewModels
 
 
         [Display(Name = "Email")]
+        [DisplayFormat(NullDisplayText = "[Não informado]")]
         [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessageResourceName = "ErrEmail", ErrorMessageResourceType = typeof(ValidationResources))]
         [StringLength(100, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         [EmailAddress(ErrorMessageResourceName = "ErrEmail", ErrorMessageResourceType = typeof(ValidationResources))]
@@ -66,7 +70,7 @@ namespace EmpreendedorismoEIT.ViewModels
         public Campus Campus { get; set; }
 
 
-        [Display(Name = "Instituto/faculdade")]
+        [Display(Name = "Instituto / Faculdade")]
         [StringLength(50, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         [Required(ErrorMessageResourceName = "ErrInstituto", ErrorMessageResourceType = typeof(ValidationResources))]
         public string Instituto { get; set; }

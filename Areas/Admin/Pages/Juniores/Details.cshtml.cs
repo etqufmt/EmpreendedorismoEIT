@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
+using EmpreendedorismoEIT.ViewModels;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 {
@@ -19,7 +20,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             _context = context;
         }
 
-        public Empresa Empresa { get; set; }
+        public JunioresVM EmpresaJuniorVM { get; set; }
+        public string Logo { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,12 +30,32 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 return NotFound();
             }
 
-            Empresa = await _context.Empresas.FirstOrDefaultAsync(m => m.ID == id);
+            var EJ = await _context.DadosJuniores.FindAsync(id);
 
-            if (Empresa == null)
+            if (EJ == null)
             {
                 return NotFound();
             }
+
+            _context.Entry(EJ).Reference(e => e.Empresa).Load();
+
+            EmpresaJuniorVM = new JunioresVM
+            {
+                ID = EJ.EmpresaID,
+                Nome = EJ.Empresa.Nome,
+                DescricaoCurta = EJ.Empresa.DescricaoCurta,
+                DescricaoLonga = EJ.Empresa.DescricaoLonga,
+                Endereco = EJ.Empresa.Endereco,
+                Telefone = EJ.Empresa.Telefone,
+                Email = EJ.Empresa.Email,
+                Situacao = EJ.Empresa.Situacao,
+                Campus = EJ.Campus,
+                Instituto = EJ.Instituto,
+                UltimaModificacao = EJ.Empresa.UltimaModificacao
+            };
+
+            Logo = EJ.Empresa.Logo;
+
             return Page();
         }
     }
