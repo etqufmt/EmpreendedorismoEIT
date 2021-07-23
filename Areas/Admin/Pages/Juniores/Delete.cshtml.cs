@@ -56,7 +56,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 ID = EJ.Empresa.ID,
                 Nome = EJ.Empresa.Nome,
                 Campus = EJ.Campus,
-                DescricaoCurta = EJ.Empresa.DescricaoCurta,
+                Instituto = EJ.Instituto,
                 Situacao = EJ.Empresa.Situacao,
                 UltimaModificacao = EJ.Empresa.UltimaModificacao,
             };
