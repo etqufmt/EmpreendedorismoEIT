@@ -31,7 +31,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 Logo = e.Empresa.Logo,
                 Nome = e.Empresa.Nome,
                 Campus = e.Campus
-            }).ToListAsync();
+            }).AsNoTracking().ToListAsync();
         }
     }
 }

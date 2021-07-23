@@ -38,9 +38,9 @@
                 @Html.DisplayFor(modelItem => item.Campus)
             </td>
             <td class="align-middle text-right">
-                <a asp-page="./Tags" asp-route-id="@item.ID" class="btn btn-outline-primary my-1">Tags</a>
-                <a asp-page="./Produtos" asp-route-id="@item.ID" class="btn btn-outline-primary my-1">Serviços</a>
-                <a asp-page="./Redes" asp-route-id="@item.ID" class="btn btn-outline-primary my-1">Redes Sociais</a>
+                <a asp-area="Admin" asp-page="/Index" asp-route-id="@item.ID" class="btn btn-outline-primary my-1">Tags</a>
+                <a asp-area="Admin" asp-page="/Index" asp-route-id="@item.ID" class="btn btn-outline-primary my-1">Serviços</a>
+                <a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@item.ID" class="btn btn-outline-primary my-1">Redes Sociais</a>
             </td>
         </tr>
 }

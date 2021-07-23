@@ -1,0 +1,62 @@
+﻿@page "{id:int?}"
+@model EmpreendedorismoEIT.Areas.Admin.Pages.Redes.IndexModel
+
+@{
+    ViewData["Title"] = "Redes sociais EJ";
+    ViewData["Section"] = "Juniores";
+    ViewData["SectionTitle"] = "Empresa júnior » Redes sociais";
+}
+
+<div class="row">
+    <div class="col-lg-6">
+        <form method="post">
+            <div class="row">
+                <div class="col">
+                    <h4>@Model.NomeEmpresa</h4><hr />
+                    <p>Copie e cole da barra de endereços para garantir que o link da rede social esteja correto.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="SocialVM.EmpresaID" />
+                    <div class="form-group">
+                        <label asp-for="SocialVM.FacebookURL" class="control-label"></label>
+                        <input asp-for="SocialVM.FacebookURL" class="form-control" />
+                        <span asp-validation-for="SocialVM.FacebookURL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SocialVM.InstagramURL" class="control-label"></label>
+                        <input asp-for="SocialVM.InstagramURL" class="form-control" />
+                        <span asp-validation-for="SocialVM.InstagramURL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SocialVM.WhatsappURL" class="control-label"></label>
+                        <input asp-for="SocialVM.WhatsappURL" class="form-control number-only" />
+                        <span asp-validation-for="SocialVM.WhatsappURL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SocialVM.TwitterURL" class="control-label"></label>
+                        <input asp-for="SocialVM.TwitterURL" class="form-control" />
+                        <span asp-validation-for="SocialVM.TwitterURL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SocialVM.WebsiteURL" class="control-label"></label>
+                        <input asp-for="SocialVM.WebsiteURL" class="form-control" />
+                        <span asp-validation-for="SocialVM.WebsiteURL" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-right">
+                    <a asp-area="Admin" asp-page="Juniores" class="btn btn-secondary">Voltar</a>
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

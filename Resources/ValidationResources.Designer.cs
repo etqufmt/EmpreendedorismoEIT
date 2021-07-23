@@ -106,6 +106,15 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to URL não corresponde à rede social.
+        /// </summary>
+        public static string ErrSite {
+            get {
+                return ResourceManager.GetString("ErrSite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deve incluir o DDD.
         /// </summary>
         public static string ErrTelefone {
@@ -120,6 +129,15 @@ namespace EmpreendedorismoEIT.Resources {
         public static string ErrUpdate {
             get {
                 return ResourceManager.GetString("ErrUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to URL inválida.
+        /// </summary>
+        public static string ErrURL {
+            get {
+                return ResourceManager.GetString("ErrURL", resourceCulture);
             }
         }
         
@@ -151,7 +169,7 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tamanho inválido.
+        ///   Looks up a localized string similar to Passou do tamanho máximo.
         /// </summary>
         public static string Tamanho {
             get {

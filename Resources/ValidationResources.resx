@@ -132,11 +132,17 @@
   <data name="ErrLogotipo" xml:space="preserve">
     <value>Selecione um logotipo para a empresa</value>
   </data>
+  <data name="ErrSite" xml:space="preserve">
+    <value>URL não corresponde à rede social</value>
+  </data>
   <data name="ErrTelefone" xml:space="preserve">
     <value>Deve incluir o DDD</value>
   </data>
   <data name="ErrUpdate" xml:space="preserve">
     <value>Não foi possível realizar a atualização. Tente mais tarde.</value>
+  </data>
+  <data name="ErrURL" xml:space="preserve">
+    <value>URL inválida</value>
   </data>
   <data name="Numero" xml:space="preserve">
     <value>Insira apenas números</value>
@@ -148,6 +154,6 @@
     <value>O campo precisa ser preenchido ou alterado</value>
   </data>
   <data name="Tamanho" xml:space="preserve">
-    <value>Tamanho inválido</value>
+    <value>Passou do tamanho máximo</value>
   </data>
 </root>
