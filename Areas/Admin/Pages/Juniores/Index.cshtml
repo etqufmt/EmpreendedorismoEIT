@@ -27,7 +27,7 @@
     <tbody>
 @foreach (var item in Model.ListaEJ) {
         <tr>
-            <td class="align-middle"><img src="@(String.IsNullOrEmpty(item.Logo)? emptyImage : "~/images/" + item.Logo)"
+            <td class="align-middle"><img src="@(String.IsNullOrEmpty(item.Logo)? emptyImage : "~/logo/" + item.Logo)"
                  class="rounded-circle"
                  height="40" width="40"
                  asp-append-version="true"/></td>

@@ -13,7 +13,7 @@ namespace EmpreendedorismoEIT.Utils
 
             if (arquivo != null)
             {
-                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "logo");
                 uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(arquivo.FileName);
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
@@ -29,7 +29,7 @@ namespace EmpreendedorismoEIT.Utils
         {
             if (arquivo != null)
             {
-                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "logo");
                 string filePath = Path.Combine(uploadsFolder, arquivo);
                 File.Delete(filePath);
             }
