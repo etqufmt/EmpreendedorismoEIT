@@ -154,6 +154,6 @@
     <value>O campo precisa ser preenchido ou alterado</value>
   </data>
   <data name="Tamanho" xml:space="preserve">
-    <value>Passou do tamanho máximo</value>
+    <value>Tamanho inválido</value>
   </data>
 </root>

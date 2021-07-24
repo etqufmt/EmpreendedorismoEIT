@@ -2,9 +2,7 @@
 @model EmpreendedorismoEIT.Areas.Admin.Pages.Redes.IndexModel
 
 @{
-    ViewData["Title"] = "Redes sociais EJ";
-    ViewData["Section"] = "Juniores";
-    ViewData["SectionTitle"] = "Empresa júnior » Redes sociais";
+    ViewData["Title"] = "Redes sociais";
 }
 
 <div class="row">
@@ -22,34 +20,59 @@
                     <input type="hidden" asp-for="SocialVM.EmpresaID" />
                     <div class="form-group">
                         <label asp-for="SocialVM.FacebookURL" class="control-label"></label>
-                        <input asp-for="SocialVM.FacebookURL" class="form-control" />
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <i class="bi-facebook input-group-text"></i>
+                            </div>
+                            <input asp-for="SocialVM.FacebookURL" class="form-control" />
+                        </div>
                         <span asp-validation-for="SocialVM.FacebookURL" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="SocialVM.InstagramURL" class="control-label"></label>
-                        <input asp-for="SocialVM.InstagramURL" class="form-control" />
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <i class="bi-instagram input-group-text"></i>
+                            </div>
+                            <input asp-for="SocialVM.InstagramURL" class="form-control" />
+                        </div>
                         <span asp-validation-for="SocialVM.InstagramURL" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="SocialVM.WhatsappURL" class="control-label"></label>
-                        <input asp-for="SocialVM.WhatsappURL" class="form-control number-only" />
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <i class="bi-whatsapp input-group-text"></i>
+                            </div>
+                            <input asp-for="SocialVM.WhatsappURL" class="form-control number-only" />
+                        </div>
                         <span asp-validation-for="SocialVM.WhatsappURL" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="SocialVM.TwitterURL" class="control-label"></label>
-                        <input asp-for="SocialVM.TwitterURL" class="form-control" />
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <i class="bi-twitter input-group-text"></i>
+                            </div>
+                            <input asp-for="SocialVM.TwitterURL" class="form-control" />
+                        </div>
                         <span asp-validation-for="SocialVM.TwitterURL" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="SocialVM.WebsiteURL" class="control-label"></label>
-                        <input asp-for="SocialVM.WebsiteURL" class="form-control" />
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <i class="bi-globe input-group-text"></i>
+                            </div>
+                            <input asp-for="SocialVM.WebsiteURL" class="form-control" />
+                        </div>
                         <span asp-validation-for="SocialVM.WebsiteURL" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col text-right">
-                    <a asp-area="Admin" asp-page="Juniores" class="btn btn-secondary">Voltar</a>
+                    <a asp-area="Admin" asp-page="@Model.ReturnURL" class="btn btn-secondary">Voltar</a>
                     <input type="submit" value="Salvar" class="btn btn-primary" />
                 </div>
             </div>

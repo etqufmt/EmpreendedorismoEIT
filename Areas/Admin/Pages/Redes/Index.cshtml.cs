@@ -24,6 +24,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
         [BindProperty]
         public RedesVM SocialVM { get;set; }
         public string NomeEmpresa { get; set; }
+        public string ReturnURL { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -52,10 +53,25 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
                 InstagramURL = empresa.RedesSociais
                                 .FirstOrDefault(r => r.Plataforma == Plataforma.INSTAGRAM)?.URL,
                 WhatsappURL = empresa.RedesSociais
-                                .FirstOrDefault(r => r.Plataforma == Plataforma.WHATSAPP)?.URL,
+                                .FirstOrDefault(r => r.Plataforma == Plataforma.WHATSAPP)?.URL.Substring(2),
                 TwitterURL = empresa.RedesSociais
                                 .FirstOrDefault(r => r.Plataforma == Plataforma.TWITTER)?.URL
             };
+
+            //Botão voltar e títulos
+            ReturnURL = "/Index";
+            if (empresa.Tipo == Tipo.JUNIOR)
+            {
+                ViewData["Section"] = "Juniores";
+                ViewData["SectionTitle"] = "Empresa júnior » Redes sociais";
+                ReturnURL = "/Juniores/Index";
+            }
+            if (empresa.Tipo == Tipo.INCUBADA)
+            {
+                ViewData["Section"] = "Incubadas";
+                ViewData["SectionTitle"] = "Empresa incubada » Redes sociais";
+                ReturnURL = "/Incubadas/Index";
+            }
 
             return Page();
         }
@@ -99,8 +115,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
             }
             if (SocialVM.WhatsappURL != null)
             {
+                //Código internacional para telefones brasileiros = 55
                 empresa.RedesSociais.Add(new RedeSocial { 
-                    Plataforma = Plataforma.WHATSAPP, URL = SocialVM.WhatsappURL });
+                    Plataforma = Plataforma.WHATSAPP, URL = SocialVM.WhatsappURL.Insert(0, "55") });
             }
             if (SocialVM.TwitterURL != null)
             {
@@ -120,7 +137,17 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
                 return Page();
             }
 
-            return RedirectToPage("/Index");
+            ReturnURL = "/Index";
+            if (empresa.Tipo == Tipo.JUNIOR)
+            {
+                ReturnURL = "/Juniores/Index";
+            }
+            if (empresa.Tipo == Tipo.INCUBADA)
+            {
+                ReturnURL = "/Incubadas/Index";
+            }
+
+            return RedirectToPage(ReturnURL);
         }
     }
 }

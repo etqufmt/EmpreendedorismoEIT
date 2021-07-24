@@ -169,7 +169,7 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Passou do tamanho máximo.
+        ///   Looks up a localized string similar to Tamanho inválido.
         /// </summary>
         public static string Tamanho {
             get {
