@@ -59,7 +59,7 @@
                 <span asp-validation-for="JuniorVM.Situacao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="JuniorVM.Campus" class="control-label"></label>
+                <label asp-for="JuniorVM.Campus" class="control-label">Instituto / Faculdade</label>
                 <select asp-for="JuniorVM.Campus" class="form-control" asp-items="@Html.GetEnumSelectList<Campus>()"></select>
                 <span asp-validation-for="JuniorVM.Campus" class="text-danger"></span>
             </div>

@@ -10,6 +10,7 @@ namespace EmpreendedorismoEIT.ViewModels
 {
     public class JunioresVM
     {
+        [Required]
         public int ID { get; set; }
 
         [Display(Name = "Nome")]
@@ -70,7 +71,7 @@ namespace EmpreendedorismoEIT.ViewModels
         public Campus Campus { get; set; }
 
 
-        [Display(Name = "Instituto / Faculdade")]
+        [Display(Name = "Instituto")]
         [StringLength(50, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         [Required(ErrorMessageResourceName = "ErrInstituto", ErrorMessageResourceType = typeof(ValidationResources))]
         public string Instituto { get; set; }

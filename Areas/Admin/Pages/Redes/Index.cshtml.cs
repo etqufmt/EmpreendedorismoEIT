@@ -35,6 +35,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
 
             var empresa = await _context.Empresas
                             .Include(e => e.RedesSociais)
+                            .AsNoTracking()
                             .FirstOrDefaultAsync(m => m.ID == id);
 
             if (empresa == null)

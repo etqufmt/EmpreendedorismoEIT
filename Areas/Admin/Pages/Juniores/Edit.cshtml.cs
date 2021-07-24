@@ -37,18 +37,15 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             }
 
             //Carregar tudo de uma vez
-            //var EJ = await _context.DadosJuniores.Include(d => d.Empresa)
-            //            .AsNoTracking()
-            //            .FirstOrDefaultAsync(d => d.ID == id);
-
-            var EJ = await _context.DadosJuniores.FindAsync(id);
+            var EJ = await _context.DadosJuniores
+                        .Include(d => d.Empresa)
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(d => d.EmpresaID == id);
 
             if (EJ == null)
             {
                 return NotFound();
             }
-
-            _context.Entry(EJ).Reference(e => e.Empresa).Load();
 
             JuniorVM = new JunioresVM
             {
@@ -75,7 +72,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 return NotFound();
             }
 
-            var EJ = await _context.DadosJuniores.FindAsync(id);
+            var EJ = await _context.DadosJuniores
+                        .Include(d => d.Empresa)
+                        .FirstOrDefaultAsync(d => d.EmpresaID == id);
 
             if (EJ == null)
             {
@@ -86,8 +85,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             {
                 return Page();
             }
-
-            _context.Entry(EJ).Reference(e => e.Empresa).Load();
 
             EJ.EmpresaID = JuniorVM.ID;
             EJ.Campus = JuniorVM.Campus;
