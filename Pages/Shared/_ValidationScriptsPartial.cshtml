@@ -7,7 +7,7 @@
         $(this).next('.custom-file-label').html(evt.target.files[0].name);
     })
 
-    //Cria classe "number-only" que pode utilizada em qualquer campo de formulário
+    //Cria classe "number-only" que pode ser utilizada em qualquer campo de formulário
     $(document).on('keypress', '.number-only', function (evt) {
         var ASCIICode = (evt.which) ? evt.which : evt.keyCode
         if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))

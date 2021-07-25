@@ -1,0 +1,86 @@
+﻿@page "{id:int?}"
+@model EmpreendedorismoEIT.Areas.Admin.Pages.Servicos.IndexModel
+
+@{
+    ViewData["Title"] = "Produtos e serviços";
+}
+
+<p>
+    <a asp-page="Create" class="btn btn-outline-primary">Adicionar</a>
+</p>
+@if (!String.IsNullOrEmpty(@Model.ErrorMessage))
+{
+<div class="alert alert-primary alert-dismissible fade show" role="alert" style="background: none !important;">
+    @Model.ErrorMessage
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true"><i class="bi bi-x"></i></span>
+    </button>
+</div>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaProdServ[0].Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaProdServ[0].Descricao)
+            </th>
+            <th style="width:15%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListaProdServ)
+        {
+            <tr>
+                <td id="ps-nome-@item.ID">
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td id="ps-desc-@item.ID">
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td class="align-middle text-right">
+                    <button type="button" class="btn btn-outline-primary btn-block my-1"
+                            data-toggle="modal" data-target="#modal-excluir"
+                            data-id="@item.ID">
+                        Editar
+                    </button>
+                    <button type="button" class="btn btn-outline-danger btn-block my-1"
+                            data-toggle="modal" data-target="#modal-excluir"
+                            data-id="@item.ID" data-item="ps-nome-@item.ID">
+                        Excluir
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@*Modal para excluir produto ou serviço*@
+@*Preenchido com javascript*@
+<div class="modal fade" id="modal-excluir" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Excluir produto ou serviço</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir o item "<span class="modal-item-text"></span>"?</p>
+            </div>
+            <div class="modal-footer">
+                <form method="post" asp-page="./Delete">
+                    <input type="hidden" asp-for="ProdServVM.ID" class="modal-item-id"/>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <input type="submit" value="Excluir" class="btn btn-danger" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_ModalScriptsPartial");}
+}

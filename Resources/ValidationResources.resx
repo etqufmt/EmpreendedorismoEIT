@@ -132,6 +132,9 @@
   <data name="ErrLogotipo" xml:space="preserve">
     <value>Selecione um logotipo para a empresa</value>
   </data>
+  <data name="ErrNull" xml:space="preserve">
+    <value>[Não informado]</value>
+  </data>
   <data name="ErrSite" xml:space="preserve">
     <value>URL não corresponde à rede social</value>
   </data>

@@ -54,6 +54,24 @@ namespace EmpreendedorismoEIT.Data
                     {
                         Campus = Campus.CUIABA,
                         Instituto = "FACC"
+                    },
+                    ProdutosServicos = new List<ProdutoServico>
+                    {
+                        new ProdutoServico
+                        {
+                            Nome = "Plano de negócios",
+                            Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais."
+                        },
+                        new ProdutoServico
+                        {
+                            Nome = "Estudo de viabilidade econômica",
+                            Descricao = "Consiste em fornecer informações ao gestor a respeito da viabilidade ou inviabilidade do seu investimento, a fim de auxiliá-lo na tomada de decisão de um novo projeto e/ou na ampliação/redução de um projeto já existente. Por meio de um estudo mercadológico e financeiro, utilizando projeções e indicadores, é possível analisar as condições de tal investimento."
+                        },
+                        new ProdutoServico
+                        {
+                            Nome = "Plano de marketing",
+                            Descricao = "É feita uma análise do perfil do consumidor, do público-alvo, de ações de divulgação e comunicação, além de preço, distribuição e localização do ponto de venda. São desenvolvidas ações para satisfazer os clientes, posicionar a marca e promover o sucesso do negócio."
+                        },
                     }
                 },
                 new Empresa
@@ -71,6 +89,21 @@ namespace EmpreendedorismoEIT.Data
                     {
                         Campus = Campus.ARAGUAIA,
                         Instituto = "Faculdade de Economia"
+                    },
+                    ProdutosServicos = new List<ProdutoServico>
+                    {
+                        new ProdutoServico
+                        {
+                            Nome = "Teste #01"
+                        },
+                        new ProdutoServico
+                        {
+                            Nome = "Teste #02"
+                        },
+                        new ProdutoServico
+                        {
+                            Nome = "Teste #03"
+                        }
                     }
                 },
                 new Empresa

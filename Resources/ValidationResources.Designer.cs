@@ -106,6 +106,15 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [Não informado].
+        /// </summary>
+        public static string ErrNull {
+            get {
+                return ResourceManager.GetString("ErrNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to URL não corresponde à rede social.
         /// </summary>
         public static string ErrSite {
