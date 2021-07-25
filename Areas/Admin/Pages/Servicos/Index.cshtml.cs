@@ -37,7 +37,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                            .Include(e => e.ProdutosServicos)
                            .AsNoTracking()
                            .FirstOrDefaultAsync(m => m.ID == id);
-
             if (empresa == null)
             {
                 return NotFound();

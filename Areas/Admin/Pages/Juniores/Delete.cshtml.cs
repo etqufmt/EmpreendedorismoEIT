@@ -28,46 +28,16 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
         [BindProperty]
         public JunioresVM JuniorVM { get; set; }
-        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id, bool? error = false)
+        public async Task<IActionResult> OnGetAsync()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var EJ = await _context.DadosJuniores
-                        .Include(d => d.Empresa)
-                        .AsNoTracking()
-                        .FirstOrDefaultAsync(d => d.EmpresaID == id);
-
-            if (EJ == null)
-            {
-                return NotFound();
-            }
-
-            if (error.GetValueOrDefault())
-            {
-                ErrorMessage = Resources.ValidationResources.ErrDelete;
-            }
-
-            JuniorVM = new JunioresVM
-            {
-                ID = EJ.Empresa.ID,
-                Nome = EJ.Empresa.Nome,
-                Campus = EJ.Campus,
-                Instituto = EJ.Instituto,
-                Situacao = EJ.Empresa.Situacao,
-                UltimaModificacao = EJ.Empresa.UltimaModificacao,
-            };
-
-            return Page();
+            return RedirectToPage("/Index");
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync()
         {
-            if (id == null)
+            var id = JuniorVM.ID;
+            if (id == 0)
             {
                 return NotFound();
             }
@@ -75,7 +45,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             var EJ = await _context.DadosJuniores
                         .Include(d => d.Empresa)
                         .FirstOrDefaultAsync(d => d.EmpresaID == id);
-
             if (EJ == null)
             {
                 return NotFound();
@@ -90,7 +59,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             }
             catch (DbUpdateException)
             {
-                return RedirectToPage("./Delete", new { id, error = true });
+                return RedirectToPage("./Details", new { id, deleteError = true });
             }
 
             return RedirectToPage("./Index");

@@ -22,8 +22,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
         public JunioresVM JuniorVM { get; set; }
         public string Logo { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, bool? deleteError = false)
         {
             if (id == null)
             {
@@ -34,10 +35,14 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                         .Include(d => d.Empresa)
                         .AsNoTracking()
                         .FirstOrDefaultAsync(d => d.EmpresaID == id);
-
             if (EJ == null)
             {
                 return NotFound();
+            }
+
+            if (deleteError.GetValueOrDefault())
+            {
+                ErrorMessage = Resources.ValidationResources.ErrDelete;
             }
 
             JuniorVM = new JunioresVM
