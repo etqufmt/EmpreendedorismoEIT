@@ -30,4 +30,16 @@ i.icon-msg {
     }
 }
 
+.username.dropdown-toggle::after {
+    content: none !important;
+}
 
+.username i {
+    vertical-align: 0.1em;
+    font-size: 0.8rem;
+}
+
+.header-title {
+    line-height: normal;
+    margin-bottom: 0px;
+}

@@ -17,13 +17,14 @@
                 <div class="col-md-9 pb-3">
                     <section>
                         <div class="row">
-                            <div class="col-9 text-truncate">
-                                <h4>@ViewData["SectionTitle"]</h4><hr />
+                            <div class="col text-truncate">
+                                <h4 id="SectionTitle" class="text-truncate header-title">@ViewData["SectionTitle"]</h4>
                             </div>
-                            <div class="col-3 text-right">
+                            <div class="col-auto text-right">
                                 <partial name="_AccountOptions" />
                             </div>
                         </div>
+                        <div class="row"><div class="col"><hr class="mt-2 mb-3"/></div></div>
                         <div class="row">
                             <div class="col">
                                 @RenderBody()
@@ -33,12 +34,12 @@
                 </div>
                 <div class="col-md-3 order-md-first">
                     <section>
-                        <h4>Administração</h4><hr />
+                        <h4 class="header-title">Administração</h4><hr class="mt-2 mb-3" />
                         <div class="list-group">
                             <a class="list-group-item list-group-item-action @(ViewData["Section"].Equals("Inicio") ? "active" : "")" asp-area="admin" asp-page="/Index">Início</a>
-                            <a class="list-group-item list-group-item-action @(ViewData["Section"].Equals("Juniores") ? "active" : "")" asp-area="admin" asp-page="/Juniores/Index">Empresas Juniores</a>
-                            <a class="list-group-item list-group-item-action @(ViewData["Section"].Equals("Incubadas") ? "active" : "")" asp-area="admin" asp-page="/Index">Empresas Incubadas</a>
-                            <a class="list-group-item list-group-item-action @(ViewData["Section"].Equals("Tags") ? "active" : "")" asp-area="admin" asp-page="/Tags/Index">Nuvem de Tags</a>
+                            <a class="list-group-item list-group-item-action @(ViewData["Section"].Equals("Juniores") ? "active" : "")" asp-area="admin" asp-page="/Juniores/Index">Empresas juniores</a>
+                            <a class="list-group-item list-group-item-action @(ViewData["Section"].Equals("Incubadas") ? "active" : "")" asp-area="admin" asp-page="/Index">Empresas incubadas</a>
+                            <a class="list-group-item list-group-item-action @(ViewData["Section"].Equals("Tags") ? "active" : "")" asp-area="admin" asp-page="/Tags/Index">Recomendação</a>
                         </div>
                     </section>
                 </div>

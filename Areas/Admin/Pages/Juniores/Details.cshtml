@@ -4,12 +4,15 @@
 @{
     ViewData["Title"] = "Dados EJ";
     ViewData["Section"] = "Juniores";
-    ViewData["SectionTitle"] = "Dados da empresa júnior";
+    ViewData["SectionTitle"] = "Empresa júnior » Dados";
+    //ViewData["SectionTitle"] = "Dados da empresa júnior";
+    //ViewData["SectionTitle"] = Html.DisplayFor(model => model.JuniorVM.Nome);
 }
 
 <div class="row">
-    <div class="col-lg-6">
-        <h4 id="ej-nome-@Model.JuniorVM.ID">@Html.DisplayFor(model => model.JuniorVM.Nome)</h4><hr />
+    <div class="col-lg-6 mb-2 mb-md-0">
+        <h4 id="ej-nome">@Html.DisplayFor(model => model.JuniorVM.Nome)</h4>
+        <hr class="d-none d-md-block"/>
     </div>
 </div>
 <div class="row">
@@ -89,7 +92,7 @@
                     <a asp-page="./Index" class="btn btn-outline-secondary">Voltar</a>
                     <button type="button" class="btn btn-outline-danger"
                             data-toggle="modal" data-target="#modal-excluir"
-                            data-id="@Model.JuniorVM.ID" data-item="ej-nome-@Model.JuniorVM.ID">
+                            data-id="@Model.JuniorVM.ID" data-item="ej-nome">
                         Excluir
                     </button>
                     <a asp-page="./Edit" asp-route-id="@Model.JuniorVM.ID" class="btn btn-outline-primary">Editar</a>
