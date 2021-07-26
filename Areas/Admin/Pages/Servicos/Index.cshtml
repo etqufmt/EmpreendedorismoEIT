@@ -5,9 +5,17 @@
     ViewData["Title"] = "Produtos e serviços";
 }
 
-<p>
-    <a asp-page="Create" class="btn btn-outline-primary">Adicionar</a>
-</p>
+@*<p>
+    <a asp-page="Create" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-primary">Adicionar</a>
+</p>*@
+<div class="row mb-3">
+    <div class="col-lg-6">
+        <h4 class="d-inline align-middle">@Model.Empresa.Nome</h4>
+    </div>
+    <div class="col-lg-6 text-right pr-custom">
+        <a asp-page="Create" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-primary mt-3 mt-lg-0">Adicionar</a>
+    </div>
+</div>
 @if (!String.IsNullOrEmpty(@Model.ErrorMessage))
 {
 <div class="alert alert-primary alert-dismissible fade show" role="alert" style="background: none !important;">
@@ -17,34 +25,39 @@
     </button>
 </div>
 }
-<table class="table">
+<table class="table table-striped border-bottom">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.ListaProdServ[0].Nome)
             </th>
-            <th>
+            <th class="d-none d-sm-table-cell">
                 @Html.DisplayNameFor(model => model.ListaProdServ[0].Descricao)
             </th>
             <th style="width:15%"></th>
         </tr>
     </thead>
     <tbody>
+        @if (Model.ListaProdServ.Count == 0)
+        {
+            <tr>
+                <td class="text-center pb-3" colspan="3">
+                    <i class="bi bi-x-diamond icon-msg"></i><br />
+                    <span>Nenhum produto ou serviço cadastrado ainda.</span>
+                </td>
+            </tr>
+        }
         @foreach (var item in Model.ListaProdServ)
         {
             <tr>
                 <td id="ps-nome-@item.ID">
                     @Html.DisplayFor(modelItem => item.Nome)
                 </td>
-                <td id="ps-desc-@item.ID">
+                <td id="ps-desc-@item.ID" class="d-none d-sm-table-cell">
                     @Html.DisplayFor(modelItem => item.Descricao)
                 </td>
                 <td class="align-middle text-right">
-                    <button type="button" class="btn btn-outline-primary btn-block my-1"
-                            data-toggle="modal" data-target="#modal-excluir"
-                            data-id="@item.ID">
-                        Editar
-                    </button>
+                    <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-outline-primary btn-block my-1">Editar</a>
                     <button type="button" class="btn btn-outline-danger btn-block my-1"
                             data-toggle="modal" data-target="#modal-excluir"
                             data-id="@item.ID" data-item="ps-nome-@item.ID">
@@ -55,6 +68,11 @@
         }
     </tbody>
 </table>
+<div class="row">
+    <div class="col text-right pr-custom">
+        <a asp-area="Admin" asp-page="@Model.ReturnURL" class="btn btn-outline-secondary">Voltar</a>
+    </div>
+</div>
 @*Modal para excluir produto ou serviço*@
 @*Preenchido com javascript*@
 <div class="modal fade" id="modal-excluir" tabindex="-1">
@@ -72,7 +90,7 @@
             <div class="modal-footer">
                 <form method="post" asp-page="./Delete">
                     <input type="hidden" asp-for="ProdServVM.ID" class="modal-item-id"/>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
                     <input type="submit" value="Excluir" class="btn btn-danger" />
                 </form>
             </div>
@@ -81,6 +99,5 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     @{await Html.RenderPartialAsync("_ModalScriptsPartial");}
 }

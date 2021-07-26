@@ -1,43 +1,51 @@
-﻿@page
+﻿@page "{id:int?}"
 @model EmpreendedorismoEIT.Areas.Admin.Pages.Servicos.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
-    ViewData["Section"] = "Juniores";
-    ViewData["SectionTitle"] = "Lista de empresas juniores";
+    ViewData["Title"] = "Adicionar P/S";
+    ViewData["SectionTitle"] = "Adicionar produto ou serviço";
 }
 
-<h1>Create</h1>
-
-<h4>ProdutoServico</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-lg-6">
         <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ProdutoServico.Nome" class="control-label"></label>
-                <input asp-for="ProdutoServico.Nome" class="form-control" />
-                <span asp-validation-for="ProdutoServico.Nome" class="text-danger"></span>
+            <div class="row">
+                <div class="col">
+                    <h4>@Model.Empresa.Nome</h4><hr />
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="ProdutoServico.Descricao" class="control-label"></label>
-                <input asp-for="ProdutoServico.Descricao" class="form-control" />
-                <span asp-validation-for="ProdutoServico.Descricao" class="text-danger"></span>
+            <div class="row">
+                <div class="col">
+                    @if (!@Model.ModelState.IsValid)
+                    {
+                        <div class="alert alert-primary alert-dismissible fade show" role="alert" style="background: none !important;">
+                            <div asp-validation-summary="ModelOnly"></div>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="bi bi-x"></i></span>
+                            </button>
+                        </div>
+                    }
+                    <input type="hidden" asp-for="ProdServVM.EmpresaID" />
+                    <div class="form-group">
+                        <label asp-for="ProdServVM.Nome" class="control-label"></label>
+                        <input asp-for="ProdServVM.Nome" class="form-control" />
+                        <span asp-validation-for="ProdServVM.Nome" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ProdServVM.Descricao" class="control-label"></label>
+                        <textarea asp-for="ProdServVM.Descricao" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="ProdServVM.Descricao" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="ProdutoServico.EmpresaID" class="control-label"></label>
-                <select asp-for="ProdutoServico.EmpresaID" class ="form-control" asp-items="ViewBag.EmpresaID"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="row">
+                <div class="col text-right">
+                    <a asp-area="Admin" asp-page="./Index" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-secondary">Voltar</a>
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </div>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
 </div>
 
 @section Scripts {

@@ -18,11 +18,20 @@ namespace EmpreendedorismoEIT.ViewModels
         [Display(Name = "Nome")]
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
         [StringLength(100, MinimumLength = 3, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
-        public string Nome { get; set; }
+        public string Nome {
+            get { return _nome; }
+            set { _nome = value?.Trim();  }
+        }
+        private string _nome;
 
         [Display(Name = "Descrição")]
         [DisplayFormat(NullDisplayText = "[Não informado]")]
         [StringLength(400, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
-        public string Descricao { get; set; }
+        public string Descricao
+        {
+            get { return _descricao; }
+            set { _descricao = value?.Trim(); }
+        }
+        private string _descricao;
     }
 }

@@ -8,8 +8,26 @@
     margin-bottom: 0;
 }
 
-i {
-    font-size: 1.4rem !important;
-    color: darkgray !important;
+i.input-group-text {
+    font-size: 1.4rem;
+    color: darkgray;
 }
+
+i.icon-msg {
+    font-size: 2rem;
+    color: darkgray;
+}
+
+.pr-custom {
+    padding-right: 1.7rem;
+}
+
+@media (min-width: 768px) {
+    dd.border-custom {
+        /*border-right: #007bff solid 0.2rem;*/
+        border-left: #99caff solid 0.2rem;
+        box-sizing: border-box;
+    }
+}
+
 

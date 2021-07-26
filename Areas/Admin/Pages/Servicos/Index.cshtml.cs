@@ -22,7 +22,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 
         public IList<ServicosVM> ListaProdServ { get; set; }
         public ServicosVM ProdServVM { get; set; }
-        public string NomeEmpresa { get; set; }
+        public Empresa Empresa { get; set; }
         public string ReturnURL { get; set; }
         public string ErrorMessage { get; set; }
 
@@ -33,11 +33,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return NotFound();
             }
 
-            var empresa = await _context.Empresas
+            Empresa = await _context.Empresas
                            .Include(e => e.ProdutosServicos)
                            .AsNoTracking()
                            .FirstOrDefaultAsync(m => m.ID == id);
-            if (empresa == null)
+            if (Empresa == null)
             {
                 return NotFound();
             }
@@ -47,25 +47,22 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 ErrorMessage = Resources.ValidationResources.ErrDelete;
             }
 
-            //ListaProdServ = empresa.ProdutosServicos.OrderBy(s => s.Nome).ToList();
-            NomeEmpresa = empresa.Nome;
-            ListaProdServ = empresa.ProdutosServicos.Select(ps => new ServicosVM
+            ListaProdServ = Empresa.ProdutosServicos.Select(ps => new ServicosVM
             {
                 ID = ps.ID,
                 EmpresaID = ps.EmpresaID,
                 Nome = ps.Nome,
                 Descricao = ps.Descricao
-            }).ToList();
+            }).OrderBy(ps => ps.Nome).ToList();
 
             //Botão voltar e títulos
-            ReturnURL = "/Index";
-            if (empresa.Tipo == Tipo.JUNIOR)
+            if (Empresa.Tipo == Tipo.JUNIOR)
             {
                 ViewData["Section"] = "Juniores";
                 ViewData["SectionTitle"] = "Empresa júnior » Produtos e serviços";
                 ReturnURL = "/Juniores/Index";
             }
-            if (empresa.Tipo == Tipo.INCUBADA)
+            if (Empresa.Tipo == Tipo.INCUBADA)
             {
                 ViewData["Section"] = "Incubadas";
                 ViewData["SectionTitle"] = "Empresa incubada » Produtos e serviços";

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
+using EmpreendedorismoEIT.ViewModels;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 {
@@ -21,7 +22,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
         }
 
         [BindProperty]
-        public ProdutoServico ProdutoServico { get; set; }
+        public ServicosVM ProdServVM { get; set; }
+        public Empresa Empresa { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,50 +32,72 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return NotFound();
             }
 
-            ProdutoServico = await _context.ProdutosServicos
-                .Include(p => p.Empresa).FirstOrDefaultAsync(m => m.ID == id);
-
-            if (ProdutoServico == null)
+            var prodServ = await _context.ProdutosServicos
+                            .Include(e => e.Empresa)
+                            .AsNoTracking()
+                            .FirstOrDefaultAsync(m => m.ID == id);
+            if (prodServ == null)
             {
                 return NotFound();
             }
-           ViewData["EmpresaID"] = new SelectList(_context.Empresas, "ID", "Nome");
+
+            Empresa = prodServ.Empresa;
+            ProdServVM = new ServicosVM
+            {
+                ID = prodServ.ID,
+                Nome = prodServ.Nome,
+                Descricao = prodServ.Descricao,
+                EmpresaID = prodServ.EmpresaID
+            };
+
+            //Botão voltar e títulos
+            if (Empresa.Tipo == Tipo.JUNIOR)
+            {
+                ViewData["Section"] = "Juniores";
+            }
+            if (Empresa.Tipo == Tipo.INCUBADA)
+            {
+                ViewData["Section"] = "Incubadas";
+            }
+
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var prodServ = await _context.ProdutosServicos.FindAsync(id);
+
+            if (prodServ == null)
+            {
+                return NotFound();
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(ProdutoServico).State = EntityState.Modified;
+            prodServ.Nome = ProdServVM.Nome;
+            prodServ.Descricao = ProdServVM.Descricao;
+
+            _context.Attach(prodServ).State = EntityState.Modified;
 
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateException)
             {
-                if (!ProdutoServicoExists(ProdutoServico.ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
+                return Page();
             }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool ProdutoServicoExists(int id)
-        {
-            return _context.ProdutosServicos.Any(e => e.ID == id);
+            return RedirectToPage("./Index", new { id = prodServ.EmpresaID });
         }
     }
 }

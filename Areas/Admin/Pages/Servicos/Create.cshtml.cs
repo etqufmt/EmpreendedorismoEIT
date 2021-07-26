@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
+using Microsoft.EntityFrameworkCore;
+using EmpreendedorismoEIT.ViewModels;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 {
@@ -19,27 +21,80 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
             _context = context;
         }
 
-        public IActionResult OnGet()
+        [BindProperty]
+        public ServicosVM ProdServVM { get; set; }
+        public Empresa Empresa { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
-        ViewData["EmpresaID"] = new SelectList(_context.Empresas, "ID", "Nome");
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Empresa = await _context.Empresas.FindAsync(id);
+            if (Empresa == null)
+            {
+                return NotFound();
+            }
+
+            ProdServVM = new ServicosVM
+            {
+                EmpresaID = Empresa.ID
+            };
+
+            //Botão voltar e títulos
+            if (Empresa.Tipo == Tipo.JUNIOR)
+            {
+                ViewData["Section"] = "Juniores";
+            }
+            if (Empresa.Tipo == Tipo.INCUBADA)
+            {
+                ViewData["Section"] = "Incubadas";
+            }
+
             return Page();
         }
 
-        [BindProperty]
-        public ProdutoServico ProdutoServico { get; set; }
-
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Empresa = await _context.Empresas.FindAsync(id);
+
+            if (Empresa == null)
+            {
+                return NotFound();
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.ProdutosServicos.Add(ProdutoServico);
-            await _context.SaveChangesAsync();
+            var ProdutoServico = new ProdutoServico
+            {
+                EmpresaID = ProdServVM.EmpresaID,
+                Nome = ProdServVM.Nome,
+                Descricao = ProdServVM.Descricao
+            };
 
-            return RedirectToPage("./Index");
+            _context.ProdutosServicos.Add(ProdutoServico);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
+                return Page();
+            }
+
+            return RedirectToPage("./Index", new { id });
         }
     }
 }
