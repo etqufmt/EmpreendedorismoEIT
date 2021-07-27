@@ -17,13 +17,8 @@ namespace EmpreendedorismoEIT.Models
         public string Nome { get; set; }
         
         [Required]
-        [StringLength(6, MinimumLength = 6)]
-        [RegularExpression(@"[a-fA-F0-9]*$")]
-        public string Cor {
-            get { return _cor; }
-            set { _cor = value.ToUpper(); }
-        }
-        private string _cor;
+        [StringLength(6)]
+        public string Cor { get; set; }
 
         public ICollection<EmpresaTag> EmpresasAssociadas { get; set; }
     }

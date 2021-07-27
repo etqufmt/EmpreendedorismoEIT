@@ -5,7 +5,6 @@ namespace EmpreendedorismoEIT.ViewModels
 {
     public class RedesVM
     {
-        [Required]
         public int EmpresaID { get; set; }
 
         [Display(Name = "Site próprio")]

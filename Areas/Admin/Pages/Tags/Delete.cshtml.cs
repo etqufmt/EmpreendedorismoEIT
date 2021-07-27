@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
+using EmpreendedorismoEIT.ViewModels;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
 {
@@ -20,40 +21,38 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
         }
 
         [BindProperty]
-        public Tag Tag { get; set; }
+        public TagsVM TagVM { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public IActionResult OnGet()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Tag = await _context.Tags.FirstOrDefaultAsync(m => m.ID == id);
-
-            if (Tag == null)
-            {
-                return NotFound();
-            }
-            return Page();
+            return RedirectToPage("/Index");
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync()
         {
-            if (id == null)
+            var id = TagVM.ID;
+            if (id == 0)
             {
                 return NotFound();
             }
 
-            Tag = await _context.Tags.FindAsync(id);
-
-            if (Tag != null)
+            var tag = await _context.Tags.FindAsync(id);
+            if (tag == null)
             {
-                _context.Tags.Remove(Tag);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.Tags.Remove(tag);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                return RedirectToPage("Index", new { error = "delete" });
+            }
+
+            return RedirectToPage("Index");
         }
     }
 }

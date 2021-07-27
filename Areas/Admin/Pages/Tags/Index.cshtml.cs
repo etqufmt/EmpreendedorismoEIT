@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
+using EmpreendedorismoEIT.ViewModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
 {
@@ -19,11 +21,30 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             _context = context;
         }
 
-        public IList<Tag> Tag { get;set; }
+        [BindProperty]
+        public TagsVM TagVM { get; set; }
+        public IList<Tag> ListaTags { get;set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string error)
         {
-            Tag = await _context.Tags.ToListAsync();
+            if (error != null )
+            {
+                if (error.Equals("create"))
+                {
+                    ErrorMessage = Resources.ValidationResources.ErrCreate;
+                }
+                if (error.Equals("edit"))
+                {
+                    ErrorMessage = Resources.ValidationResources.ErrUpdate;
+                }
+                if (error.Equals("delete"))
+                {
+                    ErrorMessage = Resources.ValidationResources.ErrDelete;
+                }
+            }
+
+            ListaTags = await _context.Tags.OrderBy(t => t.Nome).AsNoTracking().ToListAsync();
         }
     }
 }

@@ -29,7 +29,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         [BindProperty]
         public JunioresVM JuniorVM { get; set; }
 
-        public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGet()
         {
             return RedirectToPage("/Index");
         }

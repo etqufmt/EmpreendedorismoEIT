@@ -2,11 +2,9 @@
 @model EmpreendedorismoEIT.Areas.Admin.Pages.Juniores.DetailsModel
 
 @{
-    ViewData["Title"] = "Dados EJ";
+    ViewData["Title"] = "Detalhes EJ";
     ViewData["Section"] = "Juniores";
-    ViewData["SectionTitle"] = "Empresa júnior » Dados";
-    //ViewData["SectionTitle"] = "Dados da empresa júnior";
-    //ViewData["SectionTitle"] = Html.DisplayFor(model => model.JuniorVM.Nome);
+    ViewData["SectionTitle"] = "Empresa júnior » Detalhes";
 }
 
 <div class="row">
@@ -92,7 +90,7 @@
                     <a asp-page="./Index" class="btn btn-outline-secondary">Voltar</a>
                     <button type="button" class="btn btn-outline-danger"
                             data-toggle="modal" data-target="#modal-excluir"
-                            data-id="@Model.JuniorVM.ID" data-item="ej-nome">
+                            data-id="@Model.JuniorVM.ID" data-tag="ej-nome">
                         Excluir
                     </button>
                     <a asp-page="./Edit" asp-route-id="@Model.JuniorVM.ID" class="btn btn-outline-primary">Editar</a>

@@ -23,18 +23,48 @@ namespace EmpreendedorismoEIT.Data
                 new Tag
                 {
                     Nome = "TI",
-                    Cor = "3D3D3D"
+                    Cor = "B676B1"
                 },
                 new Tag
                 {
                     Nome = "Engenharia",
-                    Cor = "7F7F7F"
+                    Cor = "82CAAF"
                 },
                 new Tag
                 {
                     Nome = "Geologia",
-                    Cor = "C4C4C4"
-                }
+                    Cor = "75C0E0"
+                },
+                new Tag
+                {
+                    Nome = "Agricultura",
+                    Cor = "FEC64D"
+                },
+                new Tag
+                {
+                    Nome = "Saneamento",
+                    Cor = "FFAA80"
+                },
+                new Tag
+                {
+                    Nome = "Consultoria",
+                    Cor = "9999FF"
+                },
+                new Tag
+                {
+                    Nome = "Construção Civil",
+                    Cor = "42BD88"
+                },
+                new Tag
+                {
+                    Nome = "Robótica",
+                    Cor = "999966"
+                },
+                new Tag
+                {
+                    Nome = "Pecuária",
+                    Cor = "EE778F"
+                },
             };
 
             var empJuniores = new Empresa[]

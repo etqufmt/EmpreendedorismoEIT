@@ -9,10 +9,8 @@ namespace EmpreendedorismoEIT.ViewModels
 {
     public class ServicosVM
     {
-        [Required]
         public int ID { get; set; }
 
-        [Required]
         public int EmpresaID { get; set; }
 
         [Display(Name = "Nome")]

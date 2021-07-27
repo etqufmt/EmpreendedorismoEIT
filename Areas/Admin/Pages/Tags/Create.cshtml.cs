@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
+using EmpreendedorismoEIT.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
 {
@@ -19,26 +21,39 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             _context = context;
         }
 
+        [BindProperty]
+        public TagsVM TagVM { get; set; }
+
         public IActionResult OnGet()
         {
-            return Page();
+            return RedirectToPage("/Index");
         }
 
-        [BindProperty]
-        public Tag Tag { get; set; }
-
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
-                return Page();
+                return RedirectToPage("Index", new { error = "create" });
             }
 
-            _context.Tags.Add(Tag);
-            await _context.SaveChangesAsync();
+            var tag = new Tag
+            {
+                Nome = TagVM.Nome,
+                Cor = String.Format("{0:X6}", (int)TagVM.Cor)
+            };
 
-            return RedirectToPage("./Index");
+            _context.Tags.Add(tag);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                return RedirectToPage("Index", new { error = "create" });
+            }
+
+            return RedirectToPage("Index");
         }
     }
 }

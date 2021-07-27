@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
+using EmpreendedorismoEIT.ViewModels;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
 {
@@ -21,57 +22,47 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
         }
 
         [BindProperty]
-        public Tag Tag { get; set; }
+        public TagsVM TagVM { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public IActionResult OnGet()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Tag = await _context.Tags.FirstOrDefaultAsync(m => m.ID == id);
-
-            if (Tag == null)
-            {
-                return NotFound();
-            }
-            return Page();
+            return RedirectToPage("/Index");
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            var id = TagVM.ID;
+            if (id == 0)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(Tag).State = EntityState.Modified;
+            var tag = await _context.Tags.FindAsync(id);
+            if (tag == null)
+            {
+                return NotFound();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return RedirectToPage("Index", new { error = "edit" });
+            }
+
+            tag.Nome = TagVM.Nome;
+            tag.Cor = String.Format("{0:X6}", (int)TagVM.Cor);
+
+            _context.Attach(tag).State = EntityState.Modified;
 
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateException)
             {
-                if (!TagExists(Tag.ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("Index", new { error = "edit" });
             }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool TagExists(int id)
-        {
-            return _context.Tags.Any(e => e.ID == id);
+            return RedirectToPage("Index");
         }
     }
 }

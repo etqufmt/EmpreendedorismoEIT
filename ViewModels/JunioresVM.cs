@@ -10,7 +10,6 @@ namespace EmpreendedorismoEIT.ViewModels
 {
     public class JunioresVM
     {
-        [Required]
         public int ID { get; set; }
 
         [Display(Name = "Nome")]

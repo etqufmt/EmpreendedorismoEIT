@@ -22,7 +22,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
         [BindProperty]
         public ProdutoServico ProdServVM { get; set; }
 
-        public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGet()
         {
             return RedirectToPage("/Index");
         }

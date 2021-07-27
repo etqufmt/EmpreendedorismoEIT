@@ -43,3 +43,14 @@ i.icon-msg {
     line-height: normal;
     margin-bottom: 0px;
 }
+
+.tag-button {
+    /*border-color: #eff2f5;*/
+    border-color: unset;
+}
+
+.tag-button:hover {
+    /*border-color: #eff2f5;*/
+    border-color: unset;
+    filter: opacity(0.7);
+}
