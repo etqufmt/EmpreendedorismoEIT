@@ -24,15 +24,32 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
         [BindProperty]
         public TagsVM TagVM { get; set; }
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
-            return RedirectToPage("/Index");
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var tag = await _context.Tags.FindAsync(id);
+            if (tag == null)
+            {
+                return NotFound();
+            }
+
+            TagVM = new TagsVM
+            {
+                ID = tag.ID,
+                Nome = tag.Nome,
+                Cor = (Cores) Enum.Parse(typeof(Cores),Convert.ToInt32(tag.Cor, 16).ToString())
+            };
+
+            return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
-            var id = TagVM.ID;
-            if (id == 0)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -45,7 +62,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
 
             if (!ModelState.IsValid)
             {
-                return RedirectToPage("Index", new { error = "edit" });
+                return Page();
             }
 
             tag.Nome = TagVM.Nome;
@@ -59,7 +76,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             }
             catch (DbUpdateException)
             {
-                return RedirectToPage("Index", new { error = "edit" });
+                ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
+                return Page();
             }
 
             return RedirectToPage("Index");

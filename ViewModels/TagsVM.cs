@@ -28,7 +28,7 @@ namespace EmpreendedorismoEIT.ViewModels
     public enum Cores
     {
         [Display(Name = "Amarelo")]
-        AMARELO = 0xFEC64D,
+        AMARELO = 0xFECE67,
 
         [Display(Name = "Oliva")]
         OLIVA = 0x999966,

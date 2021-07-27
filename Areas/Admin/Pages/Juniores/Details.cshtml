@@ -10,19 +10,19 @@
 <div class="row">
     <div class="col-lg-6 mb-2 mb-md-0">
         <h4 id="ej-nome">@Html.DisplayFor(model => model.JuniorVM.Nome)</h4>
-        <hr class="d-none d-md-block"/>
+        <hr class="d-none d-md-block" />
     </div>
 </div>
 <div class="row">
     <div class="col-lg-6">
         @if (!String.IsNullOrEmpty(@Model.ErrorMessage))
         {
-        <div class="alert alert-primary alert-dismissible fade show" role="alert" style="background: none !important;">
-            <span>@Model.ErrorMessage</span>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true"><i class="bi bi-x"></i></span>
-            </button>
-        </div>
+            <div class="alert alert-primary alert-dismissible fade show" role="alert" style="background: none !important;">
+                <span>@Model.ErrorMessage</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="bi bi-x"></i></span>
+                </button>
+            </div>
         }
         <dl class="row mb-0">
             <dt class="col-md-4">
@@ -89,7 +89,7 @@
                 <div class="text-right">
                     <a asp-page="./Index" class="btn btn-outline-secondary">Voltar</a>
                     <button type="button" class="btn btn-outline-danger"
-                            data-toggle="modal" data-target="#modal-excluir"
+                            data-toggle="modal" data-target="#modal-delete"
                             data-id="@Model.JuniorVM.ID" data-tag="ej-nome">
                         Excluir
                     </button>
@@ -99,8 +99,9 @@
         </div>
     </div>
 </div>
-@*Modal para excluir empresa*@
-<div class="modal fade" id="modal-excluir" tabindex="-1">
+
+@*Modal de exclusão*@
+<div class="modal fade" id="modal-delete" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">

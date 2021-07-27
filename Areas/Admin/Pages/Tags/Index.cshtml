@@ -1,43 +1,37 @@
 ﻿@page
 @model EmpreendedorismoEIT.Areas.Admin.Pages.Tags.IndexModel
-@using EmpreendedorismoEIT.ViewModels
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Tags";
     ViewData["Section"] = "Tags";
-    ViewData["SectionTitle"] = "Tags";
+    ViewData["SectionTitle"] = "Recomendação";
 }
 
 <div class="row mb-3">
     <div class="col col-lg-6">
-        <h4 class="d-inline align-middle">Tags</h4>
+        <h4 class="d-inline">Todas as tags disponíveis</h4>
     </div>
     <div class="col-auto col-lg-6 text-right pr-custom">
-        <button type="button" class="btn btn-outline-primary"
-                data-toggle="modal" data-target="#modal-create">
-            <span>Adicionar</span>
-        </button>
+        <a asp-page="Create" class="btn btn-outline-primary">Adicionar</a>
     </div>
 </div>
 @if (!String.IsNullOrEmpty(@Model.ErrorMessage))
 {
     <div class="alert alert-primary alert-dismissible fade show" role="alert" style="background: none !important;">
-        @Model.ErrorMessage
+        <span>@Model.ErrorMessage</span>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true"><i class="bi bi-x"></i></span>
+            <i class="bi bi-x"></i>
         </button>
     </div>
 }
-<div class="tag-list d-flex flex-wrap justify-content-center">
+<div class="tag-list d-flex flex-wrap justify-content-center my-4">
     @foreach (var item in Model.ListaTags)
     {
         <div class="btn-group m-2" role="group">
-            <button type="button" class="btn btn-secondary tag-button"
-                    data-toggle="modal" data-target="#modal-edit"
-                    data-id="@item.ID" data-nome="@item.Nome" data-cor="@{ WriteLiteral(Convert.ToInt32(item.Cor, 16)); }"
+            <a asp-page="Edit" asp-route-id="@item.ID" class="btn btn-secondary tag-button"
                     style="background-color: @{ WriteLiteral("#" + item.Cor); }">
                 <span id="tag-nome-@item.ID">@Html.DisplayFor(modelItem => item.Nome)</span>
-            </button>
+            </a>
             <button type="button" class="btn btn-secondary tag-button"
                     data-toggle="modal" data-target="#modal-delete"
                     data-id="@item.ID" data-tag="tag-nome-@item.ID"
@@ -47,6 +41,7 @@
         </div>
     }
 </div>
+
 @*Modal de exclusão*@
 <div class="modal fade" id="modal-delete" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -70,84 +65,7 @@
         </div>
     </div>
 </div>
-@*Modal de adição*@
-<div class="modal fade" id="modal-create" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <form method="post" asp-page="Create">
-                <div class="modal-header">
-                    <h5 class="modal-title">Adicionar tag</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label asp-for="TagVM.Nome" class="control-label"></label>
-                        <input asp-for="TagVM.Nome" class="form-control" />
-                        <span asp-validation-for="TagVM.Nome" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="TagVM.Cor" class="control-label"></label>
-                        <select asp-for="TagVM.Cor" class="form-control" asp-items="@Html.GetEnumSelectList<Cores>().OrderBy(s => s.Text)"></select>
-                        <span asp-validation-for="TagVM.Cor" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
-                    <input type="submit" value="Criar" class="btn btn-primary" />
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-@*Modal de edição*@
-<div class="modal fade" id="modal-edit" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <form method="post" asp-page="Edit">
-                <div class="modal-header">
-                    <h5 class="modal-title">Editar tag</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" asp-for="TagVM.ID" class="modal-item-id" />
-                    <div class="form-group">
-                        <label asp-for="TagVM.Nome" class="control-label"></label>
-                        <input asp-for="TagVM.Nome" class="form-control modal-item-nome" />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="TagVM.Cor" class="control-label"></label>
-                        <select asp-for="TagVM.Cor" class="form-control modal-item-cor"
-                                asp-items="@Html.GetEnumSelectList<Cores>().OrderBy(s => s.Text)"></select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
-                    <input type="submit" value="Salvar" class="btn btn-primary" />
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     @{await Html.RenderPartialAsync("_ModalScriptsPartial");}
-    <script type="text/javascript">
-        //Preencher modal de edição
-        $('#modal-edit').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget)
-            //Extraído do atributo "data-id"
-            var id = button.data('id')
-            var nome = button.data('nome')
-            var cor = button.data('cor')
-            var modal = $(this)
-            modal.find('.modal-item-id').val(id)
-            modal.find('.modal-item-nome').val(nome)
-            modal.find('.modal-item-cor').val(cor)
-        })
-    </script>
 }

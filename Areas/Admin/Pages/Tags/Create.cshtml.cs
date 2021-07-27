@@ -26,14 +26,14 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
 
         public IActionResult OnGet()
         {
-            return RedirectToPage("/Index");
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
-                return RedirectToPage("Index", new { error = "create" });
+                return Page();
             }
 
             var tag = new Tag
@@ -50,7 +50,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             }
             catch (DbUpdateException)
             {
-                return RedirectToPage("Index", new { error = "create" });
+                ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrCreate);
+                return Page();
             }
 
             return RedirectToPage("Index");

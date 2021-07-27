@@ -26,22 +26,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
         public IList<Tag> ListaTags { get;set; }
         public string ErrorMessage { get; set; }
 
-        public async Task OnGetAsync(string error)
+        public async Task OnGetAsync(bool? deleteError = false)
         {
-            if (error != null )
+            if (deleteError.GetValueOrDefault())
             {
-                if (error.Equals("create"))
-                {
-                    ErrorMessage = Resources.ValidationResources.ErrCreate;
-                }
-                if (error.Equals("edit"))
-                {
-                    ErrorMessage = Resources.ValidationResources.ErrUpdate;
-                }
-                if (error.Equals("delete"))
-                {
-                    ErrorMessage = Resources.ValidationResources.ErrDelete;
-                }
+                ErrorMessage = Resources.ValidationResources.ErrDelete;
             }
 
             ListaTags = await _context.Tags.OrderBy(t => t.Nome).AsNoTracking().ToListAsync();
