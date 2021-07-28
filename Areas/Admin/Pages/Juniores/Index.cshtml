@@ -5,31 +5,60 @@
     ViewData["Title"] = "EJ";
     ViewData["Section"] = "Juniores";
     ViewData["SectionTitle"] = "Empresas juniores";
-    //var emptyImage = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+    var prevDisabled = !Model.ListaEJ.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.ListaEJ.HasNextPage ? "disabled" : "";
 }
 
-<div class="row">
-    <p class="col">
-        <a asp-page="Create" class="btn btn-outline-primary">Adicionar</a>
-    </p>
-</div>
-<div class="row">
-@foreach (var item in Model.ListaEJ)
-{
-    <div class="col-xl-3 col-lg-4 col-sm-6 col-12 pb-4">
-        <div class="card">
-            <img src="@(String.IsNullOrEmpty(item.Logo)? "../images/empty_logo.png" : "../logo/" + item.Logo)"
-                 class="card-img-top" alt="logo">
-            <div class="card-body border-top">
-                <h5 class="card-title text-truncate"><a asp-page="Details" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Nome)</a></h5>
-                <p class="card-text">@Html.DisplayFor(modelItem => item.Campus)</p>
+<div class="row mb-4">
+    <div class="col">
+        <form method="get" class="form-inline">
+            <a asp-page="Create" class="btn btn-outline-primary mr-2">Adicionar</a>
+            <div class="input-group filter-input flex-grow-1 flex-md-grow-0">
+                <input type="text" name="search" value="@Model.CurrentFilter" class="form-control" placeholder="Filtrar por nome"/>
+                <div class="input-group-append">
+                    <a asp-page="Index" class="btn input-group-text"><i class="bi bi-backspace"></i></a>
+                </div>
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@item.ID">Serviços</a></li>
-                <li class="list-group-item"><a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@item.ID">Redes sociais</a></li>
-                <li class="list-group-item"><a asp-area="Admin" asp-page="/Index" asp-route-id="@item.ID">Recomendação</a></li>
-            </ul>
-        </div>
+        </form>
     </div>
-}
 </div>
+<div class="row">
+    @foreach (var item in Model.ListaEJ)
+    {
+        <div class="col-xl-3 col-lg-4 col-sm-6 col-12 pb-4">
+            <div class="card">
+                <img src="@(String.IsNullOrEmpty(item.Logo)? "../images/empty_logo.png" : "../logo/" + item.Logo)"
+                     class="card-img-top" alt="logo">
+                <div class="card-body border-top">
+                    <h5 class="card-title text-truncate"><a asp-page="Details" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Nome)</a></h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Campus)</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@item.ID">Serviços</a></li>
+                    <li class="list-group-item"><a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@item.ID">Redes sociais</a></li>
+                    <li class="list-group-item"><a asp-area="Admin" asp-page="/Index" asp-route-id="@item.ID">Recomendação</a></li>
+                </ul>
+            </div>
+        </div>
+    }
+</div>
+<div class="row">
+    <div class="col text-right">
+        <hr />
+        <a asp-page="Index"
+           asp-route-pageIndex="@(Model.ListaEJ.PageIndex - 1)"
+           asp-route-filter="@Model.CurrentFilter"
+           class="btn btn-primary @prevDisabled">
+            Anterior
+        </a>
+        <a asp-page="Index"
+           asp-route-pageIndex="@(Model.ListaEJ.PageIndex + 1)"
+           asp-route-filter="@Model.CurrentFilter"
+           class="btn btn-primary @nextDisabled">
+            Próxima
+        </a>
+    </div>
+</div>
+
+
+
