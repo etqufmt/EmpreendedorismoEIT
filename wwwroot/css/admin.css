@@ -22,9 +22,12 @@ i.icon-msg {
     padding-right: 1.7rem;
 }
 
+.pl-custom {
+    padding-left: 1.7rem;
+}
+
 @media (min-width: 768px) {
     dd.border-custom {
-        /*border-right: #007bff solid 0.2rem;*/
         border-left: #99caff solid 0.2rem;
         box-sizing: border-box;
     }
@@ -45,40 +48,26 @@ i.icon-msg {
 }
 
 .tag-button {
-    /*border-color: #eff2f5;*/
     border-color: unset;
 }
 
 .tag-button:hover {
-    /*border-color: #eff2f5;*/
     border-color: unset;
     filter: opacity(0.7);
 }
 
-.card {
-    width: 12rem;
+@media (min-width: 576px) {
+    .card img {
+        height: 8rem;
+    }
 }
 
-.card img {
-    height: 8rem;
-}
 
 .card-title {
     color: #0366d6;
 }
 
-/*.card {
-    width: 21rem;
-    flex-direction: row;
-    align-items: center;
+h4.title-h4 {
+    color: #404040;
+    font-size: 1.4rem;
 }
-
-.card-title {
-    font-weight: bold;
-}
-
-.card img {
-    width: 7rem;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: calc(0.25rem - 1px);
-}*/

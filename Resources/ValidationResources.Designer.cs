@@ -61,7 +61,7 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Não foi possível realizar a adição. Tente mais tarde..
+        ///   Looks up a localized string similar to Não foi possível realizar a adição. Tente novamente mais tarde..
         /// </summary>
         public static string ErrCreate {
             get {
@@ -70,7 +70,7 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Não foi possível realizar a exclusão. Tente mais tarde..
+        ///   Looks up a localized string similar to Não foi possível realizar a exclusão. Tente novamente mais tarde..
         /// </summary>
         public static string ErrDelete {
             get {
@@ -133,7 +133,7 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Não foi possível realizar a atualização. Tente mais tarde..
+        ///   Looks up a localized string similar to Não foi possível realizar a atualização. Tente novamente mais tarde..
         /// </summary>
         public static string ErrUpdate {
             get {

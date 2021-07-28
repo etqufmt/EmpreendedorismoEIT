@@ -4,15 +4,9 @@
 @{
     ViewData["Title"] = "Detalhes EJ";
     ViewData["Section"] = "Juniores";
-    ViewData["SectionTitle"] = "Empresa júnior » Detalhes";
+    ViewData["SectionTitle"] = Html.DisplayFor(model => model.JuniorVM.Nome);
 }
 
-<div class="row">
-    <div class="col-lg-6 mb-2 mb-md-0">
-        <h4 id="ej-nome">@Html.DisplayFor(model => model.JuniorVM.Nome)</h4>
-        <hr class="d-none d-md-block" />
-    </div>
-</div>
 <div class="row">
     <div class="col-lg-6">
         @if (!String.IsNullOrEmpty(@Model.ErrorMessage))
@@ -84,19 +78,18 @@
                 @Html.DisplayFor(model => model.JuniorVM.UltimaModificacao)
             </dd>
         </dl>
-        <div class="row mt-3">
-            <div class="col">
-                <div class="text-right">
-                    <a asp-page="./Index" class="btn btn-outline-secondary">Voltar</a>
-                    <button type="button" class="btn btn-outline-danger"
-                            data-toggle="modal" data-target="#modal-delete"
-                            data-id="@Model.JuniorVM.ID" data-tag="ej-nome">
-                        Excluir
-                    </button>
-                    <a asp-page="./Edit" asp-route-id="@Model.JuniorVM.ID" class="btn btn-outline-primary">Editar</a>
-                </div>
-            </div>
-        </div>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col text-right">
+        <hr />
+        <a asp-page="./Index" class="btn btn-outline-secondary">Voltar</a>
+        <button type="button" class="btn btn-outline-danger"
+                data-toggle="modal" data-target="#modal-delete"
+                data-id="@Model.JuniorVM.ID" data-tag="SectionTitle">
+            Excluir
+        </button>
+        <a asp-page="./Edit" asp-route-id="@Model.JuniorVM.ID" class="btn btn-outline-primary">Editar</a>
     </div>
 </div>
 

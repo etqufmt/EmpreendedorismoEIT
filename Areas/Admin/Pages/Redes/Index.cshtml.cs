@@ -64,13 +64,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
             if (empresa.Tipo == Tipo.JUNIOR)
             {
                 ViewData["Section"] = "Juniores";
-                ViewData["SectionTitle"] = "Empresa júnior » Redes sociais";
                 ReturnURL = "/Juniores/Index";
             }
             if (empresa.Tipo == Tipo.INCUBADA)
             {
                 ViewData["Section"] = "Incubadas";
-                ViewData["SectionTitle"] = "Empresa incubada » Redes sociais";
                 ReturnURL = "/Incubadas/Index";
             }
 

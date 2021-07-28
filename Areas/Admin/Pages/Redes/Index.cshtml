@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Redes sociais";
+    ViewData["SectionTitle"] = Html.DisplayFor(model => model.NomeEmpresa);
 }
 
 <div class="row">
@@ -10,7 +11,7 @@
         <form method="post">
             <div class="row">
                 <div class="col">
-                    <h4>@Model.NomeEmpresa</h4><hr />
+                    <h4 class="title-h4">Redes sociais</h4><hr class="mt-0"/>
                     <p>Copie e cole da barra de endereços para garantir que o link da rede social esteja correto.</p>
                 </div>
             </div>

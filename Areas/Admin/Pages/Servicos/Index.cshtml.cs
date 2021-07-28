@@ -59,13 +59,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
             if (Empresa.Tipo == Tipo.JUNIOR)
             {
                 ViewData["Section"] = "Juniores";
-                ViewData["SectionTitle"] = "Empresa júnior » Produtos e serviços";
                 ReturnURL = "/Juniores/Index";
             }
             if (Empresa.Tipo == Tipo.INCUBADA)
             {
                 ViewData["Section"] = "Incubadas";
-                ViewData["SectionTitle"] = "Empresa incubada » Produtos e serviços";
                 ReturnURL = "/Incubadas/Index";
             }
 

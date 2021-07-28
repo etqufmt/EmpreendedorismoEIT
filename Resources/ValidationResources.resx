@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ErrCreate" xml:space="preserve">
-    <value>Não foi possível realizar a adição. Tente mais tarde.</value>
+    <value>Não foi possível realizar a adição. Tente novamente mais tarde.</value>
   </data>
   <data name="ErrDelete" xml:space="preserve">
-    <value>Não foi possível realizar a exclusão. Tente mais tarde.</value>
+    <value>Não foi possível realizar a exclusão. Tente novamente mais tarde.</value>
   </data>
   <data name="ErrEmail" xml:space="preserve">
     <value>Endereço de email inválido</value>
@@ -142,7 +142,7 @@
     <value>Deve incluir o DDD</value>
   </data>
   <data name="ErrUpdate" xml:space="preserve">
-    <value>Não foi possível realizar a atualização. Tente mais tarde.</value>
+    <value>Não foi possível realizar a atualização. Tente novamente mais tarde.</value>
   </data>
   <data name="ErrURL" xml:space="preserve">
     <value>URL inválida</value>
