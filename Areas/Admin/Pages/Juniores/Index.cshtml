@@ -5,13 +5,34 @@
     ViewData["Title"] = "EJ";
     ViewData["Section"] = "Juniores";
     ViewData["SectionTitle"] = "Empresas juniores";
-    var emptyImage = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+    //var emptyImage = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 }
 
 <p>
     <a asp-page="Create" class="btn btn-outline-primary">Adicionar</a>
 </p>
-<table class="table table-striped border-bottom">
+
+<div class="tag-list d-flex flex-wrap justify-content-between">
+@foreach (var item in Model.ListaEJ)
+{
+    <div class="card mb-4">
+        <img src="@(String.IsNullOrEmpty(item.Logo)? "../images/empty_logo.png" : "../logo/" + item.Logo)"
+             class="card-img-top" alt="logo">
+        <div class="card-body border-top">
+            <h5 class="card-title text-truncate"><a asp-page="Details" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Nome)</a></h5>
+            <p class="card-text">@Html.DisplayFor(modelItem => item.Campus)</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a asp-area="Admin" asp-page="/Index" asp-route-id="@item.ID">Tags</a></li>
+            <li class="list-group-item"><a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@item.ID">Serviços</a></li>
+            <li class="list-group-item"><a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@item.ID">Redes Sociais</a></li>
+        </ul>
+    </div>
+}
+</div>
+
+
+@*<table class="table table-striped border-bottom">
     <thead>
         <tr>
             <th></th>
@@ -25,24 +46,27 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.ListaEJ) {
-        <tr>
-            <td class="align-middle"><img src="@(String.IsNullOrEmpty(item.Logo)? emptyImage : "~/logo/" + item.Logo)"
-                 class="rounded-circle"
-                 height="40" width="40"
-                 asp-append-version="true"/></td>
-            <td class="align-middle">
-                <a asp-page="./Details" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Nome)</a>
-            </td>
-            <td class="align-middle d-none d-sm-table-cell">
-                @Html.DisplayFor(modelItem => item.Campus)
-            </td>
-            <td class="align-middle text-right">
-                <a asp-area="Admin" asp-page="/Index" asp-route-id="@item.ID" class="btn btn-outline-primary my-1">Tags</a>
-                <a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@item.ID" class="btn btn-outline-primary my-1">Serviços</a>
-                <a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@item.ID" class="btn btn-outline-primary my-1">Redes Sociais</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.ListaEJ)
+        {
+            <tr>
+                <td class="align-middle">
+                    <img src="@(String.IsNullOrEmpty(item.Logo)? emptyImage : "~/logo/" + item.Logo)"
+                         class="rounded-circle"
+                         height="40" width="40"
+                         asp-append-version="true" />
+                </td>
+                <td class="align-middle">
+                    <a asp-page="./Details" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Nome)</a>
+                </td>
+                <td class="align-middle d-none d-sm-table-cell">
+                    c
+                </td>
+                <td class="align-middle text-right">
+                    <a asp-area="Admin" asp-page="/Index" asp-route-id="@item.ID" class="btn btn-outline-primary my-1">Tags</a>
+                    <a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@item.ID" class="btn btn-outline-primary my-1">Serviços</a>
+                    <a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@item.ID" class="btn btn-outline-primary my-1">Redes Sociais</a>
+                </td>
+            </tr>
+        }
     </tbody>
-</table>
+</table>*@
