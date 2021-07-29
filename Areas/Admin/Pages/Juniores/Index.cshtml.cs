@@ -29,15 +29,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
         public async Task OnGetAsync(string search, string filter, int? pageIndex)
         {
-            //Faz um inner join em vez de buscar tudo
-            //ListaEJ = await _context.DadosJuniores.Select(e => new JunioresListaVM
-            //{
-            //    ID = e.EmpresaID,
-            //    Logo = e.Empresa.Logo,
-            //    Nome = e.Empresa.Nome,
-            //    Campus = e.Campus
-            //}).AsNoTracking().ToListAsync();
-
             if (search != null)
             {
                 pageIndex = 1;
@@ -62,7 +53,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 empresasIQ = empresasIQ.Where(e => e.Nome.Contains(search));
             }
 
-            //Fazer consulta
+            //Fazer consulta paginada
             var pageSize = _configuration.GetValue("PageSize", 4);
             ListaEJ = await PaginatedList<JunioresListaVM>.CreateAsync(
                 empresasIQ.AsNoTracking(), pageIndex ?? 1, pageSize);

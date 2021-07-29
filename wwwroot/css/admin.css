@@ -8,16 +8,18 @@
     margin-bottom: 0;
 }
 
-i {
+a.input-group-text i {
     color: darkgray;
 }
 
 i.input-group-text {
     font-size: 1.4rem;
+    color: darkgray;
 }
 
 i.icon-msg {
     font-size: 2rem;
+    color: darkgray;
 }
 
 .pr-custom {
@@ -42,12 +44,16 @@ i.icon-msg {
 .username i {
     vertical-align: 0.1em;
     font-size: 0.8rem;
-    color: #0366d6;
 }
 
 .header-title {
     line-height: normal;
     margin-bottom: 0px;
+    color: #404040;
+}
+
+dt, th {
+    color: #404040;
 }
 
 .tag-button {
@@ -71,10 +77,15 @@ i.icon-msg {
 }
 
 h4.title-h4 {
-    color: #404040;
+    color: #595959;
     font-size: 1.4rem;
 }
 
 .filter-input {
     width: unset;
+}
+
+.badge-custom {
+    color: #fff;
+    background-color: #9299a0;
 }
