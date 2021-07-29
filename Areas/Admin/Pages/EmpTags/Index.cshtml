@@ -1,0 +1,51 @@
+﻿@page "{id:int?}"
+@model EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["SectionTitle"] = Html.DisplayFor(model => model.NomeEmpresa);
+}
+
+<div class="row mb-3">
+    <div class="col col-lg-6 align-self-center">
+        <h4 class="d-inline title-h4">Recomendação <span class="badge badge-custom"></span></h4>
+    </div>
+    <div class="col-auto col-lg-6 text-right"></div>
+</div>
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="alert alert-primary alert-dismissible fade show" role="alert" style="background: none !important;">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="bi bi-x"></i></span>
+        </button>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3">
+        @for (var i = 0; i < Model.ListaET.Count; i++)
+        {
+            <div class="col mb-4">
+                <div class="card text-white grau-card" style="background-color: @($"#{Model.ListaET[i].Tag.Cor}");">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col text-truncate pr-0">@Html.DisplayFor(model => model.ListaET[i].Tag.Nome)</div>
+                            <div class="col-auto pl-2"><span id="range-val-@Model.ListaET[i].TagID" class="badge badge-danger grau-badge">@Model.ListaET[i].Grau</span></div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <input type="hidden" asp-for="ListaET[i].TagID" />
+                        <input type="range" asp-for="ListaET[i].Grau" class="custom-range"
+                               onInput="$('#range-val-@Model.ListaET[i].TagID').html($(this).val())">
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col text-right">
+            <a asp-area="Admin" asp-page="@Model.ReturnURL" class="btn btn-outline-secondary">Voltar</a>
+            <input type="submit" value="Salvar" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

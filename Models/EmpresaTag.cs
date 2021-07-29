@@ -14,7 +14,6 @@ namespace EmpreendedorismoEIT.Models
         
         public int TagID { get; set; }
 
-        [Required]
         [Range(0, 1)]
         public decimal Grau { get; set; }
 
