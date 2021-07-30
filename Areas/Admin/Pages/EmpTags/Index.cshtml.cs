@@ -34,10 +34,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
                 return NotFound();
             }
 
-            Empresa = await _context.Empresas
-                .Include(e => e.TagsAssociadas)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.ID == id);
+            Empresa = await _context.Empresas.FindAsync(id);
 
             if (Empresa == null)
             {
@@ -49,22 +46,25 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
                 ErrorMessage = Resources.ValidationResources.ErrUpdate;
             }
 
-            //Criar lista com todas as tags utilizando as associações que já existem
-            var allTags = await _context.Tags.AsNoTracking().ToListAsync();
             ListaET = new List<EmpTagsVM>();
+            var allTags = await _context.Tags
+                .Include(t => t.EmpresasAssociadas.Where(e => e.EmpresaID == Empresa.ID))
+                .AsNoTracking()
+                .ToListAsync();
             foreach (var tag in allTags)
             {
                 int grau = 0;
-                var et = Empresa.TagsAssociadas.FirstOrDefault(et => et.TagID == tag.ID);
-                if (et != null)
+                var empTag = tag.EmpresasAssociadas.FirstOrDefault();
+                if (empTag != null)
                 {
-                    grau = Decimal.ToInt32(et.Grau * 100);
+                    grau = Decimal.ToInt32(empTag.Grau * 100);
                 }
                 ListaET.Add(new EmpTagsVM
                 {
                     TagID = tag.ID,
+                    Nome = tag.Nome,
+                    Cor = tag.Cor,
                     Grau = grau,
-                    Tag = tag,
                 });
             }
 

@@ -10,10 +10,10 @@ namespace EmpreendedorismoEIT.ViewModels
     public class EmpTagsVM
     {
         public int TagID { get; set; }
+        public string Nome { get; set; }
+        public string Cor { get; set; }
 
         [Range(0, 100)]
         public int Grau { get; set; }
-
-        public Tag Tag { get; set; }
     }
 }
