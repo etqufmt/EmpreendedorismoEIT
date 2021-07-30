@@ -33,9 +33,10 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
             }
 
             var prodServ = await _context.ProdutosServicos
-                            .Include(e => e.Empresa)
-                            .AsNoTracking()
-                            .FirstOrDefaultAsync(m => m.ID == id);
+                .Include(e => e.Empresa)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
+            
             if (prodServ == null)
             {
                 return NotFound();
@@ -50,16 +51,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 EmpresaID = prodServ.EmpresaID
             };
 
-            //Botão voltar e títulos
-            if (Empresa.Tipo == Tipo.JUNIOR)
-            {
-                ViewData["Section"] = "Juniores";
-            }
-            if (Empresa.Tipo == Tipo.INCUBADA)
-            {
-                ViewData["Section"] = "Incubadas";
-            }
-
             return Page();
         }
 
@@ -70,13 +61,17 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return NotFound();
             }
 
-            var prodServ = await _context.ProdutosServicos.FindAsync(id);
+            var prodServ = await _context.ProdutosServicos
+                .Include(e => e.Empresa)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (prodServ == null)
             {
                 return NotFound();
             }
 
+            Empresa = prodServ.Empresa;
             if (!ModelState.IsValid)
             {
                 return Page();

@@ -24,10 +24,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
         public IList<EmpTagsVM> ListaET { get; set; }
         public Empresa Empresa { get; set; }
         public string ReturnURL { get; set; }
-        public string ErrorMessage { get; set; }
 
 
-        public async Task<IActionResult> OnGetAsync(int? id, bool? updateError = false)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
@@ -41,11 +40,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
                 return NotFound();
             }
 
-            if (updateError.GetValueOrDefault())
-            {
-                ErrorMessage = Resources.ValidationResources.ErrUpdate;
-            }
-
+            //Lista todas as tags cadastradas com ou sem associação
             ListaET = new List<EmpTagsVM>();
             var allTags = await _context.Tags
                 .Include(t => t.EmpresasAssociadas.Where(e => e.EmpresaID == Empresa.ID))
@@ -68,20 +63,68 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
                 });
             }
 
-            //Botão voltar e títulos
-            ReturnURL = "/Index";
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Empresa = await _context.Empresas
+                .Include(e => e.TagsAssociadas)
+                .FirstOrDefaultAsync(m => m.ID == id);
+
+            if (Empresa == null)
+            {
+                return NotFound();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
+                return Page();
+            }
+
+            Empresa.TagsAssociadas.Clear();
+            Empresa.TagsAssociadas = new List<EmpresaTag>();
+            foreach (var et in ListaET)
+            {
+                //Cadastrar apenas associações com algum grau definido
+                if (et.Grau != 0)
+                {
+                    Empresa.TagsAssociadas.Add(new EmpresaTag
+                    {
+                        EmpresaID = Empresa.ID,
+                        TagID = et.TagID,
+                        Grau = (et.Grau / 100M)
+                    });
+                }
+            }
+
+            _context.Attach(Empresa).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
+                return Page();
+            }
+
             if (Empresa.Tipo == Tipo.JUNIOR)
             {
-                ViewData["Section"] = "Juniores";
                 ReturnURL = "/Juniores/Index";
             }
             if (Empresa.Tipo == Tipo.INCUBADA)
             {
-                ViewData["Section"] = "Incubadas";
                 ReturnURL = "/Incubadas/Index";
             }
-
-            return Page();
+            return RedirectToPage(ReturnURL);
         }
     }
 }

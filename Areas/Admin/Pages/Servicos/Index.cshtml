@@ -1,9 +1,20 @@
 ﻿@page "{id:int?}"
 @model EmpreendedorismoEIT.Areas.Admin.Pages.Servicos.IndexModel
+@using EmpreendedorismoEIT.Models
 
 @{
     ViewData["Title"] = "Produtos e serviços";
     ViewData["SectionTitle"] = Html.DisplayFor(model => model.Empresa.Nome);
+    if (Model.Empresa.Tipo == Tipo.JUNIOR)
+    {
+        ViewData["Section"] = "Juniores";
+        Model.ReturnURL = "/Juniores/Index";
+    }
+    if (Model.Empresa.Tipo == Tipo.INCUBADA)
+    {
+        ViewData["Section"] = "Incubadas";
+        Model.ReturnURL = "/Incubadas/Index";
+    }
 }
 
 <div class="row mb-3">
@@ -67,8 +78,7 @@
         }
     </tbody>
 </table>
-
-@*Modal de exclusão*@
+@* Modal de exclusão *@
 <div class="modal fade" id="modal-delete" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

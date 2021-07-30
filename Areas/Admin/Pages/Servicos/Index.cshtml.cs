@@ -37,6 +37,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                            .Include(e => e.ProdutosServicos)
                            .AsNoTracking()
                            .FirstOrDefaultAsync(m => m.ID == id);
+            
             if (Empresa == null)
             {
                 return NotFound();
@@ -54,18 +55,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 Nome = ps.Nome,
                 Descricao = ps.Descricao
             }).OrderBy(ps => ps.Nome).ToList();
-
-            //Botão voltar e títulos
-            if (Empresa.Tipo == Tipo.JUNIOR)
-            {
-                ViewData["Section"] = "Juniores";
-                ReturnURL = "/Juniores/Index";
-            }
-            if (Empresa.Tipo == Tipo.INCUBADA)
-            {
-                ViewData["Section"] = "Incubadas";
-                ReturnURL = "/Incubadas/Index";
-            }
 
             return Page();
         }

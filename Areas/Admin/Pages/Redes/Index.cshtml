@@ -1,9 +1,20 @@
 ﻿@page "{id:int?}"
 @model EmpreendedorismoEIT.Areas.Admin.Pages.Redes.IndexModel
+@using EmpreendedorismoEIT.Models
 
 @{
     ViewData["Title"] = "Redes sociais";
-    ViewData["SectionTitle"] = Html.DisplayFor(model => model.NomeEmpresa);
+    ViewData["SectionTitle"] = Html.DisplayFor(model => model.Empresa.Nome);
+    if (Model.Empresa.Tipo == Tipo.JUNIOR)
+    {
+        ViewData["Section"] = "Juniores";
+        Model.ReturnURL = "/Juniores/Index";
+    }
+    if (Model.Empresa.Tipo == Tipo.INCUBADA)
+    {
+        ViewData["Section"] = "Incubadas";
+        Model.ReturnURL = "/Incubadas/Index";
+    }
 }
 
 <div class="row">
@@ -11,13 +22,17 @@
         <form method="post">
             <div class="row">
                 <div class="col">
-                    <h4 class="title-h4">Redes sociais</h4><hr class="mt-0"/>
+                    <h4 class="title-h4">Redes sociais</h4><hr class="mt-0" />
                     <p>Copie e cole da barra de endereços para garantir que o link da rede social esteja correto.</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div asp-validation-summary="ModelOnly" class="alert alert-primary alert-dismissible fade show" role="alert" style="background: none !important;">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true"><i class="bi bi-x"></i></span>
+                        </button>
+                    </div>
                     <input type="hidden" asp-for="SocialVM.EmpresaID" />
                     <div class="form-group">
                         <label asp-for="SocialVM.FacebookURL" class="control-label"></label>

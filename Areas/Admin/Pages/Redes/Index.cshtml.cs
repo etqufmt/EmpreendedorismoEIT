@@ -23,7 +23,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
 
         [BindProperty]
         public RedesVM SocialVM { get;set; }
-        public string NomeEmpresa { get; set; }
+        public Empresa Empresa { get; set; }
         public string ReturnURL { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -33,44 +33,30 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
                 return NotFound();
             }
 
-            var empresa = await _context.Empresas
+            Empresa = await _context.Empresas
                             .Include(e => e.RedesSociais)
                             .AsNoTracking()
                             .FirstOrDefaultAsync(m => m.ID == id);
 
-            if (empresa == null)
+            if (Empresa == null)
             {
                 return NotFound();
             }
 
-            NomeEmpresa = empresa.Nome;
             SocialVM = new RedesVM
             {
-                EmpresaID = empresa.ID,
-                WebsiteURL = empresa.RedesSociais
+                EmpresaID = Empresa.ID,
+                WebsiteURL = Empresa.RedesSociais
                                 .FirstOrDefault(r => r.Plataforma == Plataforma.WEBSITE)?.URL,
-                FacebookURL = empresa.RedesSociais
+                FacebookURL = Empresa.RedesSociais
                                 .FirstOrDefault(r => r.Plataforma == Plataforma.FACEBOOK)?.URL,
-                InstagramURL = empresa.RedesSociais
+                InstagramURL = Empresa.RedesSociais
                                 .FirstOrDefault(r => r.Plataforma == Plataforma.INSTAGRAM)?.URL,
-                WhatsappURL = empresa.RedesSociais
+                WhatsappURL = Empresa.RedesSociais
                                 .FirstOrDefault(r => r.Plataforma == Plataforma.WHATSAPP)?.URL.Substring(2),
-                TwitterURL = empresa.RedesSociais
+                TwitterURL = Empresa.RedesSociais
                                 .FirstOrDefault(r => r.Plataforma == Plataforma.TWITTER)?.URL
             };
-
-            //Botão voltar e títulos
-            ReturnURL = "/Index";
-            if (empresa.Tipo == Tipo.JUNIOR)
-            {
-                ViewData["Section"] = "Juniores";
-                ReturnURL = "/Juniores/Index";
-            }
-            if (empresa.Tipo == Tipo.INCUBADA)
-            {
-                ViewData["Section"] = "Incubadas";
-                ReturnURL = "/Incubadas/Index";
-            }
 
             return Page();
         }
@@ -82,11 +68,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
                 return NotFound();
             }
 
-            var empresa = await _context.Empresas
+            Empresa = await _context.Empresas
                             .Include(e => e.RedesSociais)
                             .FirstOrDefaultAsync(m => m.ID == id);
 
-            if (empresa == null)
+            if (Empresa == null)
             {
                 return NotFound();
             }
@@ -96,35 +82,35 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
                 return Page();
             }
 
-            empresa.RedesSociais.Clear();
+            Empresa.RedesSociais.Clear();
             if (SocialVM.WebsiteURL != null)
             {
-                empresa.RedesSociais.Add(new RedeSocial { 
+                Empresa.RedesSociais.Add(new RedeSocial { 
                     Plataforma = Plataforma.WEBSITE, URL = SocialVM.WebsiteURL });
             }
             if (SocialVM.FacebookURL != null)
             {
-                empresa.RedesSociais.Add(new RedeSocial { 
+                Empresa.RedesSociais.Add(new RedeSocial { 
                     Plataforma = Plataforma.FACEBOOK, URL = SocialVM.FacebookURL });
             }
             if (SocialVM.InstagramURL != null)
             {
-                empresa.RedesSociais.Add(new RedeSocial { 
+                Empresa.RedesSociais.Add(new RedeSocial { 
                     Plataforma = Plataforma.INSTAGRAM, URL = SocialVM.InstagramURL });
             }
             if (SocialVM.WhatsappURL != null)
             {
                 //Código internacional para telefones brasileiros = 55
-                empresa.RedesSociais.Add(new RedeSocial { 
+                Empresa.RedesSociais.Add(new RedeSocial { 
                     Plataforma = Plataforma.WHATSAPP, URL = SocialVM.WhatsappURL.Insert(0, "55") });
             }
             if (SocialVM.TwitterURL != null)
             {
-                empresa.RedesSociais.Add(new RedeSocial { 
+                Empresa.RedesSociais.Add(new RedeSocial { 
                     Plataforma = Plataforma.TWITTER, URL = SocialVM.TwitterURL });
             }
 
-            _context.Attach(empresa).State = EntityState.Modified;
+            _context.Attach(Empresa).State = EntityState.Modified;
 
             try
             {
@@ -136,16 +122,14 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
                 return Page();
             }
 
-            ReturnURL = "/Index";
-            if (empresa.Tipo == Tipo.JUNIOR)
+            if (Empresa.Tipo == Tipo.JUNIOR)
             {
                 ReturnURL = "/Juniores/Index";
             }
-            if (empresa.Tipo == Tipo.INCUBADA)
+            if (Empresa.Tipo == Tipo.INCUBADA)
             {
                 ReturnURL = "/Incubadas/Index";
             }
-
             return RedirectToPage(ReturnURL);
         }
     }

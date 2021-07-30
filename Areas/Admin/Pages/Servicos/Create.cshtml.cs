@@ -43,16 +43,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 EmpresaID = Empresa.ID
             };
 
-            //Botão voltar e títulos
-            if (Empresa.Tipo == Tipo.JUNIOR)
-            {
-                ViewData["Section"] = "Juniores";
-            }
-            if (Empresa.Tipo == Tipo.INCUBADA)
-            {
-                ViewData["Section"] = "Incubadas";
-            }
-
             return Page();
         }
 

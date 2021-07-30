@@ -1,9 +1,20 @@
 ﻿@page "{id:int?}"
 @model EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags.IndexModel
+@using EmpreendedorismoEIT.Models
 
 @{
     ViewData["Title"] = "Index";
     ViewData["SectionTitle"] = Html.DisplayFor(model => model.Empresa.Nome);
+    if (Model.Empresa.Tipo == Tipo.JUNIOR)
+    {
+        ViewData["Section"] = "Juniores";
+        Model.ReturnURL = "/Juniores/Index";
+    }
+    if (Model.Empresa.Tipo == Tipo.INCUBADA)
+    {
+        ViewData["Section"] = "Incubadas";
+        Model.ReturnURL = "/Incubadas/Index";
+    }
 }
 
 <div class="row mb-3">
@@ -12,16 +23,12 @@
     </div>
     <div class="col-auto col-lg-6 text-right"></div>
 </div>
-@if (!String.IsNullOrEmpty(@Model.ErrorMessage))
-{
-    <div class="alert alert-primary alert-dismissible fade show" role="alert" style="background: none !important;">
-        @Model.ErrorMessage
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="alert alert-primary alert-dismissible fade show" role="alert" style="background: none !important;">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true"><i class="bi bi-x"></i></span>
         </button>
     </div>
-}
-<form method="post" asp-page="Edit" asp-route-id="@Model.Empresa.ID">
     <div class="row row-cols-1 row-cols-md-3">
         @for (var i = 0; i < Model.ListaET.Count; i++)
         {
@@ -35,6 +42,8 @@
                     </div>
                     <div class="card-body">
                         <input type="hidden" asp-for="ListaET[i].TagID" />
+                        <input type="hidden" asp-for="ListaET[i].Nome" />
+                        <input type="hidden" asp-for="ListaET[i].Cor" />
                         <input type="range" asp-for="ListaET[i].Grau" class="custom-range"
                                onInput="$('#range-val-@Model.ListaET[i].TagID').html($(this).val())">
                     </div>
