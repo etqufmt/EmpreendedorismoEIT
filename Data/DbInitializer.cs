@@ -102,6 +102,29 @@ namespace EmpreendedorismoEIT.Data
                             Nome = "Plano de marketing",
                             Descricao = "É feita uma análise do perfil do consumidor, do público-alvo, de ações de divulgação e comunicação, além de preço, distribuição e localização do ponto de venda. São desenvolvidas ações para satisfazer os clientes, posicionar a marca e promover o sucesso do negócio."
                         },
+                    },
+                    RedesSociais = new List<RedeSocial>
+                    {
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WEBSITE,
+                            URL = "https://ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.FACEBOOK,
+                            URL = "https://pt-br.facebook.com/ufmatogrosso"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.INSTAGRAM,
+                            URL = "https://www.instagram.com/ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.TWITTER,
+                            URL = "https://twitter.com/UFMT"
+                        },
                     }
                 },
                 new Empresa

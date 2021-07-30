@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
@@ -11,11 +12,11 @@ using EmpreendedorismoEIT.ViewModels;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
 {
-    public class IndexModel : PageModel
+    public class EditModel : PageModel
     {
         private readonly EmpreendedorismoEIT.Data.ApplicationDbContext _context;
 
-        public IndexModel(EmpreendedorismoEIT.Data.ApplicationDbContext context)
+        public EditModel(EmpreendedorismoEIT.Data.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -24,10 +25,13 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
         public IList<EmpTagsVM> ListaET { get; set; }
         public Empresa Empresa { get; set; }
         public string ReturnURL { get; set; }
-        public string ErrorMessage { get; set; }
+        
+        public IActionResult OnGet()
+        {
+            return RedirectToPage("/Index");
+        }
 
-
-        public async Task<IActionResult> OnGetAsync(int? id, bool? updateError = false)
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)
             {
@@ -36,7 +40,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
 
             Empresa = await _context.Empresas
                 .Include(e => e.TagsAssociadas)
-                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
 
             if (Empresa == null)
@@ -44,44 +47,48 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
                 return NotFound();
             }
 
-            if (updateError.GetValueOrDefault())
+            if (!ModelState.IsValid)
             {
-                ErrorMessage = Resources.ValidationResources.ErrUpdate;
+                return RedirectToPage("Index", new { id = Empresa.ID, updateError = true });
             }
 
-            //Criar lista com todas as tags utilizando as associações que já existem
-            var allTags = await _context.Tags.AsNoTracking().ToListAsync();
-            ListaET = new List<EmpTagsVM>();
-            foreach (var tag in allTags)
+            Empresa.TagsAssociadas.Clear();
+            Empresa.TagsAssociadas = new List<EmpresaTag>();
+            foreach (var et in ListaET)
             {
-                int grau = 0;
-                var et = Empresa.TagsAssociadas.FirstOrDefault(et => et.TagID == tag.ID);
-                if (et != null)
+                if (et.Grau != 0)
                 {
-                    grau = Decimal.ToInt32(et.Grau * 100);
+                    Empresa.TagsAssociadas.Add(new EmpresaTag
+                    {
+                        EmpresaID = Empresa.ID,
+                        TagID = et.TagID,
+                        Grau = (et.Grau / 100M)
+                    });
                 }
-                ListaET.Add(new EmpTagsVM
-                {
-                    TagID = tag.ID,
-                    Grau = grau,
-                    Tag = tag,
-                });
             }
 
-            //Botão voltar e títulos
+            _context.Attach(Empresa).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                return RedirectToPage("Index", new { id = Empresa.ID, updateError = true });
+            }
+
             ReturnURL = "/Index";
             if (Empresa.Tipo == Tipo.JUNIOR)
             {
-                ViewData["Section"] = "Juniores";
                 ReturnURL = "/Juniores/Index";
             }
             if (Empresa.Tipo == Tipo.INCUBADA)
             {
-                ViewData["Section"] = "Incubadas";
                 ReturnURL = "/Incubadas/Index";
             }
 
-            return Page();
+            return RedirectToPage(ReturnURL);
         }
     }
 }
