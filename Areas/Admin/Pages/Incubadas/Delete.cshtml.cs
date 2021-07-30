@@ -12,7 +12,7 @@ using EmpreendedorismoEIT.ViewModels;
 using EmpreendedorismoEIT.Utils;
 using Microsoft.AspNetCore.Hosting;
 
-namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
+namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
 {
     public class DeleteModel : PageModel
     {
@@ -27,7 +27,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         }
 
         [BindProperty]
-        public JunioresVM JuniorVM { get; set; }
+        public IncubadasVM IncubadaVM { get; set; }
 
         public IActionResult OnGet()
         {
@@ -36,24 +36,24 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var id = JuniorVM.ID;
+            var id = IncubadaVM.ID;
             if (id == 0)
             {
                 return NotFound();
             }
 
-            var EJ = await _context.DadosJuniores
+            var EI = await _context.DadosIncubadas
                         .Include(d => d.Empresa)
                         .FirstOrDefaultAsync(d => d.EmpresaID == id);
-            if (EJ == null)
+            if (EI == null)
             {
                 return NotFound();
             }
 
-            var logoAtual = EJ.Empresa.Logo;
+            var logoAtual = EI.Empresa.Logo;
             try
             {
-                _context.Empresas.Remove(EJ.Empresa);
+                _context.Empresas.Remove(EI.Empresa);
                 await _context.SaveChangesAsync();
                 LogoManager.ExcluirImagem(_webHostEnvironment, logoAtual);
             }

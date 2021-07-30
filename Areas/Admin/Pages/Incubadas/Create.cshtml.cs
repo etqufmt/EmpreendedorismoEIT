@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using EmpreendedorismoEIT.Utils;
 using Microsoft.EntityFrameworkCore;
 
-namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
+namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
 {
     public class CreateModel : PageModel
     {
@@ -25,7 +25,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         }
 
         [BindProperty]
-        public JunioresVM JuniorVM { get; set; }
+        public IncubadasVM IncubadaVM { get; set; }
 
         public IActionResult OnGet()
         {
@@ -41,19 +41,19 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
             var novaEmpresa = new Empresa
             {
-                Nome = JuniorVM.Nome,
-                Tipo = Tipo.JUNIOR,
-                DescricaoCurta = JuniorVM.DescricaoCurta,
-                DescricaoLonga = JuniorVM.DescricaoLonga,
-                Endereco = JuniorVM.Endereco,
-                Telefone = JuniorVM.Telefone,
-                Email = JuniorVM.Email,
-                Logo = LogoManager.SalvarImagem(_webHostEnvironment, JuniorVM.Logo),
-                Situacao = JuniorVM.Situacao,
-                DadosJunior = new DadosJunior
+                Nome = IncubadaVM.Nome,
+                Tipo = Tipo.INCUBADA,
+                DescricaoCurta = IncubadaVM.DescricaoCurta,
+                DescricaoLonga = IncubadaVM.DescricaoLonga,
+                Endereco = IncubadaVM.Endereco,
+                Telefone = IncubadaVM.Telefone,
+                Email = IncubadaVM.Email,
+                Logo = LogoManager.SalvarImagem(_webHostEnvironment, IncubadaVM.Logo),
+                Situacao = IncubadaVM.Situacao,
+                DadosIncubada = new DadosIncubada
                 {
-                    Campus = JuniorVM.Campus,
-                    Instituto = JuniorVM.Instituto
+                    Edital = IncubadaVM.Edital,
+                    AnoIncubacao = IncubadaVM.AnoIncubacao
                 },
                 UltimaModificacao = DateTime.Now
             };

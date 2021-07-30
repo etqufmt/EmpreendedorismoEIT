@@ -3,12 +3,14 @@ using EmpreendedorismoEIT.Resources;
 using EmpreendedorismoEIT.Utils;
 using Microsoft.AspNetCore.Http;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace EmpreendedorismoEIT.ViewModels
 {
-    public class JunioresVM
+    public class IncubadasVM
     {
         public int ID { get; set; }
 
@@ -70,14 +72,15 @@ namespace EmpreendedorismoEIT.ViewModels
         public DateTime UltimaModificacao { get; set; }
 
 
-        [Display(Name = "Campus")]
-        [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
-        public Campus Campus { get; set; }
-
-
-        [Display(Name = "Instituto")]
+        [Display(Name = "Edital")]
+        [DisplayFormat(NullDisplayText = "[Não informado]")]
         [StringLength(50, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
-        [Required(ErrorMessageResourceName = "ErrInstituto", ErrorMessageResourceType = typeof(ValidationResources))]
-        public string Instituto { get; set; }
+        public string Edital { get; set; }
+
+
+        [Display(Name = "Ano de incubação")]
+        [Range(1900,2100, ErrorMessageResourceName = "ErrAno", ErrorMessageResourceType = typeof(ValidationResources))]
+        [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
+        public int AnoIncubacao { get; set; }
     }
 }

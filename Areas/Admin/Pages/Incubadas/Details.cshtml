@@ -1,0 +1,122 @@
+﻿@page "{id:int?}"
+@model EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalhes EI";
+    ViewData["Section"] = "Incubadas";
+    ViewData["SectionTitle"] = Html.DisplayFor(model => model.IncubadaVM.Nome);
+}
+
+<div class="row">
+    <div class="col-lg-6">
+        @if (!String.IsNullOrEmpty(@Model.ErrorMessage))
+        {
+            <div class="alert alert-primary alert-dismissible fade show" role="alert" style="background: none !important;">
+                <span>@Model.ErrorMessage</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="bi bi-x"></i></span>
+                </button>
+            </div>
+        }
+        <dl class="row mb-0">
+            <dt class="col-md-4">
+                @Html.DisplayNameFor(model => model.IncubadaVM.Edital)
+            </dt>
+            <dd class="col-md-8 border-custom">
+                @Html.DisplayFor(model => model.IncubadaVM.Edital)
+            </dd>
+            <dt class="col-md-4">
+                @Html.DisplayNameFor(model => model.IncubadaVM.AnoIncubacao)
+            </dt>
+            <dd class="col-md-8 border-custom">
+                @Html.DisplayFor(model => model.IncubadaVM.AnoIncubacao)
+            </dd>
+            <dt class="col-md-4">
+                @Html.DisplayNameFor(model => model.IncubadaVM.DescricaoCurta)
+            </dt>
+            <dd class="col-md-8 border-custom">
+                @Html.DisplayFor(model => model.IncubadaVM.DescricaoCurta)
+            </dd>
+            <dt class="col-md-4">
+                @Html.DisplayNameFor(model => model.IncubadaVM.DescricaoLonga)
+            </dt>
+            <dd class="col-md-8 border-custom">
+                @Html.DisplayFor(model => model.IncubadaVM.DescricaoLonga)
+            </dd>
+        </dl>
+    </div>
+    <div class="col-lg-6">
+        <dl class="row mb-0">
+            <dt class="col-md-4">
+                @Html.DisplayNameFor(model => model.IncubadaVM.Endereco)
+            </dt>
+            <dd class="col-md-8 border-custom">
+                @Html.DisplayFor(model => model.IncubadaVM.Endereco)
+            </dd>
+            <dt class="col-md-4">
+                @Html.DisplayNameFor(model => model.IncubadaVM.Telefone)
+            </dt>
+            <dd class="col-md-8 border-custom">
+                @Html.DisplayFor(model => model.IncubadaVM.Telefone)
+            </dd>
+            <dt class="col-md-4">
+                @Html.DisplayNameFor(model => model.IncubadaVM.Email)
+            </dt>
+            <dd class="col-md-8 border-custom">
+                @Html.DisplayFor(model => model.IncubadaVM.Email)
+            </dd>
+            <dt class="col-md-4">
+                @Html.DisplayNameFor(model => model.IncubadaVM.Situacao)
+            </dt>
+            <dd class="col-md-8 border-custom">
+                @Html.DisplayFor(model => model.IncubadaVM.Situacao)
+            </dd>
+            <dt class="col-md-4">
+                @Html.DisplayNameFor(model => model.IncubadaVM.UltimaModificacao)
+            </dt>
+            <dd class="col-md-8 border-custom">
+                @Html.DisplayFor(model => model.IncubadaVM.UltimaModificacao)
+            </dd>
+        </dl>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col text-right">
+        <hr />
+        <a asp-page="./Index" class="btn btn-outline-secondary">Voltar</a>
+        <button type="button" class="btn btn-outline-danger"
+                data-toggle="modal" data-target="#modal-delete"
+                data-id="@Model.IncubadaVM.ID" data-tag="SectionTitle">
+            Excluir
+        </button>
+        <a asp-page="./Edit" asp-route-id="@Model.IncubadaVM.ID" class="btn btn-outline-primary">Editar</a>
+    </div>
+</div>
+
+@* Modal de exclusão *@
+<div class="modal fade" id="modal-delete" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Excluir empresa júnior</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir a empresa "<span class="modal-item-text"></span>"?</p>
+            </div>
+            <div class="modal-footer">
+                <form method="post" asp-page="./Delete">
+                    <input type="hidden" asp-for="IncubadaVM.ID" class="modal-item-id" />
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                    <input type="submit" value="Excluir" class="btn btn-danger" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ModalScriptsPartial");}
+}

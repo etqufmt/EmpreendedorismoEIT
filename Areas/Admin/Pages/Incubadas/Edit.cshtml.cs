@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Hosting;
 using EmpreendedorismoEIT.ViewModels;
 using EmpreendedorismoEIT.Utils;
 
-namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
+namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
 {
     public class EditModel : PageModel
     {
@@ -27,7 +27,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         }
 
         [BindProperty]
-        public JunioresVM JuniorVM { get; set; }
+        public IncubadasVM IncubadaVM { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -37,29 +37,29 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             }
 
             //Carregar tudo de uma vez
-            var EJ = await _context.DadosJuniores
+            var EI = await _context.DadosIncubadas
                         .Include(d => d.Empresa)
                         .AsNoTracking()
                         .FirstOrDefaultAsync(d => d.EmpresaID == id);
 
-            if (EJ == null)
+            if (EI == null)
             {
                 return NotFound();
             }
 
-            JuniorVM = new JunioresVM
+            IncubadaVM = new IncubadasVM
             {
-                ID = EJ.EmpresaID,
-                Campus = EJ.Campus,
-                Instituto = EJ.Instituto,
-                Nome = EJ.Empresa.Nome,
-                DescricaoCurta = EJ.Empresa.DescricaoCurta,
-                DescricaoLonga = EJ.Empresa.DescricaoLonga,
-                Endereco = EJ.Empresa.Endereco,
-                Telefone = EJ.Empresa.Telefone,
-                Email = EJ.Empresa.Email,
+                ID = EI.EmpresaID,
+                Edital = EI.Edital,
+                AnoIncubacao = EI.AnoIncubacao,
+                Nome = EI.Empresa.Nome,
+                DescricaoCurta = EI.Empresa.DescricaoCurta,
+                DescricaoLonga = EI.Empresa.DescricaoLonga,
+                Endereco = EI.Empresa.Endereco,
+                Telefone = EI.Empresa.Telefone,
+                Email = EI.Empresa.Email,
                 Logo = null,
-                Situacao = EJ.Empresa.Situacao
+                Situacao = EI.Empresa.Situacao
             };
 
             return Page();
@@ -72,11 +72,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 return NotFound();
             }
 
-            var EJ = await _context.DadosJuniores
+            var EI = await _context.DadosIncubadas
                         .Include(d => d.Empresa)
                         .FirstOrDefaultAsync(d => d.EmpresaID == id);
 
-            if (EJ == null)
+            if (EI == null)
             {
                 return NotFound();
             }
@@ -86,26 +86,26 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 return Page();
             }
 
-            EJ.EmpresaID = JuniorVM.ID;
-            EJ.Campus = JuniorVM.Campus;
-            EJ.Instituto = JuniorVM.Instituto;
-            EJ.Empresa.Nome = JuniorVM.Nome;
-            EJ.Empresa.DescricaoCurta = JuniorVM.DescricaoCurta;
-            EJ.Empresa.DescricaoLonga = JuniorVM.DescricaoLonga;
-            EJ.Empresa.Endereco = JuniorVM.Endereco;
-            EJ.Empresa.Telefone = JuniorVM.Telefone;
-            EJ.Empresa.Email = JuniorVM.Email;
-            EJ.Empresa.Situacao = JuniorVM.Situacao;
-            EJ.Empresa.UltimaModificacao = DateTime.Now;
+            EI.EmpresaID = IncubadaVM.ID;
+            EI.Edital = IncubadaVM.Edital;
+            EI.AnoIncubacao = IncubadaVM.AnoIncubacao;
+            EI.Empresa.Nome = IncubadaVM.Nome;
+            EI.Empresa.DescricaoCurta = IncubadaVM.DescricaoCurta;
+            EI.Empresa.DescricaoLonga = IncubadaVM.DescricaoLonga;
+            EI.Empresa.Endereco = IncubadaVM.Endereco;
+            EI.Empresa.Telefone = IncubadaVM.Telefone;
+            EI.Empresa.Email = IncubadaVM.Email;
+            EI.Empresa.Situacao = IncubadaVM.Situacao;
+            EI.Empresa.UltimaModificacao = DateTime.Now;
 
             string logoAntigo = null;
-            if (JuniorVM.Logo != null)
+            if (IncubadaVM.Logo != null)
             {
-                logoAntigo = EJ.Empresa.Logo;
-                EJ.Empresa.Logo = LogoManager.SalvarImagem(_webHostEnvironment, JuniorVM.Logo);
+                logoAntigo = EI.Empresa.Logo;
+                EI.Empresa.Logo = LogoManager.SalvarImagem(_webHostEnvironment, IncubadaVM.Logo);
             }
 
-            _context.Attach(EJ).State = EntityState.Modified;
+            _context.Attach(EI).State = EntityState.Modified;
 
             try
             {

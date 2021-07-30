@@ -193,6 +193,84 @@ namespace EmpreendedorismoEIT.Data
                         Instituto = "Engenharia"
                     }
                 },
+                new Empresa
+                {
+                    Nome = "Teste #05",
+                    Tipo = Tipo.JUNIOR,
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.CUIABA,
+                        Instituto = "Teste #05"
+                    }
+
+                },
+                new Empresa
+                {
+                    Nome = "Teste #06",
+                    Tipo = Tipo.JUNIOR,
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.CUIABA,
+                        Instituto = "Teste #06"
+                    }
+
+                },
+                new Empresa
+                {
+                    Nome = "Teste #07",
+                    Tipo = Tipo.JUNIOR,
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.CUIABA,
+                        Instituto = "Teste #07"
+                    }
+
+                },
+                new Empresa
+                {
+                    Nome = "Teste #08",
+                    Tipo = Tipo.JUNIOR,
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.CUIABA,
+                        Instituto = "Teste #08"
+                    }
+
+                },
+                new Empresa
+                {
+                    Nome = "Teste #09",
+                    Tipo = Tipo.JUNIOR,
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.CUIABA,
+                        Instituto = "Teste #09"
+                    }
+
+                },
+                new Empresa
+                {
+                    Nome = "Teste #10",
+                    Tipo = Tipo.JUNIOR,
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.CUIABA,
+                        Instituto = "Teste #10"
+                    }
+
+                },
             };
 
             Console.WriteLine("[DEBUG] Populando banco de dados");

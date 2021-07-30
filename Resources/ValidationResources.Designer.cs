@@ -61,6 +61,15 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ano inválido.
+        /// </summary>
+        public static string ErrAno {
+            get {
+                return ResourceManager.GetString("ErrAno", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Não foi possível realizar a adição. Tente novamente mais tarde..
         /// </summary>
         public static string ErrCreate {
