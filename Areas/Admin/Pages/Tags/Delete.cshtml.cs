@@ -49,7 +49,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             }
             catch (DbUpdateException)
             {
-                return RedirectToPage("Index", new { error = "delete" });
+                return RedirectToPage("Index", new { deleteError = true });
             }
 
             return RedirectToPage("Index");
