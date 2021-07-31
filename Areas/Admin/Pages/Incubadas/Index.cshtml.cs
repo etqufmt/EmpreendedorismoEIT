@@ -53,6 +53,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
                 empresasIQ = empresasIQ.Where(e => e.Nome.Contains(search));
             }
 
+            empresasIQ = empresasIQ.OrderBy(e => e.Nome);
+
             //Fazer consulta paginada
             var pageSize = _configuration.GetValue("PageSize", 4);
             ListaEI = await PaginatedList<IncubadasListaVM>.CreateAsync(

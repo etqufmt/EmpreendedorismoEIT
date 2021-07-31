@@ -22,7 +22,6 @@
         <h4 class="d-inline title-h4">Produtos e serviços <span class="badge badge-custom">@Model.ListaProdServ.Count</span></h4>
     </div>
     <div class="col-auto col-lg-6 text-right">
-        <a asp-area="Admin" asp-page="@Model.ReturnURL" class="btn btn-outline-secondary">Voltar</a>
         <a asp-page="Create" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-primary">Adicionar</a>
     </div>
 </div>
@@ -78,6 +77,12 @@
         }
     </tbody>
 </table>
+<div class="row mt-4">
+    <div class="col col-lg-6 align-self-center"></div>
+    <div class="col-auto col-lg-6 text-right">
+        <a asp-area="Admin" asp-page="@Model.ReturnURL" class="btn btn-outline-secondary">Voltar</a>
+    </div>
+</div>
 @* Modal de exclusão *@
 <div class="modal fade" id="modal-delete" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">

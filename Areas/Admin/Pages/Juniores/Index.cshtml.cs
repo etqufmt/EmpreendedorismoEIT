@@ -53,6 +53,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 empresasIQ = empresasIQ.Where(e => e.Nome.Contains(search));
             }
 
+            empresasIQ = empresasIQ.OrderBy(e => e.Nome);
+
             //Fazer consulta paginada
             var pageSize = _configuration.GetValue("PageSize", 4);
             ListaEJ = await PaginatedList<JunioresListaVM>.CreateAsync(
