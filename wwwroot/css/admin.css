@@ -85,6 +85,17 @@ h4.title-h4 {
     background-color: rgba(0,0,0,.05);
 }
 
+.dash-body {
+    background-color: rgba(0,0,0,.125);
+    font-size: 2rem;
+}
+
+.dash-card {
+    background-color: #f6edff;
+    color: #b2a7be;
+    /*min-width: 9rem;*/
+}
+
 @media (min-width: 768px) {
     dd.border-custom {
         border-left: #99caff solid 0.2rem;

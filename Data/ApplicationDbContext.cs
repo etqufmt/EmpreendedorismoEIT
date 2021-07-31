@@ -20,12 +20,14 @@ namespace EmpreendedorismoEIT.Data
         public DbSet<EmpreendedorismoEIT.Models.RedeSocial> RedesSociais { get; set; }
         public DbSet<EmpreendedorismoEIT.Models.Tag> Tags { get; set; }
         public DbSet<EmpreendedorismoEIT.Models.EmpresaTag> EmpresaTags { get; set; }
+        public DbSet<EmpreendedorismoEIT.Models.DashboardQuery> DashboardQuery { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Relação de muitos para muitos (join table)
             modelBuilder.Entity<EmpresaTag>().HasKey(et => new { et.EmpresaID, et.TagID });
+            modelBuilder.Entity<DashboardQuery>().ToTable("DashboardQuery", t => t.ExcludeFromMigrations());
 
             base.OnModelCreating(modelBuilder);
         }
