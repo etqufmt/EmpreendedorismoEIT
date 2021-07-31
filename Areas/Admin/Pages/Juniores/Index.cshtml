@@ -1,5 +1,6 @@
 ﻿@page
 @model EmpreendedorismoEIT.Areas.Admin.Pages.Juniores.IndexModel
+@using EmpreendedorismoEIT.Models
 
 @{
     ViewData["Title"] = "EJ";
@@ -9,19 +10,27 @@
     var nextDisabled = !Model.ListaEJ.HasNextPage ? "disabled" : "";
 }
 
-<div class="row mb-4">
-    <div class="col">
-        <form method="get" class="form-inline">
-            <a asp-page="Create" class="btn btn-outline-primary mr-2">Adicionar</a>
-            <div class="input-group filter-input flex-grow-1 flex-md-grow-0">
-                <input type="text" name="search" value="@Model.CurrentFilter" class="form-control" placeholder="Filtrar por nome"/>
+<form method="get">
+    <div class="form-row">
+        <div class="col-auto form-group">
+            <a asp-page="Create" class="btn btn-outline-primary">Adicionar</a>
+        </div>
+        <div class="col col-lg-auto form-group">
+            <select name="status" class="form-control custom-select" onchange="this.form.submit()"
+                    asp-items="@Html.GetEnumSelectList<Situacao>()" asp-for="@Model.CurrentSituacao">
+                <option value="0">Todas as situações</option>
+            </select>
+        </div>
+        <div class="col-12 col-lg-auto form-group">
+            <div class="input-group">
+                <input type="text" name="search" value="@Model.CurrentFilter" class="form-control" placeholder="Filtrar por nome" />
                 <div class="input-group-append">
                     <a asp-page="Index" class="btn input-group-text"><i class="bi bi-backspace"></i></a>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+</form>
 <div class="row">
     @if (Model.ListaEJ.Count == 0)
     {
@@ -55,12 +64,14 @@
         <a asp-page="Index"
            asp-route-pageIndex="@(Model.ListaEJ.PageIndex - 1)"
            asp-route-filter="@Model.CurrentFilter"
+           asp-route-status="@((int)Model.CurrentSituacao)"
            class="btn btn-primary @prevDisabled">
             Anterior
         </a>
         <a asp-page="Index"
            asp-route-pageIndex="@(Model.ListaEJ.PageIndex + 1)"
            asp-route-filter="@Model.CurrentFilter"
+           asp-route-status="@((int)Model.CurrentSituacao)"
            class="btn btn-primary @nextDisabled">
             Próxima
         </a>

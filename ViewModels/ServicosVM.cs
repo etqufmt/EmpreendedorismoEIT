@@ -23,7 +23,7 @@ namespace EmpreendedorismoEIT.ViewModels
         private string _nome;
 
         [Display(Name = "Descrição")]
-        [DisplayFormat(NullDisplayText = "[Não informado]")]
+        [DisplayFormat(NullDisplayText = "[Não informada]")]
         [StringLength(400, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         public string Descricao
         {

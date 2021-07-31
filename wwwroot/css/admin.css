@@ -42,11 +42,11 @@ i.icon-msg {
 .header-title {
     line-height: normal;
     margin-bottom: 0px;
-    color: #404040;
+    color: #595959;
 }
 
 dt, th {
-    color: #404040;
+    color: #595959;
 }
 
 .tag-button {
@@ -63,17 +63,13 @@ dt, th {
 }
 
 h4.title-h4 {
-    color: #595959;
+    color: #666666;
     font-size: 1.4rem;
-}
-
-.filter-input {
-    width: unset;
 }
 
 .badge-custom {
     color: #fff;
-    background-color: #c8ccd0
+    background-color: #c8ccd0;
 }
 
 .grau-badge {
@@ -90,7 +86,7 @@ h4.title-h4 {
 }
 
 @media (min-width: 768px) {
-    dd .border-custom {
+    dd.border-custom {
         border-left: #99caff solid 0.2rem;
         box-sizing: border-box;
     }
@@ -98,6 +94,7 @@ h4.title-h4 {
 
 @media (min-width: 576px) {
     /*Forçar imagens para mesmo tamanho*/
+    /*Temporário*/
     .card img {
         height: 7.5rem;
     }

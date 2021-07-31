@@ -38,7 +38,7 @@ namespace EmpreendedorismoEIT.Data
                 new Tag
                 {
                     Nome = "Agricultura",
-                    Cor = "FEC64D"
+                    Cor = "FECE67"
                 },
                 new Tag
                 {

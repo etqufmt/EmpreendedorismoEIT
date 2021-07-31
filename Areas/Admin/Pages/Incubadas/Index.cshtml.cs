@@ -26,8 +26,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
 
         public PaginatedList<IncubadasListaVM> ListaEI { get;set; }
         public string CurrentFilter { get; set; }
+        public Situacao CurrentSituacao { get; set; }
 
-        public async Task OnGetAsync(string search, string filter, int? pageIndex)
+        public async Task OnGetAsync(string search, string filter, int? pageIndex, int? status)
         {
             if (search != null)
             {
@@ -44,13 +45,24 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
                 ID = e.EmpresaID,
                 Logo = e.Empresa.Logo,
                 Nome = e.Empresa.Nome,
-                AnoIncubacao = e.AnoIncubacao
+                AnoIncubacao = e.AnoIncubacao,
+                Situacao = e.Empresa.Situacao
             });
 
-            //Filtrar por pesquisa
-            if (!String.IsNullOrEmpty(search))
+            //Filtar por situação
+            if(status != null)
             {
-                empresasIQ = empresasIQ.Where(e => e.Nome.Contains(search));
+                if(Enum.IsDefined(typeof(Situacao), status))
+                {
+                    CurrentSituacao = (Situacao)status;
+                    empresasIQ = empresasIQ.Where(e => e.Situacao == CurrentSituacao);
+                }
+            }
+
+            //Filtrar por pesquisa
+            if (!String.IsNullOrEmpty(CurrentFilter))
+            {
+                empresasIQ = empresasIQ.Where(e => e.Nome.Contains(CurrentFilter));
             }
 
             empresasIQ = empresasIQ.OrderBy(e => e.Nome);
