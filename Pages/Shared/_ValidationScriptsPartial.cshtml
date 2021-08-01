@@ -8,21 +8,21 @@
     })
 
     //Cria classe "number-only" para entradas de texto
-    $(document).on('keypress', '.number-only', function (evt) {
-        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
-        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
-            return false;
-        return true;
+    $(document).on('input', '.number-only', function (evt) {
+        if (event.inputType != "insertFromPaste") {
+            evt.target.value = evt.target.value.replace(/([^0-9]+)/g, "")
+        }
     })
     $(document).on('paste', '.number-only', function (evt) {
         evt.preventDefault()
         var paste = (event.clipboardData || window.clipboardData).getData('text')
         paste = paste.replace(/([^0-9]+)/g, "")
-        document.execCommand("insertHTML", false, paste)
+        if (evt.target.maxLength > 0) paste = paste.slice(0, evt.target.maxLength)
+        evt.target.value = paste
     })
 
-    //Restringir entrada numérica para 4 dígitos
-    $(document).on('input', '.number-year', function (evt) {
-        evt.target.value = evt.target.value.slice(0,4)
+    //Restringir entrada numérica para "maxlength" dígitos
+    $(document).on('input', '.input-len-number', function (evt) {
+        evt.target.value = evt.target.value.slice(0, evt.target.maxLength)
     })
 </script>

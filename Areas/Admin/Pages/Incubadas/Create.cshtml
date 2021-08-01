@@ -63,8 +63,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="IncubadaVM.AnoIncubacao" class="control-label"></label>
-                <input asp-for="IncubadaVM.AnoIncubacao" class="form-control number-year"
-                       value="@DateTime.Today.Year" />
+                <input asp-for="IncubadaVM.AnoIncubacao" class="form-control input-len-number"
+                       value="@DateTime.Today.Year" maxlength="4" />
                 <span asp-validation-for="IncubadaVM.AnoIncubacao" class="text-danger"></span>
             </div>
             <div class="form-group">
