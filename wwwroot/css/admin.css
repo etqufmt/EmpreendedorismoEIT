@@ -96,9 +96,8 @@ h4.title-h4 {
     /*min-width: 9rem;*/
 }
 
-.upload-container {
+.upload-container img{
     max-height: 60vh;
-    overflow-y: auto;
 }
 
 @media (min-width: 768px) {
