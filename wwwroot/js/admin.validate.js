@@ -1,8 +1,8 @@
 ﻿//Exibir nome de arquivo na caixa de seleção (upload)
-//$(document).on('input', '.custom-file-input', function (evt) {
-//    var name = (evt.target.files[0]?.name) ?? ''
-//    $(this).next('.custom-file-label').html(name);
-//})
+$(document).on('input', '.custom-file-input', function (evt) {
+    var name = (evt.target.files[0]?.name) ?? ''
+    $(this).next('.custom-file-label').html(name);
+})
 
 //Cria classe "number-only" para entradas de texto
 $(document).on('input', '.number-only', function (evt) {
