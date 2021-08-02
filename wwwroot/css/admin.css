@@ -96,6 +96,11 @@ h4.title-h4 {
     /*min-width: 9rem;*/
 }
 
+.upload-container {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
 @media (min-width: 768px) {
     dd.border-custom {
         border-left: #99caff solid 0.2rem;
@@ -103,10 +108,10 @@ h4.title-h4 {
     }
 }
 
-@media (min-width: 576px) {
+/*@media (min-width: 576px) {*/
     /*Forçar imagens para mesmo tamanho*/
     /*Temporário*/
-    .card img {
+    /*.card img {
         height: 7.5rem;
     }
-}
+}*/

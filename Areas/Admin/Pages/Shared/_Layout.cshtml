@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/admin.css" />
     <link rel="stylesheet" href="~/lib/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/lib/cropperjs/cropper.min.css">
 </head>
 <body>
     <partial name="_Header" />
@@ -35,20 +36,7 @@
                 <div class="col-md-3 order-md-first">
                     <section>
                         <h4 class="header-title">Administração</h4><hr class="mt-2 mb-3" />
-                        <div class="list-group">
-                            <a class="list-group-item list-group-item-action
-                               @(ViewData["Section"].Equals("Inicio") ? "active" : "")"
-                               asp-area="Admin" asp-page="/Index">Início</a>
-                            <a class="list-group-item list-group-item-action
-                               @(ViewData["Section"].Equals("Juniores") ? "active" : "")"
-                               asp-area="Admin" asp-page="/Juniores/Index">Empresas juniores</a>
-                            <a class="list-group-item list-group-item-action
-                               @(ViewData["Section"].Equals("Incubadas") ? "active" : "")"
-                               asp-area="Admin" asp-page="/Incubadas/Index">Empresas incubadas</a>
-                            <a class="list-group-item list-group-item-action
-                               @(ViewData["Section"].Equals("Tags") ? "active" : "")"
-                               asp-area="Admin" asp-page="/Tags/Index">Tags</a>
-                        </div>
+                        <partial name="_SideBar" />
                     </section>
                 </div>
             </div>
@@ -59,7 +47,6 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
