@@ -4,12 +4,12 @@
 @{
     ViewData["Title"] = "Tags";
     ViewData["Section"] = "Tags";
-    ViewData["SectionTitle"] = "Tags";
+    ViewData["SectionTitle"] = "Nuvem de tags";
 }
 
 <div class="row mb-3">
     <div class="col col-lg-6 align-self-center">
-        <h4 class="d-inline title-h4">Disponíveis para associação <span class="badge badge-custom">@Model.ListaTags.Count</span></h4>
+        <h5 class="d-inline subtitle">Disponíveis para associação <span class="badge badge-custom">@Model.ListaTags.Count</span></h5>
     </div>
     <div class="col-auto col-lg-6 text-right">
         <a asp-page="Create" class="btn btn-outline-primary">Adicionar</a>

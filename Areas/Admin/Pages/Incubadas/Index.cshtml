@@ -49,11 +49,11 @@
                     <h5 class="card-title text-truncate"><a asp-page="Details" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Nome)</a></h5>
                     <p class="card-text">@Html.DisplayFor(modelItem => item.AnoIncubacao)</p>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@item.ID">Serviços</a></li>
-                    <li class="list-group-item"><a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@item.ID">Redes sociais</a></li>
-                    <li class="list-group-item"><a asp-area="Admin" asp-page="/EmpTags/Index" asp-route-id="@item.ID">Recomendação</a></li>
-                </ul>
+                <div class="list-group list-group-flush">
+                    <a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@item.ID"><div class="list-group-item">Serviços</div></a>
+                    <a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@item.ID"><div class="list-group-item">Redes sociais</div></a>
+                    <a asp-area="Admin" asp-page="/EmpTags/Index" asp-route-id="@item.ID"><div class="list-group-item">Recomendação</div></a>
+                </div>
             </div>
         </div>
     }

@@ -31,13 +31,22 @@ _bsModal.on('shown.bs.modal', (evt) => {
 })
 
 _btnSelect.click((evt) => {
-    const maxWidth = 800
-    const maxHeight = 640
+    const width = 500
+    const height = 400
     const cropRect = _croppr.getValue()
+    //Upload da imagem original se já estiver na resolução desejada
+    if (_imgCanvas.naturalWidth == width && _imgCanvas.naturalHeight == height) {
+        if (cropRect.width == width && cropRect.height == height) {
+            _selected = true
+            _bsModal.modal('hide')
+            console.log('imagem original')
+            return
+        }
+    }
     const canvas = document.createElement('canvas')
     const context = canvas.getContext('2d')
-    canvas.width = cropRect.width > maxWidth ? maxWidth : cropRect.width
-    canvas.height = cropRect.height > maxHeight ? maxHeight : cropRect.height
+    canvas.width = width
+    canvas.height = height
     context.drawImage(
         _croppr.imageEl,
         cropRect.x,
