@@ -39,10 +39,14 @@ a.username i {
     font-size: 0.8rem;
 }
 
+h1 {
+    color: #333333;
+}
+
 h4.header-title {
     line-height: normal;
     margin-bottom: 0px;
-    color: #595959;
+    color: #333333;
 }
 
 h5.subtitle {

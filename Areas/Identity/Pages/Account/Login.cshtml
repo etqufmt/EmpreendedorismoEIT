@@ -10,8 +10,8 @@
     <div class="col-md-4 pb-3">
         <section>
             <form id="account" method="post">
-                <h4>Acesso administrativo</h4>
-                <hr />
+                <h4 class="header-title">Acesso administrativo</h4>
+                <hr class="mt-2 mb-3" />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Input.UserName"></label>
@@ -23,31 +23,19 @@
                     <input asp-for="Input.Password" class="form-control" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group text-right">
                     <button type="submit" class="btn btn-primary">Entrar</button>
-                </div>
-                <div class="form-group">
-                    <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-                    </p>
-                    <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-                    </p>
-                    <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-                    </p>
                 </div>
             </form>
         </section>
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h4>Use another service to log in</h4>
-            <hr />
+            <h4 class="header-title">Gerencie as empresas cadastradas</h4>
+            <hr class="mt-2 mb-3" />
             <div>
-                <p>
-                    There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                    for details on setting up this ASP.NET application to support logging in via external services.
+                <p class="text-justify">
+                    Nesta seção é possível atualizar os dados de contato, redes sociais e texto descritivo das empresas juniores da UFMT, bem como das empresas associadas à Incubadora Priante. Adicione os novos produtos e serviços oferecidos e configure o sistema de recomendação. Disponível apenas para gestores do Escritório de Inovação Tecnológica.
                 </p>
                 <p>Usuário de teste: <b>eitufmt/eitufmt</b></p>
             </div>
