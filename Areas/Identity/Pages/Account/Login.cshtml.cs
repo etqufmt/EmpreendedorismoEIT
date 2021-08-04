@@ -42,13 +42,13 @@ namespace EmpreendedorismoEIT.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
             [Display(Name = "Usuário")]
+            [Required(ErrorMessage ="Usuário deve ser preenchido")]
             public string UserName { get; set; }
 
-            [Required]
-            [DataType(DataType.Password)]
             [Display(Name = "Senha")]
+            [DataType(DataType.Password)]
+            [Required(ErrorMessage = "Senha deve ser preenchida")]
             public string Password { get; set; }
         }
 
@@ -77,18 +77,12 @@ namespace EmpreendedorismoEIT.Areas.Identity.Pages.Account
         
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, false, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
-                //if (result.RequiresTwoFactor)
-                //{
-                //    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
-                //}
                 if (result.IsLockedOut)
                 {
                     _logger.LogWarning("User account locked out.");
@@ -101,7 +95,6 @@ namespace EmpreendedorismoEIT.Areas.Identity.Pages.Account
                 }
             }
 
-            // If we got this far, something failed, redisplay form
             return Page();
         }
     }

@@ -1,6 +1,7 @@
 ﻿using EmpreendedorismoEIT.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace EmpreendedorismoEIT.Data
 {
     public static class DbInitializer
     {
-        public static void Initialize(ApplicationDbContext context)
+        public static void Initialize(ApplicationDbContext context, ILogger<Program> logger)
         {
             //Procurar por linhas na tabela
             if (context.Tags.Any())
@@ -273,22 +274,25 @@ namespace EmpreendedorismoEIT.Data
                 },
             };
 
-            Console.WriteLine("[DEBUG] Populando banco de dados");
             context.AddRange(empJuniores);
             context.AddRange(tags);
             context.SaveChanges();
+            logger.LogInformation("[DEBUG] Banco de dados populado");
         }
 
-        public static void AddDefaultUser(UserManager<IdentityUser> userManager)
+        public static async Task AddDefaultUserAsync(UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager,
+            ILogger<Program> logger)
         {
             //Criar usuário de teste
-            var result = Task.Run(async () => await userManager.FindByNameAsync("eitufmt")).GetAwaiter().GetResult();
+            var result = await userManager.FindByNameAsync("eitufmt");
             if (result == null)
             {
-                Console.WriteLine("[DEBUG] Criando usuário padrão");
                 var user = new IdentityUser { UserName = "eitufmt" };
-                //Esperar pelo método assíncrono forçadamente
-                _ = Task.Run(async() => await userManager.CreateAsync(user, "eitufmt")).GetAwaiter().GetResult();
+                await userManager.CreateAsync(user, "eitufmt");
+                await roleManager.CreateAsync(new IdentityRole("admin"));
+                await userManager.AddToRoleAsync(user, "admin");
+                logger.LogInformation("[DEBUG] Usuário padrão criado");
             }
         }
     }

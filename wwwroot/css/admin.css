@@ -104,6 +104,10 @@ dt, th {
     max-height: 60vh;
 }
 
+.custom-alert {
+    background-color: #f5fdff;
+}
+
 @media (min-width: 768px) {
     dd.border-custom {
         border-left: #99caff solid 0.2rem;

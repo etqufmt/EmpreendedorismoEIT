@@ -32,19 +32,20 @@ namespace EmpreendedorismoEIT
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
+                var logger = services.GetRequiredService<ILogger<Program>>();
                 try
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     context.Database.EnsureCreated();
                     //Preencher banco com dados de teste
-                    DbInitializer.Initialize(context);
-                    DbInitializer.AddDefaultUser(userManager);
+                    DbInitializer.Initialize(context, logger);
+                    DbInitializer.AddDefaultUserAsync(userManager, roleManager, logger).GetAwaiter().GetResult();
                 }
                 catch (Exception ex)
                 {
-                    var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "An error occurred creating the DB.");
+                    logger.LogError(ex, "[DEBUG] Erro ao criar banco de dados");
                 }
             }
         }

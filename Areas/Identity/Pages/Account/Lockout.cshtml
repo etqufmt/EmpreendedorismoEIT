@@ -4,11 +4,16 @@
     ViewData["Title"] = "Acesso negado";
 }
 
-<header>
+<header class="mt-5 text-center text-sm-left">
+    <h1 class="text-danger border border-danger d-inline-block py-2 px-3 rounded">
+        <i class="bi bi-x-octagon-fill"></i>
+    </h1>
     <h1 class="text-danger">@ViewData["Title"]</h1>
-    <p class="text-danger">
+    <p>
         Essa conta foi bloqueada temporariamente.
         <br />Tente novamente mais tarde.
     </p>
-    <a asp-page="/Index">Voltar para o início</a>
+    <p>
+        <a asp-page="/Index">Voltar para o início</a>
+    </p>
 </header>

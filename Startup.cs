@@ -32,7 +32,8 @@ namespace EmpreendedorismoEIT
                 options.UseSqlServer(
                     Configuration.GetConnectionString("EITConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
             
@@ -50,7 +51,7 @@ namespace EmpreendedorismoEIT
 
             services.Configure<IdentityOptions>(options =>
             {
-                // Password settings.
+                // Senha
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
@@ -58,17 +59,17 @@ namespace EmpreendedorismoEIT
                 options.Password.RequiredLength = 6;
                 options.Password.RequiredUniqueChars = 1;
 
-                // Lockout settings.
+                // Lockout
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.AllowedForNewUsers = true;
 
-                // SignIn settings.
+                // Login
                 options.SignIn.RequireConfirmedAccount = false;
                 options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedPhoneNumber = false;
 
-                // User settings.
+                // Usuário
                 options.User.AllowedUserNameCharacters =
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._";
                 options.User.RequireUniqueEmail = false;
@@ -76,10 +77,9 @@ namespace EmpreendedorismoEIT
 
             services.ConfigureApplicationCookie(options =>
             {
-                // Cookie settings
+                // Cookie de autenticação
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-
                 options.LoginPath = "/Identity/Account/Login";
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
                 options.SlidingExpiration = true;
