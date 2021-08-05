@@ -4,7 +4,7 @@
 
 @{
     ViewData["Title"] = "EI";
-    ViewData["Section"] = "Incubadas";
+    ViewData["Section"] = SectionManager.Incubadas;
     ViewData["SectionTitle"] = "Empresas incubadas";
     var prevDisabled = !Model.ListaEI.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.ListaEI.HasNextPage ? "disabled" : "";
@@ -34,7 +34,7 @@
 <div class="row">
     @if (Model.ListaEI.Count == 0)
     {
-        <div class="offset-3 col-6 text-center py-4 mt-2 mb-3 rounded-lg msg-empty">
+        <div class="offset-3 col-6 text-center py-4 my-5 rounded-lg msg-empty">
             <i class="bi bi-x-diamond icon-msg"></i><br />
             <span>Nenhuma empresa encontrada.</span>
         </div>

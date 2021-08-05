@@ -7,12 +7,12 @@
     ViewData["SectionTitle"] = Html.DisplayFor(model => model.Empresa.Nome);
     if (Model.Empresa.Tipo == Tipo.JUNIOR)
     {
-        ViewData["Section"] = "Juniores";
+        ViewData["Section"] = SectionManager.Juniores;
         Model.ReturnURL = "/Juniores/Index";
     }
     if (Model.Empresa.Tipo == Tipo.INCUBADA)
     {
-        ViewData["Section"] = "Incubadas";
+        ViewData["Section"] = SectionManager.Incubadas;
         Model.ReturnURL = "/Incubadas/Index";
     }
 }

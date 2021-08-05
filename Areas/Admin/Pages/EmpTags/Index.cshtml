@@ -7,19 +7,19 @@
     ViewData["SectionTitle"] = Html.DisplayFor(model => model.Empresa.Nome);
     if (Model.Empresa.Tipo == Tipo.JUNIOR)
     {
-        ViewData["Section"] = "Juniores";
+        ViewData["Section"] = SectionManager.Juniores;
         Model.ReturnURL = "/Juniores/Index";
     }
     if (Model.Empresa.Tipo == Tipo.INCUBADA)
     {
-        ViewData["Section"] = "Incubadas";
+        ViewData["Section"] = SectionManager.Incubadas;
         Model.ReturnURL = "/Incubadas/Index";
     }
 }
 
-<div class="row mb-3">
-    <div class="col col-lg-6 align-self-center">
-        <h5 class="d-inline subtitle">Recomendação <span class="badge badge-custom"></span></h5>
+<div class="row mb-3 menu-bar">
+    <div class="col col-lg-6">
+        <h5 class="d-inline subtitle">Recomendação <span class="badge badge-custom">@Model.Contador</span></h5>
     </div>
     <div class="col-auto col-lg-6 text-right"></div>
 </div>
@@ -30,6 +30,13 @@
         </button>
     </div>
     <div class="row row-cols-1 row-cols-md-3">
+        @if (Model.ListaET.Count == 0)
+        {
+            <div class="offset-3 col-6 text-center py-4 my-5 rounded-lg msg-empty">
+                <i class="bi bi-x-diamond icon-msg"></i><br />
+                <span>Nenhuma tag encontrada.</span>
+            </div>
+        }
         @for (var i = 0; i < Model.ListaET.Count; i++)
         {
             <div class="col mb-4">
@@ -53,6 +60,7 @@
     </div>
     <div class="row">
         <div class="col text-right">
+            <hr />
             <a asp-area="Admin" asp-page="@Model.ReturnURL" class="btn btn-outline-secondary">Voltar</a>
             <input type="submit" value="Salvar" class="btn btn-primary" />
         </div>

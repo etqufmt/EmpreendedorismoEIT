@@ -1,0 +1,10 @@
+﻿<div class="list-group">
+    <a class="list-group-item list-group-item-action @SectionManager.CheckInicio(ViewContext)"
+       asp-area="Admin" asp-page="/Index">Início</a>
+    <a class="list-group-item list-group-item-action @SectionManager.CheckJuniores(ViewContext)"
+       asp-area="Admin" asp-page="/Juniores/Index">Empresas juniores</a>
+    <a class="list-group-item list-group-item-action @SectionManager.CheckIncubadas(ViewContext)"
+       asp-area="Admin" asp-page="/Incubadas/Index">Empresas incubadas</a>
+    <a class="list-group-item list-group-item-action @SectionManager.CheckTags(ViewContext)"
+       asp-area="Admin" asp-page="/Tags/Index">Nuvem de tags</a>
+</div>

@@ -3,12 +3,12 @@
 
 @{
     ViewData["Title"] = "Tags";
-    ViewData["Section"] = "Tags";
+    ViewData["Section"] = SectionManager.Tags;
     ViewData["SectionTitle"] = "Nuvem de tags";
 }
 
-<div class="row mb-3">
-    <div class="col col-lg-6 align-self-center">
+<div class="row mb-3 menu-bar">
+    <div class="col col-lg-6">
         <h5 class="d-inline subtitle">Disponíveis para associação <span class="badge badge-custom">@Model.ListaTags.Count</span></h5>
     </div>
     <div class="col-auto col-lg-6 text-right">
@@ -24,12 +24,21 @@
         </button>
     </div>
 }
+<div class="row">
+    @if (Model.ListaTags.Count == 0)
+    {
+        <div class="offset-3 col-6 text-center py-4 my-5 rounded-lg msg-empty">
+            <i class="bi bi-x-diamond icon-msg"></i><br />
+            <span>Nenhuma tag encontrada.</span>
+        </div>
+    }
+</div>
 <div class="tag-list d-flex flex-wrap justify-content-center my-4">
     @foreach (var item in Model.ListaTags)
     {
         <div class="btn-group m-2" role="group">
             <a asp-page="Edit" asp-route-id="@item.ID" class="btn btn-secondary tag-button"
-                    style="background-color: @($"#{item.Cor}");">
+               style="background-color: @($"#{item.Cor}");">
                 <span id="tag-nome-@item.ID">@Html.DisplayFor(modelItem => item.Nome)</span>
             </a>
             <button type="button" class="btn btn-secondary tag-button"

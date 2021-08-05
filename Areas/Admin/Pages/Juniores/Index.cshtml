@@ -4,7 +4,7 @@
 
 @{
     ViewData["Title"] = "EJ";
-    ViewData["Section"] = "Juniores";
+    ViewData["Section"] = SectionManager.Juniores;
     ViewData["SectionTitle"] = "Empresas juniores";
     var prevDisabled = !Model.ListaEJ.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.ListaEJ.HasNextPage ? "disabled" : "";
@@ -34,7 +34,7 @@
 <div class="row">
     @if (Model.ListaEJ.Count == 0)
     {
-        <div class="offset-3 col-6 text-center py-4 mt-2 mb-3 rounded-lg msg-empty">
+        <div class="offset-3 col-6 text-center py-4 my-5 rounded-lg msg-empty">
             <i class="bi bi-x-diamond icon-msg"></i><br />
             <span>Nenhuma empresa encontrada.</span>
         </div>

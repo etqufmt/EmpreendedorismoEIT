@@ -108,6 +108,10 @@ dt, th {
     background-color: #f5fdff;
 }
 
+.menu-bar {
+    height: 2.375rem;
+}
+
 @media (min-width: 768px) {
     dd.border-custom {
         border-left: #99caff solid 0.2rem;
