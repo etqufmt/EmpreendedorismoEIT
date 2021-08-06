@@ -34,7 +34,7 @@ namespace EmpreendedorismoEIT.Utils
 
         public string GetErrorMessage()
         {
-            return "Esse tipo de arquivo não é válido";
+            return Resources.ValidationResources.ErrAllowedExtensions;
         }
     }
 }

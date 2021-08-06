@@ -57,7 +57,7 @@ namespace EmpreendedorismoEIT.ViewModels
         [Display(Name = "Logotipo")]
         [DataType(DataType.Upload)]
         [MaxFileSize(2 * 1024 * 1024)]
-        [AllowedExtensions(new string[] { ".jpg", ".png" })]
+        [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png" })]
         //[Required(ErrorMessageResourceName = "ErrLogotipo", ErrorMessageResourceType = typeof(ValidationResources))]
         public IFormFile Logo { get; set; }
 

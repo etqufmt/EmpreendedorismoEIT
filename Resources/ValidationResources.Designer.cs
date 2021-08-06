@@ -61,6 +61,15 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Esse tipo de arquivo não é válido.
+        /// </summary>
+        public static string ErrAllowedExtensions {
+            get {
+                return ResourceManager.GetString("ErrAllowedExtensions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Não foi possível alterar a senha. Tente novamente..
         /// </summary>
         public static string ErrAlterarSenha {
@@ -138,6 +147,15 @@ namespace EmpreendedorismoEIT.Resources {
         public static string ErrLogotipo {
             get {
                 return ResourceManager.GetString("ErrLogotipo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tamanho máximo permitido é de {0}MB.
+        /// </summary>
+        public static string ErrMaxFileSize {
+            get {
+                return ResourceManager.GetString("ErrMaxFileSize", resourceCulture);
             }
         }
         
