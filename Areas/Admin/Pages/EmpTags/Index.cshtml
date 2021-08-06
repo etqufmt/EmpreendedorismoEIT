@@ -8,12 +8,12 @@
     if (Model.Empresa.Tipo == Tipo.JUNIOR)
     {
         ViewData["Section"] = SectionManager.Juniores;
-        Model.ReturnURL = "/Juniores/Index";
+        Model.ReturnURL = "/Juniores/Details";
     }
     if (Model.Empresa.Tipo == Tipo.INCUBADA)
     {
         ViewData["Section"] = SectionManager.Incubadas;
-        Model.ReturnURL = "/Incubadas/Index";
+        Model.ReturnURL = "/Incubadas/Details";
     }
 }
 
@@ -61,7 +61,7 @@
     <div class="row">
         <div class="col text-right">
             <hr />
-            <a asp-area="Admin" asp-page="@Model.ReturnURL" class="btn btn-outline-secondary">Voltar</a>
+            <a asp-area="Admin" asp-page="@Model.ReturnURL" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-secondary">Voltar para empresa</a>
             <input type="submit" value="Salvar" class="btn btn-primary" />
         </div>
     </div>

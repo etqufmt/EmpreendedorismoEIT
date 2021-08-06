@@ -42,19 +42,21 @@
     @foreach (var item in Model.ListaEJ)
     {
         <div class="col-xl-3 col-lg-4 col-6 pb-4">
-            <div class="card card-emp">
-                <img src="@(String.IsNullOrEmpty(item.Logo)? "../images/empty_logo.png" : "../logo/" + item.Logo)"
-                     class="card-img-top" alt="logo">
-                <div class="card-body border-top">
-                    <h5 class="card-title text-truncate"><a asp-page="Details" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Nome)</a></h5>
-                    <p class="card-text">@Html.DisplayFor(modelItem => item.Campus)</p>
+            <a asp-page="Details" asp-route-id="@item.ID" class="text-decoration-none">
+                <div class="card card-emp">
+                    <img src="@(String.IsNullOrEmpty(item.Logo)? "../images/empty_logo.png" : "../logo/" + item.Logo)"
+                         class="card-img-top" alt="logo">
+                    <div class="card-body border-top">
+                        <h5 class="card-title text-truncate">@Html.DisplayFor(modelItem => item.Nome)</h5>
+                        <p class="card-text emp-text">@Html.DisplayFor(modelItem => item.Campus)</p>
+                    </div>
+                    @*<div class="list-group list-group-flush">
+                        <a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@item.ID"><div class="list-group-item">Serviços</div></a>
+                        <a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@item.ID"><div class="list-group-item">Redes sociais</div></a>
+                        <a asp-area="Admin" asp-page="/EmpTags/Index" asp-route-id="@item.ID"><div class="list-group-item">Recomendação</div></a>
+                    </div>*@
                 </div>
-                <div class="list-group list-group-flush">
-                    <a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@item.ID"><div class="list-group-item">Serviços</div></a>
-                    <a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@item.ID"><div class="list-group-item">Redes sociais</div></a>
-                    <a asp-area="Admin" asp-page="/EmpTags/Index" asp-route-id="@item.ID"><div class="list-group-item">Recomendação</div></a>
-                </div>
-            </div>
+            </a>
         </div>
     }
 </div>

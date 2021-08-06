@@ -56,6 +56,7 @@ h5.subtitle {
 
 dt, th {
     color: #595959;
+    font-weight: 500;
 }
 
 .tag-button {
@@ -70,6 +71,14 @@ dt, th {
 .card-emp .card-title {
     color: #0366d6;
     line-height: normal;
+}
+
+a.text-decoration-none:hover .card-title {
+    text-decoration: underline;
+}
+
+.emp-text, .emp-text:hover, .emp-text:visited, .emp-text:link, .emp-text:active {
+    color: #212529;
 }
 
 .badge-custom {
@@ -118,8 +127,8 @@ dt, th {
     border-bottom-left-radius: calc(0.25rem - 1px);
 }
 
-.card-btn-lateral {
-    padding: .75rem 1.25rem;
+.card-btn-lateral:hover {
+    background-color: #f8f9fa;
 }
 
 @media (min-width: 768px) {

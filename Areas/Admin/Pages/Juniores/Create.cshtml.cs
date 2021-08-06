@@ -69,7 +69,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 return Page();
             }
 
-            return RedirectToPage("Index");
+            return RedirectToPage("Details", new { novaEmpresa.ID });
         }
     }
 }

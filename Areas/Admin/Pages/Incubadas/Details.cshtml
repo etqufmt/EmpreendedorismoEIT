@@ -21,48 +21,29 @@
     <div class="col-lg-6">
         <div class="card mb-4">
             <div class="row no-gutters">
-                <div class="col-7">
-                    <img class="card-img-left border-right" alt="logo"
+                <div class="col-7 border-right">
+                    <img class="card-img-left" alt="logo"
                          src="@logoURL">
                 </div>
-                <div class="col-5">
-                    <a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@Model.IncubadaVM.ID">
-                    <div class="card-btn-lateral border-bottom text-truncate">Serviços</div></a>
-                    <a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@Model.IncubadaVM.ID">
-                    <div class="card-btn-lateral border-bottom text-truncate">Redes sociais</div></a>
-                    <a asp-area="Admin" asp-page="/EmpTags/Index" asp-route-id="@Model.IncubadaVM.ID">
-                    <div class="card-btn-lateral border-bottom text-truncate">Recomendação</div></a>
+                <div class="col-5 d-flex flex-column align-content-stretch">
+                    <div class="flex-grow-1">
+                        <a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@Model.IncubadaVM.ID">
+                            <div class="h-100 card-btn-lateral border-bottom text-truncate d-flex align-items-center px-3">Serviços</div>
+                        </a>
+                    </div>
+                    <div class="flex-grow-1">
+                        <a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@Model.IncubadaVM.ID">
+                            <div class="h-100 card-btn-lateral border-bottom text-truncate d-flex align-items-center px-3">Redes sociais</div>
+                        </a>
+                    </div>
+                    <div class="flex-grow-1">
+                        <a asp-area="Admin" asp-page="/EmpTags/Index" asp-route-id="@Model.IncubadaVM.ID">
+                            <div class="h-100 card-btn-lateral text-truncate d-flex align-items-center px-3">Recomendação</div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        <dl class="row mb-0">
-            <dt class="col-md-4">
-                @Html.DisplayNameFor(model => model.IncubadaVM.Edital)
-            </dt>
-            <dd class="col-md-8 border-custom">
-                @Html.DisplayFor(model => model.IncubadaVM.Edital)
-            </dd>
-            <dt class="col-md-4">
-                @Html.DisplayNameFor(model => model.IncubadaVM.AnoIncubacao)
-            </dt>
-            <dd class="col-md-8 border-custom">
-                @Html.DisplayFor(model => model.IncubadaVM.AnoIncubacao)
-            </dd>
-            <dt class="col-md-4">
-                @Html.DisplayNameFor(model => model.IncubadaVM.DescricaoCurta)
-            </dt>
-            <dd class="col-md-8 border-custom">
-                @Html.DisplayFor(model => model.IncubadaVM.DescricaoCurta)
-            </dd>
-            <dt class="col-md-4">
-                @Html.DisplayNameFor(model => model.IncubadaVM.DescricaoLonga)
-            </dt>
-            <dd class="col-md-8 border-custom">
-                @Html.DisplayFor(model => model.IncubadaVM.DescricaoLonga)
-            </dd>
-        </dl>
-    </div>
-    <div class="col-lg-6">
         <dl class="row mb-0">
             <dt class="col-md-4">
                 @Html.DisplayNameFor(model => model.IncubadaVM.Endereco)
@@ -96,11 +77,39 @@
             </dd>
         </dl>
     </div>
+    <div class="col-lg-6">
+        <dl class="row mb-0">
+            <dt class="col-md-4">
+                @Html.DisplayNameFor(model => model.IncubadaVM.Edital)
+            </dt>
+            <dd class="col-md-8 border-custom">
+                @Html.DisplayFor(model => model.IncubadaVM.Edital)
+            </dd>
+            <dt class="col-md-4">
+                @Html.DisplayNameFor(model => model.IncubadaVM.AnoIncubacao)
+            </dt>
+            <dd class="col-md-8 border-custom">
+                @Html.DisplayFor(model => model.IncubadaVM.AnoIncubacao)
+            </dd>
+            <dt class="col-md-4 pr-xl-3">
+                @Html.DisplayNameFor(model => model.IncubadaVM.DescricaoCurta)
+            </dt>
+            <dd class="col-md-8 border-custom">
+                @Html.DisplayFor(model => model.IncubadaVM.DescricaoCurta)
+            </dd>
+            <dt class="col-md-4">
+                @Html.DisplayNameFor(model => model.IncubadaVM.DescricaoLonga)
+            </dt>
+            <dd class="col-md-8 border-custom">
+                @Html.DisplayFor(model => model.IncubadaVM.DescricaoLonga)
+            </dd>
+        </dl>
+    </div>
 </div>
 <div class="row mt-3">
     <div class="col text-right">
         <hr />
-        <a asp-page="./Index" class="btn btn-outline-secondary">Voltar</a>
+        <a asp-page="./Index" class="btn btn-outline-secondary">Voltar para lista</a>
         <button type="button" class="btn btn-outline-danger"
                 data-toggle="modal" data-target="#modal-delete"
                 data-id="@Model.IncubadaVM.ID" data-tag="SectionTitle">

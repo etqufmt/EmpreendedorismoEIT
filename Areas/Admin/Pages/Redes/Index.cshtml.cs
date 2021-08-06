@@ -124,13 +124,13 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
 
             if (Empresa.Tipo == Tipo.JUNIOR)
             {
-                ReturnURL = "/Juniores/Index";
+                ReturnURL = "/Juniores/Details";
             }
             if (Empresa.Tipo == Tipo.INCUBADA)
             {
-                ReturnURL = "/Incubadas/Index";
+                ReturnURL = "/Incubadas/Details";
             }
-            return RedirectToPage(ReturnURL);
+            return RedirectToPage(ReturnURL, new { id });
         }
     }
 }

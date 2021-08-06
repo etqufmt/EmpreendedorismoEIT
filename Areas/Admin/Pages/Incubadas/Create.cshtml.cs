@@ -69,7 +69,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
                 return Page();
             }
 
-            return RedirectToPage("Index");
+            return RedirectToPage("Details", new { novaEmpresa.ID });
         }
     }
 }
