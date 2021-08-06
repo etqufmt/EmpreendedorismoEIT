@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using EmpreendedorismoEIT.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -8,6 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace EmpreendedorismoEIT.Areas.Identity.Pages.Account.Manage
 {
+    [Authorize(Roles = "nonadmin")]
     public class DeletePersonalDataModel : PageModel
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -34,18 +37,12 @@ namespace EmpreendedorismoEIT.Areas.Identity.Pages.Account.Manage
             public string Password { get; set; }
         }
 
-        public bool RequirePassword { get; set; }
+        [TempData]
+        public string StatusMessage { get; set; }
 
-        public async Task<IActionResult> OnGet()
+        public IActionResult OnGet()
         {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
-
-            RequirePassword = await _userManager.HasPasswordAsync(user);
-            return Page();
+            return RedirectToPage("./Index");
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -53,30 +50,33 @@ namespace EmpreendedorismoEIT.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound();
             }
 
-            RequirePassword = await _userManager.HasPasswordAsync(user);
-            if (RequirePassword)
+            if (!await _userManager.CheckPasswordAsync(user, Input.Password))
             {
-                if (!await _userManager.CheckPasswordAsync(user, Input.Password))
-                {
-                    ModelState.AddModelError(string.Empty, "Incorrect password.");
-                    return Page();
-                }
+                StatusMessage = ValidationResources.ErrDeleteUsuario;
+                return RedirectToPage("./PersonalData");
+            }
+
+            if (await _userManager.IsInRoleAsync(user, "admin"))
+            {
+                StatusMessage = ValidationResources.ErrDeleteUsuario;
+                return RedirectToPage("./PersonalData");
             }
 
             var result = await _userManager.DeleteAsync(user);
-            var userId = await _userManager.GetUserIdAsync(user);
             if (!result.Succeeded)
             {
-                throw new InvalidOperationException($"Unexpected error occurred deleting user with ID '{userId}'.");
+                foreach (var error in result.Errors)
+                {
+                    _logger.LogInformation("[DEBUG] User delete: " + error);
+                }
+                StatusMessage = ValidationResources.ErrDeleteUsuario;
+                return RedirectToPage("./PersonalData");
             }
 
             await _signInManager.SignOutAsync();
-
-            _logger.LogInformation("User with ID '{UserId}' deleted themselves.", userId);
-
             return Redirect("~/");
         }
     }

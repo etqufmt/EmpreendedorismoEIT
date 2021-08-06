@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -6,6 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace EmpreendedorismoEIT.Areas.Identity.Pages.Account.Manage
 {
+    [Authorize(Roles = "nonadmin")]
     public class PersonalDataModel : PageModel
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -19,12 +22,25 @@ namespace EmpreendedorismoEIT.Areas.Identity.Pages.Account.Manage
             _logger = logger;
         }
 
+        public InputModel Input { get; set; }
+
+        public class InputModel
+        {
+            [Required]
+            [Display(Name = "Senha")]
+            [DataType(DataType.Password)]
+            public string Password { get; set; }
+        }
+
+        [TempData]
+        public string StatusMessage { get; set; }
+
         public async Task<IActionResult> OnGet()
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound();
             }
 
             return Page();

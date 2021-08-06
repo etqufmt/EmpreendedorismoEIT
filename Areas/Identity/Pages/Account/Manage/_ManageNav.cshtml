@@ -1,15 +1,18 @@
 ﻿@{
-    var adminUser = (User.IsInRole("admin"));
+    var adminUser = User.IsInRole("admin");
 }
 
 <div class="list-group">
     <a class="list-group-item list-group-item-action @ManageNavPages.IndexNavClass(ViewContext)"
        asp-page="./Index">Perfil</a>
-    @if (adminUser)
-    {
-        <a class="list-group-item list-group-item-action @ManageNavPages.ResgisterNavClass(ViewContext)"
-           asp-page="./Register">Usuários</a>
-    }
+@if (adminUser)
+{
+    <a class="list-group-item list-group-item-action @ManageNavPages.ResgisterNavClass(ViewContext)"
+        asp-page="./Register">Usuários</a>
+}
+else
+{
     <a class="list-group-item list-group-item-action @ManageNavPages.PersonalDataNavClass(ViewContext)"
-       asp-page="./PersonalData">Dados pessoais</a>
+        asp-page="./PersonalData">Dados pessoais</a>
+}
 </div>
