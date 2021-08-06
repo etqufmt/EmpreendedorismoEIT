@@ -112,6 +112,16 @@ dt, th {
     height: 2.375rem;
 }
 
+.card-img-left {
+    width: 100%;
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-bottom-left-radius: calc(0.25rem - 1px);
+}
+
+.card-btn-lateral {
+    padding: .75rem 1.25rem;
+}
+
 @media (min-width: 768px) {
     dd.border-custom {
         border-left: #99caff solid 0.2rem;

@@ -61,7 +61,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             };
 
             Logo = EJ.Empresa.Logo;
-
             return Page();
         }
     }

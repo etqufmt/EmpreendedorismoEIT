@@ -61,7 +61,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
             };
 
             Logo = EI.Empresa.Logo;
-
             return Page();
         }
     }

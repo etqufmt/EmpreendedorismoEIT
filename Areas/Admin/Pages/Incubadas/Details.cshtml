@@ -5,19 +5,36 @@
     ViewData["Title"] = "Detalhes EI";
     ViewData["Section"] = SectionManager.Incubadas;
     ViewData["SectionTitle"] = Html.DisplayFor(model => model.IncubadaVM.Nome);
+    var logoURL = String.IsNullOrEmpty(Model.Logo) ? @Url.Content("~/images/empty_logo.png") : @Url.Content("~/logo/" + Model.Logo);
 }
 
+@if (!String.IsNullOrEmpty(@Model.ErrorMessage))
+{
+    <div class="alert alert-info alert-dismissible custom-alert fade show" role="alert">
+        <span>@Model.ErrorMessage</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="bi bi-x"></i></span>
+        </button>
+    </div>
+}
 <div class="row">
     <div class="col-lg-6">
-        @if (!String.IsNullOrEmpty(@Model.ErrorMessage))
-        {
-            <div class="alert alert-info alert-dismissible custom-alert fade show" role="alert">
-                <span>@Model.ErrorMessage</span>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true"><i class="bi bi-x"></i></span>
-                </button>
+        <div class="card mb-4">
+            <div class="row no-gutters">
+                <div class="col-7">
+                    <img class="card-img-left border-right" alt="logo"
+                         src="@logoURL">
+                </div>
+                <div class="col-5">
+                    <a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@Model.IncubadaVM.ID">
+                    <div class="card-btn-lateral border-bottom text-truncate">Serviços</div></a>
+                    <a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@Model.IncubadaVM.ID">
+                    <div class="card-btn-lateral border-bottom text-truncate">Redes sociais</div></a>
+                    <a asp-area="Admin" asp-page="/EmpTags/Index" asp-route-id="@Model.IncubadaVM.ID">
+                    <div class="card-btn-lateral border-bottom text-truncate">Recomendação</div></a>
+                </div>
             </div>
-        }
+        </div>
         <dl class="row mb-0">
             <dt class="col-md-4">
                 @Html.DisplayNameFor(model => model.IncubadaVM.Edital)
