@@ -32,8 +32,11 @@ namespace EmpreendedorismoEIT
                 options.UseSqlServer(
                     Configuration.GetConnectionString("EITConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddRoles<IdentityRole>()
+            //services.AddDefaultIdentity<IdentityUser>()
+            //    .AddRoles<IdentityRole>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
             

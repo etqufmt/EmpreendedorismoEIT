@@ -284,13 +284,16 @@ namespace EmpreendedorismoEIT.Data
             RoleManager<IdentityRole> roleManager,
             ILogger<Program> logger)
         {
-            //Criar usuário de teste
             var result = await userManager.FindByNameAsync("eitufmt");
             if (result == null)
             {
+                //Criar níveis de autorização
+                await roleManager.CreateAsync(new IdentityRole("admin"));
+                await roleManager.CreateAsync(new IdentityRole("nonadmin"));
+                
+                //Criar usuário de teste
                 var user = new IdentityUser { UserName = "eitufmt" };
                 await userManager.CreateAsync(user, "eitufmt");
-                await roleManager.CreateAsync(new IdentityRole("admin"));
                 await userManager.AddToRoleAsync(user, "admin");
                 logger.LogInformation("[DEBUG] Usuário padrão criado");
             }

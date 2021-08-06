@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<div class="dropdown">
+    <a class="dropdown-toggle text-decoration-none username" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <h4 class="d-inline header-title">@User.Identity.Name<i class="bi bi-caret-down-fill"></i></h4>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" asp-area="Admin" asp-page="/Index">Administrar</a>
+        <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout">Sair</a>
+    </div>
+</div>

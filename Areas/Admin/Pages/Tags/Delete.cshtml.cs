@@ -11,11 +11,11 @@ using EmpreendedorismoEIT.ViewModels;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
 {
-    public class DeleteModel : PageModel
+    public class DeleteUserModel : PageModel
     {
         private readonly EmpreendedorismoEIT.Data.ApplicationDbContext _context;
 
-        public DeleteModel(EmpreendedorismoEIT.Data.ApplicationDbContext context)
+        public DeleteUserModel(EmpreendedorismoEIT.Data.ApplicationDbContext context)
         {
             _context = context;
         }

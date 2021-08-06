@@ -1,0 +1,107 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Usuários";
+    ViewData["ActivePage"] = ManageNavPages.Register;
+}
+
+<div class="row">
+    <div class="col-lg-6">
+        <partial name="_StatusMessage" model="Model.StatusMessage" />
+        <h5 class="subtitle">Adicionar</h5><hr class="mt-0" />
+        <p>Evite compartilhar a senha com todos os membros da equipe. Adicione usuários à medida que for necessário.</p>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Input.UserName"></label>
+                <input asp-for="Input.UserName" class="form-control" />
+                <span asp-validation-for="Input.UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.ConfirmPassword"></label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group text-right">
+                <button type="submit" class="btn btn-primary">Adicionar</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-6">
+        <h5 class="subtitle">Excluir</h5><hr class="mt-0" />
+        <p>Exclua usuários antigos que não estão mais sendo utilizados para evitar acesso indevido.</p>
+        @if (Model.UsuariosSL.Count() == 0)
+        {
+            <div class="form-group">
+                <label for="delete-user" asp-for="Input.UserName"></label>
+                <select id="delete-user" class="form-control custom-select" disabled>
+                </select>
+            </div>
+            <div class="form-group text-right">
+                <button type="button" class="btn btn-outline-danger"
+                        data-toggle="modal" data-target="#modal-delete"
+                        data-tag="#delete-user" disabled>
+                    Excluir
+                </button>
+            </div>
+        }
+        else
+        {
+            <div class="form-group">
+                <label for="delete-user" asp-for="Input.UserName"></label>
+                <select id="delete-user" class="form-control custom-select" asp-items="@Model.UsuariosSL">
+                </select>
+            </div>
+            <div class="form-group text-right">
+                <button type="button" class="btn btn-outline-danger"
+                        data-toggle="modal" data-target="#modal-delete"
+                        data-tag="#delete-user">
+                    Excluir
+                </button>
+            </div>
+        }
+    </div>
+</div>
+@* Modal de exclusão *@
+<div class="modal fade" id="modal-delete" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Excluir usuário</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir o usuário "<span class="modal-item-text"></span>"?</p>
+            </div>
+            <div class="modal-footer">
+                <form method="post" asp-page="./DeleteUser">
+                    <input type="hidden" name="DeleteUser.UserName" class="modal-item-id" />
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                    <input type="submit" value="Excluir" class="btn btn-danger" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script type="text/javascript">
+        //Puxa informações do <select>
+        $('#modal-delete').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var itemtag = button.data('tag')
+            var itemid = $(itemtag).val()
+            var itemtext = $(itemtag + ' option:selected').text().trim()
+            var modal = $(this)
+            modal.find('.modal-item-text').text(itemtext)
+            modal.find('.modal-item-id').val(itemid)
+        })
+    </script>
+}

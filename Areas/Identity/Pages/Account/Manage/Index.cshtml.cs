@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using EmpreendedorismoEIT.Resources;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 
 namespace EmpreendedorismoEIT.Areas.Identity.Pages.Account.Manage
 {
@@ -13,15 +15,19 @@ namespace EmpreendedorismoEIT.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly ILogger<IndexModel> _logger;
 
         public IndexModel(
             UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            SignInManager<IdentityUser> signInManager,
+            ILogger<IndexModel> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _logger = logger;
         }
 
+        [Display(Name = "Usuário")]
         public string Username { get; set; }
 
         [TempData]
@@ -32,22 +38,21 @@ namespace EmpreendedorismoEIT.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
-            [Phone]
-            [Display(Name = "Phone number")]
-            public string PhoneNumber { get; set; }
-        }
+            [Display(Name = "Senha atual")]
+            [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
+            [DataType(DataType.Password)]
+            public string OldPassword { get; set; }
 
-        private async Task LoadAsync(IdentityUser user)
-        {
-            var userName = await _userManager.GetUserNameAsync(user);
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            [Display(Name = "Nova senha")]
+            [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
+            [StringLength(100, ErrorMessage = "No mínimo {2} e no máximo {1} caracteres", MinimumLength = 6)]
+            [DataType(DataType.Password)]
+            public string NewPassword { get; set; }
 
-            Username = userName;
-
-            Input = new InputModel
-            {
-                PhoneNumber = phoneNumber
-            };
+            [Display(Name = "Confirmar nova senha")]
+            [Compare("NewPassword", ErrorMessage = "As senhas não conferem")]
+            [DataType(DataType.Password)]
+            public string ConfirmPassword { get; set; }
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -55,7 +60,7 @@ namespace EmpreendedorismoEIT.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound();
             }
 
             await LoadAsync(user);
@@ -67,7 +72,7 @@ namespace EmpreendedorismoEIT.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound();
             }
 
             if (!ModelState.IsValid)
@@ -76,20 +81,26 @@ namespace EmpreendedorismoEIT.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-            if (Input.PhoneNumber != phoneNumber)
+            var result = await _userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
+            if (!result.Succeeded)
             {
-                var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
-                if (!setPhoneResult.Succeeded)
+                foreach (var error in result.Errors)
                 {
-                    StatusMessage = "Unexpected error when trying to set phone number.";
-                    return RedirectToPage();
+                    _logger.LogInformation("[DEBUG] User update: " + error);
                 }
+                StatusMessage = ValidationResources.ErrAlterarSenha;
+                return RedirectToPage();
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = ValidationResources.SucAlterarSenha;
             return RedirectToPage();
+        }
+
+        private async Task LoadAsync(IdentityUser user)
+        {
+            var userName = await _userManager.GetUserNameAsync(user);
+            Username = userName;
         }
     }
 }

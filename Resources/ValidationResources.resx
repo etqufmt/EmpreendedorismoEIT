@@ -117,14 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ErrAlterarSenha" xml:space="preserve">
+    <value>Não foi possível alterar a senha. Tente novamente.</value>
+  </data>
   <data name="ErrAno" xml:space="preserve">
     <value>Ano inválido</value>
   </data>
   <data name="ErrCreate" xml:space="preserve">
     <value>Não foi possível realizar a adição. Tente novamente mais tarde.</value>
   </data>
+  <data name="ErrCreateUsuario" xml:space="preserve">
+    <value>Não foi possível adicionar o usuário. Tente novamente.</value>
+  </data>
   <data name="ErrDelete" xml:space="preserve">
     <value>Não foi possível realizar a exclusão. Tente novamente mais tarde.</value>
+  </data>
+  <data name="ErrDeleteUsuario" xml:space="preserve">
+    <value>Não foi possível excluir o usuário. Tente novamente.</value>
   </data>
   <data name="ErrEmail" xml:space="preserve">
     <value>Endereço de email inválido</value>
@@ -150,6 +159,9 @@
   <data name="ErrURL" xml:space="preserve">
     <value>URL inválida</value>
   </data>
+  <data name="ErrUsuarioDuplicado" xml:space="preserve">
+    <value>Esse usuário já existe.</value>
+  </data>
   <data name="Numero" xml:space="preserve">
     <value>Insira apenas números</value>
   </data>
@@ -157,7 +169,16 @@
     <value>Entrada inválida</value>
   </data>
   <data name="Requerido" xml:space="preserve">
-    <value>O campo precisa ser preenchido ou alterado</value>
+    <value>Campo precisa ser preenchido ou alterado</value>
+  </data>
+  <data name="SucAlterarSenha" xml:space="preserve">
+    <value>Senha alterada com sucesso.</value>
+  </data>
+  <data name="SucCreateUsuario" xml:space="preserve">
+    <value>Usuário adicionado com sucesso.</value>
+  </data>
+  <data name="SucDeleteUsuario" xml:space="preserve">
+    <value>Usuário excluído com sucesso.</value>
   </data>
   <data name="Tamanho" xml:space="preserve">
     <value>Tamanho inválido</value>

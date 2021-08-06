@@ -15,6 +15,7 @@ namespace EmpreendedorismoEIT.Models
         public int TagID { get; set; }
 
         [Range(0, 1)]
+        [Column(TypeName = "decimal(18,4)")]
         public decimal Grau { get; set; }
 
         [Required]
