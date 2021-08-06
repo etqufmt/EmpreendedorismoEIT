@@ -68,8 +68,5 @@ namespace EmpreendedorismoEIT.Models
 
         [Display(Name = "Inativa")]
         INATIVA = 2,
-
-        [Display(Name = "Suspensa")]
-        SUSPENSA = 3
     }
 }

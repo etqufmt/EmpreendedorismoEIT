@@ -14,5 +14,8 @@ namespace EmpreendedorismoEIT.ViewModels
         public Campus Campus { get; set; }
         public string Logo { get; set; }
         public Situacao Situacao { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime UltimaModificacao { get; set; }
     }
 }

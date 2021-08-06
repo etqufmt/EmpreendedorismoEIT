@@ -46,7 +46,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
                 Logo = e.Empresa.Logo,
                 Nome = e.Empresa.Nome,
                 AnoIncubacao = e.AnoIncubacao,
-                Situacao = e.Empresa.Situacao
+                Situacao = e.Empresa.Situacao,
+                UltimaModificacao = e.Empresa.UltimaModificacao
             });
 
             //Filtar por situação
@@ -65,7 +66,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
                 empresasIQ = empresasIQ.Where(e => e.Nome.Contains(CurrentFilter));
             }
 
-            empresasIQ = empresasIQ.OrderBy(e => e.Nome);
+            empresasIQ = empresasIQ.OrderByDescending(e => e.UltimaModificacao);
 
             //Fazer consulta paginada
             var pageSize = _configuration.GetValue("PageSize", 4);
