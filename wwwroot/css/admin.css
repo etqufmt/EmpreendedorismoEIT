@@ -74,7 +74,15 @@ dt, th {
 }
 
 a.text-decoration-none:hover .card-title {
-    text-decoration: underline;
+    /*text-decoration: underline;*/
+}
+
+a.text-decoration-none:hover .card{
+    background-color: #f8f9fa;
+}
+
+a.text-decoration-none:active .card {
+    background-color: #e9ecef;
 }
 
 .emp-text, .emp-text:hover, .emp-text:visited, .emp-text:link, .emp-text:active {
@@ -121,18 +129,27 @@ a.text-decoration-none:hover .card-title {
     height: 2.375rem;
 }
 
-.card-img-left {
+.card-details {
+    border-radius: .25rem;
+}
+
+img.card-img-left {
     width: 100%;
+    border-right: 0rem !important;
     border-top-left-radius: calc(0.25rem - 1px);
     border-bottom-left-radius: calc(0.25rem - 1px);
 }
 
-.card-btn-lateral:hover {
-    background-color: #f8f9fa;
+.card-btn-lateral:first-child {
+    border-top-left-radius: 0rem;
+}
+
+.card-btn-lateral:last-child {
+    border-bottom-left-radius: 0rem;
 }
 
 @media (min-width: 768px) {
-    dd.border-custom {
+    .border-custom {
         border-left: #99caff solid 0.2rem;
         box-sizing: border-box;
     }

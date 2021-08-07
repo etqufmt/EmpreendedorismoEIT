@@ -19,29 +19,24 @@
 }
 <div class="row">
     <div class="col-lg-6">
-        <div class="card mb-4">
-            <div class="row no-gutters">
-                <div class="col-7 border-right">
-                    <img class="card-img-left" alt="logo"
-                         src="@logoURL">
-                </div>
-                <div class="col-5 d-flex flex-column align-content-stretch">
-                    <div class="flex-grow-1">
-                        <a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@Model.IncubadaVM.ID">
-                            <div class="h-100 card-btn-lateral border-bottom text-truncate d-flex align-items-center px-3">Serviços</div>
-                        </a>
-                    </div>
-                    <div class="flex-grow-1">
-                        <a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@Model.IncubadaVM.ID">
-                            <div class="h-100 card-btn-lateral border-bottom text-truncate d-flex align-items-center px-3">Redes sociais</div>
-                        </a>
-                    </div>
-                    <div class="flex-grow-1">
-                        <a asp-area="Admin" asp-page="/EmpTags/Index" asp-route-id="@Model.IncubadaVM.ID">
-                            <div class="h-100 card-btn-lateral text-truncate d-flex align-items-center px-3">Recomendação</div>
-                        </a>
-                    </div>
-                </div>
+        <div class="row no-gutters card-details mb-4">
+            <div class="col-7">
+                <img class="card-img-left border" alt="logo"
+                     src="@logoURL">
+            </div>
+            <div class="col-5 list-group">
+                <a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@Model.IncubadaVM.ID"
+                   class="h-100 d-flex align-items-center list-group-item list-group-item-action card-btn-lateral">
+                    <span class="text-truncate">Serviços</span>
+                </a>
+                <a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@Model.IncubadaVM.ID"
+                   class="h-100 d-flex align-items-center list-group-item list-group-item-action card-btn-lateral">
+                    <span class="text-truncate">Redes sociais</span>
+                </a>
+                <a asp-area="Admin" asp-page="/EmpTags/Index" asp-route-id="@Model.IncubadaVM.ID"
+                   class="h-100 d-flex align-items-center list-group-item list-group-item-action card-btn-lateral">
+                    <span class="text-truncate">Recomendação</span>
+                </a>
             </div>
         </div>
         <dl class="row mb-0">
