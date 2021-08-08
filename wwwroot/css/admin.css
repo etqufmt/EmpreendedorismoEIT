@@ -1,4 +1,8 @@
-﻿.custom-file-label::after {
+﻿input:placeholder-shown {
+    font-weight: 300;
+}
+
+.custom-file-label::after {
     content: "Escolher" !important;
 }
 
@@ -51,7 +55,7 @@ h4.header-title {
 
 h5.subtitle {
     color: #666666;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
 }
 
 th, .info-title {

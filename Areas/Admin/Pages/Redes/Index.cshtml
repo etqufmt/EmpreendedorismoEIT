@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col">
                     <h5 class="subtitle">Redes sociais</h5><hr class="mt-0" />
-                    <p>Abra o perfil da rede social no navegador, copie o link da barra de endereços e cole no campo correspondente para garantir que tudo esteja correto.</p>
+                    <p>Abra o perfil da rede social no navegador, copie a URL da barra de endereços e cole no campo correspondente para garantir que tudo esteja correto.</p>
                 </div>
             </div>
             <div class="row">
@@ -40,7 +40,8 @@
                             <div class="input-group-prepend">
                                 <i class="bi-facebook input-group-text"></i>
                             </div>
-                            <input asp-for="SocialVM.FacebookURL" class="form-control" />
+                            <input asp-for="SocialVM.FacebookURL" class="form-control"
+                                   placeholder="Exemplo: https://facebook.com/ufmatogrosso" />
                         </div>
                         <span asp-validation-for="SocialVM.FacebookURL" class="text-danger"></span>
                     </div>
@@ -50,19 +51,10 @@
                             <div class="input-group-prepend">
                                 <i class="bi-instagram input-group-text"></i>
                             </div>
-                            <input asp-for="SocialVM.InstagramURL" class="form-control" />
+                            <input asp-for="SocialVM.InstagramURL" class="form-control"
+                                   placeholder="Exemplo: https://www.instagram.com/ufmt.br" />
                         </div>
                         <span asp-validation-for="SocialVM.InstagramURL" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="SocialVM.WhatsappURL" class="control-label"></label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <i class="bi-whatsapp input-group-text"></i>
-                            </div>
-                            <input asp-for="SocialVM.WhatsappURL" class="form-control number-only" />
-                        </div>
-                        <span asp-validation-for="SocialVM.WhatsappURL" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="SocialVM.TwitterURL" class="control-label"></label>
@@ -70,7 +62,8 @@
                             <div class="input-group-prepend">
                                 <i class="bi-twitter input-group-text"></i>
                             </div>
-                            <input asp-for="SocialVM.TwitterURL" class="form-control" />
+                            <input asp-for="SocialVM.TwitterURL" class="form-control"
+                                   placeholder="Exemplo: https://twitter.com/ufmt" />
                         </div>
                         <span asp-validation-for="SocialVM.TwitterURL" class="text-danger"></span>
                     </div>
@@ -80,16 +73,26 @@
                             <div class="input-group-prepend">
                                 <i class="bi-globe input-group-text"></i>
                             </div>
-                            <input asp-for="SocialVM.WebsiteURL" class="form-control" />
+                            <input asp-for="SocialVM.WebsiteURL" class="form-control"
+                                   placeholder="Exemplo: https://ufmt.br" />
                         </div>
                         <span asp-validation-for="SocialVM.WebsiteURL" class="text-danger"></span>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col text-right">
-                    <a asp-area="Admin" asp-page="@Model.ReturnURL" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-secondary">Voltar para empresa</a>
-                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                    <div class="form-group">
+                        <label asp-for="SocialVM.WhatsappURL" class="control-label"></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <i class="bi-whatsapp input-group-text"></i>
+                            </div>
+                            <input asp-for="SocialVM.WhatsappURL" class="form-control number-only"
+                                   placeholder="DDD + Telefone" />
+                        </div>
+                        <span asp-validation-for="SocialVM.WhatsappURL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group text-right mt-4">
+                        <a asp-area="Admin" asp-page="@Model.ReturnURL" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-secondary">Voltar para empresa</a>
+                        <input type="submit" value="Salvar" class="btn btn-primary" />
+                    </div>
                 </div>
             </div>
         </form>

@@ -13,17 +13,14 @@ namespace EmpreendedorismoEIT.Areas.Identity.Pages.Account.Manage
     public class DeleteUserModel : PageModel
     {
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly ILogger<DeletePersonalDataModel> _logger;
+        private readonly ILogger<DeleteUserModel> _logger;
 
 
         public DeleteUserModel(
             UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
-            ILogger<DeletePersonalDataModel> logger)
+            ILogger<DeleteUserModel> logger)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
             _logger = logger;
         }
 
