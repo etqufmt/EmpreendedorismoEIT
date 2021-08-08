@@ -54,8 +54,8 @@ h5.subtitle {
     font-size: 1.4rem;
 }
 
-dt, th {
-    color: #595959;
+th, .info-title {
+    color: #8c8c8c;
     font-weight: 500;
 }
 
@@ -74,15 +74,15 @@ dt, th {
 }
 
 a.text-decoration-none:hover .card-title {
-    /*text-decoration: underline;*/
+    text-decoration: underline;
 }
 
 a.text-decoration-none:hover .card{
-    background-color: #f8f9fa;
+    background-color: #f8f9fa !important;
 }
 
 a.text-decoration-none:active .card {
-    background-color: #e9ecef;
+    background-color: #e9ecef !important;
 }
 
 .emp-text, .emp-text:hover, .emp-text:visited, .emp-text:link, .emp-text:active {
@@ -149,8 +149,5 @@ img.card-img-left {
 }
 
 @media (min-width: 768px) {
-    .border-custom {
-        border-left: #99caff solid 0.2rem;
-        box-sizing: border-box;
-    }
+    
 }
