@@ -1,24 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
 using EmpreendedorismoEIT.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
 {
     public class CreateModel : PageModel
     {
-        private readonly EmpreendedorismoEIT.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly ILogger<CreateModel> _logger;
 
-        public CreateModel(EmpreendedorismoEIT.Data.ApplicationDbContext context)
+        public CreateModel(
+            ApplicationDbContext context,
+            ILogger<CreateModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [BindProperty]
@@ -48,8 +50,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
+                _logger.LogError("[DEBUG] Tags:create // " + ex);
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrCreate);
                 return Page();
             }

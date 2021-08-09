@@ -36,9 +36,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
             }
 
             Empresa = await _context.Empresas
-                           .Include(e => e.ProdutosServicos)
-                           .AsNoTracking()
-                           .FirstOrDefaultAsync(m => m.ID == id);
+                .Include(e => e.ProdutosServicos)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
             
             if (Empresa == null)
             {

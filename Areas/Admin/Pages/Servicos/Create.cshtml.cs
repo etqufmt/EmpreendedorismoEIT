@@ -1,24 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 {
     public class CreateModel : PageModel
     {
-        private readonly EmpreendedorismoEIT.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly ILogger<CreateModel> _logger;
 
-        public CreateModel(EmpreendedorismoEIT.Data.ApplicationDbContext context)
+        public CreateModel(
+            ApplicationDbContext context,
+            ILogger<CreateModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [BindProperty]
@@ -65,26 +66,27 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return Page();
             }
 
-            var ProdutoServico = new ProdutoServico
+            var prodServ = new ProdutoServico
             {
                 EmpresaID = ProdServVM.EmpresaID,
                 Nome = ProdServVM.Nome,
                 Descricao = ProdServVM.Descricao
             };
 
-            _context.ProdutosServicos.Add(ProdutoServico);
+            _context.ProdutosServicos.Add(prodServ);
 
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
+                _logger.LogError("[DEBUG] ProdutosServicos:create " + ex);
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
                 return Page();
             }
 
-            return RedirectToPage("./Index", new { id });
+            return RedirectToPage("Index", new { id });
         }
     }
 }

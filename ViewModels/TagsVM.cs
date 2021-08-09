@@ -17,7 +17,7 @@ namespace EmpreendedorismoEIT.ViewModels
         public string Nome
         {
             get { return _nome; }
-            set { _nome = value?.Substring(0, 1).ToUpper() + value?.Substring(1); }
+            set { _nome = value?.Substring(0, 1).ToUpper() + value?[1..]; }
         }
         private string _nome;
 

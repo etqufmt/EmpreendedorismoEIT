@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +13,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
         private readonly ApplicationDbContext _context;
         private readonly ILogger<DeleteModel> _logger;
 
-        public DeleteModel(ApplicationDbContext context,
+        public DeleteModel(
+            ApplicationDbContext context,
             ILogger<DeleteModel> logger)
         {
             _context = context;
@@ -42,28 +40,29 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return NotFound();
             }
 
-            var ProdutoServico = await _context.ProdutosServicos
-                           .Include(e => e.Empresa)
-                           .AsNoTracking()
-                           .FirstOrDefaultAsync(m => m.ID == id);
-            if (ProdutoServico == null)
+            var prodServ = await _context.ProdutosServicos
+                .Include(e => e.Empresa)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
+
+            if (prodServ == null)
             {
                 return NotFound();
             }
 
             try
             {
-                _context.ProdutosServicos.Remove(ProdutoServico);
+                _context.ProdutosServicos.Remove(prodServ);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)
             {
                 _logger.LogError("[DEBUG] ProdutosServicos:delete " + ex);
                 StatusMessage = Resources.ValidationResources.ErrDelete;
-                return RedirectToPage("Index", new { id = ProdutoServico.EmpresaID});
+                return RedirectToPage("Index", new { id = prodServ.EmpresaID});
             }
 
-            return RedirectToPage("Index", new { id = ProdutoServico.EmpresaID});
+            return RedirectToPage("Index", new { id = prodServ.EmpresaID});
         }
     }
 }

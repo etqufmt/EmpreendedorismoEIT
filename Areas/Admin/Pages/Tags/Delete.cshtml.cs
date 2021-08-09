@@ -53,7 +53,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             }
             catch (DbUpdateException ex)
             {
-                _logger.LogError("[DEBUG] Tags:delete " + ex);
+                _logger.LogError("[DEBUG] Tags:delete // " + ex);
                 StatusMessage = Resources.ValidationResources.ErrDelete;
                 return RedirectToPage("Index");
             }

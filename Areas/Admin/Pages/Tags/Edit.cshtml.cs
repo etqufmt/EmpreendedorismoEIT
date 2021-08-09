@@ -1,24 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
-using EmpreendedorismoEIT.Models;
 using EmpreendedorismoEIT.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
 {
     public class EditModel : PageModel
     {
-        private readonly EmpreendedorismoEIT.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly ILogger<EditModel> _logger;
 
-        public EditModel(EmpreendedorismoEIT.Data.ApplicationDbContext context)
+        public EditModel(
+            ApplicationDbContext context,
+            ILogger<EditModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [BindProperty]
@@ -74,8 +75,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
+                _logger.LogError("[DEBUG] Tags:update // " + ex);
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
                 return Page();
             }
