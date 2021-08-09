@@ -1,27 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
-using EmpreendedorismoEIT.Models;
 using EmpreendedorismoEIT.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
 {
-    public class DeleteUserModel : PageModel
+    public class DeleteModel : PageModel
     {
-        private readonly EmpreendedorismoEIT.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly ILogger<DeleteModel> _logger;
 
-        public DeleteUserModel(EmpreendedorismoEIT.Data.ApplicationDbContext context)
+        public DeleteModel(
+            ApplicationDbContext context,
+            ILogger<DeleteModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [BindProperty]
         public TagsVM TagVM { get; set; }
+
+        [TempData]
+        public string StatusMessage { get; set; }
 
         public IActionResult OnGet()
         {
@@ -47,9 +51,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
                 _context.Tags.Remove(tag);
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
-                return RedirectToPage("Index", new { deleteError = true });
+                _logger.LogError("[DEBUG] Tags:delete " + ex);
+                StatusMessage = Resources.ValidationResources.ErrDelete;
+                return RedirectToPage("Index");
             }
 
             return RedirectToPage("Index");

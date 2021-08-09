@@ -7,20 +7,27 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
+using Microsoft.Extensions.Logging;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 {
     public class DeleteModel : PageModel
     {
-        private readonly EmpreendedorismoEIT.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly ILogger<DeleteModel> _logger;
 
-        public DeleteModel(EmpreendedorismoEIT.Data.ApplicationDbContext context)
+        public DeleteModel(ApplicationDbContext context,
+            ILogger<DeleteModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [BindProperty]
         public ProdutoServico ProdServVM { get; set; }
+
+        [TempData]
+        public string StatusMessage { get; set; }
 
         public IActionResult OnGet()
         {
@@ -49,12 +56,14 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 _context.ProdutosServicos.Remove(ProdutoServico);
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
-                return RedirectToPage("./Index", new { id = ProdutoServico.EmpresaID, deleteError = true });
+                _logger.LogError("[DEBUG] ProdutosServicos:delete " + ex);
+                StatusMessage = Resources.ValidationResources.ErrDelete;
+                return RedirectToPage("Index", new { id = ProdutoServico.EmpresaID});
             }
 
-            return RedirectToPage("./Index", new { id = ProdutoServico.EmpresaID});
+            return RedirectToPage("Index", new { id = ProdutoServico.EmpresaID});
         }
     }
 }

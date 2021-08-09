@@ -15,15 +15,7 @@
         <a asp-page="Create" class="btn btn-outline-primary">Adicionar</a>
     </div>
 </div>
-@if (!String.IsNullOrEmpty(@Model.ErrorMessage))
-{
-    <div class="alert alert-info alert-dismissible custom-alert fade show" role="alert">
-        <span>@Model.ErrorMessage</span>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <i class="bi bi-x"></i>
-        </button>
-    </div>
-}
+<partial name="_StatusMessage" model="Model.StatusMessage" />
 <div class="row">
     @if (Model.ListaTags.Count == 0)
     {

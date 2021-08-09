@@ -13,9 +13,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 {
     public class IndexModel : PageModel
     {
-        private readonly EmpreendedorismoEIT.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public IndexModel(EmpreendedorismoEIT.Data.ApplicationDbContext context)
+        public IndexModel(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -24,9 +24,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
         public ServicosVM ProdServVM { get; set; }
         public Empresa Empresa { get; set; }
         public string ReturnURL { get; set; }
-        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id, bool? deleteError = false)
+        [TempData]
+        public string StatusMessage { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
@@ -41,11 +43,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
             if (Empresa == null)
             {
                 return NotFound();
-            }
-
-            if (deleteError.GetValueOrDefault())
-            {
-                ErrorMessage = Resources.ValidationResources.ErrDelete;
             }
 
             ListaProdServ = Empresa.ProdutosServicos.Select(ps => new ServicosVM
