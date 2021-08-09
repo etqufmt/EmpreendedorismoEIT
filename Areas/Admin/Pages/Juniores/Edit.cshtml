@@ -5,12 +5,15 @@
 @{
     ViewData["Title"] = "Editar EJ";
     ViewData["Section"] = SectionManager.Juniores;
-    ViewData["SectionTitle"] = "Editar empresa júnior";
+    ViewData["SectionTitle"] = Html.DisplayFor(model => model.JuniorVM.Nome);
 }
 
 <form method="post" enctype="multipart/form-data">
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-6 col-xl-5">
+            <div class="form-group">
+                <h5 class="subtitle">Dados básicos</h5><hr class="mt-0" />
+            </div>
             <div asp-validation-summary="ModelOnly" class="alert alert-info alert-dismissible custom-alert fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true"><i class="bi bi-x"></i></span>
@@ -23,14 +26,13 @@
                 <span asp-validation-for="JuniorVM.Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="JuniorVM.DescricaoCurta" class="control-label"></label>
-                <textarea asp-for="JuniorVM.DescricaoCurta" class="form-control" rows="2"></textarea>
-                <span asp-validation-for="JuniorVM.DescricaoCurta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="JuniorVM.DescricaoLonga" class="control-label"></label>
-                <textarea asp-for="JuniorVM.DescricaoLonga" class="form-control" rows="4"></textarea>
-                <span asp-validation-for="JuniorVM.DescricaoLonga" class="text-danger"></span>
+                <label asp-for="JuniorVM.Logo" class="control-label"></label>
+                <div class="custom-file">
+                    <input asp-for="JuniorVM.Logo" class="custom-file-input" id="input-logo"
+                           accept=".png, .jpg, .jpeg">
+                    <label class="custom-file-label text-truncate" for="input-logo"></label>
+                </div>
+                <span asp-validation-for="JuniorVM.Logo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="JuniorVM.Endereco" class="control-label"></label>
@@ -42,27 +44,18 @@
                 <input type="tel" asp-for="JuniorVM.Telefone" class="form-control number-only" />
                 <span asp-validation-for="JuniorVM.Telefone" class="text-danger"></span>
             </div>
-        </div>
-        <div class="col-md-5">
             <div class="form-group">
                 <label asp-for="JuniorVM.Email" class="control-label"></label>
                 <input asp-for="JuniorVM.Email" class="form-control" />
                 <span asp-validation-for="JuniorVM.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="JuniorVM.Logo" class="control-label"></label>
-                <div class="custom-file">
-                    <input asp-for="JuniorVM.Logo" class="custom-file-input" id="input-logo"
-                           accept=".png, .jpg, .jpeg">
-                    <label class="custom-file-label text-truncate" for="input-logo"></label>
-                </div>
-                <span asp-validation-for="JuniorVM.Logo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="JuniorVM.Situacao" class="control-label"></label>
                 <select asp-for="JuniorVM.Situacao" class="form-control custom-select" asp-items="@Html.GetEnumSelectList<Situacao>()"></select>
                 <span asp-validation-for="JuniorVM.Situacao" class="text-danger"></span>
             </div>
+        </div>
+        <div class="col-md-6 col-xl-5">
             <div class="form-group">
                 <label asp-for="JuniorVM.Campus" class="control-label"></label>
                 <select asp-for="JuniorVM.Campus" class="form-control custom-select" asp-items="@Html.GetEnumSelectList<Campus>()"></select>
@@ -72,6 +65,16 @@
                 <label asp-for="JuniorVM.Instituto" class="control-label">Instituto / Faculdade</label>
                 <input asp-for="JuniorVM.Instituto" class="form-control" />
                 <span asp-validation-for="JuniorVM.Instituto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JuniorVM.DescricaoCurta" class="control-label"></label>
+                <textarea asp-for="JuniorVM.DescricaoCurta" class="form-control" rows="2"></textarea>
+                <span asp-validation-for="JuniorVM.DescricaoCurta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JuniorVM.DescricaoLonga" class="control-label"></label>
+                <textarea asp-for="JuniorVM.DescricaoLonga" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="JuniorVM.DescricaoLonga" class="text-danger"></span>
             </div>
             <div class="form-group text-right mt-4">
                 <a asp-page="./Details" asp-route-id="@Model.JuniorVM.ID" class="btn btn-outline-secondary">Voltar</a>
