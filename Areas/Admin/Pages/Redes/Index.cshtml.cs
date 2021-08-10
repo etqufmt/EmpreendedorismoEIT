@@ -1,24 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
-using System.Collections;
 using EmpreendedorismoEIT.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
 {
     public class IndexModel : PageModel
     {
-        private readonly EmpreendedorismoEIT.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(EmpreendedorismoEIT.Data.ApplicationDbContext context)
+        public IndexModel(
+            ApplicationDbContext context,
+            ILogger<IndexModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [BindProperty]
@@ -53,7 +55,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
                 InstagramURL = Empresa.RedesSociais
                                 .FirstOrDefault(r => r.Plataforma == Plataforma.INSTAGRAM)?.URL,
                 WhatsappURL = Empresa.RedesSociais
-                                .FirstOrDefault(r => r.Plataforma == Plataforma.WHATSAPP)?.URL.Substring(2),
+                                .FirstOrDefault(r => r.Plataforma == Plataforma.WHATSAPP)?.URL[2..],
                 TwitterURL = Empresa.RedesSociais
                                 .FirstOrDefault(r => r.Plataforma == Plataforma.TWITTER)?.URL
             };
@@ -69,8 +71,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
             }
 
             Empresa = await _context.Empresas
-                            .Include(e => e.RedesSociais)
-                            .FirstOrDefaultAsync(m => m.ID == id);
+                .Include(e => e.RedesSociais)
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (Empresa == null)
             {
@@ -110,14 +112,14 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
                     Plataforma = Plataforma.TWITTER, URL = SocialVM.TwitterURL });
             }
 
-            _context.Attach(Empresa).State = EntityState.Modified;
-
             try
             {
+                _context.Attach(Empresa).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
+                _logger.LogError("[DEBUG] RedesSociais:update // " + ex);
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
                 return Page();
             }

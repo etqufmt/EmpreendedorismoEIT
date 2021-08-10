@@ -8,16 +8,21 @@ using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
 using EmpreendedorismoEIT.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
 {
     public class IndexModel : PageModel
     {
-        private readonly EmpreendedorismoEIT.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(EmpreendedorismoEIT.Data.ApplicationDbContext context)
+        public IndexModel(
+            ApplicationDbContext context,
+            ILogger<IndexModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [BindProperty]
@@ -107,14 +112,14 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
                 }
             }
 
-            _context.Attach(Empresa).State = EntityState.Modified;
-
             try
             {
+                _context.Attach(Empresa).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
+                _logger.LogError("[DEBUG] EmpresaTags:update // " + ex);
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
                 return Page();
             }

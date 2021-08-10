@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
-using EmpreendedorismoEIT.Models;
 using Microsoft.Extensions.Logging;
 using EmpreendedorismoEIT.ViewModels;
 using EmpreendedorismoEIT.Utils;
@@ -16,18 +12,25 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 {
     public class DeleteModel : PageModel
     {
-        private readonly EmpreendedorismoEIT.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly ILogger<DeleteModel> _logger;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public DeleteModel(EmpreendedorismoEIT.Data.ApplicationDbContext context,
+        public DeleteModel(
+            ApplicationDbContext context,
+            ILogger<DeleteModel> logger,
             IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _logger = logger;
             _webHostEnvironment = webHostEnvironment;
         }
 
         [BindProperty]
         public JunioresVM JuniorVM { get; set; }
+
+        [TempData]
+        public string StatusMessage { get; set; }
 
         public IActionResult OnGet()
         {
@@ -57,9 +60,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 await _context.SaveChangesAsync();
                 LogoManager.ExcluirImagem(_webHostEnvironment, logoAtual);
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
-                return RedirectToPage("Details", new { id, deleteError = true });
+                _logger.LogError("[DEBUG] Empresas:delete // " + ex);
+                StatusMessage = Resources.ValidationResources.ErrDelete;
+                return RedirectToPage("Details", new { id });
             }
 
             return RedirectToPage("Index");

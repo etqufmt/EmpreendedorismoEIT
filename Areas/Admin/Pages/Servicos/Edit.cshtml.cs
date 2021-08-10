@@ -81,10 +81,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
             prodServ.Nome = ProdServVM.Nome;
             prodServ.Descricao = ProdServVM.Descricao;
 
-            _context.Attach(prodServ).State = EntityState.Modified;
-
             try
             {
+                _context.Attach(prodServ).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)

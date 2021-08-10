@@ -1,30 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
-using EmpreendedorismoEIT.Models;
 using EmpreendedorismoEIT.ViewModels;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 {
     public class DetailsModel : PageModel
     {
-        private readonly EmpreendedorismoEIT.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public DetailsModel(EmpreendedorismoEIT.Data.ApplicationDbContext context)
+        public DetailsModel(ApplicationDbContext context)
         {
             _context = context;
         }
 
         public JunioresVM JuniorVM { get; set; }
         public string Logo { get; set; }
-        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id, bool? deleteError = false)
+        [TempData]
+        public string StatusMessage { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
@@ -38,11 +36,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             if (EJ == null)
             {
                 return NotFound();
-            }
-
-            if (deleteError.GetValueOrDefault())
-            {
-                ErrorMessage = Resources.ValidationResources.ErrDelete;
             }
 
             JuniorVM = new JunioresVM

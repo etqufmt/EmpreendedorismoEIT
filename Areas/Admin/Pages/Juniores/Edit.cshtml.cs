@@ -1,28 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
-using EmpreendedorismoEIT.Models;
 using Microsoft.AspNetCore.Hosting;
 using EmpreendedorismoEIT.ViewModels;
 using EmpreendedorismoEIT.Utils;
+using Microsoft.Extensions.Logging;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 {
     public class EditModel : PageModel
     {
-        private readonly EmpreendedorismoEIT.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly ILogger<EditModel> _logger;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public EditModel(EmpreendedorismoEIT.Data.ApplicationDbContext context,
+        public EditModel(
+            ApplicationDbContext context,
+            ILogger<EditModel> logger,
             IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _logger = logger;
             _webHostEnvironment = webHostEnvironment;
         }
 
@@ -36,11 +37,10 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 return NotFound();
             }
 
-            //Carregar tudo de uma vez
             var EJ = await _context.DadosJuniores
-                        .Include(d => d.Empresa)
-                        .AsNoTracking()
-                        .FirstOrDefaultAsync(d => d.EmpresaID == id);
+                .Include(d => d.Empresa)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(d => d.EmpresaID == id);
 
             if (EJ == null)
             {
@@ -73,8 +73,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             }
 
             var EJ = await _context.DadosJuniores
-                        .Include(d => d.Empresa)
-                        .FirstOrDefaultAsync(d => d.EmpresaID == id);
+                .Include(d => d.Empresa)
+                .FirstOrDefaultAsync(d => d.EmpresaID == id);
 
             if (EJ == null)
             {
@@ -86,7 +86,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 return Page();
             }
 
-            EJ.EmpresaID = JuniorVM.ID;
             EJ.Campus = JuniorVM.Campus;
             EJ.Instituto = JuniorVM.Instituto;
             EJ.Empresa.Nome = JuniorVM.Nome;
@@ -99,21 +98,24 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             EJ.Empresa.UltimaModificacao = DateTime.Now;
 
             string logoAntigo = null;
+            string logoAtual = null;
             if (JuniorVM.Logo != null)
             {
                 logoAntigo = EJ.Empresa.Logo;
-                EJ.Empresa.Logo = LogoManager.SalvarImagem(_webHostEnvironment, JuniorVM.Logo);
+                logoAtual = LogoManager.SalvarImagem(_webHostEnvironment, JuniorVM.Logo);
+                EJ.Empresa.Logo = logoAtual;
             }
-
-            _context.Attach(EJ).State = EntityState.Modified;
 
             try
             {
+                _context.Attach(EJ).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 LogoManager.ExcluirImagem(_webHostEnvironment, logoAntigo);
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
+                _logger.LogError("[DEBUG] Empresas:update // " + ex);
+                LogoManager.ExcluirImagem(_webHostEnvironment, logoAtual);
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
                 return Page();
             }

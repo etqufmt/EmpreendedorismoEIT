@@ -69,10 +69,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             tag.Nome = TagVM.Nome;
             tag.Cor = String.Format("{0:X6}", (int)TagVM.Cor);
 
-            _context.Attach(tag).State = EntityState.Modified;
-
             try
             {
+                _context.Attach(tag).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)

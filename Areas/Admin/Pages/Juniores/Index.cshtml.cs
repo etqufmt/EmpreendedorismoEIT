@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
@@ -18,7 +16,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
 
-        public IndexModel(ApplicationDbContext context, IConfiguration configuration)
+        public IndexModel(
+            ApplicationDbContext context,
+            IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;

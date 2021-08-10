@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,18 +7,24 @@ using EmpreendedorismoEIT.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using EmpreendedorismoEIT.Utils;
 using Microsoft.EntityFrameworkCore;
+using EmpreendedorismoEIT.Data;
+using Microsoft.Extensions.Logging;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 {
     public class CreateModel : PageModel
     {
-        private readonly EmpreendedorismoEIT.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly ILogger<CreateModel> _logger;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public CreateModel(EmpreendedorismoEIT.Data.ApplicationDbContext context,
+        public CreateModel(
+            ApplicationDbContext context,
+            ILogger<CreateModel> logger,
             IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _logger = logger;
             _webHostEnvironment = webHostEnvironment;
         }
 
@@ -63,8 +67,10 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 _context.Empresas.Add(novaEmpresa);
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
+                _logger.LogError("[DEBUG] Empresas:create // " + ex);
+                LogoManager.ExcluirImagem(_webHostEnvironment, novaEmpresa.Logo);
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrCreate);
                 return Page();
             }
