@@ -1,6 +1,6 @@
-﻿input:placeholder-shown {
+﻿/*input:placeholder-shown {
     font-weight: 300;
-}
+}*/
 
 .custom-file-label::after {
     content: "Escolher" !important;
@@ -152,6 +152,9 @@ img.card-img-left {
     border-bottom-left-radius: 0rem;
 }
 
+.label-sub{
+    font-size: 0.75rem;
+}
+
 @media (min-width: 768px) {
-    
 }

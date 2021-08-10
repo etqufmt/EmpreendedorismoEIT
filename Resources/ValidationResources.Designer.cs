@@ -232,7 +232,7 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Campo precisa ser preenchido ou alterado.
+        ///   Looks up a localized string similar to Campo precisa ser preenchido.
         /// </summary>
         public static string Requerido {
             get {

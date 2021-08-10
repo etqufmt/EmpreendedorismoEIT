@@ -175,7 +175,7 @@
     <value>Entrada inválida</value>
   </data>
   <data name="Requerido" xml:space="preserve">
-    <value>Campo precisa ser preenchido ou alterado</value>
+    <value>Campo precisa ser preenchido</value>
   </data>
   <data name="SucAlterarSenha" xml:space="preserve">
     <value>Senha alterada com sucesso.</value>

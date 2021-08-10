@@ -20,60 +20,61 @@
                 </button>
             </div>
             <div class="form-group">
-                <label asp-for="JuniorVM.Nome" class="control-label"></label>
+                <label asp-for="JuniorVM.Nome" class="control-label">Nome <span class="label-sub">🞹</span></label>
                 <input asp-for="JuniorVM.Nome" class="form-control" />
                 <span asp-validation-for="JuniorVM.Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="JuniorVM.Logo" class="control-label"></label>
-                <div class="custom-file">
-                    <input asp-for="JuniorVM.Logo" class="custom-file-input" id="input-logo" accept=".png, .jpg, .jpeg">
-                    <label class="custom-file-label text-truncate" for="input-logo"></label>
-                </div>
-                <span asp-validation-for="JuniorVM.Logo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="JuniorVM.Endereco" class="control-label"></label>
-                <input asp-for="JuniorVM.Endereco" class="form-control" />
+                <label asp-for="JuniorVM.Endereco" class="control-label">Endereço <span class="label-sub">🞹</span></label>
+                <textarea asp-for="JuniorVM.Endereco" class="form-control" rows="2" placeholder="Dentro do campus"></textarea>
                 <span asp-validation-for="JuniorVM.Endereco" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="JuniorVM.Telefone" class="control-label"></label>
-                <input type="tel" asp-for="JuniorVM.Telefone" class="form-control number-only" />
+                <label asp-for="JuniorVM.Telefone" class="control-label">Telefone <span class="label-sub">(Apenas números)  <span class="label-sub">🞹</span></span></label>
+                <input type="tel" asp-for="JuniorVM.Telefone" class="form-control number-only"
+                       placeholder="DDD + Telefone" />
                 <span asp-validation-for="JuniorVM.Telefone" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="JuniorVM.Email" class="control-label"></label>
+                <label asp-for="JuniorVM.Email" class="control-label">Email  <span class="label-sub">🞹</span></label>
                 <input asp-for="JuniorVM.Email" class="form-control" />
                 <span asp-validation-for="JuniorVM.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="JuniorVM.Situacao" class="control-label"></label>
+                <label asp-for="JuniorVM.Situacao" class="control-label">Situação  <span class="label-sub">🞹</span></label>
                 <select asp-for="JuniorVM.Situacao" class="form-control custom-select" asp-items="@Html.GetEnumSelectList<Situacao>()"></select>
                 <span asp-validation-for="JuniorVM.Situacao" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-6 col-xl-5">
             <div class="form-group">
-                <label asp-for="JuniorVM.Campus" class="control-label"></label>
+                <label asp-for="JuniorVM.Campus" class="control-label">Campus  <span class="label-sub">🞹</span></label>
                 <select asp-for="JuniorVM.Campus" class="form-control custom-select" asp-items="@Html.GetEnumSelectList<Campus>()"></select>
                 <span asp-validation-for="JuniorVM.Campus" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="JuniorVM.Instituto" class="control-label">Instituto / Faculdade</label>
-                <input asp-for="JuniorVM.Instituto" class="form-control" />
+                <label asp-for="JuniorVM.Instituto" class="control-label">Instituto / Faculdade  <span class="label-sub">🞹</span></label>
+                <input asp-for="JuniorVM.Instituto" class="form-control" placeholder="Associado à EJ"/>
                 <span asp-validation-for="JuniorVM.Instituto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="JuniorVM.DescricaoCurta" class="control-label"></label>
-                <textarea asp-for="JuniorVM.DescricaoCurta" class="form-control" rows="2"></textarea>
+                <label asp-for="JuniorVM.DescricaoCurta" class="control-label"> Descrição  <span class="label-sub">🞹</span></label>
+                <textarea asp-for="JuniorVM.DescricaoCurta" class="form-control" rows="4"></textarea>
                 <span asp-validation-for="JuniorVM.DescricaoCurta" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="JuniorVM.DescricaoLonga" class="control-label"></label>
-                <textarea asp-for="JuniorVM.DescricaoLonga" class="form-control" rows="4"></textarea>
-                <span asp-validation-for="JuniorVM.DescricaoLonga" class="text-danger"></span>
+                <label asp-for="JuniorVM.Logo" class="control-label">Logotipo <span class="label-sub">(Apenas .jpg e .png)</span></label>
+                <div class="custom-file">
+                    <input asp-for="JuniorVM.Logo" class="custom-file-input" id="input-logo" accept=".png, .jpg, .jpeg" />
+                    <label class="custom-file-label text-truncate" for="input-logo"></label>
+                </div>
+                <span asp-validation-for="JuniorVM.Logo" class="text-danger"></span>
             </div>
+            @*<div class="form-group">
+            <label asp-for="JuniorVM.DescricaoLonga" class="control-label">Descrição longa <span class="label-sub">(Opcional)</span></label>
+            <textarea asp-for="JuniorVM.DescricaoLonga" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="JuniorVM.DescricaoLonga" class="text-danger"></span>
+        </div>*@
             <div class="form-group text-right mt-4">
                 <a asp-page="./Index" class="btn btn-outline-secondary">Voltar</a>
                 <input type="submit" value="Criar" class="btn btn-primary" />

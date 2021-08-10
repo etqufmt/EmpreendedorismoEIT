@@ -21,6 +21,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
         [TempData]
         public string StatusMessage { get; set; }
+        
+        [TempData]
+        public bool JustCreatedMessage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

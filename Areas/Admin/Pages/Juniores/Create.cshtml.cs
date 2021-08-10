@@ -36,6 +36,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             return Page();
         }
 
+        [TempData]
+        public bool JustCreatedMessage { get; set; }
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -75,6 +78,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 return Page();
             }
 
+            JustCreatedMessage = true;
             return RedirectToPage("Details", new { novaEmpresa.ID });
         }
     }
