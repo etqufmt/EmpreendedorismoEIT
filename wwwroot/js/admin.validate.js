@@ -17,6 +17,15 @@ $(document).on('input', '.input-len-number', function (evt) {
     evt.target.value = evt.target.value.slice(0, evt.target.maxLength)
 })
 
+//Contador de caracteres
+$(document).ready(function () {
+    $('.maxcounter').maxlength({
+        showOnReady: true,
+        alwaysShow: true,
+    })
+});
+
+
 //Exibir nome de arquivo na caixa de seleção (upload)
 //$(document).on('input', '.custom-file-input', function (evt) {
 //    var name = (evt.target.files[0]?.name) ?? ''
