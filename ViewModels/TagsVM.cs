@@ -1,4 +1,5 @@
 ﻿using EmpreendedorismoEIT.Resources;
+using EmpreendedorismoEIT.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,14 +13,10 @@ namespace EmpreendedorismoEIT.ViewModels
     {
         public int ID { get; set; }
 
+        [FormatText]
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
         [StringLength(20, MinimumLength = 2, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
-        public string Nome
-        {
-            get { return _nome; }
-            set { _nome = value?.Substring(0, 1).ToUpper() + value?[1..]; }
-        }
-        private string _nome;
+        public string Nome { get; set; }
 
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
         public Cores Cor { get; set; }

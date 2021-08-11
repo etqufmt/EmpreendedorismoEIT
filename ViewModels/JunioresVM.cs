@@ -15,24 +15,28 @@ namespace EmpreendedorismoEIT.ViewModels
         [Display(Name = "Nome")]
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
         [StringLength(50, MinimumLength = 3, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
+        [FormatText]
         public string Nome { get; set; }
 
 
         [Display(Name = "Descrição curta")]
         [DisplayFormat(NullDisplayText = "[Não informado]")]
         [StringLength(140, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
+        [FormatText]
         public string DescricaoCurta { get; set; }
 
 
         [Display(Name = "Descrição longa")]
         [DisplayFormat(NullDisplayText = "[Não informado]")]
         [StringLength(500, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
+        [FormatText]
         public string DescricaoLonga { get; set; }
 
 
         [Display(Name = "Endereço")]
         [DisplayFormat(NullDisplayText = "[Não informado]")]
         [StringLength(200, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
+        [FormatText]
         public string Endereco { get; set; }
 
 
@@ -78,6 +82,7 @@ namespace EmpreendedorismoEIT.ViewModels
         [Display(Name = "Instituto")]
         [StringLength(50, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         [Required(ErrorMessageResourceName = "ErrInstituto", ErrorMessageResourceType = typeof(ValidationResources))]
+        [FormatText]
         public string Instituto { get; set; }
     }
 }
