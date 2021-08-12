@@ -45,8 +45,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             {
                 ID = EJ.EmpresaID,
                 Nome = EJ.Empresa.Nome,
-                DescricaoCurta = EJ.Empresa.DescricaoCurta,
-                DescricaoLonga = EJ.Empresa.DescricaoLonga,
+                //DescricaoCurta = EJ.Empresa.DescricaoCurta,
+                //DescricaoLonga = EJ.Empresa.DescricaoLonga,
                 Endereco = EJ.Empresa.Endereco,
                 Telefone = EJ.Empresa.Telefone,
                 Email = EJ.Empresa.Email,

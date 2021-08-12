@@ -12,7 +12,6 @@ namespace EmpreendedorismoEIT.Models
     {
         public int ID { get; set; }
         
-        [Required]
         public Plataforma Plataforma { get; set; }
 
         [Required]

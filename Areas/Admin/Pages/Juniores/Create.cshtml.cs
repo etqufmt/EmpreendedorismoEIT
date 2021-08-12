@@ -50,8 +50,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             {
                 Nome = JuniorVM.Nome,
                 Tipo = Tipo.JUNIOR,
-                DescricaoCurta = JuniorVM.DescricaoCurta,
-                DescricaoLonga = JuniorVM.DescricaoLonga,
+                //DescricaoCurta = JuniorVM.DescricaoCurta,
+                //DescricaoLonga = JuniorVM.DescricaoLonga,
                 Endereco = JuniorVM.Endereco,
                 Telefone = JuniorVM.Telefone,
                 Email = JuniorVM.Email,

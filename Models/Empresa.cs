@@ -19,11 +19,15 @@ namespace EmpreendedorismoEIT.Models
         [Required]
         public Tipo Tipo { get; set; }
 
-        [StringLength(140)]
-        public string DescricaoCurta { get; set; }
+        [StringLength(11)]
+        public string CNPJ { get; set; }
+
+        public Segmento Segmento { get; set; }
+
+        public int RamoAtuacaoID { get; set; }
 
         [StringLength(500)]
-        public string DescricaoLonga { get; set; }
+        public string Descricao { get; set; }
 
         [StringLength(200)]
         public string Endereco { get; set; }
@@ -45,6 +49,7 @@ namespace EmpreendedorismoEIT.Models
         public DateTime UltimaModificacao { get; set; }
 
         //Outras entidades
+        public RamoAtuacao RamoAtuacao { get; set; }
         public DadosIncubada DadosIncubada { get; set; }
         public DadosJunior DadosJunior { get; set; }
         public ICollection<RedeSocial> RedesSociais { get; set; }
@@ -68,5 +73,17 @@ namespace EmpreendedorismoEIT.Models
 
         [Display(Name = "Inativa")]
         INATIVA = 2,
+    }
+
+    public enum Segmento
+    {
+        [Display(Name = "Indústria")]
+        INDUSTRIA = 1,
+
+        [Display(Name = "Comércio")]
+        COMERCIO = 2,
+
+        [Display(Name = "Prestação de serviços")]
+        SERVICOS = 3,
     }
 }

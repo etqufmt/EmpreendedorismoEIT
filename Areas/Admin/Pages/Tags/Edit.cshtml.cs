@@ -42,7 +42,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             {
                 ID = tag.ID,
                 Nome = tag.Nome,
-                Cor = (Cores) Enum.Parse(typeof(Cores),Convert.ToInt32(tag.Cor, 16).ToString())
+                //Cor = (Cores) Enum.Parse(typeof(Cores),Convert.ToInt32(tag.Cor, 16).ToString())
             };
 
             return Page();
@@ -67,7 +67,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             }
 
             tag.Nome = TagVM.Nome;
-            tag.Cor = String.Format("{0:X6}", (int)TagVM.Cor);
+            //tag.Cor = String.Format("{0:X6}", (int)TagVM.Cor);
 
             try
             {

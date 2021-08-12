@@ -66,7 +66,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
                 {
                     TagID = tag.ID,
                     Nome = tag.Nome,
-                    Cor = tag.Cor,
+                    //Cor = tag.Cor,
                     Grau = grau,
                 });
             }

@@ -16,9 +16,7 @@ namespace EmpreendedorismoEIT.Models
         [StringLength(30)]
         public string Nome { get; set; }
         
-        [Required]
-        [StringLength(6)]
-        public string Cor { get; set; }
+        public int Cor { get; set; }
 
         public ICollection<EmpresaTag> EmpresasAssociadas { get; set; }
     }

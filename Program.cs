@@ -19,7 +19,7 @@ namespace EmpreendedorismoEIT
             var host = CreateHostBuilder(args).Build();
 
             //Desativa migrations
-            //Cria banco de dados automaticamente se não existir
+            //Cria banco de dados automaticamente
             //Popula com dados em DbInitializer
             //Apagar DB manualmente quando fizer alterações no modelo
             CreateDbIfNotExists(host);
@@ -36,16 +36,21 @@ namespace EmpreendedorismoEIT
                 try
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
-                    var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
-                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                    context.Database.EnsureCreated();
-                    //Preencher banco com dados de teste
-                    DbInitializer.Initialize(context, logger);
-                    DbInitializer.AddDefaultUserAsync(userManager, roleManager, logger).GetAwaiter().GetResult();
+                    //Cria o banco de dados se ele não existir ou não tiver as tabelas necessárias
+                    if (context.Database.EnsureCreated())
+                    {
+                        var webHostEnvironment = services.GetRequiredService<IWebHostEnvironment>();
+                        var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+                        var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                        //Preenche banco com dados de teste
+                        DbInitializer.Initialize(context, webHostEnvironment, logger);
+                        DbInitializer.AddDefaultUserAsync(userManager, roleManager, logger).GetAwaiter().GetResult();
+                    }
                 }
                 catch (Exception ex)
                 {
                     logger.LogError(ex, "[DEBUG] Erro ao criar banco de dados");
+                    //Environment.Exit(1);
                 }
             }
         }

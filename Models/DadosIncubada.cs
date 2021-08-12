@@ -16,7 +16,11 @@ namespace EmpreendedorismoEIT.Models
         [StringLength(50)]
         public string Edital { get; set; }
 
-        public int AnoIncubacao { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime MesEntrada { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime MesSaida { get; set; }
 
         public Empresa Empresa { get; set; }
     }

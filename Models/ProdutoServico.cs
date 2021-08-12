@@ -13,7 +13,7 @@ namespace EmpreendedorismoEIT.Models
         public int ID { get; set; }
         
         [Required]
-        [StringLength(100, MinimumLength = 3)]
+        [StringLength(100)]
         public string Nome { get; set; }
 
         [StringLength(400)]

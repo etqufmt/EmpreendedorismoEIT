@@ -53,8 +53,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 Campus = EJ.Campus,
                 Instituto = EJ.Instituto,
                 Nome = EJ.Empresa.Nome,
-                DescricaoCurta = EJ.Empresa.DescricaoCurta,
-                DescricaoLonga = EJ.Empresa.DescricaoLonga,
+                //DescricaoCurta = EJ.Empresa.DescricaoCurta,
+                //DescricaoLonga = EJ.Empresa.DescricaoLonga,
                 Endereco = EJ.Empresa.Endereco,
                 Telefone = EJ.Empresa.Telefone,
                 Email = EJ.Empresa.Email,
@@ -89,8 +89,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             EJ.Campus = JuniorVM.Campus;
             EJ.Instituto = JuniorVM.Instituto;
             EJ.Empresa.Nome = JuniorVM.Nome;
-            EJ.Empresa.DescricaoCurta = JuniorVM.DescricaoCurta;
-            EJ.Empresa.DescricaoLonga = JuniorVM.DescricaoLonga;
+            //EJ.Empresa.DescricaoCurta = JuniorVM.DescricaoCurta;
+            //EJ.Empresa.DescricaoLonga = JuniorVM.DescricaoLonga;
             EJ.Empresa.Endereco = JuniorVM.Endereco;
             EJ.Empresa.Telefone = JuniorVM.Telefone;
             EJ.Empresa.Email = JuniorVM.Email;

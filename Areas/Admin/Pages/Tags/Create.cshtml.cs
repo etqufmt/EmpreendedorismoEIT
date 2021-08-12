@@ -41,7 +41,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             var tag = new Tag
             {
                 Nome = TagVM.Nome,
-                Cor = String.Format("{0:X6}", (int)TagVM.Cor)
+                //Cor = String.Format("{0:X6}", (int)TagVM.Cor)
             };
 
             _context.Tags.Add(tag);
