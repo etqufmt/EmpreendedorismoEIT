@@ -23,7 +23,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
         }
 
         [BindProperty]
-        public TagsVM TagVM { get; set; }
+        public TagVM TagVM { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -38,11 +38,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
                 return NotFound();
             }
 
-            TagVM = new TagsVM
+            TagVM = new TagVM
             {
                 ID = tag.ID,
                 Nome = tag.Nome,
-                //Cor = (Cores) Enum.Parse(typeof(Cores),Convert.ToInt32(tag.Cor, 16).ToString())
+                CorInt = tag.Cor,
             };
 
             return Page();
@@ -67,7 +67,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             }
 
             tag.Nome = TagVM.Nome;
-            //tag.Cor = String.Format("{0:X6}", (int)TagVM.Cor);
+            tag.Cor = TagVM.CorInt;
 
             try
             {

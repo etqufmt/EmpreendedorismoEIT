@@ -1,11 +1,12 @@
 ﻿using EmpreendedorismoEIT.Resources;
 using EmpreendedorismoEIT.Utils;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace EmpreendedorismoEIT.ViewModels
 {
 
-    public class TagsVM
+    public class TagVM
     {
         public int ID { get; set; }
 
@@ -16,6 +17,24 @@ namespace EmpreendedorismoEIT.ViewModels
 
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
         public Cores Cor { get; set; }
+
+        public string CorHTML => ColorManager.CorHTML((int)Cor);
+
+        public int CorInt
+        {
+            get { return (int)Cor; }
+            set 
+            {
+                try
+                {
+                    Cor = (Cores)Enum.Parse(typeof(Cores), value.ToString());
+                }
+                catch
+                {
+                    Cor = 0x0;
+                }
+            }
+        }
     }
 
     public enum Cores

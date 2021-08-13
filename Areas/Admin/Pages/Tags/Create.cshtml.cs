@@ -24,7 +24,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
         }
 
         [BindProperty]
-        public TagsVM TagVM { get; set; }
+        public TagVM TagVM { get; set; }
 
         public IActionResult OnGet()
         {
@@ -41,13 +41,12 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             var tag = new Tag
             {
                 Nome = TagVM.Nome,
-                //Cor = String.Format("{0:X6}", (int)TagVM.Cor)
+                Cor = TagVM.CorInt,
             };
-
-            _context.Tags.Add(tag);
 
             try
             {
+                _context.Tags.Add(tag);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)

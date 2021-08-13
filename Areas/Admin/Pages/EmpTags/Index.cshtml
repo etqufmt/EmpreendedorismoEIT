@@ -40,7 +40,7 @@
         @for (var i = 0; i < Model.ListaET.Count; i++)
         {
             <div class="col mb-4">
-                <div class="card text-white grau-card" style="background-color: @($"#{Model.ListaET[i].Cor}");">
+                <div class="card text-white grau-card" style="background-color: @Model.ListaET[i].CorHTML;">
                     <div class="card-header">
                         <div class="row">
                             <div class="col text-truncate pr-0">@Html.DisplayFor(model => model.ListaET[i].Nome)</div>

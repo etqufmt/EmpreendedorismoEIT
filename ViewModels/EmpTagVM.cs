@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmpreendedorismoEIT.Utils;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace EmpreendedorismoEIT.ViewModels
@@ -7,9 +8,11 @@ namespace EmpreendedorismoEIT.ViewModels
     {
         public int TagID { get; set; }
         public string Nome { get; set; }
-        public string Cor { get; set; }
+        public int Cor { get; set; }
 
         [Range(0, 100)]
         public int Grau { get; set; }
+
+        public string CorHTML => ColorManager.CorHTML((int)Cor);
     }
 }

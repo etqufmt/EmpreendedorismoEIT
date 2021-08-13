@@ -30,13 +30,13 @@
     {
         <div class="btn-group m-2" role="group">
             <a asp-page="Edit" asp-route-id="@item.ID" class="btn btn-secondary tag-button"
-               style="background-color: @($"#{item.Cor}");">
+               style="background-color: @item.CorHTML;">
                 <span id="tag-nome-@item.ID">@Html.DisplayFor(modelItem => item.Nome)</span>
             </a>
             <button type="button" class="btn btn-secondary tag-button"
                     data-toggle="modal" data-target="#modal-delete"
                     data-id="@item.ID" data-tag="tag-nome-@item.ID"
-                    style="background-color: @($"#{item.Cor}");">
+                    style="background-color: @item.CorHTML;">
                 <span aria-hidden="true"><i class="bi bi-x"></i></span>
             </button>
         </div>

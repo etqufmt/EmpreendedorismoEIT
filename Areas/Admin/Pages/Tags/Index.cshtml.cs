@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
 using EmpreendedorismoEIT.ViewModels;
+using System;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
 {
@@ -19,16 +20,19 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             _context = context;
         }
 
-        [BindProperty]
-        public TagsVM TagVM { get; set; }
-        public IList<Tag> ListaTags { get;set; }
+        public TagVM TagVM { get; set; }
+        public IList<TagVM> ListaTags { get;set; }
 
         [TempData]
         public string StatusMessage { get; set; }
 
         public async Task OnGetAsync()
         {
-            ListaTags = await _context.Tags.OrderBy(t => t.Nome).AsNoTracking().ToListAsync();
+            ListaTags = await _context.Tags.Select(t => new TagVM {
+                ID = t.ID,
+                Nome = t.Nome,
+                CorInt = t.Cor,
+            }).OrderBy(t => t.Nome).AsNoTracking().ToListAsync();
         }
     }
 }

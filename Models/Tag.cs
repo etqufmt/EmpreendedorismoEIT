@@ -17,7 +17,7 @@ namespace EmpreendedorismoEIT.Models
         public string Nome { get; set; }
 
         [Required]
-        public uint Cor { get; set; }
+        public int Cor { get; set; }
 
         //Referências para outras entidades
         public ICollection<EmpresaTag> EmpresasAssociadas { get; set; }

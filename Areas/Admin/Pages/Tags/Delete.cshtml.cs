@@ -22,7 +22,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
         }
 
         [BindProperty]
-        public TagsVM TagVM { get; set; }
+        public TagVM TagVM { get; set; }
 
         [TempData]
         public string StatusMessage { get; set; }
