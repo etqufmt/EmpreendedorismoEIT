@@ -10,18 +10,19 @@ namespace EmpreendedorismoEIT.Models
     [Table("EmpresaTags")]
     public class EmpresaTag
     {
+        [Required]
         public int EmpresaID { get; set; }
-        
+
+        [Required]
         public int TagID { get; set; }
 
+        [Required]
         [Range(0, 1)]
         [Column(TypeName = "decimal(18,4)")]
         public decimal Grau { get; set; }
 
-        [Required]
+        //Referências para outras entidades
         public Empresa Empresa { get; set; }
-        
-        [Required]
         public Tag Tag { get; set; }
     }
 }

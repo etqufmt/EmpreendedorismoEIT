@@ -13,15 +13,18 @@ namespace EmpreendedorismoEIT.Models
         [Key]
         public int EmpresaID { get; set; }
 
-        [StringLength(50)]
+        [MaxLength(50)]
         public string Edital { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
         public DateTime MesEntrada { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
         public DateTime MesSaida { get; set; }
 
+        //Referências para outras entidades
         public Empresa Empresa { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return NotFound();
             }
 
-            var prodServ = await _context.ProdutosServicos
+            var prodServ = await _context.ProdServicos
                 .Include(e => e.Empresa)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
@@ -62,7 +62,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return NotFound();
             }
 
-            var prodServ = await _context.ProdutosServicos
+            var prodServ = await _context.ProdServicos
                 .Include(e => e.Empresa)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);

@@ -19,11 +19,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages
             _context = context;
         }
 
-        public DashboardQuery Dashboard { get; set; }
+        public Dashboard Dashboard { get; set; }
 
         public async Task OnGetAsync()
         {
-            Dashboard = await _context.DashboardQuery
+            Dashboard = await _context.Dashboard
                 .FromSqlRaw(@"SELECT (SELECT COUNT(*) FROM [dbo].[DadosJuniores]) AS Juniores,
                 (SELECT COUNT(*) FROM [dbo].[DadosIncubadas]) AS Incubadas,
                 (SELECT COUNT(*) FROM [dbo].[Tags]) AS Tags,

@@ -7,22 +7,22 @@ using System.Threading.Tasks;
 
 namespace EmpreendedorismoEIT.Models
 {
-    [Table("ProdutosServicos")]
-    public class ProdutoServico
+    [Table("ProdServicos")]
+    public class ProdServico
     {
         public int ID { get; set; }
-        
-        [Required]
-        [StringLength(100)]
-        public string Nome { get; set; }
-
-        [StringLength(400)]
-        public string Descricao { get; set; }
 
         [Required]
         public int EmpresaID { get; set; }
 
         [Required]
+        [MaxLength(100)]
+        public string Nome { get; set; }
+
+        [MaxLength(500)]
+        public string Descricao { get; set; }
+
+        //Referências para outras entidades
         public Empresa Empresa { get; set; }
     }
 }

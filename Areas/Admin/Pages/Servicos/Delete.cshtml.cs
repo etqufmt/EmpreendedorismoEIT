@@ -22,7 +22,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
         }
 
         [BindProperty]
-        public ProdutoServico ProdServVM { get; set; }
+        public ProdServico ProdServVM { get; set; }
 
         [TempData]
         public string StatusMessage { get; set; }
@@ -40,7 +40,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return NotFound();
             }
 
-            var prodServ = await _context.ProdutosServicos
+            var prodServ = await _context.ProdServicos
                 .Include(e => e.Empresa)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
@@ -52,7 +52,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 
             try
             {
-                _context.ProdutosServicos.Remove(prodServ);
+                _context.ProdServicos.Remove(prodServ);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)

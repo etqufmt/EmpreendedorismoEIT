@@ -36,7 +36,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
             }
 
             Empresa = await _context.Empresas
-                .Include(e => e.ProdutosServicos)
+                .Include(e => e.ProdServicos)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
             
@@ -45,7 +45,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return NotFound();
             }
 
-            ListaProdServ = Empresa.ProdutosServicos.Select(ps => new ServicosVM
+            ListaProdServ = Empresa.ProdServicos.Select(ps => new ServicosVM
             {
                 ID = ps.ID,
                 EmpresaID = ps.EmpresaID,

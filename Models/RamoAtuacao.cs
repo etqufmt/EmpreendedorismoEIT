@@ -11,11 +11,14 @@ namespace EmpreendedorismoEIT.Models
         public int ID { get; set; }
         
         [Required]
-        [StringLength(4)]
-        public string CodigoCNAE { get; set; }
+        [MaxLength(10)]
+        public string CNAE { get; set; }
 
         [Required]
-        [StringLength(150)]
+        [MaxLength(150)]
         public string Denominacao { get; set; }
+
+        //Referências para outras entidades
+        public ICollection<Empresa> EmpresasAssociadas { get; set; }
     }
 }

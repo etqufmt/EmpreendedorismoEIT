@@ -13,11 +13,13 @@ namespace EmpreendedorismoEIT.Models
         public int ID { get; set; }
         
         [Required]
-        [StringLength(30)]
+        [MaxLength(30)]
         public string Nome { get; set; }
-        
-        public int Cor { get; set; }
 
+        [Required]
+        public uint Cor { get; set; }
+
+        //Referências para outras entidades
         public ICollection<EmpresaTag> EmpresasAssociadas { get; set; }
     }
 }

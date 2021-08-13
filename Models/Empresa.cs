@@ -13,56 +13,58 @@ namespace EmpreendedorismoEIT.Models
         public int ID { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [MaxLength(50)]
         public string Nome { get; set; }
 
         [Required]
         public Tipo Tipo { get; set; }
 
-        [StringLength(11)]
+        [Required]
+        [MaxLength(11)]
         public string CNPJ { get; set; }
 
+        [Required]
         public Segmento Segmento { get; set; }
 
-        public int RamoAtuacaoID { get; set; }
+        public int? RamoAtuacaoID { get; set; }
 
-        [StringLength(500)]
+        [MaxLength(500)]
         public string Descricao { get; set; }
 
-        [StringLength(200)]
+        [MaxLength(200)]
         public string Endereco { get; set; }
 
-        [StringLength(11)]
+        [MaxLength(11)]
         public string Telefone { get; set; }
 
-        [EmailAddress]
-        [StringLength(100)]
+        [MaxLength(100)]
         public string Email { get; set; }
 
-        [StringLength(50)]
+        [MaxLength(50)]
         public string Logo { get; set; }
 
         [Required]
         public Situacao Situacao { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
         public DateTime UltimaModificacao { get; set; }
 
-        //Outras entidades
+        //Referências para outras entidades
         public RamoAtuacao RamoAtuacao { get; set; }
         public DadosIncubada DadosIncubada { get; set; }
         public DadosJunior DadosJunior { get; set; }
         public ICollection<RedeSocial> RedesSociais { get; set; }
-        public ICollection<ProdutoServico> ProdutosServicos { get; set; }
+        public ICollection<ProdServico> ProdServicos { get; set; }
         public ICollection<EmpresaTag> TagsAssociadas { get; set; }
     }
 
     public enum Tipo
     {
-        [Display(Name = "Empresa Júnior")]
+        [Display(Name = "Empresa júnior")]
         JUNIOR = 1,
 
-        [Display(Name = "Empresa Incubada")]
+        [Display(Name = "Empresa incubada")]
         INCUBADA = 2
     }
 

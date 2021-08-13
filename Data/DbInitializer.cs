@@ -14,104 +14,32 @@ namespace EmpreendedorismoEIT.Data
 {
     public static class DbInitializer
     {
-        public static void Initialize(
-            ApplicationDbContext context,
-            IWebHostEnvironment webHostEnvironment,
-            ILogger<Program> logger)
+        public static void Initialize(ApplicationDbContext context, ILogger<Program> logger)
         {
-            //Preencher tabela de ramos de atuação a partir de um CSV extraído do IBGE
-            var ramosAtuacao = lerListaCNAE(webHostEnvironment.WebRootPath);
-
-            //var ramosAtuacao = new RamoAtuacao[]
-            //{
-            //    new RamoAtuacao { CodigoCNAE = "A-01",Denominacao = "AGRICULTURA, PECUÁRIA E SERVIÇOS RELACIONADOS",},
-            //    new RamoAtuacao { CodigoCNAE = "A-02",Denominacao = "PRODUÇÃO FLORESTAL",},
-            //    new RamoAtuacao { CodigoCNAE = "A-03",Denominacao = "PESCA E AQUICULTURA",},
-            //    new RamoAtuacao { CodigoCNAE = "B-05",Denominacao = "EXTRAÇÃO DE CARVÃO MINERAL",},
-            //    new RamoAtuacao { CodigoCNAE = "B-06",Denominacao = "EXTRAÇÃO DE PETRÓLEO E GÁS NATURAL",},
-            //    new RamoAtuacao { CodigoCNAE = "B-07",Denominacao = "EXTRAÇÃO DE MINERAIS METÁLICOS",},
-            //    new RamoAtuacao { CodigoCNAE = "B-08",Denominacao = "EXTRAÇÃO DE MINERAIS NÃO METÁLICOS",},
-            //    new RamoAtuacao { CodigoCNAE = "B-09",Denominacao = "ATIVIDADES DE APOIO À EXTRAÇÃO DE MINERAIS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-10",Denominacao = "FABRICAÇÃO DE PRODUTOS ALIMENTÍCIOS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-11",Denominacao = "FABRICAÇÃO DE BEBIDAS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-12",Denominacao = "FABRICAÇÃO DE PRODUTOS DO FUMO",},
-            //    new RamoAtuacao { CodigoCNAE = "C-13",Denominacao = "FABRICAÇÃO DE PRODUTOS TÊXTEIS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-14",Denominacao = "CONFECÇÃO DE ARTIGOS DO VESTUÁRIO E ACESSÓRIOS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-15",Denominacao = "PREPARAÇÃO DE COUROS E FABRICAÇÃO DE ARTEFATOS DE COURO, ARTIGOS PARA VIAGEM E CALÇADOS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-16",Denominacao = "FABRICAÇÃO DE PRODUTOS DE MADEIRA",},
-            //    new RamoAtuacao { CodigoCNAE = "C-17",Denominacao = "FABRICAÇÃO DE CELULOSE, PAPEL E PRODUTOS DE PAPEL",},
-            //    new RamoAtuacao { CodigoCNAE = "C-18",Denominacao = "IMPRESSÃO E REPRODUÇÃO DE GRAVAÇÕES",},
-            //    new RamoAtuacao { CodigoCNAE = "C-19",Denominacao = "FABRICAÇÃO DE COQUE, DE PRODUTOS DERIVADOS DO PETRÓLEO E DE BIOCOMBUSTÍVEIS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-20",Denominacao = "FABRICAÇÃO DE PRODUTOS QUÍMICOS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-21",Denominacao = "FABRICAÇÃO DE PRODUTOS FARMOQUÍMICOS E FARMACÊUTICOS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-22",Denominacao = "FABRICAÇÃO DE PRODUTOS DE BORRACHA E DE MATERIAL PLÁSTICO",},
-            //    new RamoAtuacao { CodigoCNAE = "C-23",Denominacao = "FABRICAÇÃO DE PRODUTOS DE MINERAIS NÃO METÁLICOS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-24",Denominacao = "METALURGIA",},
-            //    new RamoAtuacao { CodigoCNAE = "C-25",Denominacao = "FABRICAÇÃO DE PRODUTOS DE METAL, EXCETO MÁQUINAS E EQUIPAMENTOS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-26",Denominacao = "FABRICAÇÃO DE EQUIPAMENTOS DE INFORMÁTICA, PRODUTOS ELETRÔNICOS E ÓPTICOS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-27",Denominacao = "FABRICAÇÃO DE MÁQUINAS, APARELHOS E MATERIAIS ELÉTRICOS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-28",Denominacao = "FABRICAÇÃO DE MÁQUINAS E EQUIPAMENTOS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-29",Denominacao = "FABRICAÇÃO DE VEÍCULOS AUTOMOTORES, REBOQUES E CARROCERIAS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-30",Denominacao = "FABRICAÇÃO DE OUTROS EQUIPAMENTOS DE TRANSPORTE, EXCETO VEÍCULOS AUTOMOTORES",},
-            //    new RamoAtuacao { CodigoCNAE = "C-31",Denominacao = "FABRICAÇÃO DE MÓVEIS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-32",Denominacao = "FABRICAÇÃO DE PRODUTOS DIVERSOS",},
-            //    new RamoAtuacao { CodigoCNAE = "C-33",Denominacao = "MANUTENÇÃO, REPARAÇÃO E INSTALAÇÃO DE MÁQUINAS E EQUIPAMENTOS",},
-            //    new RamoAtuacao { CodigoCNAE = "D-35",Denominacao = "ELETRICIDADE, GÁS E OUTRAS UTILIDADES",},
-            //    new RamoAtuacao { CodigoCNAE = "E-36",Denominacao = "CAPTAÇÃO, TRATAMENTO E DISTRIBUIÇÃO DE ÁGUA",},
-            //    new RamoAtuacao { CodigoCNAE = "E-37",Denominacao = "ESGOTO E ATIVIDADES RELACIONADAS",},
-            //    new RamoAtuacao { CodigoCNAE = "E-38",Denominacao = "COLETA, TRATAMENTO E DISPOSIÇÃO DE RESÍDUOS; RECUPERAÇÃO DE MATERIAIS",},
-            //    new RamoAtuacao { CodigoCNAE = "E-39",Denominacao = "DESCONTAMINAÇÃO E OUTROS SERVIÇOS DE GESTÃO DE RESÍDUOS",},
-            //    new RamoAtuacao { CodigoCNAE = "F-41",Denominacao = "CONSTRUÇÃO DE EDIFÍCIOS",},
-            //    new RamoAtuacao { CodigoCNAE = "F-42",Denominacao = "OBRAS DE INFRAESTRUTURA",},
-            //    new RamoAtuacao { CodigoCNAE = "F-43",Denominacao = "SERVIÇOS ESPECIALIZADOS PARA CONSTRUÇÃO",},
-            //    new RamoAtuacao { CodigoCNAE = "G-45",Denominacao = "COMÉRCIO E REPARAÇÃO DE VEÍCULOS AUTOMOTORES E MOTOCICLETAS",},
-            //    new RamoAtuacao { CodigoCNAE = "G-46",Denominacao = "COMÉRCIO POR ATACADO, EXCETO VEÍCULOS AUTOMOTORES E MOTOCICLETAS",},
-            //    new RamoAtuacao { CodigoCNAE = "G-47",Denominacao = "COMÉRCIO VAREJISTA",},
-            //    new RamoAtuacao { CodigoCNAE = "H-49",Denominacao = "TRANSPORTE TERRESTRE",},
-            //    new RamoAtuacao { CodigoCNAE = "H-50",Denominacao = "TRANSPORTE AQUAVIÁRIO",},
-            //    new RamoAtuacao { CodigoCNAE = "H-51",Denominacao = "TRANSPORTE AÉREO",},
-            //    new RamoAtuacao { CodigoCNAE = "H-52",Denominacao = "ARMAZENAMENTO E ATIVIDADES AUXILIARES DOS TRANSPORTES",},
-            //    new RamoAtuacao { CodigoCNAE = "H-53",Denominacao = "CORREIO E OUTRAS ATIVIDADES DE ENTREGA",},
-            //    new RamoAtuacao { CodigoCNAE = "I-55",Denominacao = "ALOJAMENTO",},
-            //    new RamoAtuacao { CodigoCNAE = "I-56",Denominacao = "ALIMENTAÇÃO",},
-            //    new RamoAtuacao { CodigoCNAE = "J-58",Denominacao = "EDIÇÃO E EDIÇÃO INTEGRADA À IMPRESSÃO",},
-            //    new RamoAtuacao { CodigoCNAE = "J-59",Denominacao = "ATIVIDADES CINEMATOGRÁFICAS, PRODUÇÃO DE VÍDEOS E DE PROGRAMAS DE TELEVISÃO; GRAVAÇÃO DE SOM E EDIÇÃO DE MÚSICA",},
-            //    new RamoAtuacao { CodigoCNAE = "J-60",Denominacao = "ATIVIDADES DE RÁDIO E DE TELEVISÃO",},
-            //    new RamoAtuacao { CodigoCNAE = "J-61",Denominacao = "TELECOMUNICAÇÕES",},
-            //    new RamoAtuacao { CodigoCNAE = "J-62",Denominacao = "ATIVIDADES DOS SERVIÇOS DE TECNOLOGIA DA INFORMAÇÃO",},
-            //    new RamoAtuacao { CodigoCNAE = "J-63",Denominacao = "ATIVIDADES DE PRESTAÇÃO DE SERVIÇOS DE INFORMAÇÃO",},
-            //    new RamoAtuacao { CodigoCNAE = "K-64",Denominacao = "ATIVIDADES DE SERVIÇOS FINANCEIROS",},
-            //    new RamoAtuacao { CodigoCNAE = "K-65",Denominacao = "SEGUROS, RESSEGUROS, PREVIDÊNCIA COMPLEMENTAR E PLANOS DE SAÚDE",},
-            //    new RamoAtuacao { CodigoCNAE = "K-66",Denominacao = "ATIVIDADES AUXILIARES DOS SERVIÇOS FINANCEIROS, SEGUROS, PREVIDÊNCIA COMPLEMENTAR E PLANOS DE SAÚDE",},
-            //    new RamoAtuacao { CodigoCNAE = "L-68",Denominacao = "ATIVIDADES IMOBILIÁRIAS",},
-            //    new RamoAtuacao { CodigoCNAE = "M-69",Denominacao = "ATIVIDADES JURÍDICAS, DE CONTABILIDADE E DE AUDITORIA",},
-            //    new RamoAtuacao { CodigoCNAE = "M-70",Denominacao = "ATIVIDADES DE SEDES DE EMPRESAS E DE CONSULTORIA EM GESTÃO EMPRESARIAL",},
-            //    new RamoAtuacao { CodigoCNAE = "M-71",Denominacao = "SERVIÇOS DE ARQUITETURA E ENGENHARIA; TESTES E ANÁLISES TÉCNICAS",},
-            //    new RamoAtuacao { CodigoCNAE = "M-72",Denominacao = "PESQUISA E DESENVOLVIMENTO CIENTÍFICO",},
-            //    new RamoAtuacao { CodigoCNAE = "M-73",Denominacao = "PUBLICIDADE E PESQUISA DE MERCADO",},
-            //    new RamoAtuacao { CodigoCNAE = "M-74",Denominacao = "OUTRAS ATIVIDADES PROFISSIONAIS, CIENTÍFICAS E TÉCNICAS",},
-            //    new RamoAtuacao { CodigoCNAE = "M-75",Denominacao = "ATIVIDADES VETERINÁRIAS",},
-            //    new RamoAtuacao { CodigoCNAE = "N-77",Denominacao = "ALUGUÉIS NÃO IMOBILIÁRIOS E GESTÃO DE ATIVOS INTANGÍVEIS NÃO FINANCEIROS",},
-            //    new RamoAtuacao { CodigoCNAE = "N-78",Denominacao = "SELEÇÃO, AGENCIAMENTO E LOCAÇÃO DE MÃO DE OBRA",},
-            //    new RamoAtuacao { CodigoCNAE = "N-79",Denominacao = "AGÊNCIAS DE VIAGENS, OPERADORES TURÍSTICOS E SERVIÇOS DE RESERVAS",},
-            //    new RamoAtuacao { CodigoCNAE = "N-80",Denominacao = "ATIVIDADES DE VIGILÂNCIA, SEGURANÇA E INVESTIGAÇÃO",},
-            //    new RamoAtuacao { CodigoCNAE = "N-81",Denominacao = "SERVIÇOS PARA EDIFÍCIOS E ATIVIDADES PAISAGÍSTICAS",},
-            //    new RamoAtuacao { CodigoCNAE = "N-82",Denominacao = "SERVIÇOS DE ESCRITÓRIO, DE APOIO ADMINISTRATIVO E OUTROS SERVIÇOS PRESTADOS PRINCIPALMENTE ÀS EMPRESAS",},
-            //    new RamoAtuacao { CodigoCNAE = "O-84",Denominacao = "ADMINISTRAÇÃO PÚBLICA, DEFESA E SEGURIDADE SOCIAL",},
-            //    new RamoAtuacao { CodigoCNAE = "P-85",Denominacao = "EDUCAÇÃO",},
-            //    new RamoAtuacao { CodigoCNAE = "Q-86",Denominacao = "ATIVIDADES DE ATENÇÃO À SAÚDE HUMANA",},
-            //    new RamoAtuacao { CodigoCNAE = "Q-87",Denominacao = "ATIVIDADES DE ATENÇÃO À SAÚDE HUMANA INTEGRADAS COM ASSISTÊNCIA SOCIAL, PRESTADAS EM RESIDÊNCIAS COLETIVAS E PARTICULARES",},
-            //    new RamoAtuacao { CodigoCNAE = "Q-88",Denominacao = "SERVIÇOS DE ASSISTÊNCIA SOCIAL SEM ALOJAMENTO",},
-            //    new RamoAtuacao { CodigoCNAE = "R-90",Denominacao = "ATIVIDADES ARTÍSTICAS, CRIATIVAS E DE ESPETÁCULOS",},
-            //    new RamoAtuacao { CodigoCNAE = "R-91",Denominacao = "ATIVIDADES LIGADAS AO PATRIMÔNIO CULTURAL E AMBIENTAL",},
-            //    new RamoAtuacao { CodigoCNAE = "R-92",Denominacao = "ATIVIDADES DE EXPLORAÇÃO DE JOGOS DE AZAR E APOSTAS",},
-            //    new RamoAtuacao { CodigoCNAE = "R-93",Denominacao = "ATIVIDADES ESPORTIVAS E DE RECREAÇÃO E LAZER",},
-            //    new RamoAtuacao { CodigoCNAE = "S-94",Denominacao = "ATIVIDADES DE ORGANIZAÇÕES ASSOCIATIVAS",},
-            //    new RamoAtuacao { CodigoCNAE = "S-95",Denominacao = "REPARAÇÃO E MANUTENÇÃO DE EQUIPAMENTOS DE INFORMÁTICA E COMUNICAÇÃO E DE OBJETOS PESSOAIS E DOMÉSTICOS",},
-            //    new RamoAtuacao { CodigoCNAE = "S-96",Denominacao = "OUTRAS ATIVIDADES DE SERVIÇOS PESSOAIS",},
-            //    new RamoAtuacao { CodigoCNAE = "T-97",Denominacao = "SERVIÇOS DOMÉSTICOS",},
-            //    new RamoAtuacao { CodigoCNAE = "U-99",Denominacao = "ORGANISMOS INTERNACIONAIS E OUTRAS INSTITUIÇÕES EXTRATERRITORIAIS",},
-            //};
+            var ramosAtuacao = new RamoAtuacao[]
+            {
+                new RamoAtuacao { CNAE = "A (01-03)",Denominacao = "AGRICULTURA, PECUÁRIA, PRODUÇÃO FLORESTAL, PESCA E AQUICULTURA",},
+                new RamoAtuacao { CNAE = "B (05-09)",Denominacao = "INDÚSTRIAS EXTRATIVAS",},
+                new RamoAtuacao { CNAE = "C (10-33)",Denominacao = "INDÚSTRIAS DE TRANSFORMAÇÃO",},
+                new RamoAtuacao { CNAE = "D (35-35)",Denominacao = "ELETRICIDADE E GÁS",},
+                new RamoAtuacao { CNAE = "E (36-39)",Denominacao = "ÁGUA, ESGOTO, ATIVIDADES DE GESTÃO DE RESÍDUOS E DESCONTAMINAÇÃO",},
+                new RamoAtuacao { CNAE = "F (41-43)",Denominacao = "CONSTRUÇÃO",},
+                new RamoAtuacao { CNAE = "G (45-47)",Denominacao = "COMÉRCIO E REPARAÇÃO DE VEÍCULOS AUTOMOTORES E MOTOCICLETAS",},
+                new RamoAtuacao { CNAE = "H (49-53)",Denominacao = "TRANSPORTE, ARMAZENAGEM E CORREIO",},
+                new RamoAtuacao { CNAE = "I (55-56)",Denominacao = "ALOJAMENTO E ALIMENTAÇÃO",},
+                new RamoAtuacao { CNAE = "J (58-63)",Denominacao = "INFORMAÇÃO E COMUNICAÇÃO",},
+                new RamoAtuacao { CNAE = "K (64-66)",Denominacao = "ATIVIDADES FINANCEIRAS, DE SEGUROS E SERVIÇOS RELACIONADOS",},
+                new RamoAtuacao { CNAE = "L (68-68)",Denominacao = "ATIVIDADES IMOBILIÁRIAS",},
+                new RamoAtuacao { CNAE = "M (69-75)",Denominacao = "ATIVIDADES PROFISSIONAIS, CIENTÍFICAS E TÉCNICAS",},
+                new RamoAtuacao { CNAE = "N (77-82)",Denominacao = "ATIVIDADES ADMINISTRATIVAS E SERVIÇOS COMPLEMENTARES",},
+                new RamoAtuacao { CNAE = "O (84-84)",Denominacao = "ADMINISTRAÇÃO PÚBLICA, DEFESA E SEGURIDADE SOCIAL",},
+                new RamoAtuacao { CNAE = "P (85-85)",Denominacao = "EDUCAÇÃO",},
+                new RamoAtuacao { CNAE = "Q (86-88)",Denominacao = "SAÚDE HUMANA E SERVIÇOS SOCIAIS",},
+                new RamoAtuacao { CNAE = "R (90-93)",Denominacao = "ARTES, CULTURA, ESPORTE E RECREAÇÃO",},
+                new RamoAtuacao { CNAE = "S (94-96)",Denominacao = "OUTRAS ATIVIDADES DE SERVIÇOS",},
+                new RamoAtuacao { CNAE = "T (97-97)",Denominacao = "SERVIÇOS DOMÉSTICOS",},
+                new RamoAtuacao { CNAE = "U (99-99)",Denominacao = "ORGANISMOS INTERNACIONAIS E OUTRAS INSTITUIÇÕES EXTRATERRITORIAIS",},
+            };
 
 
 
@@ -292,9 +220,9 @@ namespace EmpreendedorismoEIT.Data
             //    },
             //};
 
+            context.AddRange(ramosAtuacao);
             //context.AddRange(empJuniores);
             //context.AddRange(tags);
-            context.AddRange(ramosAtuacao);
             context.SaveChanges();
             logger.LogInformation("[DEBUG] Banco de dados populado");
         }
@@ -317,47 +245,6 @@ namespace EmpreendedorismoEIT.Data
                 await userManager.AddToRoleAsync(user, "admin");
                 logger.LogInformation("[DEBUG] Usuário padrão criado");
             }
-        }
-
-        private static List<RamoAtuacao> lerListaCNAE(string WebRootPath)
-        {
-            //Preencher tabela de ramos de atuação a partir de um CSV extraído do IBGE
-            string csvPath = Path.Combine(WebRootPath, "csv/cnae.csv");
-            string csvData = File.ReadAllText(csvPath);
-
-            DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[2] {
-                new DataColumn("CodigoCNAE", typeof(string)),
-                new DataColumn("Denominacao", typeof(string)),
-            });
-
-            foreach (string row in csvData.Split('\n'))
-            {
-                if (!string.IsNullOrEmpty(row))
-                {
-                    dt.Rows.Add();
-                    int i = 0;
-
-                    //Colunas separadas por barra
-                    foreach (string cell in row.Split('/'))
-                    {
-                        dt.Rows[dt.Rows.Count - 1][i] = cell;
-                        i++;
-                    }
-                }
-            }
-
-            var ramosAtuacao = new List<RamoAtuacao>();
-            foreach (DataRow row in dt.Rows)
-            {
-                ramosAtuacao.Add(new RamoAtuacao()
-                {
-                    CodigoCNAE = row["CodigoCNAE"].ToString(),
-                    Denominacao = row["Denominacao"].ToString()
-                });
-            }
-
-            return ramosAtuacao;
         }
     }
 }

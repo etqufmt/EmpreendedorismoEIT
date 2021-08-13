@@ -66,14 +66,14 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return Page();
             }
 
-            var prodServ = new ProdutoServico
+            var prodServ = new ProdServico
             {
                 EmpresaID = ProdServVM.EmpresaID,
                 Nome = ProdServVM.Nome,
                 Descricao = ProdServVM.Descricao
             };
 
-            _context.ProdutosServicos.Add(prodServ);
+            _context.ProdServicos.Add(prodServ);
 
             try
             {

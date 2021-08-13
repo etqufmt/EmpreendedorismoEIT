@@ -11,17 +11,18 @@ namespace EmpreendedorismoEIT.Models
     public class RedeSocial
     {
         public int ID { get; set; }
-        
-        public Plataforma Plataforma { get; set; }
-
-        [Required]
-        [StringLength(200)]
-        public string URL { get; set; }
 
         [Required]
         public int EmpresaID { get; set; }
 
         [Required]
+        public Plataforma Plataforma { get; set; }
+
+        [Required]
+        [MaxLength(300)]
+        public string URL { get; set; }
+
+        //Referências para outras entidades
         public Empresa Empresa { get; set; }
     }
 

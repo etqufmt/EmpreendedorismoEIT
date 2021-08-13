@@ -39,18 +39,17 @@ namespace EmpreendedorismoEIT
                     //Cria o banco de dados se ele não existir ou não tiver as tabelas necessárias
                     if (context.Database.EnsureCreated())
                     {
-                        var webHostEnvironment = services.GetRequiredService<IWebHostEnvironment>();
                         var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
                         var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                         //Preenche banco com dados de teste
-                        DbInitializer.Initialize(context, webHostEnvironment, logger);
+                        DbInitializer.Initialize(context, logger);
                         DbInitializer.AddDefaultUserAsync(userManager, roleManager, logger).GetAwaiter().GetResult();
                     }
                 }
                 catch (Exception ex)
                 {
                     logger.LogError(ex, "[DEBUG] Erro ao criar banco de dados");
-                    //Environment.Exit(1);
+                    Environment.Exit(1);
                 }
             }
         }
