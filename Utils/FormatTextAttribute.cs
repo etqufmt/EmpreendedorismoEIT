@@ -11,10 +11,7 @@ namespace EmpreendedorismoEIT.Utils
     {
         //Remove espaços em branco no início e fim
         //Capitaliza primeira letra
-        protected override ValidationResult IsValid(
-            object value,
-            ValidationContext ctx)
-        {
+        protected override ValidationResult IsValid( object value, ValidationContext ctx) {
             var prop = ctx.ObjectType.GetProperty(ctx.MemberName);
             string newVal = null;
             if (prop.GetValue(ctx.ObjectInstance) is string oldVal)

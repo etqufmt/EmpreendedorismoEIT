@@ -29,7 +29,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         }
 
         [BindProperty]
-        public JunioresVM JuniorVM { get; set; }
+        public JuniorVM JuniorVM { get; set; }
 
         public IActionResult OnGet()
         {

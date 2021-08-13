@@ -28,7 +28,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         }
 
         [BindProperty]
-        public JunioresVM JuniorVM { get; set; }
+        public JuniorVM JuniorVM { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -47,7 +47,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 return NotFound();
             }
 
-            JuniorVM = new JunioresVM
+            JuniorVM = new JuniorVM
             {
                 ID = EJ.EmpresaID,
                 Campus = EJ.Campus,

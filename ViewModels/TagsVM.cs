@@ -1,10 +1,6 @@
 ﻿using EmpreendedorismoEIT.Resources;
 using EmpreendedorismoEIT.Utils;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EmpreendedorismoEIT.ViewModels
 {
@@ -15,7 +11,7 @@ namespace EmpreendedorismoEIT.ViewModels
 
         [FormatText]
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
-        [StringLength(20, MinimumLength = 2, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
+        [StringLength(30, MinimumLength = 2, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         public string Nome { get; set; }
 
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]

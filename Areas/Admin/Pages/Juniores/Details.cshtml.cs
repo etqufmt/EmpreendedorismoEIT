@@ -16,7 +16,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             _context = context;
         }
 
-        public JunioresVM JuniorVM { get; set; }
+        public JuniorVM JuniorVM { get; set; }
         public string Logo { get; set; }
 
         [TempData]
@@ -41,7 +41,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 return NotFound();
             }
 
-            JuniorVM = new JunioresVM
+            JuniorVM = new JuniorVM
             {
                 ID = EJ.EmpresaID,
                 Nome = EJ.Empresa.Nome,

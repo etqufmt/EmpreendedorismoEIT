@@ -26,7 +26,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
         }
 
         [BindProperty]
-        public IList<EmpTagsVM> ListaET { get; set; }
+        public IList<EmpTagVM> ListaET { get; set; }
         public Empresa Empresa { get; set; }
         public string ReturnURL { get; set; }
         public int Contador { get; set; }
@@ -48,7 +48,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
 
             //Lista todas as tags cadastradas com ou sem associação
             Contador = 0;
-            ListaET = new List<EmpTagsVM>();
+            ListaET = new List<EmpTagVM>();
             var allTags = await _context.Tags
                 .Include(t => t.EmpresasAssociadas.Where(e => e.EmpresaID == Empresa.ID))
                 .AsNoTracking()
@@ -62,7 +62,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
                     grau = Decimal.ToInt32(empTag.Grau * 100);
                     Contador++;
                 }
-                ListaET.Add(new EmpTagsVM
+                ListaET.Add(new EmpTagVM
                 {
                     TagID = tag.ID,
                     Nome = tag.Nome,

@@ -23,7 +23,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
         }
 
         [BindProperty]
-        public ServicosVM ProdServVM { get; set; }
+        public ProdServVM ProdServVM { get; set; }
         public Empresa Empresa { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -44,7 +44,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
             }
 
             Empresa = prodServ.Empresa;
-            ProdServVM = new ServicosVM
+            ProdServVM = new ProdServVM
             {
                 ID = prodServ.ID,
                 Nome = prodServ.Nome,

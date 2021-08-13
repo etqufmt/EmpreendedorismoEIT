@@ -20,8 +20,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
             _context = context;
         }
 
-        public IList<ServicosVM> ListaProdServ { get; set; }
-        public ServicosVM ProdServVM { get; set; }
+        public IList<ProdServVM> ListaProdServ { get; set; }
+        public ProdServVM ProdServVM { get; set; }
         public Empresa Empresa { get; set; }
         public string ReturnURL { get; set; }
 
@@ -45,7 +45,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return NotFound();
             }
 
-            ListaProdServ = Empresa.ProdServicos.Select(ps => new ServicosVM
+            ListaProdServ = Empresa.ProdServicos.Select(ps => new ProdServVM
             {
                 ID = ps.ID,
                 EmpresaID = ps.EmpresaID,

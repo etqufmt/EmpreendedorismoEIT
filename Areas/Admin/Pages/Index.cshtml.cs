@@ -27,7 +27,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages
                 .FromSqlRaw(@"SELECT (SELECT COUNT(*) FROM [dbo].[DadosJuniores]) AS Juniores,
                 (SELECT COUNT(*) FROM [dbo].[DadosIncubadas]) AS Incubadas,
                 (SELECT COUNT(*) FROM [dbo].[Tags]) AS Tags,
-                (SELECT COUNT(*) FROM [dbo].[ProdutosServicos]) AS Servicos")
+                (SELECT COUNT(*) FROM [dbo].[ProdServicos]) AS Servicos")
                 .FirstOrDefaultAsync();
         }
     }

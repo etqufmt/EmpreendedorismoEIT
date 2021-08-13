@@ -24,7 +24,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             _configuration = configuration;
         }
 
-        public PaginatedList<JunioresListaVM> ListaEJ { get;set; }
+        public PaginatedList<JuniorListaVM> ListaEJ { get;set; }
         public string CurrentFilter { get; set; }
         public Situacao CurrentSituacao { get; set; }
 
@@ -40,7 +40,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             }
             CurrentFilter = search;
 
-            var empresasIQ = _context.DadosJuniores.Select(e => new JunioresListaVM
+            var empresasIQ = _context.DadosJuniores.Select(e => new JuniorListaVM
             {
                 ID = e.EmpresaID,
                 Logo = e.Empresa.Logo,
@@ -70,7 +70,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
             //Fazer consulta paginada
             var pageSize = _configuration.GetValue("PageSize", 4);
-            ListaEJ = await PaginatedList<JunioresListaVM>.CreateAsync(
+            ListaEJ = await PaginatedList<JuniorListaVM>.CreateAsync(
                 empresasIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
         }
     }

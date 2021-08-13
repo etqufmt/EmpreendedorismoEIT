@@ -1,13 +1,9 @@
-﻿using EmpreendedorismoEIT.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EmpreendedorismoEIT.ViewModels
 {
-    public class EmpTagsVM
+    public class EmpTagVM
     {
         public int TagID { get; set; }
         public string Nome { get; set; }

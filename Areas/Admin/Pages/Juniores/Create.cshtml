@@ -57,12 +57,12 @@
                 <input asp-for="JuniorVM.Instituto" class="form-control maxcounter" placeholder="Associado à EJ"/>
                 <span asp-validation-for="JuniorVM.Instituto" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="JuniorVM.DescricaoCurta" class="control-label"> Descrição  <span class="label-sub">🞹</span></label>
                 <textarea asp-for="JuniorVM.DescricaoCurta" class="form-control maxcounter" rows="4"></textarea>
                 <span asp-validation-for="JuniorVM.DescricaoCurta" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div cl*@ass="form-group">
                 <label asp-for="JuniorVM.Logo" class="control-label">Logotipo <span class="label-sub">(Apenas .jpg e .png)</span></label>
                 <div class="custom-file">
                     <input asp-for="JuniorVM.Logo" class="custom-file-input" id="input-logo" accept=".png, .jpg, .jpeg" />

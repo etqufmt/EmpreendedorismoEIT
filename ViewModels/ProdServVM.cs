@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EmpreendedorismoEIT.ViewModels
 {
-    public class ServicosVM
+    public class ProdServVM
     {
         public int ID { get; set; }
 
@@ -17,8 +17,7 @@ namespace EmpreendedorismoEIT.ViewModels
         public string Nome { get; set; }
 
         [Display(Name = "Descrição")]
-        [DisplayFormat(NullDisplayText = "[Não informada]")]
-        [StringLength(400, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
+        [StringLength(500, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         [FormatText]
         public string Descricao { get; set; }
     }
