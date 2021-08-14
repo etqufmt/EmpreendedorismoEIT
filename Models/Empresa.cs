@@ -20,7 +20,7 @@ namespace EmpreendedorismoEIT.Models
         public Tipo Tipo { get; set; }
 
         [Required]
-        [MaxLength(11)]
+        [MaxLength(14)]
         public string CNPJ { get; set; }
 
         [Required]
@@ -70,10 +70,10 @@ namespace EmpreendedorismoEIT.Models
 
     public enum Situacao
     {
-        [Display(Name = "Ativa")]
+        [Display(Name = "Ativa e publicada no site")]
         ATIVA = 1,
 
-        [Display(Name = "Inativa")]
+        [Display(Name = "Inativa e ocultada do site")]
         INATIVA = 2,
     }
 

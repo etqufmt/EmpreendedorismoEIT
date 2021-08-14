@@ -24,11 +24,11 @@ namespace EmpreendedorismoEIT.ViewModels
         [DataType(DataType.PhoneNumber)]
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
         [RegularExpression("([0-9]+)", ErrorMessageResourceName = "Numero", ErrorMessageResourceType = typeof(ValidationResources))]
-        [StringLength(11, MinimumLength = 11, ErrorMessageResourceName = "ErrTelefone", ErrorMessageResourceType = typeof(ValidationResources))]
+        [StringLength(14, MinimumLength = 14, ErrorMessageResourceName = "ErrTelefone", ErrorMessageResourceType = typeof(ValidationResources))]
         public string CNPJ { get; set; }
 
 
-        [Display(Name = "Segmento")]
+        [Display(Name = "Segmento empresarial")]
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
         public Segmento Segmento { get; set; }
 

@@ -2,6 +2,15 @@
     font-weight: 300;
 }*/
 
+.custom-file-input {
+    z-index: unset !important;
+}
+
+.custom-file-label {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
 .custom-file-label::after {
     content: "Escolher" !important;
 }
@@ -56,6 +65,10 @@ h4.header-title {
 h5.subtitle {
     color: #666666;
     font-size: 1.3rem;
+}
+
+h5.modal-title{
+    line-height: 1.2;
 }
 
 th, .info-title {
@@ -154,6 +167,15 @@ img.card-img-left {
 
 .label-sub{
     font-size: 0.75rem;
+}
+
+.maxcounter-out {
+    font-size: 0.75rem;
+    color: #666666;
+}
+
+.validation-msg {
+    font-size: 0.9rem;
 }
 
 @media (min-width: 768px) {
