@@ -88,6 +88,15 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CNPJ já se encontra cadastrado.
+        /// </summary>
+        public static string ErrCNPJDuplicado {
+            get {
+                return ResourceManager.GetString("ErrCNPJDuplicado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Não foi possível realizar a adição. Tente novamente mais tarde..
         /// </summary>
         public static string ErrCreate {
@@ -232,7 +241,7 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Campo precisa ser preenchido.
+        ///   Looks up a localized string similar to Campo precisa ser preenchido ou alterado.
         /// </summary>
         public static string Requerido {
             get {

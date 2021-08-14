@@ -126,6 +126,9 @@
   <data name="ErrAno" xml:space="preserve">
     <value>Ano inválido</value>
   </data>
+  <data name="ErrCNPJDuplicado" xml:space="preserve">
+    <value>CNPJ já se encontra cadastrado</value>
+  </data>
   <data name="ErrCreate" xml:space="preserve">
     <value>Não foi possível realizar a adição. Tente novamente mais tarde.</value>
   </data>
@@ -175,7 +178,7 @@
     <value>Entrada inválida</value>
   </data>
   <data name="Requerido" xml:space="preserve">
-    <value>Campo precisa ser preenchido</value>
+    <value>Campo precisa ser preenchido ou alterado</value>
   </data>
   <data name="SucAlterarSenha" xml:space="preserve">
     <value>Senha alterada com sucesso.</value>

@@ -29,6 +29,8 @@ namespace EmpreendedorismoEIT.Data
             modelBuilder.Entity<EmpresaTag>().HasKey(et => new { et.EmpresaID, et.TagID });
             //Utiliza classe apenas para receber resultados de consultas
             modelBuilder.Entity<Dashboard>().ToTable("Dashboard", t => t.ExcludeFromMigrations());
+            //Impedir CNPJ repetido
+            modelBuilder.Entity<Empresa>().HasIndex(e => e.CNPJ).IsUnique();
 
             base.OnModelCreating(modelBuilder);
         }

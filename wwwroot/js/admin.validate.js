@@ -18,12 +18,23 @@ $(document).on('input', '.input-len-number', function (evt) {
 })
 
 //Contador de caracteres
-$(document).ready(function () {
-    $('.maxcounter').maxlength({
-        showOnReady: true,
-        alwaysShow: true,
-    })
-});
+$(document).on('input', '.maxcounter', function (evt) {
+    var out = $(this).next('.maxcounter-out')
+    var maxlength = $(this).attr('maxlength')
+    var counter = $(this).val().length
+    var threshold = Math.floor(maxlength*0.8)
+    if (counter < threshold) {
+        out.html('')
+        return
+    }
+    if (counter == maxlength) {
+        out.addClass('text-danger')
+    } else {
+        out.removeClass('text-danger')
+    }
+    var result = counter + " / " + maxlength
+    out.html(result)
+})
 
 
 //Exibir nome de arquivo na caixa de seleção (upload)

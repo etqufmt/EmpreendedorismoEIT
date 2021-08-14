@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,6 +10,8 @@ using EmpreendedorismoEIT.Utils;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 {
@@ -31,18 +34,22 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         [BindProperty]
         public JuniorVM JuniorVM { get; set; }
 
-        public IActionResult OnGet()
-        {
-            return Page();
-        }
+        public SelectList RamosAtuacaoSL { get; set; }
 
         [TempData]
         public bool JustCreatedMessage { get; set; }
+
+        public async Task<IActionResult> OnGetAsync()
+        {
+            await LoadAsync();
+            return Page();
+        }
 
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
+                await LoadAsync();
                 return Page();
             }
 
@@ -50,8 +57,10 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             {
                 Nome = JuniorVM.Nome,
                 Tipo = Tipo.JUNIOR,
-                //DescricaoCurta = JuniorVM.DescricaoCurta,
-                //DescricaoLonga = JuniorVM.DescricaoLonga,
+                CNPJ = JuniorVM.CNPJ,
+                Segmento = JuniorVM.Segmento,
+                RamoAtuacaoID = JuniorVM.RamoAtuacaoID,
+                Descricao = JuniorVM.Descricao,
                 Endereco = JuniorVM.Endereco,
                 Telefone = JuniorVM.Telefone,
                 Email = JuniorVM.Email,
@@ -74,12 +83,28 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             {
                 _logger.LogError("[DEBUG] Empresas:create // " + ex);
                 LogoManager.ExcluirImagem(_webHostEnvironment, novaEmpresa.Logo);
-                ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrCreate);
+                SqlException innerException = ex.InnerException as SqlException;
+                //Checa por erro de campo duplicado (UNIQUE) do Microsoft SQL Server / Azure SQL Server
+                if (innerException != null && (innerException.Number == 2627 || innerException.Number == 2601))
+                {
+                    ModelState.AddModelError("JuniorVM.CNPJ", Resources.ValidationResources.ErrCNPJDuplicado);
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrCreate);
+                }
+                await LoadAsync();
                 return Page();
             }
 
             JustCreatedMessage = true;
             return RedirectToPage("Details", new { novaEmpresa.ID });
+        }
+
+        private async Task LoadAsync()
+        {
+            var ra = await _context.RamosAtuacao.OrderBy(r => r.CNAE).AsNoTracking().ToListAsync();
+            RamosAtuacaoSL = new SelectList(ra, "ID", "CNAE");
         }
     }
 }

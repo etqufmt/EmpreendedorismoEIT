@@ -18,8 +18,6 @@ namespace EmpreendedorismoEIT.ViewModels
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
         public Cores Cor { get; set; }
 
-        public string CorHTML => ColorManager.CorHTML((int)Cor);
-
         public int CorInt
         {
             get { return (int)Cor; }
@@ -35,6 +33,8 @@ namespace EmpreendedorismoEIT.ViewModels
                 }
             }
         }
+
+        public string CorHTML => ColorManager.CorHTML((int)Cor);
     }
 
     public enum Cores
