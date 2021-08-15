@@ -63,5 +63,44 @@ namespace EmpreendedorismoEIT.ViewModels
 
         [Display(Name = "Instituto")]
         public string Instituto { get; set; }
+
+
+        //Atributos formatados
+        public string CNPJFormatado { get
+            {
+                string res = null;
+                if (!String.IsNullOrEmpty(CNPJ))
+                {
+                    try
+                    {
+                        res = Int64.Parse(CNPJ).ToString(@"##\.###\.###/####-##");
+                    }
+                    catch { }
+                }
+                return res;
+            }
+        }
+
+        public string TelefoneFormatado { get
+            {
+                string res = null;
+                if (!String.IsNullOrEmpty(Telefone))
+                {
+                    try
+                    {
+                        if (Telefone.Length == 10)
+                        {
+                            res = Int64.Parse(Telefone).ToString(@"(##) ####-####");
+                        }
+                        if (Telefone.Length == 11)
+                        {
+                            res = Int64.Parse(Telefone).ToString(@"(##) #####-####");
+                        }
+                    }
+                    catch { }
+                }
+                return res;
+            }
+        }
     }
 }

@@ -18,6 +18,8 @@ namespace EmpreendedorismoEIT.ViewModels
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
         public Cores Cor { get; set; }
 
+
+        //Atributos formatados
         public int CorInt
         {
             get { return (int)Cor; }

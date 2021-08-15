@@ -13,6 +13,8 @@ namespace EmpreendedorismoEIT.ViewModels
         [Range(0, 100)]
         public int Grau { get; set; }
 
+
+        //Atributos formatados
         public string CorHTML => ColorManager.CorHTML((int)Cor);
     }
 }
