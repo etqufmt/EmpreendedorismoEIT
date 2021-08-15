@@ -39,7 +39,10 @@ namespace EmpreendedorismoEIT
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
-            
+
+            //Ativar cache no servidor
+            services.AddMemoryCache();
+
             //Restringir parte administrativa
             services.AddRazorPages(options =>
             {

@@ -12,21 +12,26 @@ using EmpreendedorismoEIT.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Caching.Memory;
+using System.Collections.Generic;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 {
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMemoryCache _memoryCache;
         private readonly ILogger<CreateModel> _logger;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
         public CreateModel(
             ApplicationDbContext context,
+            IMemoryCache memoryCache,
             ILogger<CreateModel> logger,
             IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _memoryCache = memoryCache;
             _logger = logger;
             _webHostEnvironment = webHostEnvironment;
         }
@@ -103,7 +108,22 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
         private async Task LoadAsync()
         {
-            var ra = await _context.RamosAtuacao.OrderBy(r => r.CNAE).AsNoTracking().ToListAsync();
+            string cacheKey = "RamosAtuacaoSL";
+            List<RamoAtuacao> ra = null;
+            if (!_memoryCache.TryGetValue(cacheKey, out ra))
+            {
+                //Obtém dados do banco
+                ra = await _context.RamosAtuacao.OrderBy(r => r.CNAE).AsNoTracking().ToListAsync();
+
+                //Armazena no cache
+                _memoryCache.Set(cacheKey, ra,
+                    new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromMinutes(30)));
+                _logger.LogInformation($"{cacheKey} atualizado no cache");
+            }
+            else
+            {
+                _logger.LogInformation($"{cacheKey} lido do cache");
+            }
             RamosAtuacaoSL = new SelectList(ra, "ID", "CNAE");
         }
     }
