@@ -46,7 +46,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
         public async Task<IActionResult> OnGetAsync()
         {
-            await LoadAsync();
+            RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
             return Page();
         }
 
@@ -54,7 +54,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         {
             if (!ModelState.IsValid)
             {
-                await LoadAsync();
+                RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
                 return Page();
             }
 
@@ -98,33 +98,12 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 {
                     ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrCreate);
                 }
-                await LoadAsync();
+                RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
                 return Page();
             }
 
             JustCreatedMessage = true;
             return RedirectToPage("Details", new { novaEmpresa.ID });
-        }
-
-        private async Task LoadAsync()
-        {
-            string cacheKey = "RamosAtuacaoSL";
-            List<RamoAtuacao> ra = null;
-            if (!_memoryCache.TryGetValue(cacheKey, out ra))
-            {
-                //Obtém dados do banco
-                ra = await _context.RamosAtuacao.OrderBy(r => r.CNAE).AsNoTracking().ToListAsync();
-
-                //Armazena no cache
-                _memoryCache.Set(cacheKey, ra,
-                    new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromMinutes(30)));
-                _logger.LogInformation($"{cacheKey} atualizado no cache");
-            }
-            else
-            {
-                _logger.LogInformation($"{cacheKey} lido do cache");
-            }
-            RamosAtuacaoSL = new SelectList(ra, "ID", "CNAE");
         }
     }
 }

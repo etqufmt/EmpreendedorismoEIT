@@ -8,27 +8,34 @@ using Microsoft.AspNetCore.Hosting;
 using EmpreendedorismoEIT.ViewModels;
 using EmpreendedorismoEIT.Utils;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 {
     public class EditModel : PageModel
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMemoryCache _memoryCache;
         private readonly ILogger<EditModel> _logger;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
         public EditModel(
             ApplicationDbContext context,
+            IMemoryCache memoryCache,
             ILogger<EditModel> logger,
             IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _memoryCache = memoryCache;
             _logger = logger;
             _webHostEnvironment = webHostEnvironment;
         }
 
         [BindProperty]
         public JuniorFormVM JuniorVM { get; set; }
+
+        public SelectList RamosAtuacaoSL { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -39,6 +46,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
             var EJ = await _context.DadosJuniores
                 .Include(d => d.Empresa)
+                .ThenInclude(e => e.RamoAtuacao)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(d => d.EmpresaID == id);
 
