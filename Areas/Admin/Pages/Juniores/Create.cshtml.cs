@@ -32,7 +32,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         }
 
         [BindProperty]
-        public JuniorVM JuniorVM { get; set; }
+        public JuniorFormVM JuniorVM { get; set; }
 
         public SelectList RamosAtuacaoSL { get; set; }
 
@@ -64,7 +64,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 Endereco = JuniorVM.Endereco,
                 Telefone = JuniorVM.Telefone,
                 Email = JuniorVM.Email,
-                Logo = LogoManager.SalvarImagem(_webHostEnvironment, JuniorVM.Logo),
+                Logo = LogoManager.SalvarImagem(_webHostEnvironment, JuniorVM.LogoUpload),
                 Situacao = JuniorVM.Situacao,
                 DadosJunior = new DadosJunior
                 {

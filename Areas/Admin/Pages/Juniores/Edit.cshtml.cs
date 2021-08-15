@@ -28,7 +28,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         }
 
         [BindProperty]
-        public JuniorVM JuniorVM { get; set; }
+        public JuniorFormVM JuniorVM { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -47,7 +47,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 return NotFound();
             }
 
-            JuniorVM = new JuniorVM
+            JuniorVM = new JuniorFormVM
             {
                 ID = EJ.EmpresaID,
                 Campus = EJ.Campus,
@@ -58,7 +58,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 Endereco = EJ.Empresa.Endereco,
                 Telefone = EJ.Empresa.Telefone,
                 Email = EJ.Empresa.Email,
-                Logo = null,
+                LogoUpload = null,
                 Situacao = EJ.Empresa.Situacao
             };
 
@@ -99,10 +99,10 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
             string logoAntigo = null;
             string logoAtual = null;
-            if (JuniorVM.Logo != null)
+            if (JuniorVM.LogoUpload != null)
             {
                 logoAntigo = EJ.Empresa.Logo;
-                logoAtual = LogoManager.SalvarImagem(_webHostEnvironment, JuniorVM.Logo);
+                logoAtual = LogoManager.SalvarImagem(_webHostEnvironment, JuniorVM.LogoUpload);
                 EJ.Empresa.Logo = logoAtual;
             }
 

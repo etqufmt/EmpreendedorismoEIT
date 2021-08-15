@@ -5,7 +5,7 @@
     ViewData["Title"] = "Detalhes EJ";
     ViewData["Section"] = SectionManager.Juniores;
     ViewData["SectionTitle"] = Html.DisplayFor(model => model.JuniorVM.Nome);
-    var logoURL = String.IsNullOrEmpty(Model.Logo) ? @Url.Content("~/images/empty_logo.png") : @Url.Content("~/logo/" + Model.Logo);
+    var logoURL = String.IsNullOrEmpty(Model.JuniorVM.Logo) ? @Url.Content("~/images/empty_logo.png") : @Url.Content("~/logo/" + Model.JuniorVM.Logo);
 }
 
 @if (Model.JustCreatedMessage)
@@ -22,8 +22,7 @@
     <div class="col-lg-6">
         <div class="row no-gutters card-details mb-4">
             <div class="col-7">
-                <img class="card-img-left border" alt="logo"
-                     src="@logoURL">
+                <img class="card-img-left border" alt="logo" src="@logoURL">
             </div>
             <div class="col-5 list-group">
                 <a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@Model.JuniorVM.ID"
@@ -42,24 +41,24 @@
         </div>
         <div class="list-group mb-3 mb-lg-0 info-details">
             <div class="list-group-item py-xl-3">
-                <span class="d-block info-title">@Html.DisplayNameFor(model => model.JuniorVM.Endereco)</span>
-                @Html.DisplayFor(model => model.JuniorVM.Endereco)
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.JuniorVM.CNPJ)</span>
+                @Html.DisplayFor(model => model.JuniorVM.CNPJ)
             </div>
             <div class="list-group-item py-xl-3">
-                <span class="d-block info-title">@Html.DisplayNameFor(model => model.JuniorVM.Telefone)</span>
-                @Html.DisplayFor(model => model.JuniorVM.Telefone)
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.JuniorVM.Segmento)</span>
+                @Html.DisplayFor(model => model.JuniorVM.Segmento)
             </div>
             <div class="list-group-item py-xl-3">
-                <span class="d-block info-title">@Html.DisplayNameFor(model => model.JuniorVM.Email)</span>
-                @Html.DisplayFor(model => model.JuniorVM.Email)
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.JuniorVM.RamoAtuacaoCNAE)</span>
+                @Html.DisplayFor(model => model.JuniorVM.RamoAtuacaoCNAE)
+            </div>
+            <div class="list-group-item py-xl-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.JuniorVM.Descricao)</span>
+                @Html.DisplayFor(model => model.JuniorVM.Descricao)
             </div>
             <div class="list-group-item py-xl-3">
                 <span class="d-block info-title">@Html.DisplayNameFor(model => model.JuniorVM.Situacao)</span>
                 @Html.DisplayFor(model => model.JuniorVM.Situacao)
-            </div>
-            <div class="list-group-item py-xl-3">
-                <span class="d-block info-title">@Html.DisplayNameFor(model => model.JuniorVM.UltimaModificacao)</span>
-                @Html.DisplayFor(model => model.JuniorVM.UltimaModificacao)
             </div>
         </div>
     </div>
@@ -73,14 +72,22 @@
                 <span class="d-block info-title">@Html.DisplayNameFor(model => model.JuniorVM.Instituto)</span>
                 @Html.DisplayFor(model => model.JuniorVM.Instituto)
             </div>
-            @*<div class="list-group-item py-xl-3">
-                <span class="d-block info-title">@Html.DisplayNameFor(model => model.JuniorVM.DescricaoCurta)</span>
-                @Html.DisplayFor(model => model.JuniorVM.DescricaoCurta)
+            <div class="list-group-item py-xl-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.JuniorVM.Endereco)</span>
+                @Html.DisplayFor(model => model.JuniorVM.Endereco)
             </div>
             <div class="list-group-item py-xl-3">
-                <span class="d-block info-title">@Html.DisplayNameFor(model => model.JuniorVM.DescricaoLonga)</span>
-                @Html.DisplayFor(model => model.JuniorVM.DescricaoLonga)
-            </div>*@
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.JuniorVM.Telefone)</span>
+                @Html.DisplayFor(model => model.JuniorVM.Telefone)
+            </div>
+            <div class="list-group-item py-xl-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.JuniorVM.Email)</span>
+                @Html.DisplayFor(model => model.JuniorVM.Email)
+            </div>
+            <div class="list-group-item py-xl-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.JuniorVM.UltimaModificacao)</span>
+                @Html.DisplayFor(model => model.JuniorVM.UltimaModificacao)
+            </div>
         </div>
     </div>
 </div>

@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EmpreendedorismoEIT.ViewModels
 {
-    public class JuniorVM
+    public class JuniorFormVM
     {
         public int ID { get; set; }
 
@@ -28,7 +28,7 @@ namespace EmpreendedorismoEIT.ViewModels
         public string CNPJ { get; set; }
 
 
-        [Display(Name = "Segmento empresarial")]
+        [Display(Name = "Segmento")]
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
         public Segmento Segmento { get; set; }
 
@@ -71,7 +71,7 @@ namespace EmpreendedorismoEIT.ViewModels
         [DataType(DataType.Upload)]
         [MaxFileSize(2 * 1024 * 1024)]
         [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png" })]
-        public IFormFile Logo { get; set; }
+        public IFormFile LogoUpload { get; set; }
 
 
         [Display(Name = "Situação")]

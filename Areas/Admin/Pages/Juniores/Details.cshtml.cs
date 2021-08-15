@@ -16,8 +16,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             _context = context;
         }
 
-        public JuniorVM JuniorVM { get; set; }
-        public string Logo { get; set; }
+        public JuniorDetailsVM JuniorVM { get; set; }
 
         [TempData]
         public string StatusMessage { get; set; }
@@ -34,6 +33,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
             var EJ = await _context.DadosJuniores
                         .Include(d => d.Empresa)
+                        .ThenInclude(e => e.RamoAtuacao)
                         .AsNoTracking()
                         .FirstOrDefaultAsync(d => d.EmpresaID == id);
             if (EJ == null)
@@ -41,22 +41,24 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 return NotFound();
             }
 
-            JuniorVM = new JuniorVM
+            JuniorVM = new JuniorDetailsVM
             {
                 ID = EJ.EmpresaID,
                 Nome = EJ.Empresa.Nome,
-                //DescricaoCurta = EJ.Empresa.DescricaoCurta,
-                //DescricaoLonga = EJ.Empresa.DescricaoLonga,
+                CNPJ = EJ.Empresa.CNPJ,
+                Segmento = EJ.Empresa.Segmento,
+                RamoAtuacaoCNAE = EJ.Empresa.RamoAtuacao.CNAE,
+                Descricao = EJ.Empresa.Descricao,
                 Endereco = EJ.Empresa.Endereco,
                 Telefone = EJ.Empresa.Telefone,
                 Email = EJ.Empresa.Email,
+                Logo = EJ.Empresa.Logo,
                 Situacao = EJ.Empresa.Situacao,
+                UltimaModificacao = EJ.Empresa.UltimaModificacao,
                 Campus = EJ.Campus,
                 Instituto = EJ.Instituto,
-                UltimaModificacao = EJ.Empresa.UltimaModificacao
             };
 
-            Logo = EJ.Empresa.Logo;
             return Page();
         }
     }
