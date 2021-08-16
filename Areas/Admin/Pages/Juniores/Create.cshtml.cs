@@ -46,7 +46,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
         public async Task<IActionResult> OnGetAsync()
         {
-            RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
+            await LoadAsync();
             return Page();
         }
 
@@ -54,8 +54,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("JuniorVM.LogoUpload", Resources.ValidationResources.ErrLogoNovamente);
-                RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
+                await LoadAsync();
                 return Page();
             }
 
@@ -99,13 +98,21 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 {
                     ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrCreate);
                 }
-                ModelState.AddModelError("JuniorVM.LogoUpload", Resources.ValidationResources.ErrLogoNovamente);
-                RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
+                await LoadAsync();
                 return Page();
             }
 
             JustCreatedMessage = true;
             return RedirectToPage("Details", new { novaEmpresa.ID });
+        }
+
+        public async Task LoadAsync()
+        {
+            if (JuniorVM.LogoUpload != null)
+            {
+                ModelState.AddModelError("JuniorVM.LogoUpload", Resources.ValidationResources.ErrLogoNovamente);
+            } 
+            RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
         }
     }
 }

@@ -18,11 +18,7 @@
     </div>
     <div class="row">
         <div class="col-md-6 col-xl-5">
-            <div asp-validation-summary="ModelOnly" class="alert alert-info alert-dismissible custom-alert fade show" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true"><i class="bi bi-x"></i></span>
-                </button>
-            </div>
+            <partial name="_ValidationMessage" />
             <div class="form-group mb-4">
                 <label asp-for="JuniorVM.Nome" class="control-label"></label>
                 <span class="label-sub">(Comercial) *</span>

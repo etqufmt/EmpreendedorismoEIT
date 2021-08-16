@@ -71,7 +71,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 Instituto = EJ.Instituto,
             };
 
-            RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
+            await LoadAsync();
             return Page();
         }
 
@@ -93,7 +93,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
             if (!ModelState.IsValid)
             {
-                RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
+                await LoadAsync();
                 return Page();
             }
 
@@ -129,11 +129,20 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 _logger.LogError("[DEBUG] Empresas:update // " + ex);
                 LogoManager.ExcluirImagem(_webHostEnvironment, logoAtual);
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
-                RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
+                await LoadAsync();
                 return Page();
             }
 
             return RedirectToPage("Details", new { id });
+        }
+
+        public async Task LoadAsync()
+        {
+            if (JuniorVM.LogoUpload != null)
+            {
+                ModelState.AddModelError("JuniorVM.LogoUpload", Resources.ValidationResources.ErrLogoNovamente);
+            }
+            RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
         }
     }
 }

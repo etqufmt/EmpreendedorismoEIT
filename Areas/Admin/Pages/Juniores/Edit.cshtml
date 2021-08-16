@@ -14,70 +14,102 @@
             <div class="form-group">
                 <h5 class="subtitle">Dados básicos</h5><hr class="mt-0" />
             </div>
-            <div asp-validation-summary="ModelOnly" class="alert alert-info alert-dismissible custom-alert fade show" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true"><i class="bi bi-x"></i></span>
-                </button>
-            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-xl-5">
+            <partial name="_ValidationMessage" />
             <input type="hidden" asp-for="JuniorVM.ID" />
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label asp-for="JuniorVM.Nome" class="control-label"></label>
-                <input asp-for="JuniorVM.Nome" class="form-control maxcounter" />
-                <span asp-validation-for="JuniorVM.Nome" class="text-danger"></span>
+                <span class="label-sub">(Comercial) *</span>
+                <input asp-for="JuniorVM.Nome" class="form-control" />
+                <span asp-validation-for="JuniorVM.Nome" class="text-danger validation-msg"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="JuniorVM.LogoUpload" class="control-label"></label>
-                <div class="custom-file">
-                    <input asp-for="JuniorVM.LogoUpload" class="custom-file-input" id="input-logo"
-                           accept=".png, .jpg, .jpeg">
-                    <label class="custom-file-label text-truncate" for="input-logo"></label>
+            <div class="form-group mb-4">
+                <label asp-for="JuniorVM.CNPJ" class="control-label"></label>
+                <span class="label-sub">(Não pode ser alterado)</span>
+                <input asp-for="JuniorVM.CNPJ" class="form-control number-only" readonly />
+                <span asp-validation-for="JuniorVM.CNPJ" class="text-danger validation-msg"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="JuniorVM.Segmento" class="control-label"></label>
+                <span class="label-sub">*</span>
+                <select asp-for="JuniorVM.Segmento" class="form-control custom-select" asp-items="@Html.GetEnumSelectList<Segmento>()"></select>
+                <span asp-validation-for="JuniorVM.Segmento" class="text-danger validation-msg"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="JuniorVM.RamoAtuacaoID" class="control-label"></label>
+                <span class="label-sub">(<a href="https://receita.economia.gov.br/orientacao/tributaria/cadastros/cadastro-nacional-de-pessoas-juridicas-cnpj/classificacao-nacional-de-atividades-economicas-2013-cnae/apresentacao" target="_blank">Explicação</a>) *</span>
+                <div class="input-group mb-3">
+                    <select asp-for="JuniorVM.RamoAtuacaoID" class="form-control custom-select" asp-items="@Model.RamosAtuacaoSL">
+                        <option value="" disabled selected hidden>Dois primeiros dígitos</option>
+                    </select>
+                    <div class="input-group-append">
+                        <label class="input-group-text">CNAE</label>
+                    </div>
                 </div>
-                <span asp-validation-for="JuniorVM.LogoUpload" class="text-danger"></span>
+                <span asp-validation-for="JuniorVM.RamoAtuacaoID" class="text-danger validation-msg"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="JuniorVM.Endereco" class="control-label"></label>
-                <input asp-for="JuniorVM.Endereco" class="form-control maxcounter" />
-                <span asp-validation-for="JuniorVM.Endereco" class="text-danger"></span>
+            <div class="form-group mb-4">
+                <label asp-for="JuniorVM.Descricao" class="control-label"></label>
+                <span class="label-sub">*</span>
+                <textarea asp-for="JuniorVM.Descricao" class="form-control maxcounter" rows="6"></textarea>
+                <span class="maxcounter-out float-right"></span>
+                <span asp-validation-for="JuniorVM.Descricao" class="text-danger validation-msg"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="JuniorVM.Telefone" class="control-label"></label>
-                <input type="tel" asp-for="JuniorVM.Telefone" class="form-control number-only" />
-                <span asp-validation-for="JuniorVM.Telefone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="JuniorVM.Email" class="control-label"></label>
-                <input asp-for="JuniorVM.Email" class="form-control" />
-                <span asp-validation-for="JuniorVM.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label asp-for="JuniorVM.Situacao" class="control-label"></label>
+                <span class="label-sub">*</span>
                 <select asp-for="JuniorVM.Situacao" class="form-control custom-select" asp-items="@Html.GetEnumSelectList<Situacao>()"></select>
-                <span asp-validation-for="JuniorVM.Situacao" class="text-danger"></span>
+                <span asp-validation-for="JuniorVM.Situacao" class="text-danger validation-msg"></span>
             </div>
         </div>
         <div class="col-md-6 col-xl-5">
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label asp-for="JuniorVM.Campus" class="control-label"></label>
+                <span class="label-sub">*</span>
                 <select asp-for="JuniorVM.Campus" class="form-control custom-select" asp-items="@Html.GetEnumSelectList<Campus>()"></select>
-                <span asp-validation-for="JuniorVM.Campus" class="text-danger"></span>
+                <span asp-validation-for="JuniorVM.Campus" class="text-danger validation-msg"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label asp-for="JuniorVM.Instituto" class="control-label">Instituto / Faculdade</label>
-                <input asp-for="JuniorVM.Instituto" class="form-control maxcounter" />
-                <span asp-validation-for="JuniorVM.Instituto" class="text-danger"></span>
+                <span class="label-sub">*</span>
+                <input asp-for="JuniorVM.Instituto" class="form-control" placeholder="Associado à EJ" />
+                <span asp-validation-for="JuniorVM.Instituto" class="text-danger validation-msg"></span>
             </div>
-            @*<div class="form-group">
-                <label asp-for="JuniorVM.DescricaoCurta" class="control-label"></label>
-                <textarea asp-for="JuniorVM.DescricaoCurta" class="form-control maxcounter" rows="2"></textarea>
-                <span asp-validation-for="JuniorVM.DescricaoCurta" class="text-danger"></span>
+            <div class="form-group mb-4">
+                <label asp-for="JuniorVM.Endereco" class="control-label"></label>
+                <span class="label-sub">*</span>
+                <textarea asp-for="JuniorVM.Endereco" class="form-control maxcounter" rows="3" placeholder="Dentro do campus"></textarea>
+                <span class="maxcounter-out float-right"></span>
+                <span asp-validation-for="JuniorVM.Endereco" class="text-danger validation-msg"></span>
+
             </div>
-            <div class="form-group">
-                <label asp-for="JuniorVM.DescricaoLonga" class="control-label"></label>
-                <textarea asp-for="JuniorVM.DescricaoLonga" class="form-control maxcounter" rows="4"></textarea>
-                <span asp-validation-for="JuniorVM.DescricaoLonga" class="text-danger"></span>
-            </div>*@
+            <div class="form-group mb-4">
+                <label asp-for="JuniorVM.Telefone" class="control-label"></label>
+                <span class="label-sub">(Apenas números) *</span>
+                <input type="tel" asp-for="JuniorVM.Telefone" class="form-control number-only"
+                       placeholder="DDD + Telefone" />
+                <span asp-validation-for="JuniorVM.Telefone" class="text-danger validation-msg"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="JuniorVM.Email" class="control-label"></label>
+                <span class="label-sub">*</span>
+                <input asp-for="JuniorVM.Email" class="form-control" placeholder="Não utilize email pessoal" />
+                <span asp-validation-for="JuniorVM.Email" class="text-danger validation-msg"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="JuniorVM.LogoUpload" class="control-label"></label>
+                <span class="label-sub">(Apenas .jpg e .png)</span>
+                <div class="custom-file">
+                    <input asp-for="JuniorVM.LogoUpload" class="custom-file-input" id="input-logo" accept=".png, .jpg, .jpeg" />
+                    <label class="custom-file-label text-truncate" for="input-logo"></label>
+                </div>
+                <span asp-validation-for="JuniorVM.LogoUpload" class="text-danger validation-msg"></span>
+            </div>
             <div class="form-group text-right mt-4">
-                <a asp-page="./Details" asp-route-id="@Model.JuniorVM.ID" class="btn btn-outline-secondary">Voltar</a>
+                <a asp-page="./Details" asp-route-id="@Model.JuniorVM.ID" class="btn btn-outline-secondary">Voltar para empresa</a>
                 <input type="submit" value="Salvar" class="btn btn-primary" />
             </div>
         </div>
@@ -85,27 +117,9 @@
 </form>
 
 @* Modal de upload de imagem *@
-<div class="modal fade" id="modal-upload" tabindex="-1" data-backdrop="static">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Ajustar logotipo</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="upload-container text-center">
-                    <img id="img-canvas" alt="Arquivo inválido" src="">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="btn-select">Selecionar</button>
-            </div>
-        </div>
-    </div>
-</div>
+<partial name="_ModalUpload" />
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
