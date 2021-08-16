@@ -144,8 +144,8 @@
   <data name="ErrEmail" xml:space="preserve">
     <value>Endereço de email inválido</value>
   </data>
-  <data name="ErrInstituto" xml:space="preserve">
-    <value>Especifique o instituto ou faculdade</value>
+  <data name="ErrLogoNovamente" xml:space="preserve">
+    <value>Selecione o logotipo novamente</value>
   </data>
   <data name="ErrLogotipo" xml:space="preserve">
     <value>Selecione um logotipo para a empresa</value>

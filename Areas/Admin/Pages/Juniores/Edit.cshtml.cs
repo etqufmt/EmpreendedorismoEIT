@@ -46,7 +46,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
             var EJ = await _context.DadosJuniores
                 .Include(d => d.Empresa)
-                .ThenInclude(e => e.RamoAtuacao)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(d => d.EmpresaID == id);
 
@@ -58,18 +57,21 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             JuniorVM = new JuniorFormVM
             {
                 ID = EJ.EmpresaID,
-                Campus = EJ.Campus,
-                Instituto = EJ.Instituto,
                 Nome = EJ.Empresa.Nome,
-                //DescricaoCurta = EJ.Empresa.DescricaoCurta,
-                //DescricaoLonga = EJ.Empresa.DescricaoLonga,
+                CNPJ = EJ.Empresa.CNPJ,
+                Segmento = EJ.Empresa.Segmento,
+                RamoAtuacaoID = EJ.Empresa.RamoAtuacaoID,
+                Descricao = EJ.Empresa.Descricao,
                 Endereco = EJ.Empresa.Endereco,
                 Telefone = EJ.Empresa.Telefone,
                 Email = EJ.Empresa.Email,
                 LogoUpload = null,
-                Situacao = EJ.Empresa.Situacao
+                Situacao = EJ.Empresa.Situacao,
+                Campus = EJ.Campus,
+                Instituto = EJ.Instituto,
             };
 
+            RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
             return Page();
         }
 
@@ -91,19 +93,21 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
             if (!ModelState.IsValid)
             {
+                RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
                 return Page();
             }
 
-            EJ.Campus = JuniorVM.Campus;
-            EJ.Instituto = JuniorVM.Instituto;
             EJ.Empresa.Nome = JuniorVM.Nome;
-            //EJ.Empresa.DescricaoCurta = JuniorVM.DescricaoCurta;
-            //EJ.Empresa.DescricaoLonga = JuniorVM.DescricaoLonga;
+            EJ.Empresa.Segmento = JuniorVM.Segmento;
+            EJ.Empresa.RamoAtuacaoID = JuniorVM.RamoAtuacaoID;
+            EJ.Empresa.Descricao = JuniorVM.Descricao;
             EJ.Empresa.Endereco = JuniorVM.Endereco;
             EJ.Empresa.Telefone = JuniorVM.Telefone;
             EJ.Empresa.Email = JuniorVM.Email;
             EJ.Empresa.Situacao = JuniorVM.Situacao;
             EJ.Empresa.UltimaModificacao = DateTime.Now;
+            EJ.Campus = JuniorVM.Campus;
+            EJ.Instituto = JuniorVM.Instituto;
 
             string logoAntigo = null;
             string logoAtual = null;
@@ -125,6 +129,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 _logger.LogError("[DEBUG] Empresas:update // " + ex);
                 LogoManager.ExcluirImagem(_webHostEnvironment, logoAtual);
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
+                RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
                 return Page();
             }
 

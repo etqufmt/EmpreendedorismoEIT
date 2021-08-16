@@ -54,6 +54,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
         {
             if (!ModelState.IsValid)
             {
+                ModelState.AddModelError("JuniorVM.LogoUpload", Resources.ValidationResources.ErrLogoNovamente);
                 RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
                 return Page();
             }
@@ -71,12 +72,12 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 Email = JuniorVM.Email,
                 Logo = LogoManager.SalvarImagem(_webHostEnvironment, JuniorVM.LogoUpload),
                 Situacao = JuniorVM.Situacao,
+                UltimaModificacao = DateTime.Now,
                 DadosJunior = new DadosJunior
                 {
                     Campus = JuniorVM.Campus,
                     Instituto = JuniorVM.Instituto
                 },
-                UltimaModificacao = DateTime.Now
             };
 
             try
@@ -98,6 +99,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 {
                     ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrCreate);
                 }
+                ModelState.AddModelError("JuniorVM.LogoUpload", Resources.ValidationResources.ErrLogoNovamente);
                 RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
                 return Page();
             }

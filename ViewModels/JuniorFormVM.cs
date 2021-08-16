@@ -35,9 +35,9 @@ namespace EmpreendedorismoEIT.ViewModels
 
         [Display(Name = "Ramo de atuação")]
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
-        public int RamoAtuacaoID { get; set; }
+        public int? RamoAtuacaoID { get; set; }
 
-        [Display(Name = "Descrição")]
+        [Display(Name = "Descrição da empresa")]
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
         [StringLength(500, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         [FormatText]
@@ -91,7 +91,7 @@ namespace EmpreendedorismoEIT.ViewModels
 
         [Display(Name = "Instituto")]
         [StringLength(50, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
-        [Required(ErrorMessageResourceName = "ErrInstituto", ErrorMessageResourceType = typeof(ValidationResources))]
+        [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
         [FormatText]
         public string Instituto { get; set; }
     }

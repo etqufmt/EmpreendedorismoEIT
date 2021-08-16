@@ -142,11 +142,11 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Especifique o instituto ou faculdade.
+        ///   Looks up a localized string similar to Selecione o logotipo novamente.
         /// </summary>
-        public static string ErrInstituto {
+        public static string ErrLogoNovamente {
             get {
-                return ResourceManager.GetString("ErrInstituto", resourceCulture);
+                return ResourceManager.GetString("ErrLogoNovamente", resourceCulture);
             }
         }
         
