@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using EmpreendedorismoEIT.Models;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EmpreendedorismoEIT.Data
 {
@@ -33,6 +34,13 @@ namespace EmpreendedorismoEIT.Data
             modelBuilder.Entity<Empresa>().HasIndex(e => e.CNPJ).IsUnique();
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //Permitir pesquisa case-insensitive
+            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.ReplaceService<IMigrationsSqlGenerator, CustomSqlServerMigrationsSqlGenerator>();
         }
     }
 }
