@@ -38,7 +38,7 @@
                     <input asp-for="SocialVM.FacebookURL" class="form-control"
                             placeholder="Exemplo: https://facebook.com/ufmatogrosso" />
                 </div>
-                <span asp-validation-for="SocialVM.FacebookURL" class="text-danger"></span>
+                <span asp-validation-for="SocialVM.FacebookURL"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SocialVM.InstagramURL" class="control-label"></label>
@@ -49,7 +49,7 @@
                     <input asp-for="SocialVM.InstagramURL" class="form-control"
                             placeholder="Exemplo: https://www.instagram.com/ufmt.br" />
                 </div>
-                <span asp-validation-for="SocialVM.InstagramURL" class="text-danger"></span>
+                <span asp-validation-for="SocialVM.InstagramURL"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SocialVM.LinkedinURL" class="control-label"></label>
@@ -60,7 +60,7 @@
                     <input asp-for="SocialVM.LinkedinURL" class="form-control"
                             placeholder="Exemplo: https://www.linkedin.com/company/senaimt/" />
                 </div>
-                <span asp-validation-for="SocialVM.LinkedinURL" class="text-danger"></span>
+                <span asp-validation-for="SocialVM.LinkedinURL"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SocialVM.TwitterURL" class="control-label"></label>
@@ -71,7 +71,7 @@
                     <input asp-for="SocialVM.TwitterURL" class="form-control"
                             placeholder="Exemplo: https://twitter.com/ufmt" />
                 </div>
-                <span asp-validation-for="SocialVM.TwitterURL" class="text-danger"></span>
+                <span asp-validation-for="SocialVM.TwitterURL"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SocialVM.WebsiteURL" class="control-label"></label>
@@ -82,7 +82,7 @@
                     <input asp-for="SocialVM.WebsiteURL" class="form-control"
                             placeholder="Exemplo: https://ufmt.br" />
                 </div>
-                <span asp-validation-for="SocialVM.WebsiteURL" class="text-danger"></span>
+                <span asp-validation-for="SocialVM.WebsiteURL"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SocialVM.WhatsappNUM" class="control-label">WhatsApp <span class="label-sub">(Apenas números)</span></label>
@@ -93,7 +93,7 @@
                     <input asp-for="SocialVM.WhatsappNUM" class="form-control number-only"
                             placeholder="DDD + Telefone" />
                 </div>
-                <span asp-validation-for="SocialVM.WhatsappNUM" class="text-danger"></span>
+                <span asp-validation-for="SocialVM.WhatsappNUM"></span>
             </div>
             <div class="form-group text-right mt-4">
                 <a asp-area="Admin" asp-page="@Model.ReturnURL" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-secondary">Voltar para empresa</a>
