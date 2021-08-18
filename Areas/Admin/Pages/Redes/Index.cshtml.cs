@@ -54,10 +54,12 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
                                 .FirstOrDefault(r => r.Plataforma == Plataforma.FACEBOOK)?.URL,
                 InstagramURL = Empresa.RedesSociais
                                 .FirstOrDefault(r => r.Plataforma == Plataforma.INSTAGRAM)?.URL,
-                WhatsappURL = Empresa.RedesSociais
-                                .FirstOrDefault(r => r.Plataforma == Plataforma.WHATSAPP)?.URL[2..],
+                WhatsappNUM = Empresa.RedesSociais
+                                .FirstOrDefault(r => r.Plataforma == Plataforma.WHATSAPP)?.URL,
                 TwitterURL = Empresa.RedesSociais
-                                .FirstOrDefault(r => r.Plataforma == Plataforma.TWITTER)?.URL
+                                .FirstOrDefault(r => r.Plataforma == Plataforma.TWITTER)?.URL,
+                LinkedinURL = Empresa.RedesSociais
+                                .FirstOrDefault(r => r.Plataforma == Plataforma.LINKEDIN)?.URL,
             };
 
             return Page();
@@ -100,16 +102,20 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
                 Empresa.RedesSociais.Add(new RedeSocial { 
                     Plataforma = Plataforma.INSTAGRAM, URL = SocialVM.InstagramURL });
             }
-            if (SocialVM.WhatsappURL != null)
+            if (SocialVM.WhatsappNUM != null)
             {
-                //Código internacional para telefones brasileiros = 55
                 Empresa.RedesSociais.Add(new RedeSocial { 
-                    Plataforma = Plataforma.WHATSAPP, URL = SocialVM.WhatsappURL.Insert(0, "55") });
+                    Plataforma = Plataforma.WHATSAPP, URL = SocialVM.WhatsappNUM });
             }
             if (SocialVM.TwitterURL != null)
             {
                 Empresa.RedesSociais.Add(new RedeSocial { 
                     Plataforma = Plataforma.TWITTER, URL = SocialVM.TwitterURL });
+            }
+            if (SocialVM.LinkedinURL != null)
+            {
+                Empresa.RedesSociais.Add(new RedeSocial {
+                    Plataforma = Plataforma.LINKEDIN, URL = SocialVM.LinkedinURL });
             }
 
             try

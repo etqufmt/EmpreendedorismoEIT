@@ -17,84 +17,91 @@
     }
 }
 
-<div class="row">
-    <div class="col-lg-6">
-        <form method="post">
-            <div class="row">
-                <div class="col">
-                    <h5 class="subtitle">Redes sociais</h5><hr class="mt-0" />
-                    <partial name="_ValidationMessage" />
-                    <p>Abra o perfil da rede social no navegador, copie a URL da barra de endereços e cole no campo correspondente para garantir que tudo esteja correto.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    
-                    <input type="hidden" asp-for="SocialVM.EmpresaID" />
-                    <div class="form-group">
-                        <label asp-for="SocialVM.FacebookURL" class="control-label"></label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <i class="bi-facebook input-group-text"></i>
-                            </div>
-                            <input asp-for="SocialVM.FacebookURL" class="form-control"
-                                   placeholder="Exemplo: https://facebook.com/ufmatogrosso" />
-                        </div>
-                        <span asp-validation-for="SocialVM.FacebookURL" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="SocialVM.InstagramURL" class="control-label"></label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <i class="bi-instagram input-group-text"></i>
-                            </div>
-                            <input asp-for="SocialVM.InstagramURL" class="form-control"
-                                   placeholder="Exemplo: https://www.instagram.com/ufmt.br" />
-                        </div>
-                        <span asp-validation-for="SocialVM.InstagramURL" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="SocialVM.TwitterURL" class="control-label"></label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <i class="bi-twitter input-group-text"></i>
-                            </div>
-                            <input asp-for="SocialVM.TwitterURL" class="form-control"
-                                   placeholder="Exemplo: https://twitter.com/ufmt" />
-                        </div>
-                        <span asp-validation-for="SocialVM.TwitterURL" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="SocialVM.WebsiteURL" class="control-label"></label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <i class="bi-globe input-group-text"></i>
-                            </div>
-                            <input asp-for="SocialVM.WebsiteURL" class="form-control"
-                                   placeholder="Exemplo: https://ufmt.br" />
-                        </div>
-                        <span asp-validation-for="SocialVM.WebsiteURL" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="SocialVM.WhatsappURL" class="control-label">WhatsApp <span class="label-sub">(Apenas números)</span></label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <i class="bi-whatsapp input-group-text"></i>
-                            </div>
-                            <input asp-for="SocialVM.WhatsappURL" class="form-control number-only"
-                                   placeholder="DDD + Telefone" />
-                        </div>
-                        <span asp-validation-for="SocialVM.WhatsappURL" class="text-danger"></span>
-                    </div>
-                    <div class="form-group text-right mt-4">
-                        <a asp-area="Admin" asp-page="@Model.ReturnURL" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-secondary">Voltar para empresa</a>
-                        <input type="submit" value="Salvar" class="btn btn-primary" />
-                    </div>
-                </div>
-            </div>
-        </form>
+
+<form method="post">
+    <div class="row">
+        <div class="col-lg-6">
+            <h5 class="subtitle">Redes sociais</h5><hr class="mt-0" />
+            <partial name="_ValidationMessage" />
+            <p>Abra o perfil da rede social no navegador e copie o link da barra de endereços. Depois volte para essa página e cole o endereço no campo correspondente.</p>
+        </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-lg-6">
+            <input type="hidden" asp-for="SocialVM.EmpresaID" />
+            <div class="form-group">
+                <label asp-for="SocialVM.FacebookURL" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <i class="bi-facebook input-group-text"></i>
+                    </div>
+                    <input asp-for="SocialVM.FacebookURL" class="form-control"
+                            placeholder="Exemplo: https://facebook.com/ufmatogrosso" />
+                </div>
+                <span asp-validation-for="SocialVM.FacebookURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SocialVM.InstagramURL" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <i class="bi-instagram input-group-text"></i>
+                    </div>
+                    <input asp-for="SocialVM.InstagramURL" class="form-control"
+                            placeholder="Exemplo: https://www.instagram.com/ufmt.br" />
+                </div>
+                <span asp-validation-for="SocialVM.InstagramURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SocialVM.LinkedinURL" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <i class="bi-linkedin input-group-text"></i>
+                    </div>
+                    <input asp-for="SocialVM.LinkedinURL" class="form-control"
+                            placeholder="Exemplo: https://www.linkedin.com/company/senaimt/" />
+                </div>
+                <span asp-validation-for="SocialVM.LinkedinURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SocialVM.TwitterURL" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <i class="bi-twitter input-group-text"></i>
+                    </div>
+                    <input asp-for="SocialVM.TwitterURL" class="form-control"
+                            placeholder="Exemplo: https://twitter.com/ufmt" />
+                </div>
+                <span asp-validation-for="SocialVM.TwitterURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SocialVM.WebsiteURL" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <i class="bi-globe input-group-text"></i>
+                    </div>
+                    <input asp-for="SocialVM.WebsiteURL" class="form-control"
+                            placeholder="Exemplo: https://ufmt.br" />
+                </div>
+                <span asp-validation-for="SocialVM.WebsiteURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SocialVM.WhatsappNUM" class="control-label">WhatsApp <span class="label-sub">(Apenas números)</span></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <i class="bi-whatsapp input-group-text"></i>
+                    </div>
+                    <input asp-for="SocialVM.WhatsappNUM" class="form-control number-only"
+                            placeholder="DDD + Telefone" />
+                </div>
+                <span asp-validation-for="SocialVM.WhatsappNUM" class="text-danger"></span>
+            </div>
+            <div class="form-group text-right mt-4">
+                <a asp-area="Admin" asp-page="@Model.ReturnURL" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-secondary">Voltar para empresa</a>
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

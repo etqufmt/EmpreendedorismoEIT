@@ -15,6 +15,19 @@ namespace EmpreendedorismoEIT.ViewModels
 
 
         //Atributos formatados
-        public string CorHTML => ColorManager.CorHTML((int)Cor);
+        public string CorHTML
+        {
+            get
+            {
+                try
+                {
+                    return String.Format("{0:X6}", (int)Cor).Insert(0, "#");
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
     }
 }

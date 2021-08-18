@@ -41,6 +41,9 @@ namespace EmpreendedorismoEIT.Models
         WHATSAPP = 4,
 
         [Display(Name = "Twitter")]
-        TWITTER = 5
+        TWITTER = 5,
+
+        [Display(Name = "LinkedIn")]
+        LINKEDIN = 6,
     }
 }

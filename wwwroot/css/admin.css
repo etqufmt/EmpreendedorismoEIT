@@ -1,6 +1,10 @@
-﻿/*input:placeholder-shown {
+﻿input:placeholder-shown {
     font-weight: 300;
-}*/
+}
+
+textarea:placeholder-shown {
+    font-weight: 300;
+}
 
 .custom-file-input {
     z-index: unset !important;
