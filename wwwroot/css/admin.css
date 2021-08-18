@@ -179,12 +179,15 @@ img.card-img-left {
 }
 
 .field-validation-valid {
+    color: #6c757d;
     font-size: 0.9rem;
+    font-style: italic;
 }
 
 .field-validation-error {
-    font-size: 0.9rem;
     color: #dc3545 !important;
+    font-size: 0.9rem;
+    font-style: italic;
 }
 
 .search-box {
