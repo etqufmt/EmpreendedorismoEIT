@@ -136,9 +136,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             return RedirectToPage("Details", new { id });
         }
 
-        public async Task LoadAsync()
+        private async Task LoadAsync()
         {
-            if (JuniorVM.LogoUpload != null)
+            if (JuniorVM?.LogoUpload != null)
             {
                 ModelState.AddModelError("JuniorVM.LogoUpload", Resources.ValidationResources.ErrLogoNovamente);
             }
