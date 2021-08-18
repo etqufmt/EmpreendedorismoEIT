@@ -23,19 +23,19 @@
                 <label asp-for="JuniorVM.Nome" class="control-label"></label>
                 <span class="label-sub">(Comercial) *</span>
                 <input asp-for="JuniorVM.Nome" class="form-control" />
-                <span asp-validation-for="JuniorVM.Nome" class="text-danger validation-msg"></span>
+                <span asp-validation-for="JuniorVM.Nome"></span>
             </div>
             <div class="form-group mb-4">
                 <label asp-for="JuniorVM.CNPJ" class="control-label"></label>
                 <span class="label-sub">(Apenas números) *</span>
                 <input asp-for="JuniorVM.CNPJ" class="form-control number-only" placeholder="14 dígitos" />
-                <span asp-validation-for="JuniorVM.CNPJ" class="text-danger validation-msg"></span>
+                <span asp-validation-for="JuniorVM.CNPJ"></span>
             </div>
             <div class="form-group mb-4">
                 <label asp-for="JuniorVM.Segmento" class="control-label"></label>
                 <span class="label-sub">*</span>
                 <select asp-for="JuniorVM.Segmento" class="form-control custom-select" asp-items="@Html.GetEnumSelectList<Segmento>()"></select>
-                <span asp-validation-for="JuniorVM.Segmento" class="text-danger validation-msg"></span>
+                <span asp-validation-for="JuniorVM.Segmento"></span>
             </div>
             <div class="form-group mb-4">
                 <label asp-for="JuniorVM.RamoAtuacaoID" class="control-label"></label>
@@ -48,20 +48,20 @@
                         <label class="input-group-text">CNAE</label>
                     </div>
                 </div>
-                <span asp-validation-for="JuniorVM.RamoAtuacaoID" class="text-danger validation-msg"></span>
+                <span asp-validation-for="JuniorVM.RamoAtuacaoID"></span>
             </div>
             <div class="form-group mb-4">
                 <label asp-for="JuniorVM.Descricao" class="control-label"></label>
                 <span class="label-sub">*</span>
                 <textarea asp-for="JuniorVM.Descricao" class="form-control maxcounter" rows="6"></textarea>
                 <span class="maxcounter-out float-right"></span>
-                <span asp-validation-for="JuniorVM.Descricao" class="text-danger validation-msg"></span>
+                <span asp-validation-for="JuniorVM.Descricao"></span>
             </div>
             <div class="form-group mb-4">
                 <label asp-for="JuniorVM.Situacao" class="control-label"></label>
                 <span class="label-sub">*</span>
                 <select asp-for="JuniorVM.Situacao" class="form-control custom-select" asp-items="@Html.GetEnumSelectList<Situacao>()"></select>
-                <span asp-validation-for="JuniorVM.Situacao" class="text-danger validation-msg"></span>
+                <span asp-validation-for="JuniorVM.Situacao"></span>
             </div>
         </div>
         <div class="col-md-6 col-xl-5">
@@ -69,20 +69,20 @@
                 <label asp-for="JuniorVM.Campus" class="control-label"></label>
                 <span class="label-sub">*</span>
                 <select asp-for="JuniorVM.Campus" class="form-control custom-select" asp-items="@Html.GetEnumSelectList<Campus>()"></select>
-                <span asp-validation-for="JuniorVM.Campus" class="text-danger validation-msg"></span>
+                <span asp-validation-for="JuniorVM.Campus"></span>
             </div>
             <div class="form-group mb-4">
                 <label asp-for="JuniorVM.Instituto" class="control-label">Instituto / Faculdade</label>
                 <span class="label-sub">*</span>
                 <input asp-for="JuniorVM.Instituto" class="form-control" placeholder="Associado à EJ" />
-                <span asp-validation-for="JuniorVM.Instituto" class="text-danger validation-msg"></span>
+                <span asp-validation-for="JuniorVM.Instituto"></span>
             </div>
             <div class="form-group mb-4">
                 <label asp-for="JuniorVM.Endereco" class="control-label"></label>
                 <span class="label-sub">*</span>
                 <textarea asp-for="JuniorVM.Endereco" class="form-control maxcounter" rows="3" placeholder="Dentro do campus"></textarea>
                 <span class="maxcounter-out float-right"></span>
-                <span asp-validation-for="JuniorVM.Endereco" class="text-danger validation-msg"></span>
+                <span asp-validation-for="JuniorVM.Endereco"></span>
 
             </div>
             <div class="form-group mb-4">
@@ -90,13 +90,13 @@
                 <span class="label-sub">(Apenas números) *</span>
                 <input type="tel" asp-for="JuniorVM.Telefone" class="form-control number-only"
                        placeholder="DDD + Telefone" />
-                <span asp-validation-for="JuniorVM.Telefone" class="text-danger validation-msg"></span>
+                <span asp-validation-for="JuniorVM.Telefone"></span>
             </div>
             <div class="form-group mb-4">
                 <label asp-for="JuniorVM.Email" class="control-label"></label>
                 <span class="label-sub">*</span>
                 <input asp-for="JuniorVM.Email" class="form-control" placeholder="Não utilize email pessoal"/>
-                <span asp-validation-for="JuniorVM.Email" class="text-danger validation-msg"></span>
+                <span asp-validation-for="JuniorVM.Email"></span>
             </div>
             <div class="form-group mb-4">
                 <label asp-for="JuniorVM.LogoUpload" class="control-label"></label>
@@ -105,7 +105,7 @@
                     <input asp-for="JuniorVM.LogoUpload" class="custom-file-input" id="input-logo" accept=".png, .jpg, .jpeg" />
                     <label class="custom-file-label text-truncate" for="input-logo"></label>
                 </div>
-                <span asp-validation-for="JuniorVM.LogoUpload" class="text-danger validation-msg"></span>
+                <span asp-validation-for="JuniorVM.LogoUpload"></span>
             </div>
             <div class="form-group text-right mt-4">
                 <a asp-page="Index" class="btn btn-outline-secondary">Voltar para lista</a>

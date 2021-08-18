@@ -25,11 +25,11 @@ namespace EmpreendedorismoEIT.ViewModels
             get { return (int)Cor; }
             set 
             {
-                try
+                if (Enum.IsDefined(typeof(Cores), value))
                 {
-                    Cor = (Cores)Enum.Parse(typeof(Cores), value.ToString());
+                    Cor = (Cores)value;
                 }
-                catch
+                else
                 {
                     Cor = 0x0;
                 }

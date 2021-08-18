@@ -26,9 +26,10 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
         public PaginatedList<JuniorListaVM> ListaEJ { get;set; }
         public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
         public Situacao CurrentSituacao { get; set; }
 
-        public async Task OnGetAsync(string search, string filter, int? pageIndex, int? status)
+        public async Task OnGetAsync(string search, string filter, int? pageIndex, int? status, string sort)
         {
             if (search != null)
             {
@@ -39,6 +40,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 search = filter;
             }
             CurrentFilter = search;
+            CurrentSort = sort;
 
             var empresasIQ = _context.DadosJuniores.Select(e => new JuniorListaVM
             {
@@ -66,7 +68,16 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 empresasIQ = empresasIQ.Where(e => e.Nome.Contains(CurrentFilter));
             }
 
-            empresasIQ = empresasIQ.OrderByDescending(e => e.UltimaModificacao);
+            //Fazer ordenação
+            switch (sort)
+            {
+                case "nome":
+                    empresasIQ = empresasIQ.OrderBy(e => e.Nome);
+                    break;
+                default:
+                    empresasIQ = empresasIQ.OrderByDescending(e => e.UltimaModificacao);
+                    break;
+            }
 
             //Fazer consulta paginada
             var pageSize = _configuration.GetValue("PageSize", 4);

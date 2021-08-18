@@ -1,10 +1,10 @@
-﻿input:placeholder-shown {
+﻿/*input:placeholder-shown {
     font-weight: 300;
 }
 
 textarea:placeholder-shown {
     font-weight: 300;
-}
+}*/
 
 .custom-file-input {
     z-index: unset !important;
@@ -178,8 +178,17 @@ img.card-img-left {
     color: #666666;
 }
 
-.validation-msg {
+.field-validation-valid {
     font-size: 0.9rem;
+}
+
+.field-validation-error {
+    font-size: 0.9rem;
+    color: #dc3545 !important;
+}
+
+.search-box {
+    min-width: 15rem;
 }
 
 @media (min-width: 768px) {
