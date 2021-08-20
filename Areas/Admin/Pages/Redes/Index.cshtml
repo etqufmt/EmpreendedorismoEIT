@@ -17,16 +17,15 @@
     }
 }
 
-
 <form method="post">
     <div class="row">
         <div class="col-lg-6">
             <h5 class="subtitle">Redes sociais</h5><hr class="mt-0" />
             <partial name="_ValidationMessage" />
-            <p>Abra o perfil da rede social no navegador e copie o link da barra de endereços. Depois volte para essa página e cole o endereço no campo correspondente.</p>
+            <p class="text-justify">Dica: abra o perfil da rede social em uma nova aba do navegador e copie o link da barra de endereços. Depois volte para esta página e cole no campo correspondente, para garantir que não ocorra nenhum erro de digitação. Já para remover alguma das redes sociais, basta apagar o endereço e salvar ao final.</p>
         </div>
-    </div>
-    <div class="row">
+    @*</div>
+    <div class="row">*@
         <div class="col-lg-6">
             <input type="hidden" asp-for="SocialVM.EmpresaID" />
             <div class="form-group">
@@ -66,7 +65,7 @@
                     {
                         @Html.Raw("Exemplo: https://www.linkedin.com/company/senaimt")
                     }
-                    </span>
+                </span>
             </div>
             <div class="form-group">
                 <label asp-for="SocialVM.TwitterURL" class="control-label"></label>
@@ -88,7 +87,6 @@
                     <input asp-for="SocialVM.WebsiteURL" class="form-control" />
                 </div>
                 <span asp-validation-for="SocialVM.WebsiteURL" data-valmsg-replace="true">
-                    
                     @if (String.IsNullOrEmpty(Model.SocialVM.WebsiteURL))
                     {
                         @Html.Raw("Exemplo: https://ufmt.br")

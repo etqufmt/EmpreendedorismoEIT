@@ -10,16 +10,15 @@
 
 <form method="post" enctype="multipart/form-data">
     <div class="row">
-        <div class="col-md-6 col-xl-5">
+        <div class="col-lg-6">
             <div class="form-group">
                 <h5 class="subtitle">Dados básicos</h5><hr class="mt-0" />
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 col-xl-5">
+        <div class="col-lg-6">
             <partial name="_ValidationMessage" />
-            <input type="hidden" asp-for="JuniorVM.ID" />
             <div class="form-group mb-4">
                 <label asp-for="JuniorVM.Nome" class="control-label"></label>
                 <span class="label-sub">(Comercial) *</span>
@@ -41,7 +40,7 @@
             <div class="form-group mb-4">
                 <label asp-for="JuniorVM.RamoAtuacaoID" class="control-label"></label>
                 <span class="label-sub">(<a href="https://receita.economia.gov.br/orientacao/tributaria/cadastros/cadastro-nacional-de-pessoas-juridicas-cnpj/classificacao-nacional-de-atividades-economicas-2013-cnae/apresentacao" target="_blank">Explicação</a>) *</span>
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <select asp-for="JuniorVM.RamoAtuacaoID" class="form-control custom-select" asp-items="@Model.RamosAtuacaoSL">
                         <option value="" disabled selected hidden>Dois primeiros dígitos</option>
                     </select>
@@ -65,7 +64,7 @@
                 <span asp-validation-for="JuniorVM.Situacao"></span>
             </div>
         </div>
-        <div class="col-md-6 col-xl-5">
+        <div class="col-lg-6">
             <div class="form-group mb-4">
                 <label asp-for="JuniorVM.Campus" class="control-label"></label>
                 <span class="label-sub">*</span>
@@ -108,8 +107,8 @@
                 </div>
                 <span asp-validation-for="JuniorVM.LogoUpload"></span>
             </div>
-            <div class="form-group text-right mt-4">
-                <a asp-page="./Details" asp-route-id="@Model.JuniorVM.ID" class="btn btn-outline-secondary">Voltar para empresa</a>
+            <div class="form-group text-right">
+                <a asp-page="Details" asp-route-id="@Model.JuniorVM.ID" class="btn btn-outline-secondary">Voltar para empresa</a>
                 <input type="submit" value="Salvar" class="btn btn-primary" />
             </div>
         </div>
@@ -118,8 +117,6 @@
 
 @* Modal de upload de imagem *@
 <partial name="_ModalUpload" />
-
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
