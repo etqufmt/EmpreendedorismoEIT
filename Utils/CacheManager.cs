@@ -27,7 +27,9 @@ namespace EmpreendedorismoEIT.Utils
 
                 //Armazena no cache
                 memoryCache.Set(cacheKey, RamosAtuacaoSL,
-                    new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromMinutes(30)));
+                    new MemoryCacheEntryOptions()
+                    //.SetSlidingExpiration(TimeSpan.FromMinutes(30))
+                    .SetAbsoluteExpiration(TimeSpan.FromHours(12)));
                 logger.LogInformation($"{cacheKey} atualizado no cache");
             }
             else

@@ -1,4 +1,5 @@
 ﻿using EmpreendedorismoEIT.Models;
+using EmpreendedorismoEIT.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -66,41 +67,8 @@ namespace EmpreendedorismoEIT.ViewModels
 
 
         //Atributos formatados
-        public string CNPJFormatado { get
-            {
-                string res = null;
-                if (!String.IsNullOrEmpty(CNPJ))
-                {
-                    try
-                    {
-                        res = Int64.Parse(CNPJ).ToString(@"##\.###\.###/####-##");
-                    }
-                    catch { }
-                }
-                return res;
-            }
-        }
+        public string CNPJFormatado => TextManager.FormatarCNPJ(CNPJ);
 
-        public string TelefoneFormatado { get
-            {
-                string res = null;
-                if (!String.IsNullOrEmpty(Telefone))
-                {
-                    try
-                    {
-                        if (Telefone.Length == 10)
-                        {
-                            res = Int64.Parse(Telefone).ToString(@"(##) ####-####");
-                        }
-                        if (Telefone.Length == 11)
-                        {
-                            res = Int64.Parse(Telefone).ToString(@"(##) #####-####");
-                        }
-                    }
-                    catch { }
-                }
-                return res;
-            }
-        }
+        public string TelefoneFormatado => TextManager.FormatarTelefone(Telefone);
     }
 }

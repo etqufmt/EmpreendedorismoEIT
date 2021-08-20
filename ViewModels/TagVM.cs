@@ -36,20 +36,7 @@ namespace EmpreendedorismoEIT.ViewModels
             }
         }
 
-        public string CorHTML
-        {
-            get
-            {
-                try
-                {
-                    return String.Format("{0:X6}", (int)Cor).Insert(0, "#");
-                }
-                catch
-                {
-                    return null;
-                }
-            }
-        }
+        public string CorHTML => TextManager.CorHTML((int)Cor);
     }
 
     public enum Cores

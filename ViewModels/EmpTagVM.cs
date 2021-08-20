@@ -1,5 +1,5 @@
-﻿using EmpreendedorismoEIT.Utils;
-using System;
+﻿using System;
+using EmpreendedorismoEIT.Utils;
 using System.ComponentModel.DataAnnotations;
 
 namespace EmpreendedorismoEIT.ViewModels
@@ -15,19 +15,6 @@ namespace EmpreendedorismoEIT.ViewModels
 
 
         //Atributos formatados
-        public string CorHTML
-        {
-            get
-            {
-                try
-                {
-                    return String.Format("{0:X6}", (int)Cor).Insert(0, "#");
-                }
-                catch
-                {
-                    return null;
-                }
-            }
-        }
+        public string CorHTML => TextManager.CorHTML((int)Cor);
     }
 }
