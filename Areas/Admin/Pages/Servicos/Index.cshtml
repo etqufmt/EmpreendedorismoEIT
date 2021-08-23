@@ -18,12 +18,13 @@
 }
 
 <div class="row mb-3 menu-bar">
-    <div class="col col-lg-6">
+    <div class="col">
         <h5 class="d-inline subtitle">Produtos e serviços
             <span class="badge badge-custom">@Model.ListaProdServ.Count</span>
         </h5>
     </div>
-    <div class="col-auto col-lg-6 text-right">
+    <div class="col-auto text-right">
+        <a asp-page="CreateMultiple" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-primary">Adicionar vários</a>
         <a asp-page="Create" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-primary">Adicionar</a>
     </div>
 </div>
@@ -72,8 +73,7 @@
     </tbody>
 </table>
 <div class="row mt-4">
-    <div class="col col-lg-6 align-self-center"></div>
-    <div class="col-auto col-lg-6 text-right">
+    <div class="col text-right">
         <a asp-area="Admin" asp-page="@Model.ReturnURL"  asp-route-id="@Model.Empresa.ID" class="btn btn-outline-secondary">Voltar para empresa</a>
     </div>
 </div>

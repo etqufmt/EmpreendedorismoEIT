@@ -16,19 +16,39 @@
 }
 
 <form method="post">
-    <div class="row">
-        <div class="col-lg-6">
-            <h5 class="subtitle">Adicionar produto ou serviço</h5><hr class="mt-0" />
-            <partial name="_ValidationMessage" />
+    <div class="row mb-3 menu-bar">
+        <div class="col">
+            <h5 class="d-inline subtitle">Adicionar produtos ou serviços <span class="badge badge-custom">@Model.Quantidade</span></h5>
+        </div>
+        <div class="col-auto text-right">
+            <select name="n" class="form-control custom-select text-right" onchange="this.form.submit()">
+                <option value="" disabled selected hidden>Quantidade</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
         </div>
     </div>
+    <partial name="_ValidationMessage" />
     <div class="row">
         @for (var i = 0; i < Model.Quantidade; i++)
         {
             <div class="col-lg-6 prod-serv">
                 <div class="form-group">
-                    <label class="control-label">Produto ou serviço #<span id="num">@(i+1)</span></label>
-                    <input asp-for="ListaProdServVM[i].Nome" class="form-control maxcounter" placeholder="Nome"/>
+                    @*<label class="control-label">@ordem[i]<span id="num">@(i+1)</span></label>*@
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text">@(i+1)</label>
+                        </div>
+                        <input asp-for="ListaProdServVM[i].Nome" class="form-control maxcounter" placeholder="Nome" />
+                    </div>
                     <span asp-validation-for="ListaProdServVM[i].Nome"></span>
                 </div>
                 <div class="form-group">

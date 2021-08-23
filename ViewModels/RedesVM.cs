@@ -8,6 +8,7 @@ namespace EmpreendedorismoEIT.ViewModels
         public int EmpresaID { get; set; }
 
         [Display(Name = "Site próprio")]
+        [RegularExpression(@"^https?:\/\/(.*)", ErrorMessageResourceName = "ErrURL", ErrorMessageResourceType = typeof(ValidationResources))]
         [StringLength(200, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         public string WebsiteURL { get; set; }
 

@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.ViewModels;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 {
@@ -28,7 +29,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
         public Empresa Empresa { get; set; }
         public int Quantidade { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id, int? n)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
@@ -41,12 +42,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return NotFound();
             }
 
-            Quantidade = n ?? 5;
-            Quantidade = Quantidade > 10 ? 10 : Quantidade;
+            Load(null);
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(int? id, int? n)
         {
             if (id == null)
             {
@@ -57,14 +57,22 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
             if (Empresa == null)
             {
                 return NotFound();
+            }
+
+            if (n != null)
+            {
+                ModelState.Clear();
+                Load(n);
+                return Page();
             }
 
             if (!ModelState.IsValid)
             {
+                Load(n);
                 return Page();
             }
 
-            List<ProdServico> listaPS = new List<ProdServico>();
+            var listaPS = new List<ProdServico>();
             foreach (var ProdServVM in ListaProdServVM)
             {
                 listaPS.Add(new ProdServico {
@@ -83,10 +91,32 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
             {
                 _logger.LogError("[DEBUG] ProdutosServicos:create " + ex);
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrCreate);
+                Load(n);
                 return Page();
             }
 
             return RedirectToPage("Index", new { id });
+        }
+
+        public void Load(int? n)
+        {
+            Quantidade = n ?? 4;
+            Quantidade = Quantidade < 1 ? 1 : Quantidade;
+            Quantidade = Quantidade > 10 ? 10 : Quantidade;
+            if (ListaProdServVM == null)
+            {
+                return;
+            }
+            //Adicionar ou remover itens quando houver alteração
+            var listaCount = ListaProdServVM.Count;
+            if (listaCount < Quantidade)
+            {
+                ListaProdServVM.AddRange(new ProdServVM[Quantidade-listaCount]);
+            }
+            if (listaCount > Quantidade)
+            {
+                ListaProdServVM.RemoveRange(Quantidade, listaCount - Quantidade);
+            }
         }
     }
 }
