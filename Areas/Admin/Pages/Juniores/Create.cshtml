@@ -20,7 +20,7 @@
         <div class="col-lg-6">
             @if (ModelState.IsValid)
             {
-                var msg = "Comece cadastrando os dados básicos da empresa. Informações como o CNPJ são apenas para uso interno. Porém o restante é utilizado nas páginas de divulgação e prospecção. Preencha com cuidado.";
+                var msg = "Comece cadastrando os dados básicos da empresa. Algumas informações como CNPJ, ramo e segmento são apenas para uso interno. Porém o restante é exibido nas páginas de divulgação e prospecção. Preencha com cuidado.";
                 <partial name="_StatusMessage" model="msg" />
             }
             <partial name="_ValidationMessage" />

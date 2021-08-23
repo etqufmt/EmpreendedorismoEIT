@@ -93,7 +93,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return Page();
             }
 
-            return RedirectToPage("Index", new { id = prodServ.EmpresaID });
+            return RedirectToPage("Index", new { id = Empresa.ID });
         }
     }
 }

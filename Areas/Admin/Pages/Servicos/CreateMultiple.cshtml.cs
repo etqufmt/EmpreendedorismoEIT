@@ -6,15 +6,16 @@ using EmpreendedorismoEIT.Models;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.ViewModels;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 {
-    public class CreateModel : PageModel
+    public class CreateMultiple : PageModel
     {
         private readonly ApplicationDbContext _context;
         private readonly ILogger<CreateModel> _logger;
 
-        public CreateModel(
+        public CreateMultiple(
             ApplicationDbContext context,
             ILogger<CreateModel> logger)
         {
@@ -23,10 +24,11 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
         }
 
         [BindProperty]
-        public ProdServVM ProdServVM { get; set; }
+        public List<ProdServVM> ListaProdServVM { get; set; }
         public Empresa Empresa { get; set; }
+        public int Quantidade { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, int? n)
         {
             if (id == null)
             {
@@ -39,6 +41,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return NotFound();
             }
 
+            Quantidade = n ?? 5;
+            Quantidade = Quantidade > 10 ? 10 : Quantidade;
             return Page();
         }
 
@@ -50,7 +54,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
             }
 
             Empresa = await _context.Empresas.FindAsync(id);
-
             if (Empresa == null)
             {
                 return NotFound();
@@ -61,16 +64,19 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return Page();
             }
 
-            var prodServ = new ProdServico
+            List<ProdServico> listaPS = new List<ProdServico>();
+            foreach (var ProdServVM in ListaProdServVM)
             {
-                EmpresaID = Empresa.ID,
-                Nome = ProdServVM.Nome,
-                Descricao = ProdServVM.Descricao
-            };
+                listaPS.Add(new ProdServico {
+                    EmpresaID = Empresa.ID,
+                    Nome = ProdServVM.Nome,
+                    Descricao = ProdServVM.Descricao,
+                });
+            }
 
             try
             {
-                _context.ProdServicos.Add(prodServ);
+                _context.ProdServicos.AddRange(listaPS);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)

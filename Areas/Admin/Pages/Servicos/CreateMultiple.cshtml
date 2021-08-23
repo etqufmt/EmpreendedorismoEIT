@@ -1,0 +1,52 @@
+﻿@page "{id:int?}"
+@model EmpreendedorismoEIT.Areas.Admin.Pages.Servicos.CreateMultiple
+@using EmpreendedorismoEIT.Models 
+
+@{
+    ViewData["Title"] = "Adicionar P/S";
+    ViewData["SectionTitle"] = Html.DisplayFor(model => model.Empresa.Nome);
+    if (Model.Empresa.Tipo == Tipo.JUNIOR)
+    {
+        ViewData["Section"] = SectionManager.Juniores;
+    }
+    if (Model.Empresa.Tipo == Tipo.INCUBADA)
+    {
+        ViewData["Section"] = SectionManager.Incubadas;
+    }
+}
+
+<form method="post">
+    <div class="row">
+        <div class="col-lg-6">
+            <h5 class="subtitle">Adicionar produto ou serviço</h5><hr class="mt-0" />
+            <partial name="_ValidationMessage" />
+        </div>
+    </div>
+    <div class="row">
+        @for (var i = 0; i < Model.Quantidade; i++)
+        {
+            <div class="col-lg-6 prod-serv">
+                <div class="form-group">
+                    <label class="control-label">Produto ou serviço #<span id="num">@(i+1)</span></label>
+                    <input asp-for="ListaProdServVM[i].Nome" class="form-control maxcounter" placeholder="Nome"/>
+                    <span asp-validation-for="ListaProdServVM[i].Nome"></span>
+                </div>
+                <div class="form-group">
+                    <textarea asp-for="ListaProdServVM[i].Descricao" class="form-control maxcounter" rows="5" placeholder="Descrição"></textarea>
+                    <span asp-validation-for="ListaProdServVM[i].Descricao"></span>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col text-right">
+            <hr />
+            <a asp-page="Index" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-secondary">Voltar</a>
+            <input type="submit" class="btn btn-primary" value="Adicionar" />
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

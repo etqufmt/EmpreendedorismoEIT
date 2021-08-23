@@ -46,8 +46,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             }
 
             var EJ = await _context.DadosJuniores
-                        .Include(d => d.Empresa)
-                        .FirstOrDefaultAsync(d => d.EmpresaID == id);
+                .Include(d => d.Empresa)
+                .FirstOrDefaultAsync(d => d.EmpresaID == id);
+
             if (EJ == null)
             {
                 return NotFound();
