@@ -4,15 +4,15 @@
 @{
     ViewData["Title"] = "Tags";
     ViewData["Section"] = SectionManager.Tags;
-    ViewData["SectionTitle"] = "Tags";
+    ViewData["SectionTitle"] = "Nuvem de tags";
 }
 
-<div class="row mb-3 menu-bar">
-    <div class="col">
+<div class="form-row menu-bar">
+    <div class="col-12 col-sm form-group align-self-center text-center text-sm-left">
         <h5 class="d-inline subtitle">Disponíveis para associação <span class="badge badge-custom">@Model.ListaTags.Count</span></h5>
     </div>
-    <div class="col-auto text-right">
-        <a asp-page="Create" class="btn btn-outline-primary">Adicionar</a>
+    <div class="col-12 col-sm-auto form-group">
+        <a asp-page="Create" class="btn btn-outline-primary w-100">Adicionar</a>
     </div>
 </div>
 <partial name="_StatusMessage" model="Model.StatusMessage" />

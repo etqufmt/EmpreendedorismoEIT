@@ -15,6 +15,19 @@
         <div class="col-auto form-group">
             <a asp-page="Create" class="btn btn-outline-primary">Adicionar</a>
         </div>
+        <div class="col col-xl-auto form-group">
+            <select asp-for="@Model.CurrentSituacao" name="status" class="form-control custom-select" onchange="this.form.submit()" asp-items="@Html.GetEnumSelectList<Situacao>()">
+                <option value="0">Todas as situações</option>
+            </select>
+        </div>
+        @*Cria quebra de linha responsivamente*@
+        <div class="w-100 d-xl-none"></div>
+        <div class="col col-xl-auto form-group">
+            <select asp-for="@Model.CurrentSort" name="sort" class="form-control custom-select" onchange="this.form.submit()">
+                <option value="data">Ordernar por data</option>
+                <option value="nome">Ordernar por nome</option>
+            </select>
+        </div>
         <div class="col col-xl form-group">
             <div class="input-group search-box">
                 <input type="text" name="search" value="@Model.CurrentFilter" class="form-control" placeholder="Filtrar por nome" />
@@ -22,17 +35,6 @@
                     <a asp-page="Index" class="btn input-group-text"><i class="bi bi-backspace"></i></a>
                 </div>
             </div>
-        </div>
-        <div class="col-6 col-xl-auto form-group">
-            <select asp-for="@Model.CurrentSort" name="sort" class="form-control custom-select" onchange="this.form.submit()">
-                <option value="data">Ordernar por data</option>
-                <option value="nome">Ordernar por nome</option>
-            </select>
-        </div>
-        <div class="col-6 col-xl-auto form-group">
-            <select asp-for="@Model.CurrentSituacao" name="status" class="form-control custom-select" onchange="this.form.submit()" asp-items="@Html.GetEnumSelectList<Situacao>()">
-                <option value="0">Todas as situações</option>
-            </select>
         </div>
     </div>
 </form>

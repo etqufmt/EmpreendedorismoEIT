@@ -17,23 +17,22 @@
     }
 }
 
-<div class="row mb-3 menu-bar">
-    <div class="col">
+<div class="form-row menu-bar">
+    <div class="col-12 col-sm-6 pr-3 form-group align-self-center text-center text-sm-left">
         <h5 class="d-inline subtitle">Recomendação <span class="badge badge-custom">@Model.Contador</span></h5>
+        <p class="my-1">Defina o nível de associação entre a empresa e cada uma das tags disponíveis. Esse valor será usado para recomendação na nuvem de tags.</p>
+    </div>
+    <div class="col-12 col-sm-6 form-group">
+        <partial name="_ValidationMessage" />
     </div>
 </div>
 <form method="post">
-    <div asp-validation-summary="ModelOnly" class="alert alert-info alert-dismissible custom-alert fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true"><i class="bi bi-x"></i></span>
-        </button>
-    </div>
     <div class="row row-cols-1 row-cols-md-3">
         @if (Model.ListaET.Count == 0)
         {
-            <div class="offset-3 col-6 text-center py-4 my-5 rounded-lg msg-empty">
+            <div class="offset-2 offset-lg-3 col-8 col-lg-6 text-center py-4 my-5 rounded-lg msg-empty">
                 <i class="bi bi-x-diamond icon-msg"></i><br />
-                <span>Nenhuma tag encontrada.</span>
+                <span>Nenhuma tag encontrada para associação.<br />Adicione uma nova <a asp-page="/Tags/Create">aqui</a>.</span>
             </div>
         }
         @for (var i = 0; i < Model.ListaET.Count; i++)

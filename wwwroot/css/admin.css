@@ -147,7 +147,7 @@ a.text-decoration-none:active .card {
 }
 
 .menu-bar {
-    height: 2.375rem;
+    min-height: 2.375rem;
 }
 
 .card-details {
@@ -191,7 +191,7 @@ img.card-img-left {
 }
 
 .search-box {
-    min-width: 15rem;
+    min-width: 16rem;
 }
 
 @media (min-width: 768px) {

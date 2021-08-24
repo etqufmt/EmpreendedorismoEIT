@@ -16,12 +16,12 @@
 }
 
 <form method="post">
-    <div class="row mb-3 menu-bar">
-        <div class="col">
+    <div class="form-row menu-bar">
+        <div class="col-12 col-sm form-group align-self-center text-center text-sm-left">
             <h5 class="d-inline subtitle">Adicionar produtos ou serviços <span class="badge badge-custom">@Model.Quantidade</span></h5>
         </div>
-        <div class="col-auto text-right">
-            <select name="n" class="form-control custom-select text-right" onchange="this.form.submit()">
+        <div class="col-12 col-sm-auto form-group">
+            <select name="n" class="form-control custom-select text-center text-sm-right w-100" onchange="this.form.submit()">
                 <option value="" disabled selected hidden>Quantidade</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
