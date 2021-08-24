@@ -18,16 +18,16 @@
 }
 
 <div class="form-row menu-bar">
-    <div class="col-12 col-sm form-group align-self-center text-center text-sm-left">
+    <div class="col-12 col-md form-group align-self-center text-center text-md-left">
         <h5 class="d-inline subtitle">
             Produtos e serviços
             <span class="badge badge-custom">@Model.ListaProdServ.Count</span>
         </h5>
     </div>
-    <div class="col-6 col-sm-auto form-group">
+    <div class="col-6 col-md-auto form-group">
         <a asp-page="CreateMultiple" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-primary w-100">Adicionar vários</a>
     </div>
-    <div class="col-6 col-sm-auto form-group">
+    <div class="col-6 col-md-auto form-group">
         <a asp-page="Create" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-primary w-100">Adicionar</a>
     </div>
 </div>
