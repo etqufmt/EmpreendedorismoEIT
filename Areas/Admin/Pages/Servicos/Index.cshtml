@@ -32,51 +32,62 @@
     </div>
 </div>
 <partial name="_StatusMessage" model="Model.StatusMessage" />
-<table class="table table-striped border-bottom">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ListaProdServ[0].Nome)
-            </th>
-            <th class="d-none d-sm-table-cell">
-                @Html.DisplayNameFor(model => model.ListaProdServ[0].Descricao)
-            </th>
-            <th style="width:15%"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model.ListaProdServ.Count == 0)
-        {
-            <tr>
-                <td class="text-center py-5" colspan="3">
-                    <i class="bi bi-x-diamond icon-msg"></i><br />
-                    <span>Nenhum produto ou serviço cadastrado ainda.</span>
-                </td>
-            </tr>
-        }
-        @foreach (var item in Model.ListaProdServ)
-        {
-            <tr>
-                <td id="ps-nome-@item.ID">
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td id="ps-desc-@item.ID" class="d-none d-sm-table-cell">
-                    @Html.DisplayFor(modelItem => item.Descricao)
-                </td>
-                <td class="align-middle text-right">
-                    <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-outline-primary btn-block my-1">Editar</a>
-                    <button type="button" class="btn btn-outline-danger btn-block my-1"
+<div id="accordion" class="mt-2">
+    @if (Model.ListaProdServ.Count == 0)
+    {
+        <div class="row">
+            <div class="offset-2 col-8 offset-md-3 col-md-6 text-center py-4 my-5 rounded-lg msg-empty">
+                <i class="bi bi-x-diamond icon-msg"></i><br />
+                <span>Nenhum produto ou serviço cadastrado ainda.</span>
+            </div>
+        </div>
+    }
+    @foreach (var item in Model.ListaProdServ)
+    {
+        <div class="card mb-3">
+            <div class="card-header border-bottom-0 form-row" id="nome-@item.ID">
+                <div class="col-md-8 text-center text-md-left align-self-center">
+                    <a class="btn-link" href="#" data-toggle="collapse" data-target="#desc-@item.ID">
+                        <p class="mb-0 text-truncate pr-md-3" id="ps-nome-@item.ID">
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </p>
+                    </a>
+                </div>
+                <div class="col-2 d-none d-md-flex">
+                    <button type="button" class="btn btn-outline-danger btn-block"
                             data-toggle="modal" data-target="#modal-delete"
                             data-id="@item.ID" data-tag="ps-nome-@item.ID">
                         Excluir
                     </button>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-<div class="row mt-4">
+                </div>
+                <div class="col-2 d-none d-md-flex">
+                    <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-outline-primary btn-block">Editar</a>
+                </div>
+            </div>
+            <div id="desc-@item.ID" class="collapse show border-top">
+                <div class="card-body">
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </div>
+                <div class="card-footer form-row d-md-none">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-outline-danger btn-block"
+                                data-toggle="modal" data-target="#modal-delete"
+                                data-id="@item.ID" data-tag="ps-nome-@item.ID">
+                            Excluir
+                        </button>
+                    </div>
+                    <div class="col-6">
+                        <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-outline-primary btn-block">Editar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    }
+</div>
+<div class="row">
     <div class="col text-right">
+        <hr />
         <a asp-area="Admin" asp-page="@Model.ReturnURL"  asp-route-id="@Model.Empresa.ID" class="btn btn-outline-secondary">Voltar para empresa</a>
     </div>
 </div>
