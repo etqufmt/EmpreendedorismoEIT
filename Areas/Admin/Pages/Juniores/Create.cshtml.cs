@@ -41,9 +41,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
         public SelectList RamosAtuacaoSL { get; set; }
 
-        [TempData]
-        public bool JustCreatedMessage { get; set; }
-
         public async Task<IActionResult> OnGetAsync()
         {
             await LoadAsync();
@@ -102,7 +99,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 return Page();
             }
 
-            JustCreatedMessage = true;
             return RedirectToPage("Details", new { novaEmpresa.ID });
         }
 

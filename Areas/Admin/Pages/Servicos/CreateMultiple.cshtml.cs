@@ -100,7 +100,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 
         public void Load(int? n)
         {
-            Quantidade = n ?? 4;
+            //Quantidade padrão
+            Quantidade = n ?? 3;
             Quantidade = Quantidade < 1 ? 1 : Quantidade;
             Quantidade = Quantidade > 10 ? 10 : Quantidade;
             if (ListaProdServVM == null)

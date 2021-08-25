@@ -21,9 +21,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 
         [TempData]
         public string StatusMessage { get; set; }
-        
-        [TempData]
-        public bool JustCreatedMessage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -61,14 +58,16 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 Instituto = EJ.Instituto,
             };
 
-            //Anonymous type não pode sofrer cast
-            //Variável do tipo dynamic para receber a resposta
-            JuniorVM.Contagem = (
+            JuniorVM.Contagem = await (
                 from e in _context.Empresas.Where(d => d.ID == id)
-                let RedesSociais = e.RedesSociais.Count
-                let ProdServicos = e.ProdServicos.Count
-                let TagsAssociadas = e.TagsAssociadas.Count
-                select new { RedesSociais, ProdServicos, TagsAssociadas }).Take(1);
+                let r = e.RedesSociais.Count
+                let s = e.ProdServicos.Count
+                let t = e.TagsAssociadas.Count
+                select new Contagem {
+                    RedesSociais = r,
+                    ProdServicos = s,
+                    TagsAssociadas = t,
+                }).FirstOrDefaultAsync();
 
             return Page();
         }
