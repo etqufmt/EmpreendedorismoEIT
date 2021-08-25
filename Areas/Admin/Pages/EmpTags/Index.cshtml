@@ -18,9 +18,9 @@
 }
 
 <div class="form-row menu-bar">
-    <div class="col-12 col-md-6 pr-3 form-group align-self-center text-center text-md-left">
+    <div class="col-12 col-md-6 form-group align-self-center text-center text-md-left">
         <h5 class="d-inline subtitle">Recomendação <span class="badge badge-custom">@Model.Contador</span></h5>
-        <p class="my-1">Defina o nível de associação entre a empresa e cada uma das tags disponíveis. Esse valor será usado para recomendação na nuvem de tags.</p>
+        <p class="my-1">Defina o nível de associação entre a empresa e cada uma das tags disponíveis. Esse valor será usado para descrição e recomendação nas páginas de divulgação.</p>
     </div>
     <div class="col-12 col-md-6 form-group">
         <partial name="_ValidationMessage" />
@@ -30,9 +30,9 @@
     <div class="row row-cols-1 row-cols-md-3">
         @if (Model.ListaET.Count == 0)
         {
-            <div class="offset-2 offset-lg-3 col-8 col-lg-6 text-center py-4 my-5 rounded-lg msg-empty">
+            <div class="offset-1 offset-lg-3 col-10 col-lg-6 text-center py-4 my-5 rounded-lg msg-empty">
                 <i class="bi bi-x-diamond icon-msg"></i><br />
-                <span>Nenhuma tag encontrada para associação.<br />Adicione uma nova <a asp-page="/Tags/Index">aqui</a>.</span>
+                <span>Nenhuma tag encontrada para associação.<br />Adicione uma nova à <a asp-page="/Tags/Index">nuvem de tags</a>.</span>
             </div>
         }
         @for (var i = 0; i < Model.ListaET.Count; i++)

@@ -59,7 +59,7 @@ else if (Model.JuniorVM.Contagem?.TagsAssociadas == 0)
             </button>
         </div>
         <div class="card-body">
-            <p class="card-text text-justify">Falta apenas configurar a parte de recomendação. As tags cadastradas na <a asp-page="/Tags/Index" asp-route-id="@Model.JuniorVM.ID">nuvem de tags</a> são usadas para melhor descrever a área de atuação da empresa e o que ela oferece para o mercado. O grau de associação definido também é empregado na hora de sugerir qual a empresa mais adequada ao perfil do cliente.</p>
+            <p class="card-text text-justify">Falta apenas configurar a parte de recomendação. As tags disponíveis na <a asp-page="/Tags/Index" asp-route-id="@Model.JuniorVM.ID">nuvem de tags</a> são usadas para detalhar a área de atuação da empresa e o que ela oferece para o mercado. O grau de associação definido também é empregado na hora de sugerir qual a empresa mais adequada ao perfil do cliente.</p>
             <div class="text-right">
                 <a asp-page="/EmpTags/Index" asp-route-id="@Model.JuniorVM.ID" class="btn btn-outline-primary">
                     Configurar recomendação
