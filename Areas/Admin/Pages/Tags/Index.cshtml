@@ -11,7 +11,10 @@
     <div class="col-12 col-md form-group align-self-center text-center text-md-left">
         <h5 class="d-inline subtitle">Disponíveis para associação <span class="badge badge-custom">@Model.ListaTags.Count</span></h5>
     </div>
-    <div class="col-12 col-md-auto form-group">
+    <div class="col-6 col-md-auto form-group">
+        <a asp-page="CreateMultiple" class="btn btn-outline-primary w-100">Adicionar várias</a>
+    </div>
+    <div class="col-6 col-md-auto form-group">
         <a asp-page="Create" class="btn btn-outline-primary w-100">Adicionar</a>
     </div>
 </div>

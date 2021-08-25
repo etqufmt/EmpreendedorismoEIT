@@ -1,24 +1,20 @@
-﻿@page "{id:int?}"
-@model EmpreendedorismoEIT.Areas.Admin.Pages.Servicos.CreateMultiple
-@using EmpreendedorismoEIT.Models 
+﻿@page
+@model EmpreendedorismoEIT.Areas.Admin.Pages.Tags.CreateMultiple
+@using EmpreendedorismoEIT.ViewModels
 
 @{
-    ViewData["Title"] = "Adicionar P/S";
-    ViewData["SectionTitle"] = Html.DisplayFor(model => model.Empresa.Nome);
-    if (Model.Empresa.Tipo == Tipo.JUNIOR)
-    {
-        ViewData["Section"] = SectionManager.Juniores;
-    }
-    if (Model.Empresa.Tipo == Tipo.INCUBADA)
-    {
-        ViewData["Section"] = SectionManager.Incubadas;
-    }
+    ViewData["Title"] = "Adicionar tags";
+    ViewData["Section"] = SectionManager.Tags;
+    ViewData["SectionTitle"] = "Nuvem de tags";
 }
 
 <form method="post">
     <div class="form-row menu-bar">
         <div class="col-12 col-md form-group align-self-center text-center text-md-left">
-            <h5 class="d-inline subtitle">Adicionar produtos ou serviços <span class="badge badge-custom">@Model.Quantidade</span></h5>
+            <h5 class="d-inline subtitle">
+                Adicionar tags
+                <span class="badge badge-custom">@Model.Quantidade</span>
+            </h5>
         </div>
         <div class="col-12 col-md-auto form-group">
             <select name="n" class="form-control custom-select text-center text-md-right w-100" onchange="this.form.submit()">
@@ -46,13 +42,16 @@
                         <div class="input-group-prepend">
                             <label class="input-group-text">@(i+1)</label>
                         </div>
-                        <input asp-for="ListaProdServVM[i].Nome" class="form-control maxcounter" placeholder="Nome" />
+                        <input asp-for="ListaTagVM[i].Nome" class="form-control maxcounter" placeholder="Nome" />
                     </div>
-                    <span asp-validation-for="ListaProdServVM[i].Nome"></span>
+                    <span asp-validation-for="ListaTagVM[i].Nome"></span>
                 </div>
                 <div class="form-group">
-                    <textarea asp-for="ListaProdServVM[i].Descricao" class="form-control maxcounter" rows="5" placeholder="Descrição"></textarea>
-                    <span asp-validation-for="ListaProdServVM[i].Descricao"></span>
+                    <select asp-for="ListaTagVM[i].Cor" class="form-control custom-select"
+                            asp-items="@Html.GetEnumSelectList<Cores>().OrderBy(s => s.Text)">
+                        <option value="" disabled selected hidden>Cor</option>
+                    </select>
+                    <span asp-validation-for="ListaTagVM[i].Cor"></span>
                 </div>
             </div>
         }
@@ -60,8 +59,8 @@
     <div class="row">
         @*<div class="@(Model.Quantidade == 1 ? "col-lg-6" : "") col text-right">*@
         <div class="col text-right">
-            <hr class="mt-0" />
-            <a asp-page="Index" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-secondary">Voltar</a>
+            <hr class="mt-0"/>
+            <a asp-page="Index" class="btn btn-outline-secondary">Voltar</a>
             <input type="submit" class="btn btn-primary" value="Adicionar" />
         </div>
     </div>

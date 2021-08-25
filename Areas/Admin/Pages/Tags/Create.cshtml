@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="TagVM.Cor" class="control-label"></label>
-                <select asp-for="TagVM.Cor" class="form-control"
+                <select asp-for="TagVM.Cor" class="form-control custom-select"
                         asp-items="@Html.GetEnumSelectList<Cores>().OrderBy(s => s.Text)"></select>
                 <span asp-validation-for="TagVM.Cor"></span>
             </div>
