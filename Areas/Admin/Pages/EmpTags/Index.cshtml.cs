@@ -111,6 +111,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
                     });
                 }
             }
+            Empresa.UltimaModificacao = DateTime.Now;
 
             try
             {

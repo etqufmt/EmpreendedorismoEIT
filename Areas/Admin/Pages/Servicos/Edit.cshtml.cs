@@ -6,6 +6,7 @@ using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
 using EmpreendedorismoEIT.ViewModels;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 {
@@ -64,7 +65,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 
             var prodServ = await _context.ProdServicos
                 .Include(e => e.Empresa)
-                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
 
             if (prodServ == null)
@@ -80,10 +80,12 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 
             prodServ.Nome = ProdServVM.Nome;
             prodServ.Descricao = ProdServVM.Descricao;
+            Empresa.UltimaModificacao = DateTime.Now;
 
             try
             {
                 _context.Attach(prodServ).State = EntityState.Modified;
+                _context.Attach(Empresa).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)

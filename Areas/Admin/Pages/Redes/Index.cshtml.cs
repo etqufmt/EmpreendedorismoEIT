@@ -7,6 +7,7 @@ using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
 using EmpreendedorismoEIT.ViewModels;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
 {
@@ -117,6 +118,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
                 Empresa.RedesSociais.Add(new RedeSocial {
                     Plataforma = Plataforma.LINKEDIN, URL = SocialVM.LinkedinURL });
             }
+            Empresa.UltimaModificacao = DateTime.Now;
 
             try
             {

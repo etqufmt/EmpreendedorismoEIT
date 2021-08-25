@@ -81,10 +81,12 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                     Descricao = ProdServVM.Descricao,
                 });
             }
+            Empresa.UltimaModificacao = DateTime.Now;
 
             try
             {
                 _context.ProdServicos.AddRange(listaPS);
+                _context.Attach(Empresa).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)

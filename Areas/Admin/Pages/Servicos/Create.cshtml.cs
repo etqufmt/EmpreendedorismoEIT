@@ -6,6 +6,7 @@ using EmpreendedorismoEIT.Models;
 using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.ViewModels;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 {
@@ -67,10 +68,12 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 Nome = ProdServVM.Nome,
                 Descricao = ProdServVM.Descricao
             };
+            Empresa.UltimaModificacao = DateTime.Now;
 
             try
             {
                 _context.ProdServicos.Add(prodServ);
+                _context.Attach(Empresa).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 {
@@ -23,6 +24,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 
         [BindProperty]
         public ProdServico ProdServVM { get; set; }
+        public Empresa Empresa { get; set; }
 
         [TempData]
         public string StatusMessage { get; set; }
@@ -42,7 +44,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
 
             var prodServ = await _context.ProdServicos
                 .Include(e => e.Empresa)
-                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
 
             if (prodServ == null)
@@ -50,9 +51,13 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return NotFound();
             }
 
+            Empresa = prodServ.Empresa;
+            Empresa.UltimaModificacao = DateTime.Now;
+
             try
             {
                 _context.ProdServicos.Remove(prodServ);
+                _context.Attach(Empresa).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)

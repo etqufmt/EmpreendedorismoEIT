@@ -39,7 +39,7 @@ else if (Model.JuniorVM.Contagem?.RedesSociais == 0)
             </button>
         </div>
         <div class="card-body">
-            <p class="card-text text-justify"> Agora que alguns produtos e serviços foram cadastrados, adicione links paras as redes sociais que a empresa possui. Incluindo site próprio ou número de WhatsApp, se estiverem disponíveis. Facilitar o contato externo e construir uma presença digital ajudam muito na divulgação.</p>
+            <p class="card-text text-justify"> Agora que alguns produtos e serviços foram cadastrados, adicione links paras as redes sociais que a empresa possui. Incluindo site próprio ou número de WhatsApp, se estiverem disponíveis. Facilitar o contato externo e construir uma presença digital ajudam bastante na divulgação.</p>
             <div class="text-right">
                 <a asp-page="/Redes/Index" asp-route-id="@Model.JuniorVM.ID" class="btn btn-outline-primary">
                     Adicionar redes sociais
@@ -59,13 +59,27 @@ else if (Model.JuniorVM.Contagem?.TagsAssociadas == 0)
             </button>
         </div>
         <div class="card-body">
-            <p class="card-text text-justify">Falta apenas configurar a parte de recomendação. As tags cadastradas na <a asp-page="/Tags/Index" asp-route-id="@Model.JuniorVM.ID">Nuvem de tags</a> são usadas para melhor descrever a área de atuação da empresa e o que ela oferece para o mercado. O grau de associação definido também é empregado na hora de sugerir qual a empresa mais adequada ao perfil do cliente.</p>
+            <p class="card-text text-justify">Falta apenas configurar a parte de recomendação. As tags cadastradas na <a asp-page="/Tags/Index" asp-route-id="@Model.JuniorVM.ID">nuvem de tags</a> são usadas para melhor descrever a área de atuação da empresa e o que ela oferece para o mercado. O grau de associação definido também é empregado na hora de sugerir qual a empresa mais adequada ao perfil do cliente.</p>
             <div class="text-right">
                 <a asp-page="/EmpTags/Index" asp-route-id="@Model.JuniorVM.ID" class="btn btn-outline-primary">
                     Configurar recomendação
                     <i class="bi bi-caret-right-fill"></i>
                 </a>
             </div>
+        </div>
+    </div>
+}
+else if (Model.JuniorVM.Situacao == Models.Situacao.INATIVA)
+{
+    <div class="card mb-4" id="step-card">
+        <div class="card-header">
+            <span>Empresa inativa</span>
+            <button type="button" class="close" data-dismiss="alert" data-target="#step-card" aria-label="Close">
+                <span aria-hidden="true"><i class="bi bi-x"></i></span>
+            </button>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-justify">Nessa situação, a empresa é automaticamente ocultada das páginas de divulgação. Além de deixar de ser sugerida pelo sistema de recomendação. Utilize sempre que estiver faltando informações ou quando a empresa não estiver funcionando plenamente. Para alterar, <a asp-page="Edit" asp-route-id="@Model.JuniorVM.ID">edite a situação nos dados básicos</a>.</p>
         </div>
     </div>
 }
