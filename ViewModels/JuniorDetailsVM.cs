@@ -65,6 +65,8 @@ namespace EmpreendedorismoEIT.ViewModels
         [Display(Name = "Instituto")]
         public string Instituto { get; set; }
 
+        public dynamic Contagem { get; set; }
+
 
         //Atributos formatados
         public string CNPJFormatado => TextManager.FormatarCNPJ(CNPJ);

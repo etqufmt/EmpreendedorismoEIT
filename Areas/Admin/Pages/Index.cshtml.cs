@@ -23,6 +23,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages
 
         public async Task OnGetAsync()
         {
+            //Contagem de múltiplas tabelas em uma só consulta
             Dashboard = await _context.Dashboard
                 .FromSqlRaw(@"SELECT (SELECT COUNT(*) FROM [dbo].[DadosJuniores]) AS Juniores,
                 (SELECT COUNT(*) FROM [dbo].[DadosIncubadas]) AS Incubadas,
