@@ -61,6 +61,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
                                 .FirstOrDefault(r => r.Plataforma == Plataforma.TWITTER)?.URL,
                 LinkedinURL = Empresa.RedesSociais
                                 .FirstOrDefault(r => r.Plataforma == Plataforma.LINKEDIN)?.URL,
+                Contagem = Empresa.RedesSociais.Count,
             };
 
             return Page();

@@ -19,14 +19,14 @@
 
 <form method="post">
     <div class="row">
-        <div class="col-lg-6">
-            <h5 class="subtitle">Redes sociais</h5><hr class="mt-0" />
-            <partial name="_ValidationMessage" />
-            <p class="text-justify">Dica: abra o perfil da rede social em uma nova aba do navegador e copie o link da barra de endereços. Depois volte para esta página e cole no campo correspondente, para garantir que não ocorra nenhum erro de digitação. Já para remover alguma das redes sociais, basta apagar o endereço e salvar ao final.</p>
+        <div class="col-lg-6 text-center text-lg-left mb-3">
+            <h5 class="d-inline subtitle">Redes sociais
+                <span class="badge badge-custom">@Model.SocialVM.Contagem</span>
+            </h5>
+            <p class="my-1">Abra o perfil da rede social em uma nova aba do navegador e copie o link da barra de endereços. Depois volte para esta página e cole no campo correspondente, para garantir que não ocorra nenhum erro de digitação. Já para remover alguma das redes, basta apagar o endereço e salvar ao final.</p>
         </div>
-    @*</div>
-    <div class="row">*@
         <div class="col-lg-6">
+            <partial name="_ValidationMessage" />
             <input type="hidden" asp-for="SocialVM.EmpresaID" />
             <div class="form-group">
                 <label asp-for="SocialVM.FacebookURL" class="control-label"></label>

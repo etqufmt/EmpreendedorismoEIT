@@ -38,6 +38,8 @@ namespace EmpreendedorismoEIT.ViewModels
         [StringLength(200, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         public string LinkedinURL { get; set; }
 
+        public int Contagem { get; set; }
+
         //Atributos formatados
         public string WhatsappURL
         {
