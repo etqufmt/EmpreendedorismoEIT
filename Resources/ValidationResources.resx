@@ -135,6 +135,9 @@
   <data name="ErrCreateUsuario" xml:space="preserve">
     <value>Não foi possível adicionar o usuário. Tente novamente.</value>
   </data>
+  <data name="ErrDataAnterior" xml:space="preserve">
+    <value>Data anterior à de entrada</value>
+  </data>
   <data name="ErrDelete" xml:space="preserve">
     <value>Não foi possível realizar a exclusão. Tente novamente mais tarde.</value>
   </data>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -36,6 +37,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
         public IncubadaFormVM IncubadaVM { get; set; }
 
         public SelectList RamosAtuacaoSL { get; set; }
+        public SelectList AnoEntradaSL { get; set; }
+        public SelectList AnoSaidaSL { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -68,8 +71,10 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
                 LogoUpload = null,
                 Situacao = EI.Empresa.Situacao,
                 Edital = EI.Edital,
-                MesEntrada = EI.MesEntrada,
-                MesSaida = EI.MesSaida,
+                MesEntrada = (Meses)EI.MesEntrada.Month,
+                AnoEntrada = EI.MesEntrada.Year,
+                MesSaida = (Meses)EI.MesSaida.Month,
+                AnoSaida = EI.MesSaida.Year,
             };
 
             await LoadAsync();
@@ -98,6 +103,15 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
                 return Page();
             }
 
+            var entradaInc = DateTime.Parse($"{IncubadaVM.AnoEntrada}-{(int)IncubadaVM.MesEntrada}");
+            var saidaInc = DateTime.Parse($"{IncubadaVM.AnoSaida}-{(int)IncubadaVM.MesSaida}");
+            if (entradaInc.CompareTo(saidaInc) > 0)
+            {
+                ModelState.AddModelError("IncubadaVM.MesSaida", Resources.ValidationResources.ErrDataAnterior);
+                await LoadAsync();
+                return Page();
+            }
+
             EI.Empresa.Nome = IncubadaVM.Nome;
             EI.Empresa.Segmento = IncubadaVM.Segmento;
             EI.Empresa.RamoAtuacaoID = IncubadaVM.RamoAtuacaoID;
@@ -108,8 +122,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
             EI.Empresa.Situacao = IncubadaVM.Situacao;
             EI.Empresa.UltimaModificacao = DateTime.Now;
             EI.Edital = IncubadaVM.Edital;
-            EI.MesEntrada = IncubadaVM.MesEntrada;
-            EI.MesSaida = IncubadaVM.MesSaida;
+            EI.MesEntrada = entradaInc;
+            EI.MesSaida = saidaInc;
 
             string logoAntigo = null;
             string logoAtual = null;
@@ -140,11 +154,18 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
 
         private async Task LoadAsync()
         {
+            //Preencher SelectList do ramo de atuação
             if (IncubadaVM?.LogoUpload != null)
             {
                 ModelState.AddModelError("IncubadaVM.LogoUpload", Resources.ValidationResources.ErrLogoNovamente);
             }
             RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
+
+            //Preencher SelectList dos anos de entrada e saída
+            var listaAnoEntrada = Enumerable.Range(2000, (DateTime.Now.Year % 100) + 1).Reverse();
+            var listaAnoSaida = Enumerable.Range(2000, (DateTime.Now.Year % 100) + 5).Reverse();
+            AnoEntradaSL = new SelectList(listaAnoEntrada, DateTime.Now.Year);
+            AnoSaidaSL = new SelectList(listaAnoSaida, DateTime.Now.Year);
         }
     }
 }

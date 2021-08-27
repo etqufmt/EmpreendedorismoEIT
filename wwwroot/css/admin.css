@@ -39,14 +39,6 @@ i.icon-msg {
     color: darkgray;
 }
 
-/*.pr-custom {
-    padding-right: 1.7rem;
-}
-
-.pl-custom {
-    padding-left: 1.7rem;
-}*/
-
 a.username.dropdown-toggle::after {
     content: none !important;
 }
@@ -194,5 +186,11 @@ img.card-img-left {
     min-width: 16rem;
 }
 
-@media (min-width: 768px) {
+/*<span> precisa ser inline-block*/
+.first-upper:first-letter {
+    text-transform: capitalize;
 }
+
+/*@media (min-width: 768px) {
+}
+*/

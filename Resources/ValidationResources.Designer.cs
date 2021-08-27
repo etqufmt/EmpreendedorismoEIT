@@ -115,6 +115,15 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data anterior à de entrada.
+        /// </summary>
+        public static string ErrDataAnterior {
+            get {
+                return ResourceManager.GetString("ErrDataAnterior", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Não foi possível realizar a exclusão. Tente novamente mais tarde..
         /// </summary>
         public static string ErrDelete {

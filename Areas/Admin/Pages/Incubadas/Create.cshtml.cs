@@ -40,6 +40,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
         public IncubadaFormVM IncubadaVM { get; set; }
 
         public SelectList RamosAtuacaoSL { get; set; }
+        public SelectList AnoEntradaSL { get; set; }
+        public SelectList AnoSaidaSL { get; set; }
 
         public async Task<IActionResult> OnGetAsync()
         {
@@ -51,6 +53,15 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
         {
             if (!ModelState.IsValid)
             {
+                await LoadAsync();
+                return Page();
+            }
+
+            var entradaInc = DateTime.Parse($"{IncubadaVM.AnoEntrada}-{(int)IncubadaVM.MesEntrada}");
+            var saidaInc = DateTime.Parse($"{IncubadaVM.AnoSaida}-{(int)IncubadaVM.MesSaida}");
+            if (entradaInc.CompareTo(saidaInc) > 0)
+            {
+                ModelState.AddModelError("IncubadaVM.MesSaida", Resources.ValidationResources.ErrDataAnterior);
                 await LoadAsync();
                 return Page();
             }
@@ -72,8 +83,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
                 DadosIncubada = new DadosIncubada
                 {
                     Edital = IncubadaVM.Edital,
-                    MesEntrada = IncubadaVM.MesEntrada,
-                    MesSaida = IncubadaVM.MesSaida,
+                    MesEntrada = entradaInc,
+                    MesSaida = saidaInc,
                 },
             };
 
@@ -105,11 +116,18 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
 
         private async Task LoadAsync()
         {
+            //Preencher SelectList do ramo de atuação
             if (IncubadaVM?.LogoUpload != null)
             {
                 ModelState.AddModelError("IncubadaVM.LogoUpload", Resources.ValidationResources.ErrLogoNovamente);
             } 
             RamosAtuacaoSL = await CacheManager.RamosAtuacaoSL(_memoryCache, _context, _logger);
+
+            //Preencher SelectList dos anos de entrada e saída
+            var listaAnoEntrada = Enumerable.Range(2000, (DateTime.Now.Year % 100) + 1).Reverse();
+            var listaAnoSaida = Enumerable.Range(2000, (DateTime.Now.Year % 100) + 5).Reverse();
+            AnoEntradaSL = new SelectList(listaAnoEntrada, DateTime.Now.Year);
+            AnoSaidaSL = new SelectList(listaAnoSaida, DateTime.Now.Year);
         }
     }
 }
