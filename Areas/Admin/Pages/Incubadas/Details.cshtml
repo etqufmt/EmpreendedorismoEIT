@@ -1,0 +1,202 @@
+﻿@page "{id:int?}"
+@model EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalhes EI";
+    ViewData["Section"] = SectionManager.Incubadas;
+    ViewData["SectionTitle"] = Html.DisplayFor(model => model.IncubadaVM.Nome);
+    var logoURL = String.IsNullOrEmpty(Model.IncubadaVM.Logo) ? @Url.Content("~/images/empty_logo.png") : @Url.Content("~/logo/" + Model.IncubadaVM.Logo);
+}
+
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+@if (Model.IncubadaVM.Contagem?.ProdServicos == 0)
+{
+    <div class="card mb-4" id="step-card">
+        <div class="card-header">
+            <span>Passo-a-passo</span>
+            <button type="button" class="close" data-dismiss="alert" data-target="#step-card" aria-label="Close">
+                <span aria-hidden="true"><i class="bi bi-x"></i></span>
+            </button>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-justify">Empresa criada com sucesso. Aproveite para cadastrar os produtos e serviços oferecidos, adicionar as redes sociais que ela possui e não se esqueça também de configurar a parte de recomendação. Quanto mais informações disponíveis, maiores as chances da empresa encontrar parceiros de negócio.</p>
+            <div class="text-right">
+                <a asp-page="/Servicos/Index" asp-route-id="@Model.IncubadaVM.ID" class="btn btn-primary">
+                    Cadastrar produtos e serviços
+                    <i class="bi bi-caret-right-fill"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+}
+else if (Model.IncubadaVM.Contagem?.RedesSociais == 0)
+{
+    <div class="card mb-4" id="step-card">
+        <div class="card-header">
+            <span>Passo-a-passo</span>
+            <button type="button" class="close" data-dismiss="alert" data-target="#step-card" aria-label="Close">
+                <span aria-hidden="true"><i class="bi bi-x"></i></span>
+            </button>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-justify"> Agora que alguns produtos e serviços foram cadastrados, adicione links paras as redes sociais que a empresa possui. Incluindo site próprio ou número de WhatsApp, se estiverem disponíveis. Facilitar o contato externo e construir uma presença digital ajudam bastante na divulgação.</p>
+            <div class="text-right">
+                <a asp-page="/Redes/Index" asp-route-id="@Model.IncubadaVM.ID" class="btn btn-primary">
+                    Adicionar redes sociais
+                    <i class="bi bi-caret-right-fill"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+}
+else if (Model.IncubadaVM.Contagem?.TagsAssociadas == 0)
+{
+    <div class="card mb-4" id="step-card">
+        <div class="card-header">
+            <span>Passo-a-passo</span>
+            <button type="button" class="close" data-dismiss="alert" data-target="#step-card" aria-label="Close">
+                <span aria-hidden="true"><i class="bi bi-x"></i></span>
+            </button>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-justify">Falta apenas configurar a parte de recomendação. As tags disponíveis na <a asp-page="/Tags/Index" asp-route-id="@Model.IncubadaVM.ID">nuvem de tags</a> são usadas para detalhar a área de atuação da empresa e o que ela oferece para o mercado. O grau de associação definido também é empregado na hora de sugerir qual a empresa mais adequada ao perfil do cliente.</p>
+            <div class="text-right">
+                <a asp-page="/EmpTags/Index" asp-route-id="@Model.IncubadaVM.ID" class="btn btn-primary">
+                    Configurar recomendação
+                    <i class="bi bi-caret-right-fill"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+}
+else if (Model.IncubadaVM.Situacao == Models.Situacao.INATIVA)
+{
+    <div class="card mb-4" id="step-card">
+        <div class="card-header">
+            <span>Empresa inativa</span>
+            <button type="button" class="close" data-dismiss="alert" data-target="#step-card" aria-label="Close">
+                <span aria-hidden="true"><i class="bi bi-x"></i></span>
+            </button>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-justify">Nessa situação, a empresa é automaticamente ocultada das páginas de divulgação. Além de deixar de ser sugerida pelo sistema de recomendação. Utilize sempre que estiver faltando informações ou quando a empresa não estiver funcionando plenamente. Para alterar, <a asp-page="Edit" asp-route-id="@Model.IncubadaVM.ID">edite a situação nos dados básicos</a>.</p>
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="col-lg-6">
+        <div class="row no-gutters card-details mb-4">
+            <div class="col-7">
+                <img class="card-img-left border" alt="logo" src="@logoURL">
+            </div>
+            <div class="col-5 list-group">
+                <a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@Model.IncubadaVM.ID"
+                   class="h-100 d-flex align-items-center list-group-item list-group-item-action card-btn-lateral">
+                    <span class="text-truncate">Serviços</span>
+                </a>
+                <a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@Model.IncubadaVM.ID"
+                   class="h-100 d-flex align-items-center list-group-item list-group-item-action card-btn-lateral">
+                    <span class="text-truncate">Redes sociais</span>
+                </a>
+                <a asp-area="Admin" asp-page="/EmpTags/Index" asp-route-id="@Model.IncubadaVM.ID"
+                   class="h-100 d-flex align-items-center list-group-item list-group-item-action card-btn-lateral">
+                    <span class="text-truncate">Recomendação</span>
+                </a>
+            </div>
+        </div>
+        <div class="list-group mb-3 mb-lg-0 info-details">
+            <div class="list-group-item py-xl-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.IncubadaVM.CNPJ)</span>
+                @Html.DisplayFor(model => model.IncubadaVM.CNPJFormatado)
+            </div>
+            <div class="list-group-item py-xl-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.IncubadaVM.Segmento)</span>
+                @Html.DisplayFor(model => model.IncubadaVM.Segmento)
+            </div>
+            <div class="list-group-item py-xl-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.IncubadaVM.RamoAtuacaoCNAE)</span>
+                @Html.DisplayFor(model => model.IncubadaVM.RamoAtuacaoCNAE)
+            </div>
+            <div class="list-group-item py-xl-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.IncubadaVM.Descricao)</span>
+                @Html.DisplayFor(model => model.IncubadaVM.Descricao)
+            </div>
+            <div class="list-group-item py-xl-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.IncubadaVM.Situacao)</span>
+                @Html.DisplayFor(model => model.IncubadaVM.Situacao)
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="list-group mb-0 info-details">
+            <div class="list-group-item py-xl-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.IncubadaVM.Edital)</span>
+                @Html.DisplayFor(model => model.IncubadaVM.Edital)
+            </div>
+            <div class="list-group-item py-xl-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.IncubadaVM.MesEntrada)</span>
+                @Html.DisplayFor(model => model.IncubadaVM.MesEntrada)
+            </div>
+            <div class="list-group-item py-xl-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.IncubadaVM.MesSaida)</span>
+                @Html.DisplayFor(model => model.IncubadaVM.MesSaida)
+            </div>
+            <div class="list-group-item py-xl-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.IncubadaVM.Endereco)</span>
+                @Html.DisplayFor(model => model.IncubadaVM.Endereco)
+            </div>
+            <div class="list-group-item py-xl-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.IncubadaVM.Telefone)</span>
+                @Html.DisplayFor(model => model.IncubadaVM.TelefoneFormatado)
+            </div>
+            <div class="list-group-item py-xl-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.IncubadaVM.Email)</span>
+                @Html.DisplayFor(model => model.IncubadaVM.Email)
+            </div>
+            <div class="list-group-item py-xl-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.IncubadaVM.UltimaModificacao)</span>
+                @Html.DisplayFor(model => model.IncubadaVM.UltimaModificacao)
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col text-right">
+        <hr />
+        <a asp-page="./Index" class="btn btn-outline-secondary">Voltar para lista</a>
+        <button type="button" class="btn btn-outline-danger"
+                data-toggle="modal" data-target="#modal-delete"
+                data-id="@Model.IncubadaVM.ID" data-tag="SectionTitle">
+            Excluir
+        </button>
+        <a asp-page="./Edit" asp-route-id="@Model.IncubadaVM.ID" class="btn btn-outline-primary">Editar</a>
+    </div>
+</div>
+
+@* Modal de exclusão *@
+<div class="modal fade" id="modal-delete" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Excluir empresa incubada</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir a empresa "<span class="modal-item-text"></span>"?</p>
+            </div>
+            <div class="modal-footer">
+                <form method="post" asp-page="./Delete">
+                    <input type="hidden" asp-for="IncubadaVM.ID" class="modal-item-id" />
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                    <input type="submit" value="Excluir" class="btn btn-danger" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ModalScriptsPartial");}
+}

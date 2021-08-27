@@ -1,0 +1,88 @@
+﻿@page
+@model EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas.IndexModel
+@using EmpreendedorismoEIT.Models
+
+@{
+    ViewData["Title"] = "EI";
+    ViewData["Section"] = SectionManager.Incubadas;
+    ViewData["SectionTitle"] = "Empresas incubadas";
+    var prevDisabled = !Model.ListaEI.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.ListaEI.HasNextPage ? "disabled" : "";
+}
+
+<form method="get">
+    <div class="form-row">
+        <div class="col-auto form-group">
+            <a asp-page="Create" class="btn btn-outline-primary">Adicionar</a>
+        </div>
+        <div class="col col-xl-auto form-group">
+            <select asp-for="@Model.CurrentSituacao" name="status" class="form-control custom-select" onchange="this.form.submit()" asp-items="@Html.GetEnumSelectList<Situacao>()">
+                <option value="0">Todas as situações</option>
+            </select>
+        </div>
+        @*Cria quebra de linha responsivamente*@
+        <div class="w-100 d-xl-none"></div>
+        <div class="col col-xl-auto form-group">
+            <select asp-for="@Model.CurrentSort" name="sort" class="form-control custom-select" onchange="this.form.submit()">
+                <option value="data">Ordernar por data</option>
+                <option value="nome">Ordernar por nome</option>
+            </select>
+        </div>
+        <div class="col col-xl form-group">
+            <div class="input-group search-box">
+                <input type="text" name="search" value="@Model.CurrentFilter" class="form-control" placeholder="Filtrar por nome" />
+                <div class="input-group-append">
+                    <a asp-page="Index" class="btn input-group-text"><i class="bi bi-backspace"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="row">
+    @if (Model.ListaEI.Count == 0)
+    {
+        <div class="offset-3 col-6 text-center py-4 my-5 rounded-lg msg-empty">
+            <i class="bi bi-x-diamond icon-msg"></i><br />
+            <span>Nenhuma empresa encontrada.</span>
+        </div>
+    }
+    @foreach (var item in Model.ListaEI)
+    {
+        <div class="col-xl-3 col-lg-4 col-6 pb-4">
+            <a asp-page="Details" asp-route-id="@item.ID" class="text-decoration-none">
+                <div class="card card-emp">
+                    <img src="@(String.IsNullOrEmpty(item.Logo)? "../images/empty_logo.png" : "../logo/" + item.Logo)"
+                         class="card-img-top" alt="logo">
+                    <div class="card-body border-top">
+                        <h5 class="card-title text-truncate">@Html.DisplayFor(modelItem => item.Nome)</h5>
+                        <p class="card-text emp-text">@Html.DisplayFor(modelItem => item.MesEntrada)</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+<div class="row">
+    <div class="col text-right">
+        <hr />
+        <a asp-page="Index"
+           asp-route-pageIndex="@(Model.ListaEI.PageIndex - 1)"
+           asp-route-filter="@Model.CurrentFilter"
+           asp-route-status="@((int)Model.CurrentSituacao)"
+           asp-route-sort="@Model.CurrentSort"
+           class="btn btn-primary @prevDisabled">
+            Anterior
+        </a>
+        <a asp-page="Index"
+           asp-route-pageIndex="@(Model.ListaEI.PageIndex + 1)"
+           asp-route-filter="@Model.CurrentFilter"
+           asp-route-status="@((int)Model.CurrentSituacao)"
+           asp-route-sort="@Model.CurrentSort"
+           class="btn btn-primary @nextDisabled">
+            Próxima
+        </a>
+    </div>
+</div>
+
+
+

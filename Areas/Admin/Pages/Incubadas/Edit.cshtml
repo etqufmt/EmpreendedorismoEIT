@@ -1,0 +1,132 @@
+﻿@page "{id:int?}"
+@model EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas.EditModel
+@using EmpreendedorismoEIT.Models
+
+@{
+    ViewData["Title"] = "Editar EI";
+    ViewData["Section"] = SectionManager.Incubadas;
+    ViewData["SectionTitle"] = Html.DisplayFor(model => model.IncubadaVM.Nome);
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col">
+            <partial name="_ValidationMessage" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group mb-4">
+                <label asp-for="IncubadaVM.Nome" class="control-label"></label>
+                <span class="label-sub">(Comercial) *</span>
+                <input asp-for="IncubadaVM.Nome" class="form-control" />
+                <span asp-validation-for="IncubadaVM.Nome"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="IncubadaVM.CNPJ" class="control-label"></label>
+                <span class="label-sub">(Não pode ser alterado)</span>
+                <input asp-for="IncubadaVM.CNPJ" class="form-control number-only" readonly />
+                <span asp-validation-for="IncubadaVM.CNPJ"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="IncubadaVM.Segmento" class="control-label"></label>
+                <span class="label-sub">*</span>
+                <select asp-for="IncubadaVM.Segmento" class="form-control custom-select" asp-items="@Html.GetEnumSelectList<Segmento>()"></select>
+                <span asp-validation-for="IncubadaVM.Segmento"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="IncubadaVM.RamoAtuacaoID" class="control-label"></label>
+                <span class="label-sub">(<a href="https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/cadastros/cnpj/classificacao-nacional-de-atividades-economicas-2013-cnae/apresentacao" target="_blank">Explicação</a>) *</span>
+                <div class="input-group">
+                    <select asp-for="IncubadaVM.RamoAtuacaoID" class="form-control custom-select" asp-items="@Model.RamosAtuacaoSL">
+                        <option value="" disabled selected hidden>Dois primeiros dígitos</option>
+                    </select>
+                    <div class="input-group-append">
+                        <label class="input-group-text">CNAE</label>
+                    </div>
+                </div>
+                <span asp-validation-for="IncubadaVM.RamoAtuacaoID"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="IncubadaVM.Descricao" class="control-label"></label>
+                <span class="label-sub">*</span>
+                <textarea asp-for="IncubadaVM.Descricao" class="form-control maxcounter" rows="6"></textarea>
+                <span class="maxcounter-out float-right"></span>
+                <span asp-validation-for="IncubadaVM.Descricao"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="IncubadaVM.Situacao" class="control-label"></label>
+                <span class="label-sub">*</span>
+                <select asp-for="IncubadaVM.Situacao" class="form-control custom-select" asp-items="@Html.GetEnumSelectList<Situacao>()"></select>
+                <span asp-validation-for="IncubadaVM.Situacao"></span>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group mb-4">
+                <label asp-for="IncubadaVM.Edital" class="control-label"></label>
+                <span class="label-sub">*</span>
+                <input asp-for="IncubadaVM.Edital" class="form-control" />
+                <span asp-validation-for="IncubadaVM.Edital"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="IncubadaVM.MesEntrada" class="control-label"></label>
+                <span class="label-sub">*</span>
+                <input asp-for="IncubadaVM.MesEntrada" class="form-control" 
+                       type="month" min="1980-01" pattern="[0-9]{4}-[0-9]{2}"/>
+                <span asp-validation-for="IncubadaVM.MesEntrada"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="IncubadaVM.MesSaida" class="control-label"></label>
+                <span class="label-sub">*</span>
+                <input asp-for="IncubadaVM.MesSaida" class="form-control" 
+                       type="month" min="1980-01" pattern="[0-9]{4}-[0-9]{2}"/>
+                <span asp-validation-for="IncubadaVM.MesSaida"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="IncubadaVM.Endereco" class="control-label"></label>
+                <span class="label-sub">*</span>
+                <textarea asp-for="IncubadaVM.Endereco" class="form-control maxcounter" rows="3" placeholder="Dentro do campus"></textarea>
+                <span class="maxcounter-out float-right"></span>
+                <span asp-validation-for="IncubadaVM.Endereco"></span>
+
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="IncubadaVM.Telefone" class="control-label"></label>
+                <span class="label-sub">(Apenas números) *</span>
+                <input type="tel" asp-for="IncubadaVM.Telefone" class="form-control number-only"
+                       placeholder="DDD + Telefone" />
+                <span asp-validation-for="IncubadaVM.Telefone"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="IncubadaVM.Email" class="control-label"></label>
+                <span class="label-sub">*</span>
+                <input asp-for="IncubadaVM.Email" class="form-control" placeholder="Não utilize email pessoal" />
+                <span asp-validation-for="IncubadaVM.Email"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="IncubadaVM.LogoUpload" class="control-label"></label>
+                <span class="label-sub">(Apenas .jpg e .png)</span>
+                <div class="custom-file">
+                    <input asp-for="IncubadaVM.LogoUpload" class="custom-file-input" id="input-logo" accept=".png, .jpg, .jpeg" />
+                    <label class="custom-file-label text-truncate" for="input-logo"></label>
+                </div>
+                <span asp-validation-for="IncubadaVM.LogoUpload"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-right">
+            <hr class="mt-0" />
+            <a asp-page="Details" asp-route-id="@Model.IncubadaVM.ID" class="btn btn-outline-secondary">Voltar para empresa</a>
+            <input type="submit" value="Salvar" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+@* Modal de upload de imagem *@
+<partial name="_ModalUpload" />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_UploadScriptsPartial");}
+}

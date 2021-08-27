@@ -63,7 +63,7 @@ jQuery.extend(jQuery.validator.methods, {
 
 jQuery.extend(jQuery.validator.messages, {
     required: "Este campo &eacute; requerido.",
-    remote: "Por favor, corrija este campo.",
+    remote: "Corrija este campo.",
     email: "Email inv&aacute;lido",
     url: "URL inv&aacute;lida",
     date: "Forne&ccedil;a uma data v&aacute;lida.",

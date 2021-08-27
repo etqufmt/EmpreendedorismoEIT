@@ -1,16 +1,13 @@
-﻿using EmpreendedorismoEIT.Models;
+﻿using System;
+using EmpreendedorismoEIT.Models;
 using EmpreendedorismoEIT.Resources;
 using EmpreendedorismoEIT.Utils;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EmpreendedorismoEIT.ViewModels
 {
-    public class IncubadaVM
+    public class EmpresaFormVM
     {
         public int ID { get; set; }
 
@@ -26,7 +23,7 @@ namespace EmpreendedorismoEIT.ViewModels
         [DataType(DataType.PhoneNumber)]
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
         [RegularExpression("([0-9]+)", ErrorMessageResourceName = "Numero", ErrorMessageResourceType = typeof(ValidationResources))]
-        [StringLength(11, MinimumLength = 11, ErrorMessageResourceName = "ErrTelefone", ErrorMessageResourceType = typeof(ValidationResources))]
+        [StringLength(14, MinimumLength = 14, ErrorMessageResourceName = "ErrTelefone", ErrorMessageResourceType = typeof(ValidationResources))]
         public string CNPJ { get; set; }
 
 
@@ -37,9 +34,9 @@ namespace EmpreendedorismoEIT.ViewModels
 
         [Display(Name = "Ramo de atuação")]
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
-        public int RamoAtuacaoID { get; set; }
+        public int? RamoAtuacaoID { get; set; }
 
-        [Display(Name = "Descrição")]
+        [Display(Name = "Descrição da empresa")]
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
         [StringLength(500, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         [FormatText]
@@ -73,7 +70,7 @@ namespace EmpreendedorismoEIT.ViewModels
         [DataType(DataType.Upload)]
         [MaxFileSize(2 * 1024 * 1024)]
         [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png" })]
-        public IFormFile Logo { get; set; }
+        public IFormFile LogoUpload { get; set; }
 
 
         [Display(Name = "Situação")]
@@ -84,22 +81,5 @@ namespace EmpreendedorismoEIT.ViewModels
         [Display(Name = "Modificado")]
         [DataType(DataType.Date)]
         public DateTime UltimaModificacao { get; set; }
-
-
-        [Display(Name = "Edital")]
-        [StringLength(50, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
-        [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
-        [FormatText]
-        public string Edital { get; set; }
-
-        [Display(Name = "Mês de entrada")]
-        [DataType(DataType.Date)]
-        [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
-        public DateTime MesEntrada { get; set; }
-
-        [Display(Name = "Mês de saída")]
-        [DataType(DataType.Date)]
-        [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
-        public DateTime MesSaida { get; set; }
     }
 }
