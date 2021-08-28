@@ -84,8 +84,8 @@ body {
 
 header > nav {
     font-weight: 600;
-    /*background: rgb(234,175,200);
-    background: linear-gradient(45deg, rgba(234,175,200,0.3) 0%, rgba(101,78,163,0.3) 100%);*/
+    background: rgb(175,234,218);
+    background: linear-gradient(45deg, rgba(175,234,218,0.2) 0%, rgba(101,78,163,0.2) 100%);
 }
 
 .navbar-brand {
