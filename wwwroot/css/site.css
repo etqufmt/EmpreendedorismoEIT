@@ -88,12 +88,28 @@ header > nav {
     background: linear-gradient(45deg, rgba(175,234,218,0.2) 0%, rgba(101,78,163,0.2) 100%);
 }
 
-.navbar-brand {
-    color: rgba(0,0,0,0.55) !important;
+a.brand {
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    line-height: 1.2rem;
+    color: rgba(0,0,0,.5);
+}
+
+a.brand:hover, a.brand:focus {
+    text-decoration: none;
+    color: rgba(0,0,0,.7);
+}
+
+span.brand-name {
+    font-size: 1.25rem;
+}
+span.brand-sub {
+    font-size: 1rem;
 }
 
 img.svg-filter {
     /*filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);*/
-    opacity: 0.55;
+    opacity: 0.5;
 }
 

@@ -1,20 +1,25 @@
 ﻿<header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-4">
         <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">
-                @*<img class="svg-filter" alt="ufmt" height="50" width="50" src="~/images/ufmt_preto.svg">*@
-                <span>Escritório de Inovação Tecnológica</span>
+            <a class="row no-gutters align-items-center brand" asp-area="" asp-page="/Index">
+                <div class="col pr-2">
+                    <img class="svg-filter" alt="ufmt" height="50" width="50" src="~/images/ufmt_preto.svg">
+                </div>
+                <div class="col-auto">
+                    <span class="brand-name">EIT - Escritório de Inovação Tecnológica</span><br />
+                    <span class="brand-sub">Empreendedorismo</span>
+                </div>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <div class="navbar-nav flex-grow-1 text-center">
+                <div class="navbar-nav flex-grow-1 text-center mt-1 mt-sm-0">
                     <a class="nav-link ml-sm-auto" asp-area="" asp-page="/Index">Início</a>
-                    <a class="nav-link" asp-area="" asp-page="/Index">Incubadora</a>
-                    <a class="nav-link" asp-area="" asp-page="/Index">Empresas Juniores</a>
-                    <a class="nav-link" asp-area="admin" asp-page="/Index">Administração</a>
+                    <a class="nav-link" asp-area="" asp-page="/Incubadora">Incubadora</a>
+                    <a class="nav-link" asp-area="" asp-page="/Junior">Empresas Juniores</a>
+                    <a class="nav-link" asp-area="" asp-page="/Sobre">Sobre</a>
                 </div>
             </div>
         </div>
