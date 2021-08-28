@@ -69,3 +69,20 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+
+/* Alterações
+-------------------------------------------------- */
+header > nav {
+    /*background: rgb(230,221,236);
+    background: linear-gradient(148deg, rgba(230,221,236,1) 0%, rgba(227,238,238,1) 100%);*/
+}
+
+html {
+    /*background: #f7f7f8;*/
+    background: #f9fafa;
+}
+
+body {
+    background: unset;
+}

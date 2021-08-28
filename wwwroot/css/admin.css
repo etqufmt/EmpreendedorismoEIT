@@ -1,4 +1,7 @@
-﻿/*input:placeholder-shown {
+﻿/*@media (min-width: 768px) {
+}
+
+input:placeholder-shown {
     font-weight: 300;
 }
 
@@ -191,6 +194,3 @@ img.card-img-left {
     text-transform: capitalize;
 }
 
-/*@media (min-width: 768px) {
-}
-*/

@@ -69,6 +69,20 @@ else if (Model.IncubadaVM.Contagem?.TagsAssociadas == 0)
         </div>
     </div>
 }
+else if (Model.IncubadaVM.Situacao == Models.Situacao.ATIVA)
+{
+    <div class="card mb-4" id="step-card">
+        <div class="card-header">
+            <span>Passo-a-passo</span>
+            <button type="button" class="close" data-dismiss="alert" data-target="#step-card" aria-label="Close">
+                <span aria-hidden="true"><i class="bi bi-x"></i></span>
+            </button>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-justify">Com essas informações, a empresa já pode se destacar nas páginas de divulgação e prospecção. Portanto não deixe de atualizar os dados de contato com frequência. E revisite a parte de recomendação sempre que novas tags forem adicionadas.</p>
+        </div>
+    </div>
+}
 else if (Model.IncubadaVM.Situacao == Models.Situacao.INATIVA)
 {
     <div class="card mb-4" id="step-card">
@@ -79,7 +93,7 @@ else if (Model.IncubadaVM.Situacao == Models.Situacao.INATIVA)
             </button>
         </div>
         <div class="card-body">
-            <p class="card-text text-justify">Nessa situação, a empresa é automaticamente ocultada das páginas de divulgação. Além de deixar de ser sugerida pelo sistema de recomendação. Utilize sempre que estiver faltando informações ou quando a empresa não estiver funcionando plenamente. Para alterar, <a asp-page="Edit" asp-route-id="@Model.IncubadaVM.ID">edite a situação nos dados básicos</a>.</p>
+            <p class="card-text text-justify">Nessa situação a empresa é automaticamente ocultada das páginas de divulgação. Além de deixar de ser sugerida pelo sistema de recomendação. Utilize sempre que estiver faltando informações ou quando a empresa não estiver funcionando plenamente. Para alterar, <a asp-page="Edit" asp-route-id="@Model.IncubadaVM.ID">edite a situação nos dados básicos</a>.</p>
         </div>
     </div>
 }
