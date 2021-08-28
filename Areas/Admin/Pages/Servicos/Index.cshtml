@@ -46,23 +46,25 @@
     @foreach (var item in Model.ListaProdServ)
     {
         <div class="card mb-3">
-            <div class="card-header border-bottom-0 form-row" id="nome-@item.ID">
-                <div class="col-lg-8 text-center text-lg-left align-self-center">
-                    <a class="btn-link" href="#" data-toggle="collapse" data-target="#desc-@item.ID">
-                        <p class="mb-0 text-truncate pr-md-3" id="ps-nome-@item.ID">
-                            @Html.DisplayFor(modelItem => item.Nome)
-                        </p>
-                    </a>
-                </div>
-                <div class="col-2 d-none d-lg-flex">
-                    <button type="button" class="btn btn-outline-danger btn-block"
-                            data-toggle="modal" data-target="#modal-delete"
-                            data-id="@item.ID" data-tag="ps-nome-@item.ID">
-                        Excluir
-                    </button>
-                </div>
-                <div class="col-2 d-none d-lg-flex">
-                    <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-outline-primary btn-block">Editar</a>
+            <div class="card-header border-bottom-0" id="nome-@item.ID">
+                <div class="form-row">
+                    <div class="col-lg-8 text-center text-lg-left align-self-center">
+                        <a class="btn-link" href="#" data-toggle="collapse" data-target="#desc-@item.ID">
+                            <p class="mb-0 text-truncate pr-md-3" id="ps-nome-@item.ID">
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </p>
+                        </a>
+                    </div>
+                    <div class="col-2 d-none d-lg-flex">
+                        <button type="button" class="btn btn-outline-danger btn-block"
+                                data-toggle="modal" data-target="#modal-delete"
+                                data-id="@item.ID" data-tag="ps-nome-@item.ID">
+                            Excluir
+                        </button>
+                    </div>
+                    <div class="col-2 d-none d-lg-flex">
+                        <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-outline-primary btn-block">Editar</a>
+                    </div>
                 </div>
             </div>
             <div id="desc-@item.ID" class="collapse show border-top">

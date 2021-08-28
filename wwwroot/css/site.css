@@ -35,21 +35,21 @@ html {
   }
 }
 
-.border-top {
+/*.border-top {
   border-top: 1px solid #e5e5e5;
 }
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;
-}
+}*/
 
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
-button.accept-policy {
+/*button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
-}
+}*/
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -73,11 +73,6 @@ body {
 
 /* Alterações
 -------------------------------------------------- */
-header > nav {
-    /*background: rgb(230,221,236);
-    background: linear-gradient(148deg, rgba(230,221,236,1) 0%, rgba(227,238,238,1) 100%);*/
-}
-
 html {
     /*background: #f7f7f8;*/
     background: #f9fafa;
@@ -86,3 +81,19 @@ html {
 body {
     background: unset;
 }
+
+header > nav {
+    font-weight: 600;
+    /*background: rgb(234,175,200);
+    background: linear-gradient(45deg, rgba(234,175,200,0.3) 0%, rgba(101,78,163,0.3) 100%);*/
+}
+
+.navbar-brand {
+    color: rgba(0,0,0,0.55) !important;
+}
+
+img.svg-filter {
+    /*filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);*/
+    opacity: 0.55;
+}
+
