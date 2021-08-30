@@ -80,13 +80,18 @@ namespace EmpreendedorismoEIT.Data
                 },
                 new Tag
                 {
-                    Nome = "Robótica",
+                    Nome = "Automação",
                     Cor = 0x9999FF,
                 },
                 new Tag
                 {
                     Nome = "Pecuária",
                     Cor = 0x82CAAF,
+                },
+                new Tag
+                {
+                    Nome = "Veterinária",
+                    Cor = 0xEE778F,
                 },
             };
 
@@ -96,7 +101,7 @@ namespace EmpreendedorismoEIT.Data
                 {
                     Nome = "Fácil Consultoria",
                     Tipo = Tipo.JUNIOR,
-                    CNPJ = "12345678901234",
+                    CNPJ = "53867982000180",
                     Segmento = Segmento.SERVICOS,
                     RamoAtuacao = ramosAtuacao[1],
                     Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais.",
@@ -146,7 +151,7 @@ namespace EmpreendedorismoEIT.Data
                 {
                     Nome = "Nubank",
                     Tipo = Tipo.JUNIOR,
-                    CNPJ = "09876543210987",
+                    CNPJ = "60327243000160",
                     Segmento = Segmento.INDUSTRIA,
                     RamoAtuacao = ramosAtuacao[5],
                     Descricao = "Empresa startup brasileira pioneira no segmento de serviços financeiros. A primeira compra realizada com um cartão Nubank ocorreu em 1º de abril de 2014. Em 2018, o Nubank atingiu o status de startup unicórnio ao atingir avaliação de preço de mercado no valor de 1 bilhão de dólares, sendo a terceira empresa brasileira com esta marca até então.",
@@ -183,7 +188,7 @@ namespace EmpreendedorismoEIT.Data
                 {
                     Nome = "EBANX",
                     Tipo = Tipo.JUNIOR,
-                    CNPJ = "99887766554433",
+                    CNPJ = "34958567000197",
                     Segmento = Segmento.INDUSTRIA,
                     RamoAtuacao = ramosAtuacao[7],
                     Descricao = "Fintech brasileira fundada em 2012 que oferece soluções de pagamento. Em maio de 2021, a fintech anunciou uma série de mudanças em sua alta liderança. João Del Valle, até então COO, passou a assumir o cargo de CEO, posto ocupado durante 9 anos por Alphonse Voigt. Voigt passa a responder como presidente-executivo, liderando o conselho administrativo da empresa.",
@@ -202,7 +207,7 @@ namespace EmpreendedorismoEIT.Data
                 {
                     Nome = "Quinto Andar",
                     Tipo = Tipo.JUNIOR,
-                    CNPJ = "11223344556677",
+                    CNPJ = "31075350000140",
                     Segmento = Segmento.COMERCIO,
                     RamoAtuacao = ramosAtuacao[10],
                     Descricao = "Startup brasileira de tecnologia focada no aluguel e na venda de imóveis. Na modalidade venda, a empresa permite (através de aplicativo) a negociação direta entre comprador e vendedor, e cuida a partir daí de todo o processo, inclusive diligência sobre a propriedade e viabilização de financiamento bancário.",
@@ -213,7 +218,7 @@ namespace EmpreendedorismoEIT.Data
                     UltimaModificacao = DateTime.Now,
                     DadosJunior = new DadosJunior
                     {
-                        Campus = Campus.VGRANDE,
+                        Campus = Campus.SINOP,
                         Instituto = "Engenharia"
                     }
                 },

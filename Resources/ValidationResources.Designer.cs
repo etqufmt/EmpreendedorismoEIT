@@ -97,6 +97,24 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CNPJ deve ter 14 dígitos.
+        /// </summary>
+        public static string ErrCNPJIncompleto {
+            get {
+                return ResourceManager.GetString("ErrCNPJIncompleto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CNPJ inválido.
+        /// </summary>
+        public static string ErrCNPJInvalido {
+            get {
+                return ResourceManager.GetString("ErrCNPJInvalido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Não foi possível realizar a adição. Tente novamente mais tarde..
         /// </summary>
         public static string ErrCreate {

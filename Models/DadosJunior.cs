@@ -34,9 +34,6 @@ namespace EmpreendedorismoEIT.Models
 
         [Display(Name = "Sinop")]
         SINOP = 3,
-
-        [Display(Name = "Várzea Grande")]
-        VGRANDE = 4
     }
 
 }

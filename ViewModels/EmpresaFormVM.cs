@@ -23,7 +23,8 @@ namespace EmpreendedorismoEIT.ViewModels
         [DataType(DataType.PhoneNumber)]
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
         [RegularExpression("([0-9]+)", ErrorMessageResourceName = "Numero", ErrorMessageResourceType = typeof(ValidationResources))]
-        [StringLength(14, MinimumLength = 14, ErrorMessageResourceName = "ErrTelefone", ErrorMessageResourceType = typeof(ValidationResources))]
+        [StringLength(14, MinimumLength = 14, ErrorMessageResourceName = "ErrCNPJIncompleto", ErrorMessageResourceType = typeof(ValidationResources))]
+        [ValidadorCNPJ]
         public string CNPJ { get; set; }
 
 

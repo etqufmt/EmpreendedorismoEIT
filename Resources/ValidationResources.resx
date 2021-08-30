@@ -129,6 +129,12 @@
   <data name="ErrCNPJDuplicado" xml:space="preserve">
     <value>CNPJ já se encontra cadastrado</value>
   </data>
+  <data name="ErrCNPJIncompleto" xml:space="preserve">
+    <value>CNPJ deve ter 14 dígitos</value>
+  </data>
+  <data name="ErrCNPJInvalido" xml:space="preserve">
+    <value>CNPJ inválido</value>
+  </data>
   <data name="ErrCreate" xml:space="preserve">
     <value>Não foi possível realizar a adição. Tente novamente mais tarde.</value>
   </data>
