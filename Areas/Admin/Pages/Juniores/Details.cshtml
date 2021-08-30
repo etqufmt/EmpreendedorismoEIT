@@ -9,7 +9,7 @@
 }
 
 <partial name="_StatusMessage" model="Model.StatusMessage" />
-@if (Model.JuniorVM.Contagem?.ProdServicos == 0)
+@if (Model.JuniorVM.Contagem.ProdServicos == 0)
 {
     <div class="card mb-4" id="step-card">
         <div class="card-header">
@@ -29,7 +29,7 @@
         </div>
     </div>
 }
-else if (Model.JuniorVM.Contagem?.RedesSociais == 0)
+else if (Model.JuniorVM.Contagem.RedesSociais == 0)
 {
     <div class="card mb-4" id="step-card">
         <div class="card-header">
@@ -49,7 +49,7 @@ else if (Model.JuniorVM.Contagem?.RedesSociais == 0)
         </div>
     </div>
 }
-else if (Model.JuniorVM.Contagem?.TagsAssociadas == 0)
+else if (Model.JuniorVM.Contagem.TagsAssociadas == 0)
 {
     <div class="card mb-4" id="step-card">
         <div class="card-header">
