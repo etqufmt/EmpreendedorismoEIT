@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EmpreendedorismoEIT.Data;
+using EmpreendedorismoEIT.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,16 +13,20 @@ namespace EmpreendedorismoEIT.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ApplicationDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public void OnGet()
-        {
+        public List<Empresa> ListaEmp { get; set; }
 
+        public async Task OnGetAsync()
+        {
+            ListaEmp = await _context.Empresas.AsNoTracking()
+                .Where(e => e.Situacao == Situacao.ATIVA)
+                .OrderBy(e => e.Nome).ToListAsync();
         }
     }
 }

@@ -4,7 +4,36 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center pt-4">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row my-5">
+    <div class="col-8">
+        <img src="~/images/cloud.png" alt="nuvem" class="w-100"/>
+        @*<div class="text-center pt-4">
+            <h1 class="display-4">Welcome</h1>
+            <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        </div>*@
+    </div>
+    <div class="col-4">
+        <p>Descrubra qual empresa oferece os serviços que você procura.</p>
+    </div>
+</div>
+<hr class="break"/>
+<div class="text-center pt-3 pb-5">
+    <h1>Ecossistema</h1>
+</div>
+<div class="row">
+    @foreach (var item in Model.ListaEmp)
+    {
+        <div class="col-xl-3 col-lg-4 col-6 pb-4">
+            <a asp-page="Details" asp-route-id="@item.ID" class="text-decoration-none">
+                <div class="card card-emp">
+                    <img src="@(String.IsNullOrEmpty(item.Logo)? "../images/empty_logo.png" : "../logo/" + item.Logo)"
+                         class="card-img-top" alt="logo">
+                    <div class="card-body border-top">
+                        <h5 class="card-title text-truncate">@Html.DisplayFor(modelItem => item.Nome)</h5>
+                        <p class="card-text emp-text">@Html.DisplayFor(modelItem => item.Tipo)</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
 </div>
