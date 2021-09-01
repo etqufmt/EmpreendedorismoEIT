@@ -2,29 +2,27 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    //var emptyImage = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 }
 
-<div class="row my-5">
-    <div class="col-8">
-        <img src="~/images/cloud.png" alt="nuvem" class="w-100"/>
-        @*<div class="text-center pt-4">
-            <h1 class="display-4">Welcome</h1>
-            <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-        </div>*@
+<div class="row">
+    <div class="col-lg-8 my-4 p-4">
+        <img src="~/images/cloud.png" alt="nuvem" class="w-100 banner"/>
     </div>
-    <div class="col-4">
-        <p>Descrubra qual empresa oferece os serviços que você procura.</p>
+    <div class="col-lg-4 my-4 text-center text-lg-left">
+        <p class="desc">Descubra qual empresa oferece os serviços que você procura.</p>
+        <a href="" class="btn btn-lg btn-primary">Faça o teste</a>
     </div>
 </div>
-<hr class="break"/>
-<div class="text-center pt-3 pb-5">
+<hr class="break my-5"/>
+<div class="text-center pb-4">
     <h1>Ecossistema</h1>
 </div>
-<div class="row">
+<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 pb-3">
     @foreach (var item in Model.ListaEmp)
     {
-        <div class="col-xl-3 col-lg-4 col-6 pb-4">
-            <a asp-page="Details" asp-route-id="@item.ID" class="text-decoration-none">
+        <div class="col card-col p-3 p-lg-4">
+            <a asp-page="Details" asp-route-id="@item.ID" class="card-link">
                 <div class="card card-emp">
                     <img src="@(String.IsNullOrEmpty(item.Logo)? "../images/empty_logo.png" : "../logo/" + item.Logo)"
                          class="card-img-top" alt="logo">

@@ -9,18 +9,26 @@
     line-height: normal;
 }
 
-a.text-decoration-none:hover .card-title {
+a.card-link:hover .card-title {
     text-decoration: underline;
 }
 
-a.text-decoration-none:hover .card {
+a.card-link:hover .card {
     background-color: #f8f9fa !important;
 }
 
-a.text-decoration-none:active .card {
+a.card-link:active .card {
     background-color: #e9ecef !important;
 }
 
 .emp-text, .emp-text:hover, .emp-text:visited, .emp-text:link, .emp-text:active {
     color: #212529;
+}
+
+img.banner {
+
+}
+
+p.desc{
+    font-size: 1.25rem;
 }
