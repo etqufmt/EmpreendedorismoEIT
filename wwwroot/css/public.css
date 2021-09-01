@@ -25,10 +25,11 @@ a.card-link:active .card {
     color: #212529;
 }
 
+p.desc {
+    font-size: 1.25rem;
+}
+
 img.banner {
 
 }
 
-p.desc{
-    font-size: 1.25rem;
-}
