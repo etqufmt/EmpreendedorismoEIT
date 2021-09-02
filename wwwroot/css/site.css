@@ -1,16 +1,15 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+a {
+  color: #0366d6;
+}
+
 /*a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
 }*/
-
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
-}
 
 /*.btn-primary {
   color: #fff;
@@ -24,63 +23,18 @@ a {
   border-color: #1861ac;
 }*/
 
-/* Sticky footer styles
+/* HTML
 -------------------------------------------------- */
 html {
   font-size: 14px;
 }
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
   }
 }
 
-/*.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}*/
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-/*button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}*/
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 6.5rem;
-}
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 6.5rem;
-    background: rgb(195,195,195);
-    background: linear-gradient(0deg, rgba(195,195,195,0) 0%, rgba(195,195,195,0.35) 100%);
-    /*white-space: nowrap;*/
-    /*line-height: 60px;*/ /* Vertically center the text there */
-}
-
-.footer p {
-    margin-bottom: 0;
-    font-size: 0.9rem;
-}
-
-
-/* Alterações
--------------------------------------------------- */
 html {
     /*background: #f7f7f8;*/
     background: #f9fafa;
@@ -90,10 +44,58 @@ body {
     background: unset;
 }
 
+/* Footer
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 180px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 180px;
+    background: rgb(195,195,195);
+    background: linear-gradient(0deg, rgba(195,195,195,0) 0%, rgba(195,195,195,0.35) 100%);
+}
+
+/*Altura a partir de tamanho médio (md)*/
+@media (min-width: 768px) {
+    body {
+        margin-bottom: 100px;
+    }
+
+    .footer {
+        height: 100px;
+    }
+}
+
+.footer p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+img.admin-link {
+    opacity: 0.5;
+    /*cursor: default;*/
+}
+
+/* Header
+-------------------------------------------------- */
 header > nav {
     font-weight: 600;
     background: rgb(175,234,218);
     background: linear-gradient(45deg, rgba(175,234,218,0.2) 0%, rgba(101,78,163,0.2) 100%);
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 a.brand {
@@ -124,11 +126,4 @@ img.svg-filter {
 a.brand:hover img.svg-filter {
     opacity: 0.7;
 }
-
-img.admin-link {
-    opacity: 0.5;
-    /*cursor: default;*/
-}
-
-
 
