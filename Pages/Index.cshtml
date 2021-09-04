@@ -41,7 +41,7 @@
             <use xlink:href="#gentle-wave" x="50" y="9" fill="#3461c1" />
         </g>
         <g class="parallax4">
-            <use xlink:href="#gentle-wave" x="50" y="6" fill="#fff" />
+            <use xlink:href="#gentle-wave" x="50" y="6" fill="#f9fafa" />
         </g>
     </svg>
 </section>
@@ -56,7 +56,7 @@
                 <a asp-page="Details" asp-route-id="@item.ID" class="card-link">
                     <div class="card card-emp">
                         <img src="@(String.IsNullOrEmpty(item.Logo)? "../images/empty_logo.png" : "../logo/" + item.Logo)"
-                                class="card-img-top" alt="logo">
+                             class="card-img-top" alt="logo">
                         <div class="card-body border-top">
                             <h5 class="card-title text-truncate">@Html.DisplayFor(modelItem => item.Nome)</h5>
                             <p class="card-text emp-text">@Html.DisplayFor(modelItem => item.Tipo)</p>

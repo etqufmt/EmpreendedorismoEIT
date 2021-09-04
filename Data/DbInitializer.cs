@@ -222,6 +222,44 @@ namespace EmpreendedorismoEIT.Data
                         Instituto = "Engenharia"
                     }
                 },
+                new Empresa
+                {
+                    Nome = "Rappi",
+                    Tipo = Tipo.JUNIOR,
+                    CNPJ = "36593522000191",
+                    Segmento = Segmento.COMERCIO,
+                    RamoAtuacao = ramosAtuacao[12],
+                    Descricao = "Startup brasileira de tecnologia focada no aluguel e na venda de imóveis. Na modalidade venda, a empresa permite (através de aplicativo) a negociação direta entre comprador e vendedor, e cuida a partir daí de todo o processo, inclusive diligência sobre a propriedade e viabilização de financiamento bancário.",
+                    Endereco = "R. Girassol, 555 - Vila Madalena, São Paulo - SP, 05433-001",
+                    Telefone = "65787878787",
+                    Email = "rappi@email.com.br",
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.SINOP,
+                        Instituto = "ICHS"
+                    }
+                },
+                new Empresa
+                {
+                    Nome = "Mercado Pago",
+                    Tipo = Tipo.JUNIOR,
+                    CNPJ = "34110512000122",
+                    Segmento = Segmento.COMERCIO,
+                    RamoAtuacao = ramosAtuacao[16],
+                    Descricao = "Startup brasileira de tecnologia focada no aluguel e na venda de imóveis. Na modalidade venda, a empresa permite (através de aplicativo) a negociação direta entre comprador e vendedor, e cuida a partir daí de todo o processo, inclusive diligência sobre a propriedade e viabilização de financiamento bancário.",
+                    Endereco = "R. Girassol, 555 - Vila Madalena, São Paulo - SP, 05433-001",
+                    Telefone = "65545454545",
+                    Email = "email@mercadopago.com.br",
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.ARAGUAIA,
+                        Instituto = "Faculdade de Economia"
+                    }
+                },
             };
 
 

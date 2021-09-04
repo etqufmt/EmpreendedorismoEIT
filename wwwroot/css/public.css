@@ -3,21 +3,37 @@
     box-shadow: 0 0.25rem 0.75rem -0.75rem #404040 inset;
 }*/
 
-/*.curved {
-    position: relative;
-    background: rgba(195,195,195, 0.3);
-    border-bottom-left-radius: 20rem 30%;
-    border-bottom-right-radius: 20rem 30%;
-}*/
+.btn-primary {
+    color: #fff;
+    background-color: #4579e2;
+    border-color: #4579e2;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    color: #fff;
+    background-color: #3461c1;
+    border-color: #3461c1;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active {
+    color: #fff;
+    background-color: #4968ab;
+    border-color: #4968ab;
+}
+
+.card-emp:hover {
+    box-shadow: 0 0 0 0.2rem rgb(38 143 255 / 50%);
+    -webkit-backface-visibility: hidden;
+}
 
 .card-emp .card-title {
     color: #0366d6;
     line-height: normal;
 }
 
-a.card-link:hover .card-title {
+/*a.card-link:hover .card-title {
     text-decoration: underline;
-}
+}*/
 
 a.card-link:hover .card {
     background-color: #f8f9fa !important;
@@ -62,42 +78,30 @@ section.banner-top {
 
 .parallax1 > use {
     animation: move-forever1 10s linear infinite;
-    &:nth-child(1)
-
-{
-    animation-delay: -2s;
-}
-
+    &:nth-child(1){
+        animation-delay: -2s;
+    }
 }
 
 .parallax2 > use {
     animation: move-forever2 8s linear infinite;
-    &:nth-child(1)
-
-{
-    animation-delay: -2s;
-}
-
+    &:nth-child(1){
+        animation-delay: -2s;
+    }
 }
 
 .parallax3 > use {
     animation: move-forever3 6s linear infinite;
-    &:nth-child(1)
-
-{
-    animation-delay: -2s;
-}
-
+    &:nth-child(1){
+        animation-delay: -2s;
+    }
 }
 
 .parallax4 > use {
     animation: move-forever4 4s linear infinite;
-    &:nth-child(1)
-
-{
-    animation-delay: -2s;
-}
-
+    &:nth-child(1){
+        animation-delay: -2s;
+    }
 }
 
 @keyframes move-forever1 {
