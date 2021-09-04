@@ -6,27 +6,24 @@
 section.banner-top {
     background-color: #03396c;
     padding-top: 1.5rem;
-    padding-bottom: 5rem;
+    padding-bottom: 5.5rem;
     margin-bottom: 1.5rem;
     position: relative;
 }
 
 .btn-primary {
-    color: #fff;
     background-color: #4579e2;
     border-color: #4579e2;
 }
 
 .btn-primary:hover, .btn-primary:focus {
-    color: #fff;
-    background-color: #3461c1;
-    border-color: #3461c1;
+    background-color: #8a90e7;
+    border-color: #8a90e7;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active {
-    color: #fff;
-    background-color: #4968ab;
-    border-color: #4968ab;
+    background-color: #6986bf;
+    border-color: #6986bf;
 }
 
 h1 {
