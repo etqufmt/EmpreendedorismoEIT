@@ -2,7 +2,7 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a {
-  color: #0366d6;
+    color: #4579e2;
 }
 
 /*a.navbar-brand {
@@ -90,8 +90,10 @@ img.admin-link {
 -------------------------------------------------- */
 header > nav {
     font-weight: 600;
-    background: rgb(175,234,218);
-    background: linear-gradient(45deg, rgba(175,234,218,0.2) 0%, rgba(101,78,163,0.2) 100%);
+    /*background: rgb(175,234,218);
+    background: linear-gradient(45deg, rgba(175,234,218,0.2) 0%, rgba(101,78,163,0.2) 100%);*/
+    background: rgb(253,29,29);
+    background: linear-gradient(90deg, hsl(167, 80%, 98%) 40%, hsl(23, 100%, 96%) 100%);
 }
 
 .box-shadow {
@@ -103,12 +105,23 @@ a.brand {
     padding-bottom: .3125rem;
     margin-right: 1rem;
     line-height: 1.2rem;
-    color: rgba(0,0,0,.5);
 }
 
-a.brand:hover, a.brand:focus {
+.nav-link, a.brand {
+    color: rgba(89, 89, 89, 0.7) !important;
+}
+
+.nav-link:hover, .nav-link:focus, a.brand:hover, a.brand:focus {
     text-decoration: none;
-    color: rgba(0,0,0,.7);
+    color: rgba(89, 89, 89, 1) !important;
+}
+
+img.svg-filter {
+    opacity: 0.5;
+}
+
+a.brand:hover img.svg-filter {
+    opacity: 0.7;
 }
 
 span.brand-name {
@@ -118,12 +131,5 @@ span.brand-sub {
     font-size: 1rem;
 }
 
-img.svg-filter {
-    /*filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);*/
-    opacity: 0.5;
-}
 
-a.brand:hover img.svg-filter {
-    opacity: 0.7;
-}
 

@@ -3,6 +3,14 @@
     box-shadow: 0 0.25rem 0.75rem -0.75rem #404040 inset;
 }*/
 
+section.banner-top {
+    background-color: #03396c;
+    padding-top: 1.5rem;
+    padding-bottom: 5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
 .btn-primary {
     color: #fff;
     background-color: #4579e2;
@@ -21,19 +29,19 @@
     border-color: #4968ab;
 }
 
+h1 {
+    color: #595959;
+}
+
 .card-emp:hover {
     box-shadow: 0 0 0 0.2rem rgb(38 143 255 / 50%);
-    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .card-emp .card-title {
-    color: #0366d6;
+    color: #4579e2;
     line-height: normal;
 }
-
-/*a.card-link:hover .card-title {
-    text-decoration: underline;
-}*/
 
 a.card-link:hover .card {
     background-color: #f8f9fa !important;
@@ -52,14 +60,6 @@ p.desc {
 }
 
 img.banner {
-}
-
-section.banner-top {
-    background-color: #03396c;
-    padding-top: 1.5rem;
-    padding-bottom: 5rem;
-    margin-bottom: 1.5rem;
-    position: relative;
 }
 
 /*Divisor*/
