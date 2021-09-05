@@ -1,0 +1,111 @@
+﻿@page "{id:int?}"
+@model EmpreendedorismoEIT.Pages.EmpresaModel
+@using EmpreendedorismoEIT.Utils
+@{
+    ViewData["Title"] = "Empresa";
+    var logoURL = String.IsNullOrEmpty(Model.Emp.Logo) ? 
+        @Url.Content("~/images/empty_logo.png") : @Url.Content("~/logo/" + Model.Emp.Logo);
+}
+
+<section class="banner-top">
+    <div class="container">
+        <div class="my-3">
+            <h1>@Html.DisplayFor(model => model.Emp.Nome)</h1>
+            <p>@Html.DisplayFor(model => model.Emp.Descricao)</p>
+        </div>
+    </div>
+    <img class="divider" src="~/images/divider_static.svg" alt="divisor" />
+</section>
+<section class="container pt-2">
+    <div class="card-columns">
+        <div class="card">
+            <img src="@logoURL"
+                 class="card-img-top" alt="logo">
+            <div class="card-body border-top">
+                <h3 class="text-truncate">@Html.DisplayFor(model => model.Emp.Nome)</h3>
+                <p class="card-text emp-text">@Html.DisplayFor(model => model.Emp.Tipo)</p>
+            </div>
+            <div class="card-body border-top">
+                @foreach (var empTag in Model.Emp.TagsAssociadas)
+                {
+                    <button class="btn btn-secondary my-1 mr-1 tag-button" disabled
+                            style="background-color: @TextManager.CorHTML(empTag.Tag.Cor);">
+                        @Html.DisplayFor(modelItem => empTag.Tag.Nome)
+                    </button>
+                }
+            </div>
+        </div>
+        <div class="card list-group">
+            @if (Model.Emp.DadosJunior != null)
+            {
+                <div class="list-group-item py-3">
+                    <span class="d-block info-title">
+                        @Html.DisplayNameFor(model => model.Emp.DadosJunior.Campus)
+                    </span>
+                    @Html.DisplayFor(model => model.Emp.DadosJunior.Campus)
+                </div>
+                <div class="list-group-item py-3">
+                    <span class="d-block info-title">
+                        @Html.DisplayNameFor(model => model.Emp.DadosJunior.Instituto)
+                    </span>
+                    @Html.DisplayFor(model => model.Emp.DadosJunior.Instituto)
+                </div>
+            }
+            @if (Model.Emp.DadosIncubada != null)
+            {
+                <div class="list-group-item py-3">
+                    <span class="d-block info-title">
+                        @Html.DisplayNameFor(model => model.Emp.DadosIncubada.MesEntrada)
+                    </span>
+                    @Html.DisplayFor(model => model.Emp.DadosIncubada.MesEntrada)
+                </div>
+                <div class="list-group-item py-3">
+                    <span class="d-block info-title">
+                        @Html.DisplayNameFor(model => model.Emp.DadosIncubada.MesSaida)
+                    </span>
+                    @Html.DisplayFor(model => model.Emp.DadosIncubada.MesSaida)
+                </div>
+            }
+            <div class="list-group-item py-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.Emp.Endereco)</span>
+                @Html.DisplayFor(model => model.Emp.Endereco)
+            </div>
+            <div class="list-group-item py-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.Emp.Telefone)</span>
+                @TextManager.FormatarTelefone(Model.Emp.Telefone)
+            </div>
+            <div class="list-group-item py-3">
+                <span class="d-block info-title">@Html.DisplayNameFor(model => model.Emp.Email)</span>
+                @Html.DisplayFor(model => model.Emp.Email)
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Redes sociais</h5>
+            </div>
+            <div class="card-body">
+                @foreach (var rede in Model.Emp.RedesSociais)
+                {
+                    <p class="mb-3">
+                        <span class="d-block info-title">@rede.Plataforma</span>
+                        @rede.URL
+                    </p>
+                }
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Produtos e serviços</h5>
+            </div>
+            <div class="card-body">
+                @foreach (var prodServ in Model.Emp.ProdServicos)
+                {
+                    <p class="mb-3">
+                        <span class="d-block info-title mb-1">@prodServ.Nome</span>
+                        @prodServ.Descricao
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+</section>

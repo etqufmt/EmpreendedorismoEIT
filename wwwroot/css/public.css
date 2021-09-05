@@ -3,12 +3,30 @@
     box-shadow: 0 0.25rem 0.75rem -0.75rem #404040 inset;
 }*/
 
+h1, h2, h3, h4, h5 {
+    color: #595959;
+}
+
+.card-title {
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    line-height: normal;
+}
+
+.text-truncate {
+    line-height: normal;
+}
+
 section.banner-top {
     background-color: #03396c;
     padding-top: 1.5rem;
     padding-bottom: 5.5rem;
     margin-bottom: 1.5rem;
     position: relative;
+}
+
+section.banner-top h1, section.banner-top p {
+    color: #fff;
 }
 
 .btn-primary {
@@ -26,26 +44,30 @@ section.banner-top {
     border-color: #6986bf;
 }
 
-h1 {
-    color: #595959;
+.card {
+    border-radius: .5rem;
 }
 
-.card-emp:hover {
-    box-shadow: 0 0 0 0.2rem rgb(38 143 255 / 50%);
+.card.list-group {
+    border: 0;
+}
+
+.card-img, .card-img-top {
+    border-top-left-radius: calc(.5rem - 1px);
+    border-top-right-radius: calc(.5rem - 1px);
+}
+
+a.card-link:hover > .card {
+    box-shadow: 0 0 0 0.2rem rgb(38 143 255 / 15%);
     backface-visibility: hidden;
 }
 
-.card-emp .card-title {
-    color: #4579e2;
-    line-height: normal;
-}
-
 a.card-link:hover .card {
-    background-color: #f8f9fa !important;
+    background-color: #f6f7f9 !important;
 }
 
 a.card-link:active .card {
-    background-color: #e9ecef !important;
+    background-color: #f0f1f5 !important;
 }
 
 .emp-text, .emp-text:hover, .emp-text:visited, .emp-text:link, .emp-text:active {
@@ -69,4 +91,51 @@ img.divider {
     position: absolute;
     bottom: 0;
     left: 0;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+}
+
+.info-title {
+    color: #808080;
+    font-weight: 500;
+}
+
+.tag-button:disabled {
+    border-color: rgba(0,0,0,.125);
+    opacity: .7;
+}
+
+.card-columns .card {
+    margin-bottom: 1.25rem;
+}
+
+.card-columns {
+    column-count: 1;
+}
+
+@media (min-width: 576px) {
+    .card-columns {
+        column-count: 2;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-columns {
+        column-count: 3;
+    }
+}
+
+/*Desativar animação*/
+.reduced-motion {
+    display: none !important;
+}
+
+@media (prefers-reduced-motion) {
+    .reduced-motion {
+        display: unset !important;
+    }
+
+    .motion{
+        display: none !important;
+    }
 }
