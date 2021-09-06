@@ -32,10 +32,10 @@ namespace EmpreendedorismoEIT.Pages
                 .Where(e => e.Situacao == Situacao.ATIVA)
                 .Include(d => d.DadosJunior)
                 .Include(d => d.DadosIncubada)
-                .Include(d => d.RedesSociais)
-                .Include(d => d.ProdServicos)
-                .Include(d => d.TagsAssociadas)
-                .ThenInclude(t => t.Tag)
+                .Include(d => d.RedesSociais.OrderBy(rs => rs.Plataforma))
+                .Include(d => d.ProdServicos.OrderBy(ps => ps.Nome))
+                .Include(d => d.TagsAssociadas.OrderByDescending(et => et.Grau))
+                .ThenInclude(et => et.Tag)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(e => e.ID == id);
 

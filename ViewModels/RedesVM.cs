@@ -7,6 +7,8 @@ namespace EmpreendedorismoEIT.ViewModels
     {
         public int EmpresaID { get; set; }
 
+        public int Contagem { get; set; }
+
         [Display(Name = "Site próprio")]
         [RegularExpression(@"^https:\/\/(.*)", ErrorMessageResourceName = "ErrURL", ErrorMessageResourceType = typeof(ValidationResources))]
         [StringLength(200, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
@@ -37,18 +39,5 @@ namespace EmpreendedorismoEIT.ViewModels
         [RegularExpression(@"^(?:https:\/\/)(?:[^.]+\.)?linkedin\.com(\/.*)?$", ErrorMessageResourceName = "ErrSite", ErrorMessageResourceType = typeof(ValidationResources))]
         [StringLength(200, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         public string LinkedinURL { get; set; }
-
-        public int Contagem { get; set; }
-
-        //Atributos formatados
-        public string WhatsappURL
-        {
-            get 
-            {
-                //Código internacional para telefones brasileiros = 55
-                const string wppAPI = "https://api.whatsapp.com/send?phone=55";
-                return wppAPI + WhatsappNUM;
-            }
-        }
     }
 }

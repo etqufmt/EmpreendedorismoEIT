@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace EmpreendedorismoEIT.Utils
 {
@@ -53,6 +54,18 @@ namespace EmpreendedorismoEIT.Utils
             {
                 return null;
             }
+        }
+
+        public static string WhatsappURL(string num)
+        {
+            string res = null;
+            if (!String.IsNullOrEmpty(num) && num.Length == 11)
+            {
+                //Código internacional para telefones brasileiros = 55
+                const string wppAPI = "https://api.whatsapp.com/send?phone=55";
+                return wppAPI + num;
+            }
+            return res;
         }
     }
 }

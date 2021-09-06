@@ -57,6 +57,67 @@ section.banner-top h1, section.banner-top p {
     border-top-right-radius: calc(.5rem - 1px);
 }
 
+.card > .list-group:last-child {
+    border-bottom-right-radius: calc(.5rem - 1px);
+    border-bottom-left-radius: calc(.5rem - 1px);
+}
+
+.card-header {
+    background-color: rgba(0,0,0,.02);
+}
+
+.social-link{
+    margin-right: 1rem;
+}
+
+.social-link:hover {
+    text-decoration: none;
+}
+
+.social-link i {
+    font-size: 2rem;
+}
+
+.tooltip-inner {
+    background-color: #4d4d4d;
+}
+
+.bs-tooltip-top .arrow::before {
+    border-top-color: #4d4d4d !important;
+}
+
+.first-upper:first-letter {
+    text-transform: capitalize;
+}
+
+.social-link:hover i {
+    filter: opacity(0.7);
+}
+
+.bi-facebook {
+    color: #75c0e0;
+}
+
+.bi-instagram {
+    color: #ee778f;
+}
+
+.bi-linkedin {
+    color: #9999ff;
+}
+
+.bi-twitter {
+    color: #75c0e0;
+}
+
+.bi-globe {
+    color: #b676b1;
+}
+
+.bi-whatsapp {
+    color: #42bd88;
+}
+
 a.card-link:hover > .card {
     box-shadow: 0 0 0 0.2rem rgb(38 143 255 / 15%);
     backface-visibility: hidden;
