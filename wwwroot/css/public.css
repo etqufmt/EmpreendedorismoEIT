@@ -64,6 +64,7 @@ section.banner-top h1, section.banner-top p {
 
 .card-header {
     background-color: rgba(0,0,0,.02);
+    text-align: center;
 }
 .social-link{
     margin-right: 1rem;

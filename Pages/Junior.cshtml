@@ -1,4 +1,96 @@
 ﻿@page
 @model EmpreendedorismoEIT.Pages.JuniorModel
 @{
+    ViewData["Title"] = "Empresas Juniores";
 }
+
+<div class="container px-sm-5">
+    @*Explicação sobre EJ's*@
+    <section class="mt-5 px-lg-5">
+        <div class="text-center">
+            <h1>Empresas Juniores</h1>
+            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+        </div>
+    </section>
+
+    @*Campus Araguaia*@
+    @if (Model.ListaAraguia != null)
+    {
+        <section class="mt-6">
+            <div class="text-center mb-4">
+                <h2>Campus Araguaia</h2>
+            </div>
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
+                @foreach (var item in Model.ListaAraguia)
+                {
+                    <div class="col card-col p-3 p-sm-4">
+                        <a asp-page="Empresa" asp-route-id="@item.EmpresaID" class="card-link">
+                            <div class="card">
+                                <img src="@(String.IsNullOrEmpty(item.Empresa.Logo)? "../images/empty_logo.png" : "../logo/" + item.Empresa.Logo)"
+                                     class="card-img-top" alt="logo">
+                                <div class="card-body border-top">
+                                    <h5 class="text-truncate">@Html.DisplayFor(modelItem => item.Empresa.Nome)</h5>
+                                    <p class="card-text emp-text">@Html.DisplayFor(modelItem => item.Instituto)</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </section>
+    }
+
+    @*Campus Cuiaba*@
+    @if (Model.ListaCuiaba != null)
+    {
+        <section class="mt-6">
+            <div class="text-center mb-4">
+                <h2>Campus Cuiabá</h2>
+            </div>
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
+                @foreach (var item in Model.ListaCuiaba)
+                {
+                    <div class="col card-col p-3 p-sm-4">
+                        <a asp-page="Empresa" asp-route-id="@item.EmpresaID" class="card-link">
+                            <div class="card">
+                                <img src="@(String.IsNullOrEmpty(item.Empresa.Logo)? "../images/empty_logo.png" : "../logo/" + item.Empresa.Logo)"
+                                     class="card-img-top" alt="logo">
+                                <div class="card-body border-top">
+                                    <h5 class="text-truncate">@Html.DisplayFor(modelItem => item.Empresa.Nome)</h5>
+                                    <p class="card-text emp-text">@Html.DisplayFor(modelItem => item.Instituto)</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </section>
+    }
+
+    @*Campus Sinop*@
+    @if (Model.ListaSinop != null)
+    {
+        <section class="mt-6">
+            <div class="text-center mb-4">
+                <h2>Campus Sinop</h2>
+            </div>
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
+                @foreach (var item in Model.ListaSinop)
+                {
+                    <div class="col card-col p-3 p-sm-4">
+                        <a asp-page="Empresa" asp-route-id="@item.EmpresaID" class="card-link">
+                            <div class="card">
+                                <img src="@(String.IsNullOrEmpty(item.Empresa.Logo)? "../images/empty_logo.png" : "../logo/" + item.Empresa.Logo)"
+                                     class="card-img-top" alt="logo">
+                                <div class="card-body border-top">
+                                    <h5 class="text-truncate">@Html.DisplayFor(modelItem => item.Empresa.Nome)</h5>
+                                    <p class="card-text emp-text">@Html.DisplayFor(modelItem => item.Instituto)</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </section>
+    }
+</div>
