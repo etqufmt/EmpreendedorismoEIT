@@ -3,14 +3,14 @@
 @using EmpreendedorismoEIT.Utils
 @using EmpreendedorismoEIT.ViewModels
 @{
-    ViewData["Title"] = "Empresa";
+    ViewData["Title"] = Model.Emp.Nome;
     var logoURL = String.IsNullOrEmpty(Model.Emp.Logo) ?
         @Url.Content("~/images/empty_logo.png") : @Url.Content("~/logo/" + Model.Emp.Logo);
 }
 
 <section class="banner-top">
     <div class="container">
-        <div class="my-3">
+        <div class="mt-3 mb-4">
             <h1>@Html.DisplayFor(model => model.Emp.Nome)</h1>
             <p>@Html.DisplayFor(model => model.Emp.Descricao)</p>
         </div>

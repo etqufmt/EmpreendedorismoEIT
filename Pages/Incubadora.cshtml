@@ -1,5 +1,60 @@
 ﻿@page
 @model EmpreendedorismoEIT.Pages.IncubadoraModel
 @{
+    ViewData["Title"] = "Incubadora Priante";
 }
+
+<div class="container px-sm-5">
+    @*Descrição da incubadora*@
+    <section class="mt-5 px-lg-5">
+        <div class="text-center">
+            <h1>Incubadora Priante</h1>
+            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+        </div>
+    </section>
+
+    @*Atividades*@
+    <section class="px-lg-5">
+        <div class="row align-items-center mt-6">
+            <div class="col-md-5 mb-4 mb-md-0">
+                <img src="~/images/priante.jpg" alt="priante" class="w-100 round-corner" />
+            </div>
+            <div class="col-md-7 text-center text-md-left">
+                <p class="desc mb-0">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+            </div>
+        </div>
+        <div class="row align-items-center mt-6">
+            <div class="col-md-5 mb-4 mb-md-0 order-md-1">
+                <img src="~/images/priante.jpg" alt="priante" class="w-100 round-corner" />
+            </div>
+            <div class="col-md-7 text-center text-md-right">
+                <p class="desc mb-0">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+            </div>
+        </div>
+    </section>
+
+    @*Empresas incubadas*@
+    <section class="mt-6">
+        <div class="text-center mb-4">
+            <h2>Empreendimentos Associados</h2>
+        </div>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
+            @foreach (var item in Model.ListaEmp)
+            {
+                <div class="col card-col p-3 p-sm-4">
+                    <a asp-page="Empresa" asp-route-id="@item.EmpresaID" class="card-link">
+                        <div class="card">
+                            <img src="@(String.IsNullOrEmpty(item.Empresa.Logo)? "../images/empty_logo.png" : "../logo/" + item.Empresa.Logo)"
+                                 class="card-img-top" alt="logo">
+                            <div class="card-body border-top">
+                                <h5 class="text-truncate">@Html.DisplayFor(modelItem => item.Empresa.Nome)</h5>
+                                <p class="card-text emp-text">@item.MesEntrada.ToString("MM/yyyy")</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </section>
+</div>
 

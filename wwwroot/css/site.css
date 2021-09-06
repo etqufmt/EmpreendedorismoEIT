@@ -82,6 +82,19 @@ a.brand {
     line-height: 1.2rem;
 }
 
+span.brand-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+span.brand-sub {
+    font-size: 0.9rem;
+}
+
+.nav-link {
+    font-size: 0.9rem;
+}
+
 .nav-link, a.brand {
     color: rgba(3, 57, 108, 0.6) !important;
 }
@@ -99,22 +112,11 @@ a.brand:hover img.svg-filter {
     opacity: 0.85;
 }
 
-span.brand-name {
-    font-size: 1.25rem;
-}
-span.brand-sub {
-    font-size: 1rem;
-}
-
-.nav-link {
-    font-size: 1.1rem;
-}
-
-@media (min-width: 576px) {
+/*@media (min-width: 576px) {
     .nav-link {
         font-size: 1rem;
     }
-}
+}*/
 
 
 
