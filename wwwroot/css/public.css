@@ -133,7 +133,7 @@ a.card-link:active .card {
 }
 
 p.desc {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     line-height: 2rem;
 }
 
@@ -142,8 +142,8 @@ img.round-corner {
     border: 1px solid rgba(0,0,0,.125);
 }
 
-.mt-6 {
-    margin-top: 5rem !important;
+.mt-section {
+    margin-top: 4rem !important;
 }
 
 img.banner {
@@ -185,6 +185,10 @@ img.divider {
 @media (min-width: 576px) {
     .card-columns {
         column-count: 2;
+    }
+
+    .mt-section {
+        margin-top: 5rem !important;
     }
 }
 
