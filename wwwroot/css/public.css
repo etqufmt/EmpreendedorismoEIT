@@ -142,10 +142,6 @@ img.round-corner {
     border: 1px solid rgba(0,0,0,.125);
 }
 
-.mt-section {
-    margin-top: 4rem !important;
-}
-
 img.banner {
 }
 
@@ -173,6 +169,8 @@ img.divider {
     opacity: .7;
 }
 
+
+/*Media queries*/
 .card-columns .card {
     margin-bottom: 1.75rem;
 }
@@ -180,6 +178,19 @@ img.divider {
 .card-columns {
     column-count: 1;
     column-gap: 1.75rem;
+}
+
+.mt-section {
+    margin-top: 4rem !important;
+}
+
+.lista-emp {
+    margin-right: -1rem;
+    margin-left: -1rem;
+}
+
+.col-emp {
+    padding: 1rem;
 }
 
 @media (min-width: 576px) {
@@ -190,11 +201,25 @@ img.divider {
     .mt-section {
         margin-top: 5rem !important;
     }
+
+    .lista-emp {
+        margin-right: -1.5rem;
+        margin-left: -1.5rem;
+    }
+
+    .col-emp {
+        padding: 1.5rem;
+    }
 }
 
 @media (min-width: 1200px) {
     .card-columns {
         column-count: 3;
+    }
+
+    .px-xl-section {
+        padding-right: 6rem !important;
+        padding-left: 6rem !important;
     }
 }
 
