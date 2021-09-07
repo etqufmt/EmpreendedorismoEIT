@@ -34,18 +34,18 @@
     </section>
 
     @*Empresas incubadas*@
-    @if (Model.ListaEmp != null)
+    @if (Model.ListaEmp.Count > 0)
     {
         <section class="mt-section">
             <div class="text-center">
                 <h3>Empreendimentos <br class="d-sm-none" /> Associados</h3>
             </div>
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 px-xl-5 lista-emp">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 px-xl-5 justify-content-md-center lista-emp">
                 @foreach (var item in Model.ListaEmp)
                 {
                     <div class="col col-emp">
                         <a asp-page="Empresa" asp-route-id="@item.EmpresaID" class="card-link">
-                            <div class="card">
+                            <div class="card h-100">
                                 <img src="@(String.IsNullOrEmpty(item.Empresa.Logo)? "../images/empty_logo.png" : "../logo/" + item.Empresa.Logo)"
                                      class="card-img-top" alt="logo">
                                 <div class="card-body border-top">

@@ -169,6 +169,10 @@ img.divider {
     opacity: .7;
 }
 
+.lista-emp-center {
+    justify-content: center;
+}
+
 /*Media queries*/
 .mt-section {
     margin-top: 4rem !important;

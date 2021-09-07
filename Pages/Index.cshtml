@@ -32,7 +32,7 @@
         {
             <div class="col col-emp">
                 <a asp-page="Empresa" asp-route-id="@item.ID" class="card-link">
-                    <div class="card">
+                    <div class="card h-100">
                         <img src="@(String.IsNullOrEmpty(item.Logo)? "../images/empty_logo.png" : "../logo/" + item.Logo)"
                              class="card-img-top" alt="logo">
                         <div class="card-body border-top">

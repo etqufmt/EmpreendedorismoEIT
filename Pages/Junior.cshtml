@@ -4,28 +4,28 @@
     ViewData["Title"] = "Empresas Juniores";
 }
 
-<div class="container px-sm-5">
-    @*Explicação sobre EJ's*@
-    <section class="mt-5 px-lg-5">
+<div class="container">
+    @*Explicação sobre empresas juniores*@
+    <section class="mt-5 px-xl-section">
         <div class="text-center">
             <h1>Empresas Juniores</h1>
-            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+            <p class="desc px-3 px-md-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p>
         </div>
     </section>
 
     @*Campus Araguaia*@
-    @if (Model.ListaAraguia != null)
+    @if (Model.ListaAraguia.Count > 0)
     {
         <section class="mt-section">
-            <div class="text-center mb-4">
-                <h2>Campus Araguaia</h2>
+            <div class="text-center">
+                <h3>Campus Araguaia</h3>
             </div>
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 px-xl-5 justify-content-md-center lista-emp">
                 @foreach (var item in Model.ListaAraguia)
                 {
-                    <div class="col card-col p-3 p-sm-4">
+                    <div class="col col-emp">
                         <a asp-page="Empresa" asp-route-id="@item.EmpresaID" class="card-link">
-                            <div class="card">
+                            <div class="card h-100">
                                 <img src="@(String.IsNullOrEmpty(item.Empresa.Logo)? "../images/empty_logo.png" : "../logo/" + item.Empresa.Logo)"
                                      class="card-img-top" alt="logo">
                                 <div class="card-body border-top">
@@ -41,18 +41,18 @@
     }
 
     @*Campus Cuiaba*@
-    @if (Model.ListaCuiaba != null)
+    @if (Model.ListaCuiaba.Count > 0)
     {
         <section class="mt-section">
-            <div class="text-center mb-4">
-                <h2>Campus Cuiabá</h2>
+            <div class="text-center">
+                <h3>Campus Cuiabá</h3>
             </div>
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 px-xl-5 justify-content-md-center lista-emp">
                 @foreach (var item in Model.ListaCuiaba)
                 {
-                    <div class="col card-col p-3 p-sm-4">
+                    <div class="col col-emp">
                         <a asp-page="Empresa" asp-route-id="@item.EmpresaID" class="card-link">
-                            <div class="card">
+                            <div class="card h-100">
                                 <img src="@(String.IsNullOrEmpty(item.Empresa.Logo)? "../images/empty_logo.png" : "../logo/" + item.Empresa.Logo)"
                                      class="card-img-top" alt="logo">
                                 <div class="card-body border-top">
@@ -68,18 +68,18 @@
     }
 
     @*Campus Sinop*@
-    @if (Model.ListaSinop != null)
+    @if (Model.ListaSinop.Count > 0)
     {
         <section class="mt-section">
-            <div class="text-center mb-4">
-                <h2>Campus Sinop</h2>
+            <div class="text-center">
+                <h3>Campus Sinop</h3>
             </div>
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 px-xl-5 justify-content-md-center lista-emp">
                 @foreach (var item in Model.ListaSinop)
                 {
-                    <div class="col card-col p-3 p-sm-4">
+                    <div class="col col-emp">
                         <a asp-page="Empresa" asp-route-id="@item.EmpresaID" class="card-link">
-                            <div class="card">
+                            <div class="card h-100">
                                 <img src="@(String.IsNullOrEmpty(item.Empresa.Logo)? "../images/empty_logo.png" : "../logo/" + item.Empresa.Logo)"
                                      class="card-img-top" alt="logo">
                                 <div class="card-body border-top">
