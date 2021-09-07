@@ -18,145 +18,151 @@
     <img class="divider" src="~/images/divider_static.svg" alt="divisor" />
 </section>
 <section class="container pt-2">
-    <div class="card-columns">
-        <div class="card">
-            <img src="@logoURL" class="card-img-top" alt="logo">
-            <div class="list-group list-group-flush">
-                <div class="list-group-item py-3">
-                    <span class="d-block info-title">@Html.DisplayNameFor(model => model.Emp.Tipo)</span>
-                    @Html.DisplayFor(model => model.Emp.Tipo)
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 dados-row">
+        <div class="col">
+            <div class="card">
+                <img src="@logoURL" class="card-img-top" alt="logo">
+                <div class="list-group list-group-flush">
+                    <div class="list-group-item py-3">
+                        <span class="d-block info-title">@Html.DisplayNameFor(model => model.Emp.Tipo)</span>
+                        @Html.DisplayFor(model => model.Emp.Tipo)
+                    </div>
+                    @if (Model.Emp.DadosJunior != null)
+                    {
+                        <div class="list-group-item py-3">
+                            <span class="d-block info-title">
+                                @Html.DisplayNameFor(model => model.Emp.DadosJunior.Campus)
+                            </span>
+                            @Html.DisplayFor(model => model.Emp.DadosJunior.Campus)
+                        </div>
+                        <div class="list-group-item py-3">
+                            <span class="d-block info-title">
+                                Instituto / Faculdade
+                            </span>
+                            @Html.DisplayFor(model => model.Emp.DadosJunior.Instituto)
+                        </div>
+                    }
+                    @if (Model.Emp.DadosIncubada != null)
+                    {
+                        <div class="list-group-item py-3">
+                            <span class="d-block info-title">Entrada na incubação</span>
+                            <span class="first-upper d-inline-block">@Model.Emp.DadosIncubada.MesEntrada.ToString("Y")</span>
+                        </div>
+                        <div class="list-group-item py-3">
+                            <span class="d-block info-title">Saída da incubação</span>
+                            <span class="first-upper d-inline-block">@Model.Emp.DadosIncubada.MesSaida.ToString("Y")</span>
+                        </div>
+                    }
                 </div>
-                @if (Model.Emp.DadosJunior != null)
+                @if (Model.Emp.TagsAssociadas.Count != 0)
                 {
-                    <div class="list-group-item py-3">
-                        <span class="d-block info-title">
-                            @Html.DisplayNameFor(model => model.Emp.DadosJunior.Campus)
-                        </span>
-                        @Html.DisplayFor(model => model.Emp.DadosJunior.Campus)
-                    </div>
-                    <div class="list-group-item py-3">
-                        <span class="d-block info-title">
-                            Instituto / Faculdade
-                        </span>
-                        @Html.DisplayFor(model => model.Emp.DadosJunior.Instituto)
-                    </div>
-                }
-                @if (Model.Emp.DadosIncubada != null)
-                {
-                    <div class="list-group-item py-3">
-                        <span class="d-block info-title">Entrada na incubação</span>
-                        <span class="first-upper d-inline-block">@Model.Emp.DadosIncubada.MesEntrada.ToString("Y")</span>
-                    </div>
-                    <div class="list-group-item py-3">
-                        <span class="d-block info-title">Saída da incubação</span>
-                        <span class="first-upper d-inline-block">@Model.Emp.DadosIncubada.MesSaida.ToString("Y")</span>
+                    <div class="card-body">
+                        @foreach (var empTag in Model.Emp.TagsAssociadas)
+                        {
+                            <button class="btn btn-secondary my-1 mr-1 tag-button" disabled
+                                    style="background-color: @TextManager.CorHTML(empTag.Tag.Cor);">
+                                @Html.DisplayFor(modelItem => empTag.Tag.Nome)
+                            </button>
+                        }
                     </div>
                 }
             </div>
-            @if (Model.Emp.TagsAssociadas.Count != 0)
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Contato</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    <div class="list-group-item py-3">
+                        <span class="d-block info-title">Endereço</span>
+                        @Html.DisplayFor(model => model.Emp.Endereco)
+                    </div>
+                    <div class="list-group-item py-3">
+                        <span class="d-block info-title">@Html.DisplayNameFor(model => model.Emp.Telefone)</span>
+                        @TextManager.FormatarTelefone(Model.Emp.Telefone)
+                    </div>
+                    <div class="list-group-item py-3">
+                        <span class="d-block info-title">@Html.DisplayNameFor(model => model.Emp.Email)</span>
+                        @Html.DisplayFor(model => model.Emp.Email)
+                    </div>
+                </div>
+            </div>
+            @if (Model.Emp.RedesSociais.Count != 0)
             {
-                <div class="card-body">
-                    @foreach (var empTag in Model.Emp.TagsAssociadas)
-                    {
-                        <button class="btn btn-secondary my-1 mr-1 tag-button" disabled
-                                style="background-color: @TextManager.CorHTML(empTag.Tag.Cor);">
-                            @Html.DisplayFor(modelItem => empTag.Tag.Nome)
-                        </button>
-                    }
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Redes sociais</h5>
+                    </div>
+                    <div class="card-body">
+                        @foreach (var rede in Model.Emp.RedesSociais)
+                        {
+                            @if (rede.Plataforma == Models.Plataforma.FACEBOOK)
+                            {
+                                <a class="social-link" href="@rede.URL" target="_blank">
+                                    <i class="bi-facebook" data-toggle="tooltip" data-placement="top"
+                                       title="Facebook"></i>
+                                </a>
+                            }
+                            @if (rede.Plataforma == Models.Plataforma.INSTAGRAM)
+                            {
+                                <a class="social-link" href="@rede.URL" target="_blank">
+                                    <i class="bi-instagram" data-toggle="tooltip" data-placement="top"
+                                       title="Instagram"></i>
+                                </a>
+                            }
+                            @if (rede.Plataforma == Models.Plataforma.LINKEDIN)
+                            {
+                                <a class="social-link" href="@rede.URL" target="_blank">
+                                    <i class="bi-linkedin" data-toggle="tooltip" data-placement="top"
+                                       title="LinkedIn"></i>
+                                </a>
+                            }
+                            @if (rede.Plataforma == Models.Plataforma.TWITTER)
+                            {
+                                <a class="social-link" href="@rede.URL" target="_blank">
+                                    <i class="bi-twitter" data-toggle="tooltip" data-placement="top"
+                                       title="Twitter"></i>
+                                </a>
+                            }
+                            @if (rede.Plataforma == Models.Plataforma.WEBSITE)
+                            {
+                                <a class="social-link" href="@rede.URL" target="_blank">
+                                    <i class="bi-globe" data-toggle="tooltip" data-placement="top"
+                                       title="Site próprio"></i>
+                                </a>
+                            }
+                            @if (rede.Plataforma == Models.Plataforma.WHATSAPP)
+                            {
+                                <a class="social-link" href="@TextManager.WhatsappURL(rede.URL)" target="_blank">
+                                    <i class="bi-whatsapp" data-toggle="tooltip" data-placement="top"
+                                       title="WhatsApp"></i>
+                                </a>
+                            }
+                        }
+                    </div>
                 </div>
             }
         </div>
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">Contato</h5>
-            </div>
-            <div class="list-group list-group-flush">
-                <div class="list-group-item py-3">
-                    <span class="d-block info-title">Endereço</span>
-                    @Html.DisplayFor(model => model.Emp.Endereco)
+        <div class="col">
+            @if (Model.Emp.ProdServicos.Count != 0)
+            {
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Produtos e serviços</h5>
+                    </div>
+                    <div class="card-body">
+                        @foreach (var prodServ in Model.Emp.ProdServicos)
+                        {
+                            <p class="mb-3">
+                                <span class="d-block info-title mb-1">@prodServ.Nome</span>
+                                @prodServ.Descricao
+                            </p>
+                        }
+                    </div>
                 </div>
-                <div class="list-group-item py-3">
-                    <span class="d-block info-title">@Html.DisplayNameFor(model => model.Emp.Telefone)</span>
-                    @TextManager.FormatarTelefone(Model.Emp.Telefone)
-                </div>
-                <div class="list-group-item py-3">
-                    <span class="d-block info-title">@Html.DisplayNameFor(model => model.Emp.Email)</span>
-                    @Html.DisplayFor(model => model.Emp.Email)
-                </div>
-            </div>
+            }
         </div>
-        @if (Model.Emp.RedesSociais.Count != 0)
-        {
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Redes sociais</h5>
-                </div>
-                <div class="card-body">
-                    @foreach (var rede in Model.Emp.RedesSociais)
-                    {
-                        @if (rede.Plataforma == Models.Plataforma.FACEBOOK)
-                        {
-                            <a class="social-link" href="@rede.URL" target="_blank">
-                                <i class="bi-facebook" data-toggle="tooltip" data-placement="top"
-                                   title="Facebook"></i>
-                            </a>
-                        }
-                        @if (rede.Plataforma == Models.Plataforma.INSTAGRAM)
-                        {
-                            <a class="social-link" href="@rede.URL" target="_blank">
-                                <i class="bi-instagram" data-toggle="tooltip" data-placement="top"
-                                   title="Instagram"></i>
-                            </a>
-                        }
-                        @if (rede.Plataforma == Models.Plataforma.LINKEDIN)
-                        {
-                            <a class="social-link" href="@rede.URL" target="_blank">
-                                <i class="bi-linkedin" data-toggle="tooltip" data-placement="top"
-                                   title="LinkedIn"></i>
-                            </a>
-                        }
-                        @if (rede.Plataforma == Models.Plataforma.TWITTER)
-                        {
-                            <a class="social-link" href="@rede.URL" target="_blank">
-                                <i class="bi-twitter" data-toggle="tooltip" data-placement="top"
-                                   title="Twitter"></i>
-                            </a>
-                        }
-                        @if (rede.Plataforma == Models.Plataforma.WEBSITE)
-                        {
-                            <a class="social-link" href="@rede.URL" target="_blank">
-                                <i class="bi-globe" data-toggle="tooltip" data-placement="top"
-                                   title="Site próprio"></i>
-                            </a>
-                        }
-                        @if (rede.Plataforma == Models.Plataforma.WHATSAPP)
-                        {
-                            <a class="social-link" href="@TextManager.WhatsappURL(rede.URL)" target="_blank">
-                                <i class="bi-whatsapp" data-toggle="tooltip" data-placement="top"
-                                   title="WhatsApp"></i>
-                            </a>
-                        }
-                    }
-                </div>
-            </div>
-        }
-        @if (Model.Emp.ProdServicos.Count != 0)
-        {
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Produtos e serviços</h5>
-                </div>
-                <div class="card-body">
-                    @foreach (var prodServ in Model.Emp.ProdServicos)
-                    {
-                        <p class="mb-3">
-                            <span class="d-block info-title mb-1">@prodServ.Nome</span>
-                            @prodServ.Descricao
-                        </p>
-                    }
-                </div>
-            </div>
-        }
     </div>
 </section>
 
