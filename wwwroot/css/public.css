@@ -3,6 +3,10 @@
     box-shadow: 0 0.25rem 0.75rem -0.75rem #404040 inset;
 }*/
 
+.pb-main {
+    padding-bottom: 4rem !important;
+}
+
 h1, h2, h3, h4, h5 {
     color: #595959;
 }
@@ -66,17 +70,6 @@ section.banner-top h1, section.banner-top p {
     background-color: rgba(0,0,0,.02);
     text-align: center;
 }
-.social-link{
-    margin-right: 1rem;
-}
-
-.social-link:hover {
-    text-decoration: none;
-}
-
-.social-link i {
-    font-size: 2rem;
-}
 
 .tooltip-inner {
     background-color: #4d4d4d;
@@ -88,6 +81,19 @@ section.banner-top h1, section.banner-top p {
 
 .first-upper:first-letter {
     text-transform: capitalize;
+}
+
+/*Redes sociais*/
+.social-link {
+    margin-right: 1rem;
+}
+
+.social-link i {
+    font-size: 2.2rem;
+}
+
+.social-link:hover {
+    text-decoration: none;
 }
 
 .social-link:hover i {
@@ -135,6 +141,14 @@ a.card-link:active .card {
 p.desc {
     font-size: 1.15rem;
     line-height: 2rem;
+}
+
+p.text-lines span{
+    display: block;
+}
+
+span.word-space {
+    word-spacing: 1rem;
 }
 
 img.round-corner {
