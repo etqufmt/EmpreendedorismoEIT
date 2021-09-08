@@ -138,6 +138,17 @@ img.round-corner {
     border: 0.5rem solid rgba(0,0,0,.125);
 }
 
+.line-divider {
+    margin-top: 0.6rem;
+    margin-bottom: 0.4rem;
+    border: 0;
+    height: 2px;
+    width: 26rem;
+    border-radius: 2px;
+    background: #dee2e6;
+    background: linear-gradient(to right, rgba(244, 97, 193, .2), rgba(52, 97, 193, .2), rgba(69, 121, 226, .2));
+}
+
 p.text-lines span{
     display: block;
 }
