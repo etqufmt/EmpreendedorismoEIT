@@ -1,5 +1,5 @@
 ﻿<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
+    <nav class="navbar navbar-light navbar-expand-sm">
         <div class="container">
             <a class="row no-gutters align-items-center brand" asp-area="" asp-page="/Index">
                 <div class="col pr-2">
@@ -16,17 +16,35 @@
                     <span class="brand-sub">EMPREENDEDORISMO</span>
                 </div>
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <div class="navbar-nav flex-grow-1 text-center mt-1 mt-sm-0">
-                    <a class="nav-link ml-sm-auto" asp-area="" asp-page="/Index">INÍCIO</a>
+            <div class="navbar d-none d-sm-flex px-0">
+                <div class="navbar-nav">
+                    <a class="nav-link" asp-area="" asp-page="/Index">INÍCIO</a>
                     <a class="nav-link" asp-area="" asp-page="/Incubadora">INCUBADORA</a>
-                    <a class="nav-link d-sm-none d-lg-block" asp-area="" asp-page="/Junior">EMPRESAS JUNIORES</a>
-                    <a class="nav-link d-none d-sm-block d-lg-none" asp-area="" asp-page="/Junior">E. JUNIORES</a>
+                    <a class="nav-link d-none d-lg-block" asp-area="" asp-page="/Junior">EMPRESAS JUNIORES</a>
+                    <a class="nav-link d-block d-lg-none" asp-area="" asp-page="/Junior">E. JUNIORES</a>
                     <a class="nav-link" asp-area="" asp-page="/Sobre">SOBRE</a>
                 </div>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-mobile">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <nav id="nav-mobile" class="collapse text-center d-sm-none">
+        <div class="row no-gutters border-top">
+            <div class="col border-right">
+                <a class="nav-link link-fill" asp-area="" asp-page="/Index">INÍCIO</a>
+            </div>
+            <div class="col">
+                <a class="nav-link link-fill" asp-area="" asp-page="/Sobre">SOBRE</a>
+            </div>
+        </div>
+        <div class="row no-gutters border-top">
+            <div class="col border-right">
+                <a class="nav-link link-fill" asp-area="" asp-page="/Incubadora">INCUBADORA</a>
+            </div>
+            <div class="col">
+                <a class="nav-link link-fill" asp-area="" asp-page="/Junior">EMPRESAS JUNIORES</a>
             </div>
         </div>
     </nav>

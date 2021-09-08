@@ -94,49 +94,49 @@
                     <div class="card-header">
                         <h5 class="card-title">Redes sociais</h5>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body text-center word-space">
                         @foreach (var rede in Model.Emp.RedesSociais)
                         {
                             @if (rede.Plataforma == Models.Plataforma.FACEBOOK)
                             {
                                 <a class="social-link" href="@rede.URL" target="_blank">
                                     <i class="bi-facebook" data-toggle="tooltip" data-placement="top"
-                                       title="Facebook"></i>
+                                       title="Facebook" aria-label="Facebook"></i>
                                 </a>
                             }
                             @if (rede.Plataforma == Models.Plataforma.INSTAGRAM)
                             {
                                 <a class="social-link" href="@rede.URL" target="_blank">
                                     <i class="bi-instagram" data-toggle="tooltip" data-placement="top"
-                                       title="Instagram"></i>
+                                       title="Instagram" aria-label="Instagram"></i>
                                 </a>
                             }
                             @if (rede.Plataforma == Models.Plataforma.LINKEDIN)
                             {
                                 <a class="social-link" href="@rede.URL" target="_blank">
                                     <i class="bi-linkedin" data-toggle="tooltip" data-placement="top"
-                                       title="LinkedIn"></i>
+                                       title="LinkedIn" aria-label="LinkedIn"></i>
                                 </a>
                             }
                             @if (rede.Plataforma == Models.Plataforma.TWITTER)
                             {
                                 <a class="social-link" href="@rede.URL" target="_blank">
                                     <i class="bi-twitter" data-toggle="tooltip" data-placement="top"
-                                       title="Twitter"></i>
+                                       title="Twitter" aria-label="Twitter"></i>
                                 </a>
                             }
                             @if (rede.Plataforma == Models.Plataforma.WEBSITE)
                             {
                                 <a class="social-link" href="@rede.URL" target="_blank">
                                     <i class="bi-globe" data-toggle="tooltip" data-placement="top"
-                                       title="Site próprio"></i>
+                                       title="Site próprio" aria-label="Site próprio"></i>
                                 </a>
                             }
                             @if (rede.Plataforma == Models.Plataforma.WHATSAPP)
                             {
                                 <a class="social-link" href="@TextManager.WhatsappURL(rede.URL)" target="_blank">
                                     <i class="bi-whatsapp" data-toggle="tooltip" data-placement="top"
-                                       title="WhatsApp"></i>
+                                       title="WhatsApp" aria-label="WhatsApp"></i>
                                 </a>
                             }
                         }

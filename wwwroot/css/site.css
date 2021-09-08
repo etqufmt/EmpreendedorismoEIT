@@ -65,13 +65,11 @@ img.admin-link {
 
 /* Cabeçalho
 -------------------------------------------------- */
-header > nav {
+header {
     font-weight: 600;
     background: rgb(253,29,29);
     background: linear-gradient(90deg, hsl(167, 80%, 98%) 30%, hsl(23, 100%, 96%) 100%);
-}
-
-.box-shadow {
+    border-bottom: 1px solid #dee2e6 !important;
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
@@ -110,6 +108,12 @@ img.svg-filter {
 
 a.brand:hover img.svg-filter {
     opacity: 0.85;
+}
+
+.link-fill {
+    padding: 0;
+    line-height: 3.4rem;
+    height: 3.4rem;
 }
 
 /*@media (min-width: 576px) {
