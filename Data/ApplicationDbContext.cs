@@ -38,7 +38,8 @@ namespace EmpreendedorismoEIT.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //Permitir pesquisa case-insensitive
+            //Define o collation do BD gerado automaticamente
+            //Permite pesquisa case-insensitive
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.ReplaceService<IMigrationsSqlGenerator, CustomSqlServerMigrationsSqlGenerator>();
         }

@@ -13,7 +13,7 @@ namespace EmpreendedorismoEIT.Models
         [Key]
         public int EmpresaID { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(70)]
         public string Edital { get; set; }
 
         [Required]

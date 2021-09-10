@@ -101,9 +101,9 @@ namespace EmpreendedorismoEIT.Data
                 {
                     Nome = "Fácil Consultoria",
                     Tipo = Tipo.JUNIOR,
-                    CNPJ = "53867982000180",
+                    CNPJ = "33004540000100",
                     Segmento = Segmento.SERVICOS,
-                    RamoAtuacao = ramosAtuacao[1],
+                    RamoAtuacao = ramosAtuacao[0],
                     Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais.",
                     Endereco = "Av. Fernando Corrêa da Costa, SN – SALA 101 – FE – Campus da UFMT 78060-900 – Cuiabá – MT",
                     Telefone = "6532323232",
@@ -145,119 +145,1249 @@ namespace EmpreendedorismoEIT.Data
                             Plataforma = Plataforma.FACEBOOK,
                             URL = "https://pt-br.facebook.com/ufmatogrosso"
                         },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.INSTAGRAM,
+                            URL = "https://www.instagram.com/ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.LINKEDIN,
+                            URL = "https://www.linkedin.com/company/senaimt"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WHATSAPP,
+                            URL = "65999998888"
+                        },
+                    },
+                    TagsAssociadas = new List<EmpresaTag>
+                    {
+                        new EmpresaTag
+                        {
+                            Tag = tags[2],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[3],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[4],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[5],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[6],
+                            Grau = 0.5M,
+                        },
                     }
                 },
                 new Empresa
                 {
-                    Nome = "Nubank",
+                    Nome = "Englobal",
                     Tipo = Tipo.JUNIOR,
-                    CNPJ = "60327243000160",
-                    Segmento = Segmento.INDUSTRIA,
-                    RamoAtuacao = ramosAtuacao[5],
-                    Descricao = "Empresa startup brasileira pioneira no segmento de serviços financeiros. A primeira compra realizada com um cartão Nubank ocorreu em 1º de abril de 2014. Em 2018, o Nubank atingiu o status de startup unicórnio ao atingir avaliação de preço de mercado no valor de 1 bilhão de dólares, sendo a terceira empresa brasileira com esta marca até então.",
-                    Endereco = "R. Capote Valente, 39 - Pinheiros, São Paulo - SP, 05409-000",
-                    Telefone = "1132323232",
-                    Email = "nubank@nubank.com.br",
+                    CNPJ = "34110512000122",
+                    Segmento = Segmento.SERVICOS,
+                    RamoAtuacao = ramosAtuacao[0],
+                    Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais.",
+                    Endereco = "Av. Fernando Corrêa da Costa, SN – SALA 101 – FE – Campus da UFMT 78060-900 – Cuiabá – MT",
+                    Telefone = "6532323232",
+                    Email = "ej.facilconsultoria@gmail.com",
                     Situacao = Situacao.ATIVA,
                     UltimaModificacao = DateTime.Now,
                     DadosJunior = new DadosJunior
                     {
-                        Campus = Campus.ARAGUAIA,
-                        Instituto = "Faculdade de Economia"
+                        Campus = Campus.CUIABA,
+                        Instituto = "FACC"
                     },
                     ProdServicos = new List<ProdServico>
                     {
                         new ProdServico
                         {
-                            Nome = "Teste #01",
-                            Descricao = "Teste #01",
+                            Nome = "Plano de negócios",
+                            Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais."
                         },
                         new ProdServico
                         {
-                            Nome = "Teste #02",
-                            Descricao = "Teste #02",
+                            Nome = "Estudo de viabilidade econômica",
+                            Descricao = "Consiste em fornecer informações ao gestor a respeito da viabilidade ou inviabilidade do seu investimento, a fim de auxiliá-lo na tomada de decisão de um novo projeto e/ou na ampliação/redução de um projeto já existente. Por meio de um estudo mercadológico e financeiro, utilizando projeções e indicadores, é possível analisar as condições de tal investimento."
                         },
                         new ProdServico
                         {
-                            Nome = "Teste #03",
-                            Descricao = "Teste #03",
-                        }
-                    }
-                },
-                new Empresa
-                {
-                    Nome = "EBANX",
-                    Tipo = Tipo.JUNIOR,
-                    CNPJ = "34958567000197",
-                    Segmento = Segmento.INDUSTRIA,
-                    RamoAtuacao = ramosAtuacao[7],
-                    Descricao = "Fintech brasileira fundada em 2012 que oferece soluções de pagamento. Em maio de 2021, a fintech anunciou uma série de mudanças em sua alta liderança. João Del Valle, até então COO, passou a assumir o cargo de CEO, posto ocupado durante 9 anos por Alphonse Voigt. Voigt passa a responder como presidente-executivo, liderando o conselho administrativo da empresa.",
-                    Endereco = "R. Mal. Deodoro, 630 - Centro, Curitiba - PR, 80010-010",
-                    Telefone = "5487878787",
-                    Email = "ebanx@business.ebanx.com",
-                    Situacao = Situacao.INATIVA,
-                    UltimaModificacao = DateTime.Now,
-                    DadosJunior = new DadosJunior
+                            Nome = "Plano de marketing",
+                            Descricao = "É feita uma análise do perfil do consumidor, do público-alvo, de ações de divulgação e comunicação, além de preço, distribuição e localização do ponto de venda. São desenvolvidas ações para satisfazer os clientes, posicionar a marca e promover o sucesso do negócio."
+                        },
+                    },
+                    RedesSociais = new List<RedeSocial>
                     {
-                        Campus = Campus.SINOP,
-                        Instituto = "FAET"
-                    }
-                },
-                new Empresa
-                {
-                    Nome = "Quinto Andar",
-                    Tipo = Tipo.JUNIOR,
-                    CNPJ = "31075350000140",
-                    Segmento = Segmento.COMERCIO,
-                    RamoAtuacao = ramosAtuacao[10],
-                    Descricao = "Startup brasileira de tecnologia focada no aluguel e na venda de imóveis. Na modalidade venda, a empresa permite (através de aplicativo) a negociação direta entre comprador e vendedor, e cuida a partir daí de todo o processo, inclusive diligência sobre a propriedade e viabilização de financiamento bancário.",
-                    Endereco = "R. Girassol, 555 - Vila Madalena, São Paulo - SP, 05433-001",
-                    Telefone = "11989898989",
-                    Email = "email@quintoandar.com.br",
-                    Situacao = Situacao.ATIVA,
-                    UltimaModificacao = DateTime.Now,
-                    DadosJunior = new DadosJunior
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WEBSITE,
+                            URL = "https://ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.FACEBOOK,
+                            URL = "https://pt-br.facebook.com/ufmatogrosso"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.INSTAGRAM,
+                            URL = "https://www.instagram.com/ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.LINKEDIN,
+                            URL = "https://www.linkedin.com/company/senaimt"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WHATSAPP,
+                            URL = "65999998888"
+                        },
+                    },
+                    TagsAssociadas = new List<EmpresaTag>
                     {
-                        Campus = Campus.SINOP,
-                        Instituto = "Engenharia"
+                        new EmpresaTag
+                        {
+                            Tag = tags[2],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[3],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[4],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[5],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[6],
+                            Grau = 0.5M,
+                        },
                     }
                 },
                 new Empresa
                 {
-                    Nome = "Rappi",
+                    Nome = "Inovação Rural",
                     Tipo = Tipo.JUNIOR,
                     CNPJ = "36593522000191",
-                    Segmento = Segmento.COMERCIO,
-                    RamoAtuacao = ramosAtuacao[12],
-                    Descricao = "Startup brasileira de tecnologia focada no aluguel e na venda de imóveis. Na modalidade venda, a empresa permite (através de aplicativo) a negociação direta entre comprador e vendedor, e cuida a partir daí de todo o processo, inclusive diligência sobre a propriedade e viabilização de financiamento bancário.",
-                    Endereco = "R. Girassol, 555 - Vila Madalena, São Paulo - SP, 05433-001",
-                    Telefone = "65787878787",
-                    Email = "rappi@email.com.br",
+                    Segmento = Segmento.SERVICOS,
+                    RamoAtuacao = ramosAtuacao[0],
+                    Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais.",
+                    Endereco = "Av. Fernando Corrêa da Costa, SN – SALA 101 – FE – Campus da UFMT 78060-900 – Cuiabá – MT",
+                    Telefone = "6532323232",
+                    Email = "ej.facilconsultoria@gmail.com",
                     Situacao = Situacao.ATIVA,
                     UltimaModificacao = DateTime.Now,
                     DadosJunior = new DadosJunior
                     {
                         Campus = Campus.SINOP,
-                        Instituto = "ICHS"
+                        Instituto = "FACC"
+                    },
+                    ProdServicos = new List<ProdServico>
+                    {
+                        new ProdServico
+                        {
+                            Nome = "Plano de negócios",
+                            Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Estudo de viabilidade econômica",
+                            Descricao = "Consiste em fornecer informações ao gestor a respeito da viabilidade ou inviabilidade do seu investimento, a fim de auxiliá-lo na tomada de decisão de um novo projeto e/ou na ampliação/redução de um projeto já existente. Por meio de um estudo mercadológico e financeiro, utilizando projeções e indicadores, é possível analisar as condições de tal investimento."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Plano de marketing",
+                            Descricao = "É feita uma análise do perfil do consumidor, do público-alvo, de ações de divulgação e comunicação, além de preço, distribuição e localização do ponto de venda. São desenvolvidas ações para satisfazer os clientes, posicionar a marca e promover o sucesso do negócio."
+                        },
+                    },
+                    RedesSociais = new List<RedeSocial>
+                    {
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WEBSITE,
+                            URL = "https://ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.FACEBOOK,
+                            URL = "https://pt-br.facebook.com/ufmatogrosso"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.INSTAGRAM,
+                            URL = "https://www.instagram.com/ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.LINKEDIN,
+                            URL = "https://www.linkedin.com/company/senaimt"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WHATSAPP,
+                            URL = "65999998888"
+                        },
+                    },
+                    TagsAssociadas = new List<EmpresaTag>
+                    {
+                        new EmpresaTag
+                        {
+                            Tag = tags[2],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[3],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[4],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[5],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[6],
+                            Grau = 0.5M,
+                        },
                     }
                 },
                 new Empresa
                 {
-                    Nome = "Mercado Pago",
+                    Nome = "Aliquam",
                     Tipo = Tipo.JUNIOR,
-                    CNPJ = "34110512000122",
-                    Segmento = Segmento.COMERCIO,
-                    RamoAtuacao = ramosAtuacao[16],
-                    Descricao = "Startup brasileira de tecnologia focada no aluguel e na venda de imóveis. Na modalidade venda, a empresa permite (através de aplicativo) a negociação direta entre comprador e vendedor, e cuida a partir daí de todo o processo, inclusive diligência sobre a propriedade e viabilização de financiamento bancário.",
-                    Endereco = "R. Girassol, 555 - Vila Madalena, São Paulo - SP, 05433-001",
-                    Telefone = "65545454545",
-                    Email = "email@mercadopago.com.br",
+                    CNPJ = "59858191000170",
+                    Segmento = Segmento.SERVICOS,
+                    RamoAtuacao = ramosAtuacao[0],
+                    Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais.",
+                    Endereco = "Av. Fernando Corrêa da Costa, SN – SALA 101 – FE – Campus da UFMT 78060-900 – Cuiabá – MT",
+                    Telefone = "6532323232",
+                    Email = "ej.facilconsultoria@gmail.com",
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.CUIABA,
+                        Instituto = "FACC"
+                    },
+                    ProdServicos = new List<ProdServico>
+                    {
+                        new ProdServico
+                        {
+                            Nome = "Plano de negócios",
+                            Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Estudo de viabilidade econômica",
+                            Descricao = "Consiste em fornecer informações ao gestor a respeito da viabilidade ou inviabilidade do seu investimento, a fim de auxiliá-lo na tomada de decisão de um novo projeto e/ou na ampliação/redução de um projeto já existente. Por meio de um estudo mercadológico e financeiro, utilizando projeções e indicadores, é possível analisar as condições de tal investimento."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Plano de marketing",
+                            Descricao = "É feita uma análise do perfil do consumidor, do público-alvo, de ações de divulgação e comunicação, além de preço, distribuição e localização do ponto de venda. São desenvolvidas ações para satisfazer os clientes, posicionar a marca e promover o sucesso do negócio."
+                        },
+                    },
+                    RedesSociais = new List<RedeSocial>
+                    {
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WEBSITE,
+                            URL = "https://ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.FACEBOOK,
+                            URL = "https://pt-br.facebook.com/ufmatogrosso"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.INSTAGRAM,
+                            URL = "https://www.instagram.com/ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.LINKEDIN,
+                            URL = "https://www.linkedin.com/company/senaimt"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WHATSAPP,
+                            URL = "65999998888"
+                        },
+                    },
+                    TagsAssociadas = new List<EmpresaTag>
+                    {
+                        new EmpresaTag
+                        {
+                            Tag = tags[2],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[3],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[4],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[5],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[6],
+                            Grau = 0.5M,
+                        },
+                    }
+                },
+                new Empresa
+                {
+                    Nome = "Innovates Engenhraria",
+                    Tipo = Tipo.JUNIOR,
+                    CNPJ = "89461112000153",
+                    Segmento = Segmento.SERVICOS,
+                    RamoAtuacao = ramosAtuacao[0],
+                    Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais.",
+                    Endereco = "Av. Fernando Corrêa da Costa, SN – SALA 101 – FE – Campus da UFMT 78060-900 – Cuiabá – MT",
+                    Telefone = "6532323232",
+                    Email = "ej.facilconsultoria@gmail.com",
                     Situacao = Situacao.ATIVA,
                     UltimaModificacao = DateTime.Now,
                     DadosJunior = new DadosJunior
                     {
                         Campus = Campus.ARAGUAIA,
-                        Instituto = "Faculdade de Economia"
+                        Instituto = "FACC"
+                    },
+                    ProdServicos = new List<ProdServico>
+                    {
+                        new ProdServico
+                        {
+                            Nome = "Plano de negócios",
+                            Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Estudo de viabilidade econômica",
+                            Descricao = "Consiste em fornecer informações ao gestor a respeito da viabilidade ou inviabilidade do seu investimento, a fim de auxiliá-lo na tomada de decisão de um novo projeto e/ou na ampliação/redução de um projeto já existente. Por meio de um estudo mercadológico e financeiro, utilizando projeções e indicadores, é possível analisar as condições de tal investimento."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Plano de marketing",
+                            Descricao = "É feita uma análise do perfil do consumidor, do público-alvo, de ações de divulgação e comunicação, além de preço, distribuição e localização do ponto de venda. São desenvolvidas ações para satisfazer os clientes, posicionar a marca e promover o sucesso do negócio."
+                        },
+                    },
+                    RedesSociais = new List<RedeSocial>
+                    {
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WEBSITE,
+                            URL = "https://ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.FACEBOOK,
+                            URL = "https://pt-br.facebook.com/ufmatogrosso"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.INSTAGRAM,
+                            URL = "https://www.instagram.com/ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.LINKEDIN,
+                            URL = "https://www.linkedin.com/company/senaimt"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WHATSAPP,
+                            URL = "65999998888"
+                        },
+                    },
+                    TagsAssociadas = new List<EmpresaTag>
+                    {
+                        new EmpresaTag
+                        {
+                            Tag = tags[2],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[3],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[4],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[5],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[6],
+                            Grau = 0.5M,
+                        },
+                    }
+                },
+                new Empresa
+                {
+                    Nome = "Solução Florestal",
+                    Tipo = Tipo.JUNIOR,
+                    CNPJ = "09672396000198",
+                    Segmento = Segmento.SERVICOS,
+                    RamoAtuacao = ramosAtuacao[0],
+                    Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais.",
+                    Endereco = "Av. Fernando Corrêa da Costa, SN – SALA 101 – FE – Campus da UFMT 78060-900 – Cuiabá – MT",
+                    Telefone = "6532323232",
+                    Email = "ej.facilconsultoria@gmail.com",
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.CUIABA,
+                        Instituto = "FACC"
+                    },
+                    ProdServicos = new List<ProdServico>
+                    {
+                        new ProdServico
+                        {
+                            Nome = "Plano de negócios",
+                            Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Estudo de viabilidade econômica",
+                            Descricao = "Consiste em fornecer informações ao gestor a respeito da viabilidade ou inviabilidade do seu investimento, a fim de auxiliá-lo na tomada de decisão de um novo projeto e/ou na ampliação/redução de um projeto já existente. Por meio de um estudo mercadológico e financeiro, utilizando projeções e indicadores, é possível analisar as condições de tal investimento."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Plano de marketing",
+                            Descricao = "É feita uma análise do perfil do consumidor, do público-alvo, de ações de divulgação e comunicação, além de preço, distribuição e localização do ponto de venda. São desenvolvidas ações para satisfazer os clientes, posicionar a marca e promover o sucesso do negócio."
+                        },
+                    },
+                    RedesSociais = new List<RedeSocial>
+                    {
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WEBSITE,
+                            URL = "https://ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.FACEBOOK,
+                            URL = "https://pt-br.facebook.com/ufmatogrosso"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.INSTAGRAM,
+                            URL = "https://www.instagram.com/ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.LINKEDIN,
+                            URL = "https://www.linkedin.com/company/senaimt"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WHATSAPP,
+                            URL = "65999998888"
+                        },
+                    },
+                    TagsAssociadas = new List<EmpresaTag>
+                    {
+                        new EmpresaTag
+                        {
+                            Tag = tags[2],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[3],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[4],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[5],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[6],
+                            Grau = 0.5M,
+                        },
+                    }
+                },
+                new Empresa
+                {
+                    Nome = "CIM",
+                    Tipo = Tipo.JUNIOR,
+                    CNPJ = "34588525000101",
+                    Segmento = Segmento.SERVICOS,
+                    RamoAtuacao = ramosAtuacao[0],
+                    Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais.",
+                    Endereco = "Av. Fernando Corrêa da Costa, SN – SALA 101 – FE – Campus da UFMT 78060-900 – Cuiabá – MT",
+                    Telefone = "6532323232",
+                    Email = "ej.facilconsultoria@gmail.com",
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.CUIABA,
+                        Instituto = "FACC"
+                    },
+                    ProdServicos = new List<ProdServico>
+                    {
+                        new ProdServico
+                        {
+                            Nome = "Plano de negócios",
+                            Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Estudo de viabilidade econômica",
+                            Descricao = "Consiste em fornecer informações ao gestor a respeito da viabilidade ou inviabilidade do seu investimento, a fim de auxiliá-lo na tomada de decisão de um novo projeto e/ou na ampliação/redução de um projeto já existente. Por meio de um estudo mercadológico e financeiro, utilizando projeções e indicadores, é possível analisar as condições de tal investimento."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Plano de marketing",
+                            Descricao = "É feita uma análise do perfil do consumidor, do público-alvo, de ações de divulgação e comunicação, além de preço, distribuição e localização do ponto de venda. São desenvolvidas ações para satisfazer os clientes, posicionar a marca e promover o sucesso do negócio."
+                        },
+                    },
+                    RedesSociais = new List<RedeSocial>
+                    {
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WEBSITE,
+                            URL = "https://ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.FACEBOOK,
+                            URL = "https://pt-br.facebook.com/ufmatogrosso"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.INSTAGRAM,
+                            URL = "https://www.instagram.com/ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.LINKEDIN,
+                            URL = "https://www.linkedin.com/company/senaimt"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WHATSAPP,
+                            URL = "65999998888"
+                        },
+                    },
+                    TagsAssociadas = new List<EmpresaTag>
+                    {
+                        new EmpresaTag
+                        {
+                            Tag = tags[2],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[3],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[4],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[5],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[6],
+                            Grau = 0.5M,
+                        },
+                    }
+                },
+                new Empresa
+                {
+                    Nome = "Ascin Florestal Jr.",
+                    Tipo = Tipo.JUNIOR,
+                    CNPJ = "87293260000180",
+                    Segmento = Segmento.SERVICOS,
+                    RamoAtuacao = ramosAtuacao[0],
+                    Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais.",
+                    Endereco = "Av. Fernando Corrêa da Costa, SN – SALA 101 – FE – Campus da UFMT 78060-900 – Cuiabá – MT",
+                    Telefone = "6532323232",
+                    Email = "ej.facilconsultoria@gmail.com",
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.SINOP,
+                        Instituto = "FACC"
+                    },
+                    ProdServicos = new List<ProdServico>
+                    {
+                        new ProdServico
+                        {
+                            Nome = "Plano de negócios",
+                            Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Estudo de viabilidade econômica",
+                            Descricao = "Consiste em fornecer informações ao gestor a respeito da viabilidade ou inviabilidade do seu investimento, a fim de auxiliá-lo na tomada de decisão de um novo projeto e/ou na ampliação/redução de um projeto já existente. Por meio de um estudo mercadológico e financeiro, utilizando projeções e indicadores, é possível analisar as condições de tal investimento."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Plano de marketing",
+                            Descricao = "É feita uma análise do perfil do consumidor, do público-alvo, de ações de divulgação e comunicação, além de preço, distribuição e localização do ponto de venda. São desenvolvidas ações para satisfazer os clientes, posicionar a marca e promover o sucesso do negócio."
+                        },
+                    },
+                    RedesSociais = new List<RedeSocial>
+                    {
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WEBSITE,
+                            URL = "https://ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.FACEBOOK,
+                            URL = "https://pt-br.facebook.com/ufmatogrosso"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.INSTAGRAM,
+                            URL = "https://www.instagram.com/ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.LINKEDIN,
+                            URL = "https://www.linkedin.com/company/senaimt"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WHATSAPP,
+                            URL = "65999998888"
+                        },
+                    },
+                    TagsAssociadas = new List<EmpresaTag>
+                    {
+                        new EmpresaTag
+                        {
+                            Tag = tags[2],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[3],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[4],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[5],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[6],
+                            Grau = 0.5M,
+                        },
+                    }
+                },
+                new Empresa
+                {
+                    Nome = "Infocorp",
+                    Tipo = Tipo.JUNIOR,
+                    CNPJ = "05402978000101",
+                    Segmento = Segmento.SERVICOS,
+                    RamoAtuacao = ramosAtuacao[0],
+                    Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais.",
+                    Endereco = "Av. Fernando Corrêa da Costa, SN – SALA 101 – FE – Campus da UFMT 78060-900 – Cuiabá – MT",
+                    Telefone = "6532323232",
+                    Email = "ej.facilconsultoria@gmail.com",
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.CUIABA,
+                        Instituto = "FACC"
+                    },
+                    ProdServicos = new List<ProdServico>
+                    {
+                        new ProdServico
+                        {
+                            Nome = "Plano de negócios",
+                            Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Estudo de viabilidade econômica",
+                            Descricao = "Consiste em fornecer informações ao gestor a respeito da viabilidade ou inviabilidade do seu investimento, a fim de auxiliá-lo na tomada de decisão de um novo projeto e/ou na ampliação/redução de um projeto já existente. Por meio de um estudo mercadológico e financeiro, utilizando projeções e indicadores, é possível analisar as condições de tal investimento."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Plano de marketing",
+                            Descricao = "É feita uma análise do perfil do consumidor, do público-alvo, de ações de divulgação e comunicação, além de preço, distribuição e localização do ponto de venda. São desenvolvidas ações para satisfazer os clientes, posicionar a marca e promover o sucesso do negócio."
+                        },
+                    },
+                    RedesSociais = new List<RedeSocial>
+                    {
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WEBSITE,
+                            URL = "https://ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.FACEBOOK,
+                            URL = "https://pt-br.facebook.com/ufmatogrosso"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.INSTAGRAM,
+                            URL = "https://www.instagram.com/ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.LINKEDIN,
+                            URL = "https://www.linkedin.com/company/senaimt"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WHATSAPP,
+                            URL = "65999998888"
+                        },
+                    },
+                    TagsAssociadas = new List<EmpresaTag>
+                    {
+                        new EmpresaTag
+                        {
+                            Tag = tags[2],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[3],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[4],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[5],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[6],
+                            Grau = 0.5M,
+                        },
+                    }
+                },
+                new Empresa
+                {
+                    Nome = "Agrovale",
+                    Tipo = Tipo.JUNIOR,
+                    CNPJ = "04547840000120",
+                    Segmento = Segmento.SERVICOS,
+                    RamoAtuacao = ramosAtuacao[0],
+                    Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais.",
+                    Endereco = "Av. Fernando Corrêa da Costa, SN – SALA 101 – FE – Campus da UFMT 78060-900 – Cuiabá – MT",
+                    Telefone = "6532323232",
+                    Email = "ej.facilconsultoria@gmail.com",
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.ARAGUAIA,
+                        Instituto = "FACC"
+                    },
+                    ProdServicos = new List<ProdServico>
+                    {
+                        new ProdServico
+                        {
+                            Nome = "Plano de negócios",
+                            Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Estudo de viabilidade econômica",
+                            Descricao = "Consiste em fornecer informações ao gestor a respeito da viabilidade ou inviabilidade do seu investimento, a fim de auxiliá-lo na tomada de decisão de um novo projeto e/ou na ampliação/redução de um projeto já existente. Por meio de um estudo mercadológico e financeiro, utilizando projeções e indicadores, é possível analisar as condições de tal investimento."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Plano de marketing",
+                            Descricao = "É feita uma análise do perfil do consumidor, do público-alvo, de ações de divulgação e comunicação, além de preço, distribuição e localização do ponto de venda. São desenvolvidas ações para satisfazer os clientes, posicionar a marca e promover o sucesso do negócio."
+                        },
+                    },
+                    RedesSociais = new List<RedeSocial>
+                    {
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WEBSITE,
+                            URL = "https://ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.FACEBOOK,
+                            URL = "https://pt-br.facebook.com/ufmatogrosso"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.INSTAGRAM,
+                            URL = "https://www.instagram.com/ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.LINKEDIN,
+                            URL = "https://www.linkedin.com/company/senaimt"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WHATSAPP,
+                            URL = "65999998888"
+                        },
+                    },
+                    TagsAssociadas = new List<EmpresaTag>
+                    {
+                        new EmpresaTag
+                        {
+                            Tag = tags[2],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[3],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[4],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[5],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[6],
+                            Grau = 0.5M,
+                        },
+                    }
+                },
+                new Empresa
+                {
+                    Nome = "Seres",
+                    Tipo = Tipo.JUNIOR,
+                    CNPJ = "05380786000133",
+                    Segmento = Segmento.SERVICOS,
+                    RamoAtuacao = ramosAtuacao[0],
+                    Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais.",
+                    Endereco = "Av. Fernando Corrêa da Costa, SN – SALA 101 – FE – Campus da UFMT 78060-900 – Cuiabá – MT",
+                    Telefone = "6532323232",
+                    Email = "ej.facilconsultoria@gmail.com",
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.CUIABA,
+                        Instituto = "FACC"
+                    },
+                    ProdServicos = new List<ProdServico>
+                    {
+                        new ProdServico
+                        {
+                            Nome = "Plano de negócios",
+                            Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Estudo de viabilidade econômica",
+                            Descricao = "Consiste em fornecer informações ao gestor a respeito da viabilidade ou inviabilidade do seu investimento, a fim de auxiliá-lo na tomada de decisão de um novo projeto e/ou na ampliação/redução de um projeto já existente. Por meio de um estudo mercadológico e financeiro, utilizando projeções e indicadores, é possível analisar as condições de tal investimento."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Plano de marketing",
+                            Descricao = "É feita uma análise do perfil do consumidor, do público-alvo, de ações de divulgação e comunicação, além de preço, distribuição e localização do ponto de venda. São desenvolvidas ações para satisfazer os clientes, posicionar a marca e promover o sucesso do negócio."
+                        },
+                    },
+                    RedesSociais = new List<RedeSocial>
+                    {
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WEBSITE,
+                            URL = "https://ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.FACEBOOK,
+                            URL = "https://pt-br.facebook.com/ufmatogrosso"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.INSTAGRAM,
+                            URL = "https://www.instagram.com/ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.LINKEDIN,
+                            URL = "https://www.linkedin.com/company/senaimt"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WHATSAPP,
+                            URL = "65999998888"
+                        },
+                    },
+                    TagsAssociadas = new List<EmpresaTag>
+                    {
+                        new EmpresaTag
+                        {
+                            Tag = tags[2],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[3],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[4],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[5],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[6],
+                            Grau = 0.5M,
+                        },
+                    }
+                },
+                new Empresa
+                {
+                    Nome = "EJEA",
+                    Tipo = Tipo.JUNIOR,
+                    CNPJ = "81149374000175",
+                    Segmento = Segmento.SERVICOS,
+                    RamoAtuacao = ramosAtuacao[0],
+                    Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais.",
+                    Endereco = "Av. Fernando Corrêa da Costa, SN – SALA 101 – FE – Campus da UFMT 78060-900 – Cuiabá – MT",
+                    Telefone = "6532323232",
+                    Email = "ej.facilconsultoria@gmail.com",
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.ARAGUAIA,
+                        Instituto = "FACC"
+                    },
+                    ProdServicos = new List<ProdServico>
+                    {
+                        new ProdServico
+                        {
+                            Nome = "Plano de negócios",
+                            Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Estudo de viabilidade econômica",
+                            Descricao = "Consiste em fornecer informações ao gestor a respeito da viabilidade ou inviabilidade do seu investimento, a fim de auxiliá-lo na tomada de decisão de um novo projeto e/ou na ampliação/redução de um projeto já existente. Por meio de um estudo mercadológico e financeiro, utilizando projeções e indicadores, é possível analisar as condições de tal investimento."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Plano de marketing",
+                            Descricao = "É feita uma análise do perfil do consumidor, do público-alvo, de ações de divulgação e comunicação, além de preço, distribuição e localização do ponto de venda. São desenvolvidas ações para satisfazer os clientes, posicionar a marca e promover o sucesso do negócio."
+                        },
+                    },
+                    RedesSociais = new List<RedeSocial>
+                    {
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WEBSITE,
+                            URL = "https://ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.FACEBOOK,
+                            URL = "https://pt-br.facebook.com/ufmatogrosso"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.INSTAGRAM,
+                            URL = "https://www.instagram.com/ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.LINKEDIN,
+                            URL = "https://www.linkedin.com/company/senaimt"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WHATSAPP,
+                            URL = "65999998888"
+                        },
+                    },
+                    TagsAssociadas = new List<EmpresaTag>
+                    {
+                        new EmpresaTag
+                        {
+                            Tag = tags[2],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[3],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[4],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[5],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[6],
+                            Grau = 0.5M,
+                        },
+                    }
+                },
+                new Empresa
+                {
+                    Nome = "Inova",
+                    Tipo = Tipo.JUNIOR,
+                    CNPJ = "06549035000160",
+                    Segmento = Segmento.SERVICOS,
+                    RamoAtuacao = ramosAtuacao[0],
+                    Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais.",
+                    Endereco = "Av. Fernando Corrêa da Costa, SN – SALA 101 – FE – Campus da UFMT 78060-900 – Cuiabá – MT",
+                    Telefone = "6532323232",
+                    Email = "ej.facilconsultoria@gmail.com",
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosJunior = new DadosJunior
+                    {
+                        Campus = Campus.CUIABA,
+                        Instituto = "FACC"
+                    },
+                    ProdServicos = new List<ProdServico>
+                    {
+                        new ProdServico
+                        {
+                            Nome = "Plano de negócios",
+                            Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Estudo de viabilidade econômica",
+                            Descricao = "Consiste em fornecer informações ao gestor a respeito da viabilidade ou inviabilidade do seu investimento, a fim de auxiliá-lo na tomada de decisão de um novo projeto e/ou na ampliação/redução de um projeto já existente. Por meio de um estudo mercadológico e financeiro, utilizando projeções e indicadores, é possível analisar as condições de tal investimento."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Plano de marketing",
+                            Descricao = "É feita uma análise do perfil do consumidor, do público-alvo, de ações de divulgação e comunicação, além de preço, distribuição e localização do ponto de venda. São desenvolvidas ações para satisfazer os clientes, posicionar a marca e promover o sucesso do negócio."
+                        },
+                    },
+                    RedesSociais = new List<RedeSocial>
+                    {
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WEBSITE,
+                            URL = "https://ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.FACEBOOK,
+                            URL = "https://pt-br.facebook.com/ufmatogrosso"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.INSTAGRAM,
+                            URL = "https://www.instagram.com/ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.LINKEDIN,
+                            URL = "https://www.linkedin.com/company/senaimt"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WHATSAPP,
+                            URL = "65999998888"
+                        },
+                    },
+                    TagsAssociadas = new List<EmpresaTag>
+                    {
+                        new EmpresaTag
+                        {
+                            Tag = tags[2],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[3],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[4],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[5],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[6],
+                            Grau = 0.5M,
+                        },
+                    }
+                },
+                new Empresa
+                {
+                    Nome = "Loggi",
+                    Tipo = Tipo.INCUBADA,
+                    CNPJ = "65645566000116",
+                    Segmento = Segmento.COMERCIO,
+                    RamoAtuacao = ramosAtuacao[16],
+                    Descricao = "Loggi é um serviço de logística e entrega. Utiliza tecnologia para melhorar a logística em todo o Brasil, fornecendo uma rede de entrega sob demanda, rápida, econômica e confiável para e-commerce, entrega de alimentos por atacado e serviços de courier, juntamente com preços transparentes, pagamento automático e rastreamento em tempo real.",
+                    Endereco = "R. Girassol, 555 - Vila Madalena, São Paulo - SP, 05433-001",
+                    Telefone = "65545454545",
+                    Email = "email@loggi.com.br",
+                    Situacao = Situacao.ATIVA,
+                    UltimaModificacao = DateTime.Now,
+                    DadosIncubada = new DadosIncubada
+                    {
+                        Edital = "Edital XXV de 2020",
+                        MesEntrada = new DateTime(2020,06,01),
+                        MesSaida = new DateTime(2022,06,01),
+                    },
+                    ProdServicos = new List<ProdServico>
+                    {
+                        new ProdServico
+                        {
+                            Nome = "Plano de negócios",
+                            Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Estudo de viabilidade econômica",
+                            Descricao = "Consiste em fornecer informações ao gestor a respeito da viabilidade ou inviabilidade do seu investimento, a fim de auxiliá-lo na tomada de decisão de um novo projeto e/ou na ampliação/redução de um projeto já existente. Por meio de um estudo mercadológico e financeiro, utilizando projeções e indicadores, é possível analisar as condições de tal investimento."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Plano de marketing",
+                            Descricao = "É feita uma análise do perfil do consumidor, do público-alvo, de ações de divulgação e comunicação, além de preço, distribuição e localização do ponto de venda. São desenvolvidas ações para satisfazer os clientes, posicionar a marca e promover o sucesso do negócio."
+                        },
+                        new ProdServico
+                        {
+                            Nome = "Plano de negócios",
+                            Descricao = "Planeja e organiza a empresa em todos os âmbitos. Estrutura novos negócios, permitindo segurança ao entrar no mercado, e reestrutura as já existentes, solidificando a organização. Nosso serviço mais completo é um guia sobre todas as ações empresariais."
+                        },
+                    },
+                    RedesSociais = new List<RedeSocial>
+                    {
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WEBSITE,
+                            URL = "https://ufmt.br"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.FACEBOOK,
+                            URL = "https://pt-br.facebook.com/ufmatogrosso"
+                        },
+                        new RedeSocial
+                        {
+                            Plataforma = Plataforma.WHATSAPP,
+                            URL = "65999998888"
+                        },
+                    },
+                    TagsAssociadas = new List<EmpresaTag>
+                    {
+                        new EmpresaTag
+                        {
+                            Tag = tags[0],
+                            Grau = 0.5M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[1],
+                            Grau = 0.4M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[2],
+                            Grau = 0.3M,
+                        },
+                        new EmpresaTag
+                        {
+                            Tag = tags[3],
+                            Grau = 0.2M,
+                        },
                     }
                 },
             };

@@ -17,7 +17,7 @@ namespace EmpreendedorismoEIT.Models
         public Campus Campus { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(70)]
         public string Instituto { get; set; }
 
         //Referências para outras entidades
