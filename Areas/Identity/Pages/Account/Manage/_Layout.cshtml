@@ -2,32 +2,34 @@
     Layout = "/Areas/Identity/Pages/_Layout.cshtml";
 }
 
-<div class="row">
-    <div class="col-md-9 pb-3">
-        <section>
-            <div class="row">
-                <div class="col text-truncate">
-                    <h4 id="SectionTitle" class="text-truncate header-title">@ViewData["Title"]</h4>
+<main role="main" class="pt-4 pb-5">
+    <div class="row">
+        <div class="col-md-9 pb-3">
+            <section>
+                <div class="row">
+                    <div class="col text-truncate">
+                        <h4 id="SectionTitle" class="text-truncate header-title">@ViewData["Title"]</h4>
+                    </div>
+                    <div class="col-auto text-right">
+                        <partial name="_AccountOptions" />
+                    </div>
                 </div>
-                <div class="col-auto text-right">
-                    <partial name="_AccountOptions" />
+                <div class="row"><div class="col"><hr class="mt-2 mb-3" /></div></div>
+                <div class="row">
+                    <div class="col">
+                        @RenderBody()
+                    </div>
                 </div>
-            </div>
-            <div class="row"><div class="col"><hr class="mt-2 mb-3" /></div></div>
-            <div class="row">
-                <div class="col">
-                    @RenderBody()
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
+        <div class="col-md-3 order-md-first">
+            <section>
+                <h4 class="header-title">Conta</h4><hr class="mt-2 mb-3" />
+                <partial name="_ManageNav" />
+            </section>
+        </div>
     </div>
-    <div class="col-md-3 order-md-first">
-        <section>
-            <h4 class="header-title text-center text-md-left">Conta</h4><hr class="mt-2 mb-3" />
-            <partial name="_ManageNav" />
-        </section>
-    </div>
-</div>
+</main>
 
 @section Scripts {
     @RenderSection("Scripts", required: false)

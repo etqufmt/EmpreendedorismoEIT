@@ -1,19 +1,19 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] · EIT-UFMT</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/admin.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="~/lib/croppr/croppr.min.css">
 </head>
 <body>
     <partial name="_Header" />
     <div class="container">
-        <main role="main" class="pt-3 pb-4">
+        <main role="main" class="pt-4 pb-5">
             <div class="row">
                 <div class="col-md-9 pb-3">
                     <section>
@@ -35,19 +35,17 @@
                 </div>
                 <div class="col-md-3 order-md-first pb-3">
                     <section>
-                        <h4 class="header-title text-center text-md-left">Administração</h4><hr class="mt-2 mb-3" />
+                        <h4 class="header-title">Administração</h4><hr class="mt-2 mb-3" />
                         <partial name="_Navigation" />
                     </section>
                 </div>
             </div>
         </main>
     </div>
-
     <partial name="_Footer" />
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

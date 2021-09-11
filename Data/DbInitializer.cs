@@ -471,7 +471,7 @@ namespace EmpreendedorismoEIT.Data
                 },
                 new Empresa
                 {
-                    Nome = "Innovates Engenhraria",
+                    Nome = "Innovates Engenharia",
                     Tipo = Tipo.JUNIOR,
                     CNPJ = "89461112000153",
                     Segmento = Segmento.SERVICOS,
