@@ -1,0 +1,16 @@
+﻿@model int
+
+@if (Model > 0)
+{
+    <div class="card mb-4" id="step-card">
+        <div class="card-header">
+            <span>Empresa inativa</span>
+            <button type="button" class="close" data-dismiss="alert" data-target="#step-card" aria-label="Close">
+                <span aria-hidden="true"><i class="bi bi-x"></i></span>
+            </button>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-justify">Nessa situação a empresa é automaticamente ocultada das páginas de divulgação. Além de deixar de ser sugerida pelo sistema de recomendação. Utilize sempre que faltar informações ou a empresa não estiver funcionando plenamente. Para alterar, <a asp-page="Edit" asp-route-id="@Model">edite a situação nos dados básicos</a>.</p>
+        </div>
+    </div>
+}

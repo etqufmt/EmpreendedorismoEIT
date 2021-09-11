@@ -1,0 +1,22 @@
+﻿@model int
+
+@if (Model > 0)
+{
+    <div class="card mb-4" id="step-card">
+        <div class="card-header">
+            <span>Passo-a-passo</span>
+            <button type="button" class="close" data-dismiss="alert" data-target="#step-card" aria-label="Close">
+                <span aria-hidden="true"><i class="bi bi-x"></i></span>
+            </button>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-justify"> Agora que alguns produtos e serviços foram cadastrados, adicione links paras as redes sociais que a empresa possui. Incluindo site próprio ou número de WhatsApp, se estiverem disponíveis. Facilitar o contato externo e construir uma presença digital ajudam bastante na divulgação.</p>
+            <div class="text-right">
+                <a asp-page="/Redes/Index" asp-route-id="@Model" class="btn btn-primary">
+                    Adicionar redes sociais
+                    <i class="bi bi-caret-right-fill"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+}
