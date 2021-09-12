@@ -28,8 +28,10 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
         public List<ProdServVM> ListaProdServVM { get; set; }
         public Empresa Empresa { get; set; }
         public int Quantidade { get; set; }
+        public string ReturnURL { get; set; }
+        public int PassoMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, int? passo)
         {
             if (id == null)
             {
@@ -42,17 +44,19 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return NotFound();
             }
 
+            PassoMessage = passo ?? 0;
             Load(null);
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id, int? n)
+        public async Task<IActionResult> OnPostAsync(int? id, int? n, int? passo)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
+            PassoMessage = passo ?? 0;
             Empresa = await _context.Empresas.FindAsync(id);
             if (Empresa == null)
             {
@@ -97,6 +101,9 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
                 return Page();
             }
 
+            if(PassoMessage == 3) {
+                return RedirectToPage("/Redes/Index", new { id = id, passo = 4 });
+            }
             return RedirectToPage("Index", new { id });
         }
 

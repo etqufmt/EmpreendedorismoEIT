@@ -1,22 +1,11 @@
-﻿@model int
-
-@if (Model > 0)
-{
-    <div class="card mb-4" id="step-card">
-        <div class="card-header">
-            <span>Passo-a-passo</span>
-            <button type="button" class="close" data-dismiss="alert" data-target="#step-card" aria-label="Close">
-                <span aria-hidden="true"><i class="bi bi-x"></i></span>
-            </button>
-        </div>
-        <div class="card-body">
-            <p class="card-text text-justify">Falta apenas configurar a parte de recomendação. As tags disponíveis na <a asp-page="/Tags/Index">nuvem de tags</a> são usadas para detalhar a área de atuação da empresa e o que ela oferece para o mercado. O grau de associação definido também é empregado na hora de sugerir qual a empresa mais adequada ao perfil do cliente.</p>
-            <div class="text-right">
-                <a asp-page="/EmpTags/Index" asp-route-id="@Model" class="btn btn-primary">
-                    Configurar recomendação
-                    <i class="bi bi-caret-right-fill"></i>
-                </a>
-            </div>
-        </div>
+﻿<div class="card mb-4" id="step-card">
+    <div class="card-header">
+        <span>Passo-a-passo</span>
+        <button type="button" class="close" data-dismiss="alert" data-target="#step-card" aria-label="Close">
+            <span aria-hidden="true"><i class="bi bi-x"></i></span>
+        </button>
     </div>
-}
+    <div class="card-body">
+        <p class="card-text text-justify"> Liste os principais <b>produtos e serviços</b> oferecidos e forneça um descrição breve para cada um deles. Procure retratar aquilo que diferencia a empresa na área e dar uma ideia ao cliente do que ele pode encontrar ao entrar em contato.</p>
+    </div>
+</div>

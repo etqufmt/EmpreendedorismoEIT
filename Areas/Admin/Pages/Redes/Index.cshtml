@@ -17,10 +17,15 @@
     }
 }
 
+@if (Model.PassoMessage == 4)
+{
+    <partial name="_Passo4Message" />
+}
 <form method="post">
     <div class="row">
         <div class="col-lg-6 text-center text-lg-left mb-3">
-            <h5 class="d-inline subtitle">Redes sociais
+            <h5 class="d-inline subtitle">
+                Redes sociais
                 <span class="badge badge-custom">@Model.SocialVM.Contagem</span>
             </h5>
             <p class="my-1">Para garantir que não ocorra nenhum erro de digitação, abra o perfil da rede social em uma nova aba e copie o link da barra de endereços. Depois volte para esta página e cole no campo correspondente.</p>

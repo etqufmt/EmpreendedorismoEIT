@@ -12,6 +12,10 @@ namespace EmpreendedorismoEIT.Utils
         //Calcula e valida os dígitos verificadores do CNPJ
         protected override ValidationResult IsValid( object value, ValidationContext ctx) {
 			var cnpj = value as string;
+            if (String.IsNullOrEmpty(cnpj))
+            {
+				return new ValidationResult(Resources.ValidationResources.ErrCNPJInvalido);
+			}
 			int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
 			int[] multiplicador2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
 			int soma;

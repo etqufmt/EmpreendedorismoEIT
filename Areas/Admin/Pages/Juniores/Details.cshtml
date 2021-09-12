@@ -9,21 +9,13 @@
 }
 
 <partial name="_StatusMessage" model="Model.StatusMessage" />
-@if (Model.JuniorVM.Contagem.ProdServicos == 0)
-{
-<partial name="_Passo1Message" model="Model.JuniorVM.ID" />
-}
-else if (Model.JuniorVM.Contagem.RedesSociais == 0)
+@if (Model.PassoMessage == 2)
 {
 <partial name="_Passo2Message" model="Model.JuniorVM.ID" />
 }
-else if (Model.JuniorVM.Contagem.TagsAssociadas == 0)
+else if (Model.PassoMessage == 6)
 {
-<partial name="_Passo3Message" model="Model.JuniorVM.ID" />
-}
-else if (Model.JuniorVM.Situacao == Models.Situacao.ATIVA)
-{
-<partial name="_Passo4Message" model="Model.JuniorVM.ID" />
+<partial name="_Passo6Message" />
 }
 else if (Model.JuniorVM.Situacao == Models.Situacao.INATIVA)
 {

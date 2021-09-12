@@ -9,25 +9,17 @@
 }
 
 <partial name="_StatusMessage" model="Model.StatusMessage" />
-@if (Model.IncubadaVM.Contagem.ProdServicos == 0)
+@if (Model.PassoMessage == 2)
 {
-<partial name="_Passo1Message" model="Model.IncubadaVM.ID" />
+    <partial name="_Passo2Message" model="Model.IncubadaVM.ID" />
 }
-else if (Model.IncubadaVM.Contagem.RedesSociais == 0)
+else if (Model.PassoMessage == 6)
 {
-<partial name="_Passo2Message" model="Model.IncubadaVM.ID" />
-}
-else if (Model.IncubadaVM.Contagem.TagsAssociadas == 0)
-{
-<partial name="_Passo3Message" model="Model.IncubadaVM.ID" />
-}
-else if (Model.IncubadaVM.Situacao == Models.Situacao.ATIVA)
-{
-<partial name="_Passo4Message" model="Model.IncubadaVM.ID" />
+    <partial name="_Passo6Message" />
 }
 else if (Model.IncubadaVM.Situacao == Models.Situacao.INATIVA)
 {
-<partial name="_EmpInativaMessage" model="Model.IncubadaVM.ID" />
+    <partial name="_EmpInativaMessage" model="Model.IncubadaVM.ID" />
 }
 <div class="row">
     <div class="col-lg-6">

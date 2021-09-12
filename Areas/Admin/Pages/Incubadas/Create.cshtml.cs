@@ -111,7 +111,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
                 return Page();
             }
 
-            return RedirectToPage("Details", new { novaEmpresa.ID });
+            return RedirectToPage("Details", new { id = novaEmpresa.ID, passo = 2 });
         }
 
         private async Task LoadAsync()

@@ -18,11 +18,12 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
         }
 
         public IncubadaDetailsVM IncubadaVM { get; set; }
+        public int PassoMessage { get; set; }
 
         [TempData]
         public string StatusMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, int? passo)
         {
             if (id == null)
             {
@@ -59,17 +60,18 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
                 MesSaida = EI.MesSaida,
             };
 
-            IncubadaVM.Contagem = await (
-                from e in _context.Empresas.Where(d => d.ID == id)
-                let r = e.RedesSociais.Count
-                let s = e.ProdServicos.Count
-                let t = e.TagsAssociadas.Count
-                select new Contagem {
-                    RedesSociais = r,
-                    ProdServicos = s,
-                    TagsAssociadas = t,
-                }).FirstOrDefaultAsync();
+            //IncubadaVM.Contagem = await (
+            //    from e in _context.Empresas.Where(d => d.ID == id)
+            //    let r = e.RedesSociais.Count
+            //    let s = e.ProdServicos.Count
+            //    let t = e.TagsAssociadas.Count
+            //    select new Contagem {
+            //        RedesSociais = r,
+            //        ProdServicos = s,
+            //        TagsAssociadas = t,
+            //    }).FirstOrDefaultAsync();
 
+            PassoMessage = passo ?? 0;
             return Page();
         }
     }

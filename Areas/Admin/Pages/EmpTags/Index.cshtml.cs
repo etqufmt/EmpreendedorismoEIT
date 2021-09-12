@@ -30,9 +30,10 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
         public Empresa Empresa { get; set; }
         public string ReturnURL { get; set; }
         public int Contador { get; set; }
+        public int PassoMessage { get; set; }
 
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, int? passo)
         {
             if (id == null)
             {
@@ -71,16 +72,18 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
                 });
             }
 
+            PassoMessage = passo ?? 0;
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(int? id, int? passo)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
+            PassoMessage = passo ?? 0;
             Empresa = await _context.Empresas
                 .Include(e => e.TagsAssociadas)
                 .FirstOrDefaultAsync(m => m.ID == id);
@@ -132,6 +135,10 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
             if (Empresa.Tipo == Tipo.INCUBADA)
             {
                 ReturnURL = "/Incubadas/Details";
+            }
+            if (PassoMessage == 5)
+            {
+                return RedirectToPage(ReturnURL, new { id = id, passo = 6 });
             }
             return RedirectToPage(ReturnURL, new { id });
         }

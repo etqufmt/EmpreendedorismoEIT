@@ -1,6 +1,6 @@
 ﻿@page "{id:int?}"
 @model EmpreendedorismoEIT.Areas.Admin.Pages.Servicos.CreateMultiple
-@using EmpreendedorismoEIT.Models 
+@using EmpreendedorismoEIT.Models
 
 @{
     ViewData["Title"] = "Adicionar P/S";
@@ -8,13 +8,19 @@
     if (Model.Empresa.Tipo == Tipo.JUNIOR)
     {
         ViewData["Section"] = SectionManager.Juniores;
+        Model.ReturnURL = "/Juniores/Details";
     }
     if (Model.Empresa.Tipo == Tipo.INCUBADA)
     {
         ViewData["Section"] = SectionManager.Incubadas;
+        Model.ReturnURL = "/Incubadas/Details";
     }
 }
 
+@if (Model.PassoMessage == 3)
+{
+    <partial name="_Passo3Message" />
+}
 <form method="post">
     <div class="form-row menu-bar">
         <div class="col-12 col-md form-group align-self-center text-center text-md-left">
@@ -61,7 +67,14 @@
         @*<div class="@(Model.Quantidade == 1 ? "col-lg-6" : "") col text-right">*@
         <div class="col text-right">
             <hr class="mt-0" />
-            <a asp-page="Index" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-secondary">Voltar</a>
+            @if (Model.PassoMessage == 3)
+            {
+                <a asp-page="@Model.ReturnURL" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-secondary">Voltar para empresa</a>
+            }
+            else
+            {
+                <a asp-page="Index" asp-route-id="@Model.Empresa.ID" class="btn btn-outline-secondary">Voltar</a>
+            }
             <input type="submit" class="btn btn-primary" value="Adicionar" />
         </div>
     </div>
