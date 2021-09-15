@@ -24,21 +24,21 @@ else if (Model.JuniorVM.Situacao == Models.Situacao.INATIVA)
 <div class="row">
     <div class="col-lg-6">
         <div class="row no-gutters card-details mb-4">
-            <div class="col-7">
-                <img class="card-img-left border" alt="logo" src="@logoURL">
+            <div class="col col-lg-12 col-xl">
+                <img class="card-img-left" alt="logo" src="@logoURL">
             </div>
-            <div class="col-5 list-group">
+            <div class="col-auto col-lg-12 col-xl-auto list-group list-group-flush">
                 <a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@Model.JuniorVM.ID"
                    class="h-100 d-flex align-items-center list-group-item list-group-item-action card-btn-lateral">
-                    <span class="text-truncate">Serviços</span>
+                    <span>Serviços <span class="badge">@Model.JuniorVM.Contagem.ProdServicos</span></span>
                 </a>
                 <a asp-area="Admin" asp-page="/Redes/Index" asp-route-id="@Model.JuniorVM.ID"
                    class="h-100 d-flex align-items-center list-group-item list-group-item-action card-btn-lateral">
-                    <span class="text-truncate">Redes sociais</span>
+                    <span>Redes sociais <span class="badge">@Model.JuniorVM.Contagem.RedesSociais</span></span>
                 </a>
                 <a asp-area="Admin" asp-page="/EmpTags/Index" asp-route-id="@Model.JuniorVM.ID"
                    class="h-100 d-flex align-items-center list-group-item list-group-item-action card-btn-lateral">
-                    <span class="text-truncate">Recomendação</span>
+                    <span>Recomendação <span class="badge">@Model.JuniorVM.Contagem.TagsAssociadas</span></span>
                 </a>
             </div>
         </div>

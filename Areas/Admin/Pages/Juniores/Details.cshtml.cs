@@ -60,16 +60,17 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
                 Instituto = EJ.Instituto,
             };
 
-            //JuniorVM.Contagem = await (
-            //    from e in _context.Empresas.Where(d => d.ID == id)
-            //    let r = e.RedesSociais.Count
-            //    let s = e.ProdServicos.Count
-            //    let t = e.TagsAssociadas.Count
-            //    select new Contagem {
-            //        RedesSociais = r,
-            //        ProdServicos = s,
-            //        TagsAssociadas = t,
-            //    }).FirstOrDefaultAsync();
+            JuniorVM.Contagem = await (
+                from e in _context.Empresas.Where(d => d.ID == id)
+                let r = e.RedesSociais.Count
+                let s = e.ProdServicos.Count
+                let t = e.TagsAssociadas.Count
+                select new Contagem
+                {
+                    RedesSociais = r,
+                    ProdServicos = s,
+                    TagsAssociadas = t,
+                }).FirstOrDefaultAsync();
 
             PassoMessage = passo ?? 0;
             return Page();
