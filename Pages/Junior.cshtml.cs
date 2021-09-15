@@ -30,7 +30,20 @@ namespace EmpreendedorismoEIT.Pages
             var listaEmp = await _context.DadosJuniores
                 .Include(d => d.Empresa)
                 .Where(d => d.Empresa.Situacao == Situacao.ATIVA)
-                .OrderBy(d => d.Empresa.Nome).AsNoTracking().ToListAsync();
+                .Select(d => new DadosJunior
+                {
+                    EmpresaID = d.EmpresaID,
+                    Campus = d.Campus,
+                    Instituto = d.Instituto,
+                    Empresa = new Empresa
+                    {
+                        ID = d.Empresa.ID,
+                        Nome = d.Empresa.Nome,
+                        Logo = d.Empresa.Logo,
+                    }
+                })
+                .OrderBy(d => d.Empresa.Nome)
+                .AsNoTracking().ToListAsync();
 
             ListaAraguia = listaEmp.Where(e => e.Campus == Campus.ARAGUAIA).ToList();
             ListaCuiaba = listaEmp.Where(e => e.Campus == Campus.CUIABA).ToList();

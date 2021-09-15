@@ -24,9 +24,16 @@ namespace EmpreendedorismoEIT.Pages
 
         public async Task OnGetAsync()
         {
-            ListaEmp = await _context.Empresas.AsNoTracking()
+            ListaEmp = await _context.Empresas
                 .Where(e => e.Situacao == Situacao.ATIVA)
-                .OrderBy(e => e.Nome).ToListAsync();
+                .Select(e =>  new Empresa {
+                    ID = e.ID,
+                    Nome = e.Nome,
+                    Tipo = e.Tipo,
+                    Logo = e.Logo,
+                })
+                .OrderBy(e => e.Nome)
+                .AsNoTracking().ToListAsync();
         }
     }
 }

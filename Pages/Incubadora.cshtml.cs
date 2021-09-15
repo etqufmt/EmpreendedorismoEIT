@@ -26,7 +26,19 @@ namespace EmpreendedorismoEIT.Pages
             ListaEmp = await _context.DadosIncubadas
                 .Include(d => d.Empresa)
                 .Where(d => d.Empresa.Situacao == Situacao.ATIVA)
-                .OrderBy(d => d.Empresa.Nome).AsNoTracking().ToListAsync();
+                .Select(d => new DadosIncubada
+                {
+                    EmpresaID = d.EmpresaID,
+                    MesEntrada = d.MesEntrada,
+                    Empresa = new Empresa
+                    {
+                        ID = d.Empresa.ID,
+                        Nome = d.Empresa.Nome,
+                        Logo = d.Empresa.Logo,
+                    }
+                })
+                .OrderBy(d => d.Empresa.Nome)
+                .AsNoTracking().ToListAsync();
         }
     }
 }
