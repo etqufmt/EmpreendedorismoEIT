@@ -81,7 +81,7 @@ a.card-link:hover > .card {
     backface-visibility: hidden;
 }
 
-a.card-link:active .card {
+a.card-link:active > .card {
     background-color: #f0f1f5 !important;
 }
 

@@ -116,21 +116,23 @@ i.icon-msg {
 }
 
 /*Lista de empresas*/
-.card-emp .card-title {
-    color: #0366d6;
+a.card-link h5 {
+    color: #595959;
     line-height: normal;
 }
 
-a.text-decoration-none:hover .card-title {
-    text-decoration: underline;
+a.card-link:hover h5 {
+    color: #5e83d4;
 }
 
-a.text-decoration-none:hover .card {
-    background-color: #f8f9fa !important;
+a.card-link:hover > .card {
+    background-color: #f9fafb !important;
+    box-shadow: 0 0 0 0.2rem rgba(52, 97, 193, .3);
+    backface-visibility: hidden;
 }
 
-a.text-decoration-none:active .card {
-    background-color: #e9ecef !important;
+a.card-link:active > .card {
+    background-color: #f0f1f5 !important;
 }
 
 .emp-text, .emp-text:hover, .emp-text:visited, .emp-text:link, .emp-text:active {
