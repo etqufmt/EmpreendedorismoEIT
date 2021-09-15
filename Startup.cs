@@ -28,33 +28,34 @@ namespace EmpreendedorismoEIT
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Configura o banco de dados
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("EITConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-            //services.AddDefaultIdentity<IdentityUser>()
-            //    .AddRoles<IdentityRole>()
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //Ativa o Identity Framework
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddRazorPages();
 
-            //Ativar cache no servidor
+            //Ativa cache no servidor
             services.AddMemoryCache();
 
-            //Restringir parte administrativa
+            //Publica as páginas
             services.AddRazorPages(options =>
             {
+                //Restringe a parte administrativa
                 options.Conventions.AuthorizeAreaFolder("Admin", "/");
             });
             
-            //Utilizar tabela para mensagens de validação
+            //Utiliza tabela para mensagens de validação
             services.AddMvc().AddDataAnnotationsLocalization(options => {
                 options.DataAnnotationLocalizerProvider = (type, factory) =>
                     factory.Create(typeof(ValidationResources));
             });
 
+            //Opções de login
             services.Configure<IdentityOptions>(options =>
             {
                 // Senha
@@ -81,9 +82,9 @@ namespace EmpreendedorismoEIT
                 options.User.RequireUniqueEmail = false;
             });
 
+            // Cookie de autenticação
             services.ConfigureApplicationCookie(options =>
             {
-                // Cookie de autenticação
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
                 options.LoginPath = "/Identity/Account/Login";
@@ -107,6 +108,14 @@ namespace EmpreendedorismoEIT
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            //Localização (números e datas)
+            var supportedCultures = new[] { "pt-BR" };
+            var localizationOptions = new RequestLocalizationOptions()
+                .SetDefaultCulture(supportedCultures[0])
+                .AddSupportedCultures(supportedCultures)
+                .AddSupportedUICultures(supportedCultures);
+            app.UseRequestLocalization(localizationOptions);
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

@@ -1,11 +1,10 @@
 ﻿@page "{id:int?}"
 @model EmpreendedorismoEIT.Pages.EmpresaModel
 @using EmpreendedorismoEIT.Utils
-@using EmpreendedorismoEIT.ViewModels
 @{
     ViewData["Title"] = Model.Emp.Nome;
-    var logoURL = String.IsNullOrEmpty(Model.Emp.Logo) ?
-        @Url.Content("~/images/empty_logo.png") : @Url.Content("~/logo/" + Model.Emp.Logo);
+ var logoURL = String.IsNullOrEmpty(Model.Emp.Logo) ?
+     @Url.Content("~/images/empty_logo.png") : @Url.Content("~/logo/" + Model.Emp.Logo);
 }
 
 <section class="banner-top">
