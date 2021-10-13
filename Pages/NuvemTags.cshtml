@@ -1,0 +1,42 @@
+﻿@page
+@model NuvemTagsModel
+@{
+    ViewData["Title"] = "Recomendação";
+}
+
+<div class="container px-xl-section">
+    <section class="mt-5">
+        <div class="text-center">
+            <h1>Recomendação <br class="d-sm-none" /></h1>
+            <p class="desc px-3 px-md-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+        </div>
+    </section>
+    <form method="post" asp-page="NuvemResultado">
+        <div class="cloud-container mx-auto">
+            <vue-word-cloud id="tag-cloud"
+                            :words="[
+                    { text: 'romance', weight: 19, color: 'DeepPink', fontVariant: '1'},
+                    { text: 'horror', weight: 3, color: 'Indigo', fontVariant: '2'},
+                    { text: 'fantasy', weight: 7, color: 'RoyalBlue', fontVariant: '3'},
+                    { text: 'adventure', weight: 3, color: 'Indigo', fontVariant: '4'},
+                    ]"
+                            :spacing="1"
+                            font-family="FingerPaint">
+                <template slot-scope="{word}">
+                    <div class="tag-container">
+                        <input class="tag-input" :id="'tag'+word.fontVariant" type="checkbox" name="tags" :value="word.fontVariant">
+                        <label class="tag-word" :for="'tag'+word.fontVariant">{{ word.text }}</label>
+                    </div>
+                </template>
+            </vue-word-cloud>
+        </div>
+        <div class="text-right">
+            <hr />
+            <input type="submit" value="Recomendar" class="btn btn-lg btn-primary" />
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_TagCloudScriptsPartial");}
+}

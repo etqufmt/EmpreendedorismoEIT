@@ -258,3 +258,37 @@ p.text-lines span{
 .bs-tooltip-top .arrow::before {
     border-top-color: #4d4d4d !important;
 }
+
+/*Tag cloud*/
+@font-face {
+    font-family: "FingerPaint";
+    src: url("/fonts/fingerpaint-regular.woff2") format('woff');
+}
+
+.cloud-container {
+    height: 30rem;
+    width: 80%;
+}
+
+.tag-input {
+    position: absolute;
+    left: 0;
+    /*opacity: 0;*/
+}
+
+.tag-word {
+    cursor: pointer;
+    user-select: none;
+    opacity: 0.9;
+    transition: transform .2s;
+}
+
+.tag-word:hover {
+    filter: drop-shadow(2px 2px 5px #4579e2);
+    transform: scale(1.1,1.1);
+}
+
+.tag-input:checked + .tag-word {
+    filter: saturate(2);
+    filter: drop-shadow(2px 2px 5px #f461c1);
+}

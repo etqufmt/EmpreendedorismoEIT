@@ -115,6 +115,10 @@ a.brand:hover img.svg-filter {
     line-height: 3.4rem;
 }
 
+.link-fill:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
 /*@media (min-width: 576px) {
     .nav-link {
         font-size: 1rem;
