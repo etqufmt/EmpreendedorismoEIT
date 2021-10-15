@@ -43,6 +43,12 @@ p.desc {
     border-color: #8a90e7;
 }
 
+.btn-primary:disabled {
+    background-color: #4579e2;
+    border-color: #4579e2;
+    opacity: .45;
+}
+
 .btn-primary:not(:disabled):not(.disabled):active {
     background-color: #6986bf;
     border-color: #6986bf;
@@ -266,14 +272,21 @@ p.text-lines span{
 }
 
 .cloud-container {
-    height: 30rem;
+    height: 500px;
     width: 80%;
+}
+
+@media (max-width: 575.98px) {
+    .cloud-container {
+        height: 500px;
+        width: 94%;
+    }
 }
 
 .tag-input {
     position: absolute;
     left: 0;
-    /*opacity: 0;*/
+    opacity: 0;
 }
 
 .tag-word {
@@ -284,11 +297,10 @@ p.text-lines span{
 }
 
 .tag-word:hover {
-    filter: drop-shadow(2px 2px 5px #4579e2);
-    transform: scale(1.1,1.1);
+    filter: drop-shadow(2px 2px 5px #ffbd99);
+    transform: scale(1.2,1.2);
 }
 
 .tag-input:checked + .tag-word {
-    filter: saturate(2);
-    filter: drop-shadow(2px 2px 5px #f461c1);
+    filter: saturate(1.4) drop-shadow(2px 2px 5px #ff8b4d);
 }
