@@ -1,5 +1,6 @@
 ﻿@page
-@model EmpreendedorismoEIT.Pages.IncubadoraModel
+@model IncubadoraModel
+@using EmpreendedorismoEIT.Utils
 @{
     ViewData["Title"] = "Incubadora Priante";
 }
@@ -47,8 +48,7 @@
                     <div class="col col-emp">
                         <a asp-page="Empresa" asp-route-id="@item.EmpresaID" class="card-link">
                             <div class="card h-100">
-                                <img src="@(String.IsNullOrEmpty(item.Empresa.Logo)? "../images/empty_logo.png" : "../logo/" + item.Empresa.Logo)"
-                                     class="card-img-top" alt="logo">
+                                <img src="@LogoManager.URLImagem(Url, item.Empresa.Logo)" class="card-img-top" alt="logo">
                                 <div class="card-body border-top">
                                     <h5 class="text-truncate">@Html.DisplayFor(modelItem => item.Empresa.Nome)</h5>
                                     <p class="card-text emp-text">@item.MesEntrada.ToString("MM/yyyy")</p>

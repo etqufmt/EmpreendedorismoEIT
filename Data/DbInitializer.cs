@@ -45,7 +45,7 @@ namespace EmpreendedorismoEIT.Data
             {
                 new Tag
                 {
-                    Nome = "TI",
+                    Nome = "Tecnologia da Informação",
                     Cor = 0xFECE67,
                 },
                 new Tag

@@ -1,31 +1,30 @@
 ﻿@page "{id:int?}"
 @model EmpreendedorismoEIT.Areas.Admin.Pages.Juniores.DetailsModel
-
+@using EmpreendedorismoEIT.Utils
 @{
     ViewData["Title"] = "Detalhes EJ";
     ViewData["Section"] = SectionManager.Juniores;
     ViewData["SectionTitle"] = Html.DisplayFor(model => model.JuniorVM.Nome);
-    var logoURL = String.IsNullOrEmpty(Model.JuniorVM.Logo) ? @Url.Content("~/images/empty_logo.png") : @Url.Content("~/logo/" + Model.JuniorVM.Logo);
 }
 
 <partial name="_StatusMessage" model="Model.StatusMessage" />
 @if (Model.PassoMessage == 2)
 {
-<partial name="_Passo2Message" model="Model.JuniorVM.ID" />
+    <partial name="_Passo2Message" model="Model.JuniorVM.ID" />
 }
 else if (Model.PassoMessage == 6)
 {
-<partial name="_Passo6Message" />
+    <partial name="_Passo6Message" />
 }
 else if (Model.JuniorVM.Situacao == Models.Situacao.INATIVA)
 {
-<partial name="_EmpInativaMessage" model="Model.JuniorVM.ID" />
+    <partial name="_EmpInativaMessage" model="Model.JuniorVM.ID" />
 }
 <div class="row">
     <div class="col-lg-6">
         <div class="row no-gutters card-details mb-4">
             <div class="col col-lg-12 col-xl">
-                <img class="card-img-left" alt="logo" src="@logoURL">
+                <img class="card-img-left" alt="logo" src="@LogoManager.URLImagem(Url, Model.JuniorVM.Logo)">
             </div>
             <div class="col-auto col-lg-12 col-xl-auto list-group list-group-flush">
                 <a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@Model.JuniorVM.ID"

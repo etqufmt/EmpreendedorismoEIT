@@ -1,11 +1,58 @@
 ﻿@page
-@model EmpreendedorismoEIT.Pages.NuvemResultadoModel
+@model NuvemResultadoModel
 @{
+    ViewData["Title"] = "Resultado";
 }
 
 <div class="container">
-    @foreach (string tag in Model.list)
-    {
-        <p>@tag</p>
-    }
+    <section class="mt-5 px-xl-section">
+        <div class="text-center">
+            <h1>Resultado</h1>
+            <p class="desc px-3 px-md-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+        </div>
+    </section>
+    <section class="my-5">
+        <div class="card-details row no-gutters mx-auto">
+            <div class="porcentagem">95%</div>
+            <div class="col-12 col-md-7 card-right">
+                <h2 class="mt-3 res-nome">@Html.DisplayFor(model => model.ResEmp.Nome)</h2>
+                <p class="desc">@Html.DisplayFor(model => model.ResEmp.Descricao)</p>
+                <p class="desc text-center text-md-right pt-3">
+                    @Html.DisplayFor(model => model.ResEmp.Telefone)<br />
+                    @Html.DisplayFor(model => model.ResEmp.Email)<br />
+                </p>
+                <p class="desc text-center text-md-right word-space">
+                    <partial name="RedesIcones" model="Model.ResEmp.RedesSociais" />
+                </p>
+            </div>
+            <div class="col-12 col-md-5 order-md-first card-left">
+                <div class="card">
+                    <img src="@Model.ResEmp.LogoURL" class="card-img-top" alt="logo">
+                    <div class="card-body border-top">
+                        <h5 class="text-truncate">@Html.DisplayFor(model => model.ResEmp.Tipo)</h5>
+                        @if (Model.ResEmp.Tipo == Models.Tipo.JUNIOR)
+                        {
+                            <p class="card-text desc">Campus @Html.DisplayFor(model => model.ResEmp.JunCampus)</p>
+                        }
+                        @if (Model.ResEmp.Tipo == Models.Tipo.INCUBADA)
+                        {
+                    <p class="card-text desc">@Model.ResEmp.IncMesEntrada.ToString("MM/yyyy")</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 text-right pt-3">
+                <a asp-page="NuvemTags" class="btn btn-lg btn-outline-secondary">Voltar</a>
+                <a asp-page="Empresa" asp-route-id="@Model.ResEmp.ID" class="btn btn-lg btn-primary">Detalhes</a>
+            </div>
+        </div>
+    </section>
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+}

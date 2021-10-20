@@ -28,7 +28,7 @@ section.banner-top h1, section.banner-top p {
     color: #fff;
 }
 
-p.desc {
+.desc {
     font-size: 1.15rem;
     line-height: 2rem;
 }
@@ -273,15 +273,15 @@ p.text-lines span{
 
 .cloud-container {
     height: 500px;
-    width: 80%;
+    width: 94%;
 }
 
-@media (max-width: 575.98px) {
+/*@media (max-width: 575.98px) {
     .cloud-container {
         height: 500px;
         width: 94%;
     }
-}
+}*/
 
 .tag-input {
     position: absolute;
@@ -303,4 +303,76 @@ p.text-lines span{
 
 .tag-input:checked + .tag-word {
     filter: saturate(1.4) drop-shadow(2px 2px 5px #ff8b4d);
+}
+
+.msg-empty {
+    background-color: rgba(0,0,0,.02);
+    max-width: 30rem;
+    margin-top: 4rem;
+}
+
+i.icon-msg {
+    font-size: 2rem;
+    color: darkgray;
+}
+
+/*Resultado*/
+.card-details {
+    border-radius: 1rem;
+    max-width: 800px;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 5px 5px 10px rgba(0,0,0,.1);
+}
+
+.card-details, .porcentagem {
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+@media (min-width: 768px) {
+    .card-left {
+        padding-right: 1rem !important;
+    }
+
+    .card-right {
+        padding-left: 1rem !important;
+    }
+}
+
+
+/*img.card-img-left {
+    width: 100%;
+    border-right: 1px solid rgba(0,0,0,.125);
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-bottom-left-radius: calc(0.25rem - 1px);
+}
+
+.card-btn-lateral:first-child {
+    border-top-right-radius: calc(0.25rem - 1px);
+}
+
+.card-btn-lateral:last-child {
+    border-bottom-right-radius: calc(0.25rem - 1px);
+}*/
+
+.porcentagem {
+    width: 7rem;
+    height: 5rem;
+    line-height: 5rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+    color: #8c8c8c;
+    border-right: 0;
+    border-top: 0;
+    border-bottom-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #f3f3f3;
+}
+
+.res-nome{
+    width: 20rem;
 }

@@ -3,8 +3,6 @@
 @using EmpreendedorismoEIT.Utils
 @{
     ViewData["Title"] = Model.Emp.Nome;
- var logoURL = String.IsNullOrEmpty(Model.Emp.Logo) ?
-     @Url.Content("~/images/empty_logo.png") : @Url.Content("~/logo/" + Model.Emp.Logo);
 }
 
 <section class="banner-top">
@@ -20,7 +18,7 @@
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 dados-row">
         <div class="col">
             <div class="card">
-                <img src="@logoURL" class="card-img-top" alt="logo">
+                <img src="@LogoManager.URLImagem(Url, Model.Emp.Logo)" class="card-img-top" alt="logo">
                 <div class="list-group list-group-flush">
                     <div class="list-group-item py-3">
                         <span class="d-block info-title">@Html.DisplayNameFor(model => model.Emp.Tipo)</span>
@@ -94,51 +92,7 @@
                         <h5 class="card-title">Redes sociais</h5>
                     </div>
                     <div class="card-body text-center word-space">
-                        @foreach (var rede in Model.Emp.RedesSociais)
-                        {
-                            @if (rede.Plataforma == Models.Plataforma.FACEBOOK)
-                            {
-                                <a class="social-link" href="@rede.URL" target="_blank">
-                                    <i class="bi-facebook" data-toggle="tooltip" data-placement="top"
-                                       title="Facebook" aria-label="Facebook"></i>
-                                </a>
-                            }
-                            @if (rede.Plataforma == Models.Plataforma.INSTAGRAM)
-                            {
-                                <a class="social-link" href="@rede.URL" target="_blank">
-                                    <i class="bi-instagram" data-toggle="tooltip" data-placement="top"
-                                       title="Instagram" aria-label="Instagram"></i>
-                                </a>
-                            }
-                            @if (rede.Plataforma == Models.Plataforma.LINKEDIN)
-                            {
-                                <a class="social-link" href="@rede.URL" target="_blank">
-                                    <i class="bi-linkedin" data-toggle="tooltip" data-placement="top"
-                                       title="LinkedIn" aria-label="LinkedIn"></i>
-                                </a>
-                            }
-                            @if (rede.Plataforma == Models.Plataforma.TWITTER)
-                            {
-                                <a class="social-link" href="@rede.URL" target="_blank">
-                                    <i class="bi-twitter" data-toggle="tooltip" data-placement="top"
-                                       title="Twitter" aria-label="Twitter"></i>
-                                </a>
-                            }
-                            @if (rede.Plataforma == Models.Plataforma.WEBSITE)
-                            {
-                                <a class="social-link" href="@rede.URL" target="_blank">
-                                    <i class="bi-globe" data-toggle="tooltip" data-placement="top"
-                                       title="Site próprio" aria-label="Site próprio"></i>
-                                </a>
-                            }
-                            @if (rede.Plataforma == Models.Plataforma.WHATSAPP)
-                            {
-                                <a class="social-link" href="@TextManager.WhatsappURL(rede.URL)" target="_blank">
-                                    <i class="bi-whatsapp" data-toggle="tooltip" data-placement="top"
-                                       title="WhatsApp" aria-label="WhatsApp"></i>
-                                </a>
-                            }
-                        }
+                        <partial name="RedesIcones" model="Model.Emp.RedesSociais" />
                     </div>
                 </div>
             }

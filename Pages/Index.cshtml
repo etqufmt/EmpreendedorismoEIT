@@ -1,5 +1,6 @@
 ﻿@page
 @model IndexModel
+@using EmpreendedorismoEIT.Utils
 @{
     ViewData["Title"] = "Empreendedorismo";
 }
@@ -33,8 +34,7 @@
             <div class="col col-emp">
                 <a asp-page="Empresa" asp-route-id="@item.ID" class="card-link">
                     <div class="card h-100">
-                        <img src="@(String.IsNullOrEmpty(item.Logo)? "../images/empty_logo.png" : "../logo/" + item.Logo)"
-                             class="card-img-top" alt="logo">
+                        <img src="@LogoManager.URLImagem(Url, item.Logo)" class="card-img-top" alt="logo">
                         <div class="card-body border-top">
                             <h5 class="text-truncate">@Html.DisplayFor(modelItem => item.Nome)</h5>
                             <p class="card-text emp-text">@Html.DisplayFor(modelItem => item.Tipo)</p>

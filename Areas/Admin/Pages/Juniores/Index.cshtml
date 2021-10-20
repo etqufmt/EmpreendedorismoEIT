@@ -1,7 +1,7 @@
 ﻿@page
 @model EmpreendedorismoEIT.Areas.Admin.Pages.Juniores.IndexModel
 @using EmpreendedorismoEIT.Models
-
+@using EmpreendedorismoEIT.Utils
 @{
     ViewData["Title"] = "EJ";
     ViewData["Section"] = SectionManager.Juniores;
@@ -51,8 +51,7 @@
         <div class="col-xl-3 col-lg-4 col-6 pb-4">
             <a asp-page="Details" asp-route-id="@item.ID" class="card-link">
                 <div class="card card-emp">
-                    <img src="@(String.IsNullOrEmpty(item.Logo)? "../images/empty_logo.png" : "../logo/" + item.Logo)"
-                         class="card-img-top" alt="logo">
+                    <img src="@LogoManager.URLImagem(Url, item.Logo)" class="card-img-top" alt="logo">
                     <div class="card-body border-top">
                         <h5 class="card-title text-truncate">@Html.DisplayFor(modelItem => item.Nome)</h5>
                         <p class="card-text emp-text">@Html.DisplayFor(modelItem => item.Campus)</p>

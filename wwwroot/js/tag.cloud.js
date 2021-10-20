@@ -14,4 +14,11 @@ $(document).on('change', '.tag-input', function (evt) {
     } else {
         btnSubmit.prop('disabled', true)
     }
+
+    //Salvar ordem em que as tags foram selecionadas
+    if ($(this).prop('checked')) {
+        $('#lista-tags').val($('#lista-tags').val() + '"' + $(this).val() + '",')
+    } else {
+        $('#lista-tags').val($('#lista-tags').val().replace('"' + $(this).val() + '",', ''))
+    }
 })

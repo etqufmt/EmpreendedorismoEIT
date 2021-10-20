@@ -12,7 +12,7 @@ namespace EmpreendedorismoEIT.ViewModels
 
         [FormatText]
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]
-        [StringLength(30, MinimumLength = 2, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
+        [StringLength(30, MinimumLength = 3, ErrorMessageResourceName = "Tamanho", ErrorMessageResourceType = typeof(ValidationResources))]
         public string Nome { get; set; }
 
         [Required(ErrorMessageResourceName = "Requerido", ErrorMessageResourceType = typeof(ValidationResources))]

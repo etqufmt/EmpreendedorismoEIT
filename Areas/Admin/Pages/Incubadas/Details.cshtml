@@ -1,11 +1,10 @@
 ﻿@page "{id:int?}"
 @model EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas.DetailsModel
-
+@using EmpreendedorismoEIT.Utils
 @{
     ViewData["Title"] = "Detalhes EI";
     ViewData["Section"] = SectionManager.Incubadas;
     ViewData["SectionTitle"] = Html.DisplayFor(model => model.IncubadaVM.Nome);
-    var logoURL = String.IsNullOrEmpty(Model.IncubadaVM.Logo) ? @Url.Content("~/images/empty_logo.png") : @Url.Content("~/logo/" + Model.IncubadaVM.Logo);
 }
 
 <partial name="_StatusMessage" model="Model.StatusMessage" />
@@ -25,7 +24,7 @@ else if (Model.IncubadaVM.Situacao == Models.Situacao.INATIVA)
     <div class="col-lg-6">
         <div class="row no-gutters card-details mb-4">
             <div class="col col-lg-12 col-xl">
-                <img class="card-img-left" alt="logo" src="@logoURL">
+                <img class="card-img-left" alt="logo" src="@LogoManager.URLImagem(Url, Model.IncubadaVM.Logo)">
             </div>
             <div class="col-auto col-lg-12 col-xl-auto list-group list-group-flush">
                 <a asp-area="Admin" asp-page="/Servicos/Index" asp-route-id="@Model.IncubadaVM.ID"

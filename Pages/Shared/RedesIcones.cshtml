@@ -1,0 +1,52 @@
+﻿@using EmpreendedorismoEIT.Models
+@using EmpreendedorismoEIT.Utils
+@model ICollection<RedeSocial>
+
+@if (Model != null)
+{
+    @foreach (var rede in Model)
+    {
+        @if (rede.Plataforma == Models.Plataforma.FACEBOOK)
+        {
+            <a class="social-link" href="@rede.URL" target="_blank">
+                <i class="bi-facebook" data-toggle="tooltip" data-placement="top"
+                   title="Facebook" aria-label="Facebook"></i>
+            </a>
+        }
+        @if (rede.Plataforma == Models.Plataforma.INSTAGRAM)
+        {
+            <a class="social-link" href="@rede.URL" target="_blank">
+                <i class="bi-instagram" data-toggle="tooltip" data-placement="top"
+                   title="Instagram" aria-label="Instagram"></i>
+            </a>
+        }
+        @if (rede.Plataforma == Models.Plataforma.LINKEDIN)
+        {
+            <a class="social-link" href="@rede.URL" target="_blank">
+                <i class="bi-linkedin" data-toggle="tooltip" data-placement="top"
+                   title="LinkedIn" aria-label="LinkedIn"></i>
+            </a>
+        }
+        @if (rede.Plataforma == Models.Plataforma.TWITTER)
+        {
+            <a class="social-link" href="@rede.URL" target="_blank">
+                <i class="bi-twitter" data-toggle="tooltip" data-placement="top"
+                   title="Twitter" aria-label="Twitter"></i>
+            </a>
+        }
+        @if (rede.Plataforma == Models.Plataforma.WEBSITE)
+        {
+            <a class="social-link" href="@rede.URL" target="_blank">
+                <i class="bi-globe" data-toggle="tooltip" data-placement="top"
+                   title="Site próprio" aria-label="Site próprio"></i>
+            </a>
+        }
+        @if (rede.Plataforma == Models.Plataforma.WHATSAPP)
+        {
+            <a class="social-link" href="@TextManager.WhatsappURL(rede.URL)" target="_blank">
+                <i class="bi-whatsapp" data-toggle="tooltip" data-placement="top"
+                   title="WhatsApp" aria-label="WhatsApp"></i>
+            </a>
+        }
+    }
+}
