@@ -22,9 +22,6 @@ namespace EmpreendedorismoEIT.Pages
         }
 
         [BindProperty]
-        public List<int> ListaTagsCbx { get; set; }
-
-        [BindProperty]
         public string ListaTagsTxt { get; set; }
 
         public EmpCloudVM ResEmp { get; set; }
@@ -42,12 +39,12 @@ namespace EmpreendedorismoEIT.Pages
             }
 
             List<int> listaTagsID = TextManager.ListarInteiros(ListaTagsTxt);
-            //if (listaTagsID.Count < 3)
-            //{
-            //    return NotFound();
-            //}
-            //var emp = MatchManager.obterRecomendacao(ListaTagsID);
+            if (listaTagsID.Count < 3)
+            {
+                return NotFound();
+            }
 
+            //var emp = MatchManager.obterRecomendacao(ListaTagsID);
             ResEmp = await _context.Empresas
                 .Where(e => e.Situacao == Situacao.ATIVA)
                 .Include(e => e.DadosJunior)
@@ -67,7 +64,7 @@ namespace EmpreendedorismoEIT.Pages
                     RedesSociais = e.RedesSociais
                 })
                 .AsNoTracking()
-                .FirstOrDefaultAsync(e => e.Tipo == Tipo.INCUBADA);
+                .FirstOrDefaultAsync(e => e.Tipo == Tipo.JUNIOR);
 
 
 
