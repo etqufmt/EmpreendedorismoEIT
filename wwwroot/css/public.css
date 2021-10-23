@@ -373,6 +373,29 @@ i.icon-msg {
     background-color: #f3f3f3;
 }
 
-.res-nome{
+.res-nome {
     width: 20rem;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    /*background-color: red;*/
+    width: 4rem;
+    height: 4rem;
+    opacity: 0.3;
+}
+
+.carousel-control-prev:focus, .carousel-control-next:focus {
+    opacity: 0.3;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+    opacity: 0.8;
+}
+
+.carousel-control-prev-icon {
+    background-image: url("/vectors/prev-arrow.svg");
+}
+
+.carousel-control-next-icon {
+    background-image: url("/vectors/next-arrow.svg");
 }

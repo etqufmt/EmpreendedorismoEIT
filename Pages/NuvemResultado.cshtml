@@ -12,42 +12,57 @@
         </div>
     </section>
     <section class="my-5">
-        @foreach (var item in Model.ListaResEmp)
-        {
-            <div class="card-details row no-gutters mx-auto">
-                <div class="porcentagem">95%</div>
-                <div class="col-12 col-md-7 card-right">
-                    <h2 class="res-nome my-3">@Html.DisplayFor(modelItem => item.Nome)</h2>
-                    <p class="desc">@Html.DisplayFor(modelItem => item.Descricao)</p>
-                    <div class="res-contato desc text-center text-md-right mt-4 mb-4 mb-md-0">
-                        <p>
-                            @Html.DisplayFor(modelItem => item.Telefone)<br />
-                            @Html.DisplayFor(modelItem => item.Email)<br />
-                        </p>
-                        <p class="word-space mb-0">
-                            <partial name="RedesIcones" model="item.RedesSociais" />
-                        </p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-5 order-md-first card-left">
-                    <div class="card">
-                        <img src="@item.LogoURL" class="card-img-top" alt="logo">
-                        <div class="card-body border-top">
-                            <h5 class="text-truncate">@Html.DisplayFor(modelItem => item.Tipo)</h5>
-                            @if (item.Tipo == Models.Tipo.JUNIOR)
-                            {
-                                <p class="card-text desc">Campus @Html.DisplayFor(modelItem => item.JunCampus)</p>
-                            }
-                            @if (item.Tipo == Models.Tipo.INCUBADA)
-                            {
-                                <p class="card-text desc">@item.IncMesEntrada.ToString("MM/yyyy")</p>
-                            }
+        @* Consertar no mobile *@
+        <div id="carrosel" class="carousel slide" data-interval="false" data-wrap="false">
+            <div class="carousel-inner">
+                @foreach (var item in Model.ListaResEmp)
+                {
+                <div class="carousel-item @(Model.ListaResEmp.First()==item ? "active" : "")">
+                    <div class="card-details row no-gutters mx-auto my-3">
+                        <div class="porcentagem">95%</div>
+                        <div class="col-12 col-md-7 card-right">
+                            <h2 class="res-nome my-3">@Html.DisplayFor(modelItem => item.Nome)</h2>
+                            <p class="desc">@Html.DisplayFor(modelItem => item.Descricao)</p>
+                            <div class="res-contato desc text-center text-md-right mt-4 mb-4 mb-md-0">
+                                <p>
+                                    @Html.DisplayFor(modelItem => item.Telefone)<br />
+                                    @Html.DisplayFor(modelItem => item.Email)<br />
+                                </p>
+                                <p class="word-space mb-0">
+                                    <partial name="RedesIcones" model="item.RedesSociais" />
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-5 order-md-first card-left">
+                            <div class="card">
+                                <img src="@item.LogoURL" class="card-img-top" alt="logo">
+                                <div class="card-body border-top">
+                                    <h5 class="text-truncate">@Html.DisplayFor(modelItem => item.Tipo)</h5>
+                                    @if (item.Tipo == Models.Tipo.JUNIOR)
+                                    {
+                                        <p class="card-text desc">Campus @Html.DisplayFor(modelItem => item.JunCampus)</p>
+                                    }
+                                    @if (item.Tipo == Models.Tipo.INCUBADA)
+                                    {
+                                        <p class="card-text desc">@item.IncMesEntrada.ToString("MM/yyyy")</p>
+                                    }
+                                </div>
+                            </div>
+                            <a asp-page="Empresa" asp-route-id="@item.ID" class="btn btn-lg btn-outline-primary btn-block my-3">Produtos e serviços</a>
                         </div>
                     </div>
-                    <a asp-page="Empresa" asp-route-id="@item.ID" class="btn btn-lg btn-outline-primary btn-block my-3">Produtos e serviços</a>
                 </div>
+                }
             </div>
-        }
+            <a class="carousel-control-prev" href="#carrosel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carrosel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Próximo</span>
+            </a>
+        </div>
     </section>
 </div>
 
