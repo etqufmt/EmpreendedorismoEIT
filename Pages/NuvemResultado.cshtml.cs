@@ -24,7 +24,8 @@ namespace EmpreendedorismoEIT.Pages
         [BindProperty]
         public string ListaTagsTxt { get; set; }
 
-        public EmpCloudVM ResEmp { get; set; }
+        //public EmpCloudVM ResEmp { get; set; }
+        public List<EmpCloudVM> ListaResEmp { get; set; }
 
         public IActionResult OnGet()
         {
@@ -45,12 +46,34 @@ namespace EmpreendedorismoEIT.Pages
             }
 
             //var emp = MatchManager.obterRecomendacao(ListaTagsID);
-            ResEmp = await _context.Empresas
-                .Where(e => e.Situacao == Situacao.ATIVA)
+            //ResEmp = await _context.Empresas
+            //    .Where(e => e.Situacao == Situacao.ATIVA)
+            //    .Include(e => e.DadosJunior)
+            //    .Include(e => e.DadosIncubada)
+            //    .Include(e => e.RedesSociais.OrderBy(rs => rs.Plataforma))
+            //    .Select(e => new EmpCloudVM {
+            //        ID = e.ID,
+            //        Nome = e.Nome,
+            //        Tipo = e.Tipo,
+            //        Descricao = e.Descricao,
+            //        Telefone = TextManager.FormatarTelefone(e.Telefone),
+            //        Email = e.Email,
+            //        LogoURL = LogoManager.URLImagem(Url, e.Logo),
+            //        JunCampus = e.DadosJunior != null ? e.DadosJunior.Campus : 0,
+            //        IncMesEntrada = e.DadosIncubada != null ? e.DadosIncubada.MesEntrada : DateTime.UnixEpoch,
+            //        PorcentagemMatch = 95,
+            //        RedesSociais = e.RedesSociais
+            //    })
+            //    .AsNoTracking()
+            //    .FirstOrDefaultAsync(e => e.Tipo == Tipo.JUNIOR);
+            var listaEmpID = new List<int> { 1, 2, 3 };
+            ListaResEmp = await _context.Empresas
+                .Where(e => listaEmpID.Contains(e.ID))
                 .Include(e => e.DadosJunior)
                 .Include(e => e.DadosIncubada)
                 .Include(e => e.RedesSociais.OrderBy(rs => rs.Plataforma))
-                .Select(e => new EmpCloudVM {
+                .Select(e => new EmpCloudVM
+                {
                     ID = e.ID,
                     Nome = e.Nome,
                     Tipo = e.Tipo,
@@ -64,11 +87,9 @@ namespace EmpreendedorismoEIT.Pages
                     RedesSociais = e.RedesSociais
                 })
                 .AsNoTracking()
-                .FirstOrDefaultAsync(e => e.Tipo == Tipo.JUNIOR);
+                .ToListAsync();
 
-
-
-            if (ResEmp == null)
+            if (ListaResEmp.Count == 0)
             {
                 return NotFound();
             }
