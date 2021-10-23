@@ -28,7 +28,7 @@ namespace EmpreendedorismoEIT.Utils
 
         public static void ExcluirImagem(IWebHostEnvironment webHostEnvironment, string arquivo)
         {
-            if (String.IsNullOrEmpty(arquivo))
+            if (!String.IsNullOrEmpty(arquivo))
             {
                 string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "logo");
                 string filePath = Path.Combine(uploadsFolder, arquivo);

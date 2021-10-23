@@ -322,38 +322,17 @@ i.icon-msg {
     max-width: 800px;
     padding: 2rem;
     position: relative;
-    box-shadow: 5px 5px 10px rgba(0,0,0,.1);
 }
 
 .card-details, .porcentagem {
     border: 1px solid rgba(0,0,0,.125);
 }
 
-@media (min-width: 768px) {
-    .card-left {
-        padding-right: 1rem !important;
-    }
-
-    .card-right {
-        padding-left: 1rem !important;
+@media (min-width: 992px) {
+    .card-details {
+        box-shadow: 5px 5px 10px rgba(0,0,0,.1);
     }
 }
-
-
-/*img.card-img-left {
-    width: 100%;
-    border-right: 1px solid rgba(0,0,0,.125);
-    border-top-left-radius: calc(0.25rem - 1px);
-    border-bottom-left-radius: calc(0.25rem - 1px);
-}
-
-.card-btn-lateral:first-child {
-    border-top-right-radius: calc(0.25rem - 1px);
-}
-
-.card-btn-lateral:last-child {
-    border-bottom-right-radius: calc(0.25rem - 1px);
-}*/
 
 .porcentagem {
     width: 7rem;
@@ -374,22 +353,30 @@ i.icon-msg {
 }
 
 .res-nome {
-    width: 20rem;
+    margin-right: 6rem;
+}
+
+.button-space {
+    word-spacing: 0.3rem;
+}
+
+.crs-control {
+    top: 14rem;
+    bottom: unset;
+}
+
+.crs-control:focus {
+    opacity: 0.3;
+}
+
+.crs-control:hover{
+    opacity: 0.8;
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
-    /*background-color: red;*/
     width: 4rem;
     height: 4rem;
     opacity: 0.3;
-}
-
-.carousel-control-prev:focus, .carousel-control-next:focus {
-    opacity: 0.3;
-}
-
-.carousel-control-prev:hover, .carousel-control-next:hover {
-    opacity: 0.8;
 }
 
 .carousel-control-prev-icon {
