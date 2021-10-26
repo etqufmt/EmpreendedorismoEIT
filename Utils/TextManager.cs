@@ -67,31 +67,5 @@ namespace EmpreendedorismoEIT.Utils
             }
             return res;
         }
-
-        public static List<int> ListarInteiros(string lista)
-        {
-            //Valores cercados por aspas
-            //E separados por vírgula
-            var res = new List<int>();
-            try
-            {
-                var listaStr = lista.Split(",");
-                for (var i = 0; i < listaStr.Length; i++)
-                {
-                    if (i == listaStr.Length - 1 && string.IsNullOrWhiteSpace(listaStr[i]))
-                    {
-                        continue;
-                    }
-                    var valStr = listaStr[i].Trim('"');
-                    var valInt = int.Parse(valStr);
-                    res.Add(valInt);
-                }
-            }
-            catch
-            {
-                res = new List<int>();
-            }
-            return res;
-        }
     }
 }

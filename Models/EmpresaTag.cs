@@ -15,8 +15,8 @@ namespace EmpreendedorismoEIT.Models
 
         [Required]
         [Range(0, 1)]
-        [Column(TypeName = "decimal(18,4)")]
-        public decimal Grau { get; set; }
+        [Column(TypeName = "decimal(5,4)")]
+        public double Grau { get; set; }
 
         //Referências para outras entidades
         public Empresa Empresa { get; set; }

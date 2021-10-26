@@ -12,14 +12,13 @@
         </div>
     </section>
     <section class="my-5">
-        @* Consertar no mobile *@
         <div id="carrosel" class="carousel slide" data-ride="carousel" data-interval="false" data-wrap="false">
             <div class="carousel-inner">
                 @foreach (var item in Model.ListaResEmp)
                 {
                 <div class="carousel-item @(Model.ListaResEmp.First()==item ? "active" : "")">
                     <div class="card-details row no-gutters mx-auto my-3">
-                        <div class="porcentagem">95%</div>
+                        <div class="porcentagem">@Html.DisplayFor(modelItem => item.PorcentagemMatch)%</div>
                         <div class="col-12 col-md-7 card-right pl-md-3">
                             <h2 class="res-nome my-3">@Html.DisplayFor(modelItem => item.Nome)</h2>
                             <p class="desc">@Html.DisplayFor(modelItem => item.Descricao)</p>

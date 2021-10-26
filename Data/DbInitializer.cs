@@ -166,27 +166,27 @@ namespace EmpreendedorismoEIT.Data
                         new EmpresaTag
                         {
                             Tag = tags[2],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[3],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[4],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[5],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[6],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                     }
                 },
@@ -259,27 +259,27 @@ namespace EmpreendedorismoEIT.Data
                         new EmpresaTag
                         {
                             Tag = tags[2],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[3],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[4],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[5],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[6],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                     }
                 },
@@ -352,27 +352,27 @@ namespace EmpreendedorismoEIT.Data
                         new EmpresaTag
                         {
                             Tag = tags[2],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[3],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[4],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[5],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[6],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                     }
                 },
@@ -445,27 +445,27 @@ namespace EmpreendedorismoEIT.Data
                         new EmpresaTag
                         {
                             Tag = tags[2],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[3],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[4],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[5],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[6],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                     }
                 },
@@ -538,27 +538,27 @@ namespace EmpreendedorismoEIT.Data
                         new EmpresaTag
                         {
                             Tag = tags[2],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[3],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[4],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[5],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[6],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                     }
                 },
@@ -631,27 +631,27 @@ namespace EmpreendedorismoEIT.Data
                         new EmpresaTag
                         {
                             Tag = tags[2],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[3],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[4],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[5],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[6],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                     }
                 },
@@ -724,27 +724,27 @@ namespace EmpreendedorismoEIT.Data
                         new EmpresaTag
                         {
                             Tag = tags[2],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[3],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[4],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[5],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[6],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                     }
                 },
@@ -817,27 +817,27 @@ namespace EmpreendedorismoEIT.Data
                         new EmpresaTag
                         {
                             Tag = tags[2],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[3],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[4],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[5],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[6],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                     }
                 },
@@ -910,27 +910,27 @@ namespace EmpreendedorismoEIT.Data
                         new EmpresaTag
                         {
                             Tag = tags[2],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[3],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[4],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[5],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[6],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                     }
                 },
@@ -1003,27 +1003,27 @@ namespace EmpreendedorismoEIT.Data
                         new EmpresaTag
                         {
                             Tag = tags[2],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[3],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[4],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[5],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[6],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                     }
                 },
@@ -1096,27 +1096,27 @@ namespace EmpreendedorismoEIT.Data
                         new EmpresaTag
                         {
                             Tag = tags[2],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[3],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[4],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[5],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[6],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                     }
                 },
@@ -1189,27 +1189,27 @@ namespace EmpreendedorismoEIT.Data
                         new EmpresaTag
                         {
                             Tag = tags[2],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[3],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[4],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[5],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[6],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                     }
                 },
@@ -1282,27 +1282,27 @@ namespace EmpreendedorismoEIT.Data
                         new EmpresaTag
                         {
                             Tag = tags[2],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[3],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[4],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[5],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[6],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                     }
                 },
@@ -1371,22 +1371,22 @@ namespace EmpreendedorismoEIT.Data
                         new EmpresaTag
                         {
                             Tag = tags[0],
-                            Grau = 0.5M,
+                            Grau = 0.5,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[1],
-                            Grau = 0.4M,
+                            Grau = 0.4,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[2],
-                            Grau = 0.3M,
+                            Grau = 0.3,
                         },
                         new EmpresaTag
                         {
                             Tag = tags[3],
-                            Grau = 0.2M,
+                            Grau = 0.2,
                         },
                     }
                 },

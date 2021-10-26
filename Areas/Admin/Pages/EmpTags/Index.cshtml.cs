@@ -60,7 +60,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
                 var empTag = tag.EmpresasAssociadas.FirstOrDefault();
                 if (empTag != null)
                 {
-                    grau = Decimal.ToInt32(empTag.Grau * 100);
+                    grau = (int)(empTag.Grau * 100);
                     Contador++;
                 }
                 ListaET.Add(new EmpTagVM
@@ -110,7 +110,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
                     {
                         EmpresaID = Empresa.ID,
                         TagID = et.TagID,
-                        Grau = (et.Grau / 100M)
+                        Grau = (et.Grau / 100)
                     });
                 }
             }
