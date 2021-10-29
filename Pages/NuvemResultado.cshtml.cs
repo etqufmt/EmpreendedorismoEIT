@@ -47,9 +47,8 @@ namespace EmpreendedorismoEIT.Pages
                 return NotFound();
             }
 
-            var listaEmp = await MatchManager.ObterRecomendacao(_context, _logger, listaTagsID);
-            //var listaEmpID = new List<int> { 1, 2, 3 };
-            if (listaEmp == null)
+            Dictionary<int, int> listaEmp = await MatchManager.ObterRecomendacao(_context, _logger, listaTagsID);
+            if (listaEmp.Count < 1 || listaEmp.Count > 3)
             {
                 return NotFound();
             }
@@ -70,7 +69,7 @@ namespace EmpreendedorismoEIT.Pages
                     LogoURL = LogoManager.URLImagem(Url, e.Logo),
                     JunCampus = e.DadosJunior != null ? e.DadosJunior.Campus : 0,
                     IncMesEntrada = e.DadosIncubada != null ? e.DadosIncubada.MesEntrada : DateTime.UnixEpoch,
-                    PorcentagemMatch = listaEmp[e.ID],
+                    Porcentagem = listaEmp[e.ID],
                     RedesSociais = e.RedesSociais
                 })
                 .AsNoTracking()
@@ -81,7 +80,12 @@ namespace EmpreendedorismoEIT.Pages
                 return NotFound();
             }
 
-            ListaResEmp = ListaResEmp.OrderByDescending(e => e.PorcentagemMatch).ToList();
+            //Shuffle para alternar a ordem das empresas
+            //Quando várias empresas estão empatadas em primeiro lugar
+            ListaResEmp = ListaResEmp
+                .Shuffle(new Random())
+                .OrderByDescending(e => e.Porcentagem)
+                .ToList();
             return Page();
         }
     }

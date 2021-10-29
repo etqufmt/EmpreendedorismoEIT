@@ -12,6 +12,13 @@ namespace EmpreendedorismoEIT.Utils
 {
     public static class MatchManager
     {
+        private class ResultadoMatch
+        {
+            public int EmpresaID { get; set; }
+            public int Porcentagem { get; set; }
+            public List<double> Associacoes { get; set; }
+        }
+
         public static List<int> ListarInteiros(string lista)
         {
             //Valores cercados por aspas
@@ -43,48 +50,47 @@ namespace EmpreendedorismoEIT.Utils
             ILogger logger,
             List<int> tagsSelecID)
         {
-            Dictionary<int, int> res = null;
+            var res = new Dictionary<int, int>();
 
-            //Listar todas as associação entre empresas e tags 
+            //Listar todas as associação entre empresas e tags
             var listaAssoc = await context.EmpresaTags
                 .AsNoTracking()
                 .ToListAsync();
-            
-            //Checar se há associações
             if (listaAssoc.Count == 0)
             {
                 logger.LogError("[DEBUG] MatchManager: Nenhuma tag associada");
-                return null;
-            }
-
-            //Checar se tags selecionadas estão ativas
-            foreach (var tagID in tagsSelecID)
-            {
-                if (listaAssoc.FirstOrDefault(a => a.TagID == tagID) == null)
-                {
-                    logger.LogError("[DEBUG] MatchManager: Nuvem de tags inválida");
-                    return null;
-                }
+                return res;
             }
 
             //Listar todas as tags ativas
+            //Com um campo zerado para o grau de associação
             Dictionary<int, double> dicTags = listaAssoc
-                .OrderBy(a => a.TagID)
                 .GroupBy(a => a.TagID)
                 .Select(a => a.First().TagID)
                 .ToDictionary(t => t, t => 0.0);
 
-            //Listar tags selecionadas
-            List<double> listaTagsSelec = dicTags.Select(t => tagsSelecID.Contains(t.Key) ? 1.0 : 0.0).ToList();
+            //Checar se tags selecionadas possuem associações
+            //Calcular peso para as tags pela ordem que foram selecionadas na nuvem 
+            var dicSelec = new Dictionary<int, double>(dicTags);
+            var pesoSelec = 1.0;
+            foreach (var tagID in tagsSelecID)
+            {
+                if (dicSelec.ContainsKey(tagID))
+                {
+                    dicSelec[tagID] = pesoSelec;
+                    pesoSelec = pesoSelec * 0.85;
+                }
+                else
+                {
+                    logger.LogError("[DEBUG] MatchManager: Nuvem de tags inválida");
+                    return res;
+                }
+            }
+            List<double> listaTagsSelec = dicSelec.Values.ToList();
 
             //Agrupar por empresas
-            //TODO: colocar ordem das empresas aleatória
-            var grupoEmp = listaAssoc
-                //.OrderBy(a => a.TagID)
-                //.ThenBy(a => a.TagID)
-                .GroupBy(a => a.EmpresaID);
             var listaEmp = new List<ResultadoMatch>();
-            foreach (var grupo in grupoEmp)
+            foreach (var grupo in listaAssoc.GroupBy(a => a.EmpresaID))
             {
                 var tagsAtivas = new Dictionary<int, double>(dicTags);
                 foreach (var assoc in grupo)
@@ -98,8 +104,8 @@ namespace EmpreendedorismoEIT.Utils
                 });
             }
 
-            //Fazer comparações
-            //TODO: colocar peso de acordo com a ordem
+            //Fazer comparações entre os dois vetores
+            //Utilizando algoritmo de similaridade (Cosine Similarity)
             foreach (var emp in listaEmp)
             {
                 var match = GetCosineSimilarity(listaTagsSelec, emp.Associacoes);
@@ -107,14 +113,27 @@ namespace EmpreendedorismoEIT.Utils
             }
 
             //Gerar resposta
+            //Shuffle necessário para não mostrar sempre as mesmas empresas
+            //Em caso de porcentagens iguais
             res = listaEmp
+                .Where(e => e.Porcentagem > 0)
+                .Shuffle(new Random())
                 .OrderByDescending(e => e.Porcentagem)
                 .Take(3)
                 .ToDictionary(e => e.EmpresaID, e => e.Porcentagem);
-            //res.Add(1, 85);
-            //res.Add(2, 90);
-            //res.Add(3, 95);
             return res;
+        }
+
+        //Fonte: https://stackoverflow.com/questions/1287567/is-using-random-and-orderby-a-good-shuffle-algorithm
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random rng)
+        {
+            T[] elements = source.ToArray();
+            for (int i = elements.Length - 1; i >= 0; i--)
+            {
+                int swapIndex = rng.Next(i + 1);
+                yield return elements[swapIndex];
+                elements[swapIndex] = elements[i];
+            }
         }
 
         //Fonte: https://stackoverflow.com/questions/7560760/cosine-similarity-code-non-term-vectors
@@ -134,12 +153,5 @@ namespace EmpreendedorismoEIT.Utils
 
             return dot / (Math.Sqrt(mag1) * Math.Sqrt(mag2));
         }
-    }
-
-    public class ResultadoMatch
-    {
-        public int EmpresaID { get; set; }
-        public int Porcentagem { get; set; }
-        public List<double> Associacoes { get; set; }
     }
 }

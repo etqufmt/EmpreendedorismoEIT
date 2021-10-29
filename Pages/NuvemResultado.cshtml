@@ -18,7 +18,7 @@
                 {
                 <div class="carousel-item @(Model.ListaResEmp.First()==item ? "active" : "")">
                     <div class="card-details row no-gutters mx-auto my-3">
-                        <div class="porcentagem">@Html.DisplayFor(modelItem => item.PorcentagemMatch)%</div>
+                        <div class="porcentagem">@Html.DisplayFor(modelItem => item.Porcentagem)%</div>
                         <div class="col-12 col-md-7 card-right pl-md-3">
                             <h2 class="res-nome my-3">@Html.DisplayFor(modelItem => item.Nome)</h2>
                             <p class="desc">@Html.DisplayFor(modelItem => item.Descricao)</p>

@@ -9,8 +9,9 @@ namespace EmpreendedorismoEIT.Utils
 {
     public class ValidadorCNPJAttribute : ValidationAttribute
     {
-        //Calcula e valida os dígitos verificadores do CNPJ
-        protected override ValidationResult IsValid( object value, ValidationContext ctx) {
+		//Calcula e valida os dígitos verificadores do CNPJ
+		//Fonte: https://macoratti.net/11/09/c_val1.htm
+		protected override ValidationResult IsValid( object value, ValidationContext ctx) {
 			var cnpj = value as string;
             if (String.IsNullOrEmpty(cnpj))
             {

@@ -1,0 +1,28 @@
+﻿@page
+@model ServerModel
+@{
+    ViewData["Title"] = "Erro no servidor";
+}
+
+<div class="container py-5">
+    <div class="mt-5 text-center text-sm-left">
+        <h1 class="text-danger border border-danger d-inline-block py-2 px-3 rounded">
+            <i class="bi bi-bug-fill"></i>
+        </h1>
+        <h1 class="text-danger">Erro no servidor</h1>
+        <p>
+            Não foi possível processar a requisição.<br />
+            Tente novamente mais tarde.
+        </p>
+        @if (Model.ShowRequestId)
+        {
+        <p>
+            <strong>Request ID:</strong>
+            <code>@Model.RequestId</code>
+        </p>
+        }
+        <p>
+            <a asp-page="/Index">Voltar para o início</a>
+        </p>
+    </div>
+</div>

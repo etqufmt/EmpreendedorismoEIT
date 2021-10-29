@@ -29,7 +29,7 @@ namespace EmpreendedorismoEIT.ViewModels
 
         public DateTime IncMesEntrada { get; set; }
 
-        public int PorcentagemMatch { get; set; }
+        public int Porcentagem { get; set; }
 
         public ICollection<RedeSocial> RedesSociais { get; set; }
     }

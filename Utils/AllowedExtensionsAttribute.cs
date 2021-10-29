@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace EmpreendedorismoEIT.Utils
 {
+    //Fonte: https://stackoverflow.com/questions/56588900/how-to-validate-uploaded-file-in-asp-net-core
     public class AllowedExtensionsAttribute : ValidationAttribute
     {
         private readonly string[] _extensions;

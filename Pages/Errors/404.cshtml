@@ -1,0 +1,22 @@
+﻿@page
+@model EmpreendedorismoEIT.Pages.Status404Model
+@{
+    ViewData["Title"] = "Erro 404";
+}
+
+<div class="container py-5">
+    <div class="mt-5 text-center text-sm-left">
+        <h1 class="text-danger border border-danger d-inline-block py-2 px-3 rounded">
+            <i class="bi bi-code-slash"></i>
+        </h1>
+        <h1 class="text-danger">Página não encontrada</h1>
+        <p>
+            A página desejada não se encontra mais acessível.<br />
+            Tente novamente mais tarde.
+        </p>
+        <p>
+            <a asp-page="/Index">Voltar para o início</a>
+        </p>
+    </div>
+</div>
+

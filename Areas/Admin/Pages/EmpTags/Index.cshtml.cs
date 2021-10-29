@@ -110,7 +110,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
                     {
                         EmpresaID = Empresa.ID,
                         TagID = et.TagID,
-                        Grau = (et.Grau / 100)
+                        Grau = et.Grau / 100.0
                     });
                 }
             }
