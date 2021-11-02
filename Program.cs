@@ -48,7 +48,7 @@ namespace EmpreendedorismoEIT
                 }
                 catch (Exception ex)
                 {
-                    logger.LogError(ex, "[DEBUG] Erro ao criar banco de dados");
+                    logger.LogError(ex, "[DEBUG] Erro ao verificar/criar banco de dados");
                     Environment.Exit(1);
                 }
             }
