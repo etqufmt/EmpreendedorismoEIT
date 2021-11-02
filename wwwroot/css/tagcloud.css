@@ -1,0 +1,47 @@
+﻿/*Tag cloud*/
+@font-face {
+    font-family: "FingerPaint";
+    src: url("/fonts/fingerpaint-regular.woff2") format('woff');
+}
+
+.cloud-container {
+    height: 500px;
+    width: 94%;
+}
+
+.tag-input {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+}
+
+.tag-input:focus-visible ~ .tag-word {
+    outline: auto;
+}
+
+.tag-word {
+    cursor: pointer;
+    user-select: none;
+    opacity: 0.9;
+    transition: transform .2s;
+}
+
+.tag-word:hover {
+    filter: drop-shadow(2px 2px 5px #ffbd99);
+    transform: scale(1.2,1.2);
+}
+
+.tag-input:checked + .tag-word {
+    filter: saturate(1.4) drop-shadow(2px 2px 5px #ff8b4d);
+}
+
+.msg-empty {
+    background-color: rgba(0,0,0,.02);
+    max-width: 30rem;
+    margin-top: 4rem;
+}
+
+i.icon-msg {
+    font-size: 2rem;
+    color: darkgray;
+}
