@@ -76,7 +76,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             }
             catch (DbUpdateException ex)
             {
-                _logger.LogError("[DEBUG] Tags:update // " + ex);
+                _logger.LogError(ex, "[DEBUG] Tags: Erro ao executar update");
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
                 return Page();
             }

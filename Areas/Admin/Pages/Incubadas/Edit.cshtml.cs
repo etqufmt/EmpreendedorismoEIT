@@ -142,7 +142,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
             }
             catch (DbUpdateException ex)
             {
-                _logger.LogError("[DEBUG] Empresas:update // " + ex);
+                _logger.LogError(ex, "[DEBUG] Incubadas: Erro ao executar update");
                 LogoManager.ExcluirImagem(_webHostEnvironment, logoAtual);
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
                 await LoadAsync();

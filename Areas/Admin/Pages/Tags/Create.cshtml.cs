@@ -51,7 +51,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             }
             catch (DbUpdateException ex)
             {
-                _logger.LogError("[DEBUG] Tags:create // " + ex);
+                _logger.LogError(ex, "[DEBUG] Tags: Erro ao executar create");
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrCreate);
                 return Page();
             }

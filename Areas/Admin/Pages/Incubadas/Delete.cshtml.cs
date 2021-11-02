@@ -63,7 +63,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
             }
             catch (DbUpdateException ex)
             {
-                _logger.LogError("[DEBUG] Empresas:delete // " + ex);
+                _logger.LogError(ex, "[DEBUG] Incubadas: Erro ao executar delete");
                 StatusMessage = Resources.ValidationResources.ErrDelete;
                 return RedirectToPage("Details", new { id });
             }

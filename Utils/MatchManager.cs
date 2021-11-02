@@ -139,8 +139,7 @@ namespace EmpreendedorismoEIT.Utils
         //Fonte: https://stackoverflow.com/questions/7560760/cosine-similarity-code-non-term-vectors
         private static double GetCosineSimilarity(List<double> V1, List<double> V2)
         {
-            int N = 0;
-            N = ((V2.Count < V1.Count) ? V2.Count : V1.Count);
+            int N = (V2.Count < V1.Count) ? V2.Count : V1.Count;
             double dot = 0.0d;
             double mag1 = 0.0d;
             double mag2 = 0.0d;

@@ -16,7 +16,6 @@ namespace EmpreendedorismoEIT.Pages
     {
         private readonly ILogger<ServerModel> _logger;
         public string RequestId { get; set; }
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
         public ServerModel(ILogger<ServerModel> logger)
         {
@@ -28,7 +27,13 @@ namespace EmpreendedorismoEIT.Pages
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
 
             var exceptionHandlerPathFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
-            _logger.LogError("[DEBUG] ServerError: Exceção não tratada // " + exceptionHandlerPathFeature?.Error);
+            if (exceptionHandlerPathFeature != null)
+            {
+                var exPath = exceptionHandlerPathFeature.Path;
+                var exError = exceptionHandlerPathFeature.Error;
+
+                _logger.LogError(exError, $"[DEBUG] ServerError: Exceção não tratada em '{exPath}'");
+            }
         }
     }
 }

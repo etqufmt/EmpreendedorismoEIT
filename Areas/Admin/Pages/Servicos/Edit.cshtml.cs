@@ -90,7 +90,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
             }
             catch (DbUpdateException ex)
             {
-                _logger.LogError("[DEBUG] ProdutosServicos:update " + ex);
+                _logger.LogError(ex, "[DEBUG] ProdutosServicos: Erro ao executar update");
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
                 return Page();
             }

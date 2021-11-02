@@ -95,7 +95,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
             }
             catch (DbUpdateException ex)
             {
-                _logger.LogError("[DEBUG] ProdutosServicos:create " + ex);
+                _logger.LogError(ex, "[DEBUG] ProdutosServicos: Erro ao executar create");
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrCreate);
                 Load(n);
                 return Page();

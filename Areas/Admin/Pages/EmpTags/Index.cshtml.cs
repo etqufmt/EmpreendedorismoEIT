@@ -123,7 +123,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
             }
             catch (DbUpdateException ex)
             {
-                _logger.LogError("[DEBUG] EmpresaTags:update // " + ex);
+                _logger.LogError(ex, "[DEBUG] EmpresaTags: Erro ao executar update");
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
                 return Page();
             }

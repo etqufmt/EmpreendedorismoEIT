@@ -126,7 +126,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             }
             catch (DbUpdateException ex)
             {
-                _logger.LogError("[DEBUG] Empresas:update // " + ex);
+                _logger.LogError(ex, "[DEBUG] Juniores: Erro ao executar update");
                 LogoManager.ExcluirImagem(_webHostEnvironment, logoAtual);
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
                 await LoadAsync();

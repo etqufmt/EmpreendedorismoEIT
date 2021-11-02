@@ -63,7 +63,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
             }
             catch (DbUpdateException ex)
             {
-                _logger.LogError("[DEBUG] Empresas:delete // " + ex);
+                _logger.LogError(ex, "[DEBUG] Juniores: Erro ao executar delete");
                 StatusMessage = Resources.ValidationResources.ErrDelete;
                 return RedirectToPage("Details", new { id });
             }

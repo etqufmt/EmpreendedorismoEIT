@@ -62,7 +62,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Servicos
             }
             catch (DbUpdateException ex)
             {
-                _logger.LogError("[DEBUG] ProdutosServicos:delete " + ex);
+                _logger.LogError(ex, "[DEBUG] ProdutosServicos: Erro ao executar delete");
                 StatusMessage = Resources.ValidationResources.ErrDelete;
                 return RedirectToPage("Index", new { id = prodServ.EmpresaID});
             }

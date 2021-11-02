@@ -131,7 +131,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Redes
             }
             catch (DbUpdateException ex)
             {
-                _logger.LogError("[DEBUG] RedesSociais:update // " + ex);
+                _logger.LogError(ex, "[DEBUG] RedesSociais: Erro ao executar update");
                 ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrUpdate);
                 return Page();
             }

@@ -95,7 +95,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Incubadas
             }
             catch (DbUpdateException ex)
             {
-                _logger.LogError("[DEBUG] Empresas:create // " + ex);
+                _logger.LogError(ex, "[DEBUG] Incubadas: Erro ao executar create");
                 LogoManager.ExcluirImagem(_webHostEnvironment, novaEmpresa.Logo);
                 SqlException innerException = ex.InnerException as SqlException;
                 //Checa por erro de campo duplicado (UNIQUE) do Microsoft SQL Server / Azure SQL Server
