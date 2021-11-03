@@ -10,7 +10,7 @@
 
 <form method="post">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6 mb-3">
             <partial name="_ValidationMessage" />
             <input type="hidden" asp-for="TagVM.ID" />
             <div class="form-group">
@@ -24,13 +24,30 @@
                         asp-items="@Html.GetEnumSelectList<Cores>().OrderBy(s => s.Text)"></select>
                 <span asp-validation-for="TagVM.Cor"></span>
             </div>
+            <div class="form-group text-right">
+                <a asp-page="Index" class="btn btn-outline-secondary">Voltar</a>
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-6 text-right">
-            <a asp-page="Index" class="btn btn-outline-secondary">Voltar</a>
-            <input type="submit" value="Salvar" class="btn btn-primary" />
-        </div>
+        @if(Model.ListaAssoc.Count > 0)
+        {
+            <div class="col-lg-6 mb-3">
+                <div class="card">
+                    <div class="card-header tag-card-header">
+                        <h5 class="tag-card-title">Empresas associadas</h5>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        @foreach (var item in Model.ListaAssoc)
+                        {
+                            <div class="list-group-item py-xl-3">
+                                <span class="d-block info-title">@Html.DisplayFor(modelItem => item.Nome)</span>
+                                @Html.DisplayFor(modelItem => item.Grau)%
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </form>
 

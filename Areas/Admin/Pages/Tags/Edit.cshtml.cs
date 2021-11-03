@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.ViewModels;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
 {
@@ -24,6 +26,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
 
         [BindProperty]
         public TagVM TagVM { get; set; }
+        public List<EmpTagVM> ListaAssoc { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -44,6 +47,16 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
                 Nome = tag.Nome,
                 CorInt = tag.Cor,
             };
+
+            ListaAssoc = await _context.EmpresaTags
+                .Include(et => et.Empresa)
+                .Where(et => et.TagID == id)
+                .Select(et => new EmpTagVM
+                {
+                    Nome = et.Empresa.Nome,
+                    Grau = (int)(et.Grau * 100),
+                })
+                .ToListAsync();
 
             return Page();
         }

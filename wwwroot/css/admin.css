@@ -149,6 +149,18 @@ a.card-link:active > .card {
     filter: opacity(0.7);
 }
 
+.tag-card-header {
+    background-color: rgba(0,0,0,.02);
+    text-align: center;
+    color: #808080;
+}
+
+.tag-card-title {
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    line-height: normal;
+}
+
 /*Recomendação*/
 .grau-badge {
     vertical-align: 0.1em;
