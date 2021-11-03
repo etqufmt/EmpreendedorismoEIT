@@ -32,6 +32,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
         public int Contador { get; set; }
         public int PassoMessage { get; set; }
 
+        [TempData]
+        public string StatusMessage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id, int? passo)
         {
