@@ -101,20 +101,24 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
                 return Page();
             }
 
+            //Cadastrar apenas associações com algum grau definido
+            var empTags = ListaET.Where(et => et.Grau != 0).ToList();
+            if (empTags.Count < 3 && empTags.Count != 0)
+            {
+                ModelState.AddModelError(string.Empty, Resources.ValidationResources.ErrMinTags);
+                return Page();
+            }
+
             Empresa.TagsAssociadas.Clear();
             Empresa.TagsAssociadas = new List<EmpresaTag>();
-            foreach (var et in ListaET)
+            foreach (var et in empTags)
             {
-                //Cadastrar apenas associações com algum grau definido
-                if (et.Grau != 0)
+                Empresa.TagsAssociadas.Add(new EmpresaTag
                 {
-                    Empresa.TagsAssociadas.Add(new EmpresaTag
-                    {
-                        EmpresaID = Empresa.ID,
-                        TagID = et.TagID,
-                        Grau = et.Grau / 100.0
-                    });
-                }
+                    EmpresaID = Empresa.ID,
+                    TagID = et.TagID,
+                    Grau = et.Grau / 100.0
+                });
             }
             Empresa.UltimaModificacao = DateTime.Now;
 

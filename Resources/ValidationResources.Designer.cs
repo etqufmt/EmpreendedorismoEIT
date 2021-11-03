@@ -196,6 +196,15 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Não foi possível realizar a atualização. Associe pelo menos três tags à empresa selecionada..
+        /// </summary>
+        public static string ErrMinTags {
+            get {
+                return ResourceManager.GetString("ErrMinTags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [Não informado].
         /// </summary>
         public static string ErrNull {

@@ -162,6 +162,9 @@
   <data name="ErrMaxFileSize" xml:space="preserve">
     <value>Tamanho máximo permitido é de {0}MB</value>
   </data>
+  <data name="ErrMinTags" xml:space="preserve">
+    <value>Não foi possível realizar a atualização. Associe pelo menos três tags à empresa selecionada.</value>
+  </data>
   <data name="ErrNull" xml:space="preserve">
     <value>[Não informado]</value>
   </data>
