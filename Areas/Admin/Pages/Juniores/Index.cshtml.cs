@@ -7,7 +7,7 @@ using EmpreendedorismoEIT.Data;
 using EmpreendedorismoEIT.Models;
 using EmpreendedorismoEIT.ViewModels;
 using Microsoft.Extensions.Configuration;
-using ContosoUniversity.Utils;
+using EmpreendedorismoEIT.Utils;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Juniores
 {

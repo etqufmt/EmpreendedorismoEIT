@@ -30,27 +30,16 @@ namespace EmpreendedorismoEIT.Pages
                     ID = t.ID,
                     Nome = t.Nome,
                     Cor = t.Cor,
-                    Associacoes = t.EmpresasAssociadas.Count,
+                    NumAssociacoes = t.EmpresasAssociadas.Count,
                 })
                 .AsNoTracking()
                 .ToListAsync();
 
             //Remover tags sem associação
-            ListaTags.RemoveAll(t => t.Associacoes == 0);
+            ListaTags.RemoveAll(t => t.NumAssociacoes == 0);
             if (ListaTags.Count == 0)
             {
                 return Page();
-            }
-
-            //Calcular pesos
-            var maxAssociacoes = ListaTags.OrderByDescending(t => t.Associacoes).FirstOrDefault().Associacoes;
-            var minAssociacoes = ListaTags.OrderBy(t => t.Associacoes).FirstOrDefault().Associacoes;
-            const int maxPeso = 5; //Amplitude da diferença de tamanho entre as tags
-            const int minPeso = 1; //Não pode ser zero
-            var peso = (decimal)(maxPeso - minPeso) / (maxAssociacoes - minAssociacoes);
-            foreach (var tag in ListaTags)
-            {
-                tag.Associacoes = (int)Math.Ceiling((tag.Associacoes - minAssociacoes) * peso) + minPeso;
             }
 
             return Page();

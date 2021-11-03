@@ -14,7 +14,7 @@ namespace EmpreendedorismoEIT.ViewModels
 
         public int Cor { get; set; }
 
-        public int Associacoes { get; set; }
+        public int NumAssociacoes { get; set; }
 
         //Atributos formatados
         public string CorHTML => TextManager.CorHTML(Cor);

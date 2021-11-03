@@ -47,6 +47,7 @@ namespace EmpreendedorismoEIT.Pages
                 return NotFound();
             }
 
+            //ID e Porcentagem
             Dictionary<int, int> listaEmp = await MatchManager.ObterRecomendacao(_context, _logger, listaTagsID);
             if (listaEmp.Count < 1 || listaEmp.Count > 3)
             {

@@ -5,9 +5,12 @@
 }
 
 .cloud-container {
-    height: 500px;
     width: 94%;
 }
+
+/*.cloud-container:hover {
+    border: 1px solid #dee2e6 !important;
+}*/
 
 .tag-input {
     position: absolute;
@@ -39,6 +42,7 @@
     background-color: rgba(0,0,0,.02);
     max-width: 30rem;
     margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 
 i.icon-msg {

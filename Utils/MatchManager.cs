@@ -63,14 +63,14 @@ namespace EmpreendedorismoEIT.Utils
             }
 
             //Listar todas as tags ativas
-            //Com um campo zerado para o grau de associação
+            //Mais um campo zerado para adicionar o grau de associação
             Dictionary<int, double> dicTags = listaAssoc
                 .GroupBy(a => a.TagID)
                 .Select(a => a.First().TagID)
                 .ToDictionary(t => t, t => 0.0);
 
-            //Checar se tags selecionadas possuem associações
-            //Calcular peso para as tags pela ordem que foram selecionadas na nuvem 
+            //Checar se as tags selecionadas possuem associações
+            //Calcular peso pela ordem que elas foram clicadas na nuvem 
             var dicSelec = new Dictionary<int, double>(dicTags);
             var pesoSelec = 1.0;
             foreach (var tagID in tagsSelecID)

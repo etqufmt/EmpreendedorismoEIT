@@ -2,6 +2,10 @@
 @model NuvemTagsModel
 @{
     ViewData["Title"] = "Recomendação";
+
+    //Calcular altura da nuvem
+    //De acordo com a quantidade de tags
+    var ccHeight = (Model.ListaTags.Count / 6) * 4;
 }
 
 <div class="container px-xl-section">
@@ -11,16 +15,18 @@
             <p class="desc px-3 px-md-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
         </div>
     </section>
+    @*<div class="border w-100" style="height: 4rem"></div>*@
     <form method="post" asp-page="NuvemResultado" id="form-cloud">
         @if (Model.ListaTags.Count > 0)
         {
             <div class="cloud-container mx-auto">
                 <input type="hidden" name="ListaTagsTxt" id="lista-tags" />
-                <vue-word-cloud id="tag-cloud" :spacing="0.8" font-family="FingerPaint" :font-size-ratio="2.2" :words="[
+                <vue-word-cloud id="tag-cloud" font-family="FingerPaint" :spacing="0.8" :font-size-ratio="2"
+                    :words="[
                     @foreach (var item in Model.ListaTags)
                     {
-                        @($"{{ text: '{item.Nome}', weight: {item.Associacoes}, color: '{item.CorHTML}', fontVariant: '{item.ID}'}},");
-                        Console.WriteLine($"{{ text: '{item.Nome}', weight: {item.Associacoes}, color: '{item.CorHTML}', fontVariant: '{item.ID}'}},");
+                        @($"{{ text: '{item.Nome}', weight: {item.NumAssociacoes}, color: '{item.CorHTML}', fontVariant: '{item.ID}'}},");
+                        //Console.WriteLine($"{{ text: '{item.Nome}', weight: {item.Associacoes}, color: '{item.CorHTML}', fontVariant: '{item.ID}'}},");
                     }
                     ]">
                     <template slot-scope="{word}">
@@ -52,6 +58,16 @@
 
 @section Styles {
     <link rel="stylesheet" href="~/css/tagcloud.css" />
+    <style>
+        .cloud-container {
+            height: @((ccHeight + 16) + "rem");
+        }
+        @@media (min-width: 576px) {
+            .cloud-container {
+                height: @((ccHeight + 24) + "rem");
+            }
+        }
+    </style>
 }
 @section Scripts {
     @{await Html.RenderPartialAsync("_TagCloudScriptsPartial");}
