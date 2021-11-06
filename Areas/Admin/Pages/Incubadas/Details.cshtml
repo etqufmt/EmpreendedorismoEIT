@@ -20,6 +20,10 @@ else if (Model.IncubadaVM.Situacao == Models.Situacao.INATIVA)
 {
     <partial name="_EmpInativaMessage" model="Model.IncubadaVM.ID" />
 }
+else if (Model.IncubadaVM.Contagem.TagsAssociadas < 3)
+{
+    <partial name="_EmpRecMessage" model="Model.IncubadaVM.ID" />
+}
 <div class="row">
     <div class="col-lg-6">
         <div class="row no-gutters card-details mb-4">

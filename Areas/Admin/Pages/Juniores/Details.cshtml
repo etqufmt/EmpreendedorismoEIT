@@ -20,6 +20,10 @@ else if (Model.JuniorVM.Situacao == Models.Situacao.INATIVA)
 {
     <partial name="_EmpInativaMessage" model="Model.JuniorVM.ID" />
 }
+else if (Model.JuniorVM.Contagem.TagsAssociadas < 3)
+{
+    <partial name="_EmpRecMessage" model="Model.JuniorVM.ID" />
+}
 <div class="row">
     <div class="col-lg-6">
         <div class="row no-gutters card-details mb-4">

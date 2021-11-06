@@ -1,0 +1,18 @@
+﻿@model int
+
+@if (Model > 0)
+{
+    <div class="card mb-4" id="step-card">
+        <div class="card-header">
+            <span>Recomendação desativada</span>
+            <button type="button" class="close" data-dismiss="alert" data-target="#step-card" aria-label="Close">
+                <span aria-hidden="true"><i class="bi bi-x"></i></span>
+            </button>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-justify">
+                No momento esta empresa não está sendo oferecida como sugestão pela nuvem de tags. Pois o sistema de recomendação necessita que <b>ao menos três tags estejam associadas</b> a ela. Para alterar, acesse a <a asp-page="/EmpTags/Index" asp-route-id="@Model">página de recomendação</a>.
+            </p>
+        </div>
+    </div>
+}
