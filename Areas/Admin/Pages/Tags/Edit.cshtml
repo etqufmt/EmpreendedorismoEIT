@@ -12,6 +12,7 @@
     <div class="row">
         <div class="col-lg-6 mb-3">
             <partial name="_ValidationMessage" />
+            <partial name="_StatusMessage" model="Model.TagHiddenMessage" />
             <input type="hidden" asp-for="TagVM.ID" />
             <div class="form-group">
                 <label asp-for="TagVM.Nome" class="control-label"></label>
@@ -40,7 +41,7 @@
                         @foreach (var item in Model.ListaAssoc)
                         {
                             <div class="list-group-item py-xl-3">
-                                <span class="d-block info-title">@Html.DisplayFor(modelItem => item.Nome)</span>
+                                <span class="d-block info-title">@Html.DisplayFor(modelItem => item.NomeSit)</span>
                                 @Html.DisplayFor(modelItem => item.Grau)%
                             </div>
                         }

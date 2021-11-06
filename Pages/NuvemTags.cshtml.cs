@@ -20,14 +20,14 @@ namespace EmpreendedorismoEIT.Pages
             _context = context;
         }
 
-        public List<TagCloudVM> ListaTags { get; set; }
+        public List<CloudTagVM> ListaTags { get; set; }
 
         public async Task<IActionResult> OnGetAsync()
         {
             ListaTags = await _context.Tags
                 .Include(t => t.EmpresasAssociadas)
                 .ThenInclude(et => et.Empresa)
-                .Select(t => new TagCloudVM
+                .Select(t => new CloudTagVM
                 {
                     ID = t.ID,
                     Nome = t.Nome,

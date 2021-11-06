@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 namespace EmpreendedorismoEIT.ViewModels
 {
 
-    public class EmpCloudVM
+    public class CloudEmpVM
     {
         public int ID { get; set; }
 

@@ -8,6 +8,7 @@ using EmpreendedorismoEIT.ViewModels;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
+using EmpreendedorismoEIT.Models;
 
 namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
 {
@@ -26,7 +27,8 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
 
         [BindProperty]
         public TagVM TagVM { get; set; }
-        public List<EmpTagVM> ListaAssoc { get; set; }
+        public List<TagAssocVM> ListaAssoc { get; set; }
+        public string TagHiddenMessage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -48,16 +50,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
                 CorInt = tag.Cor,
             };
 
-            ListaAssoc = await _context.EmpresaTags
-                .Include(et => et.Empresa)
-                .Where(et => et.TagID == id)
-                .Select(et => new EmpTagVM
-                {
-                    Nome = et.Empresa.Nome,
-                    Grau = (int)(et.Grau * 100),
-                })
-                .ToListAsync();
-
+            await LoadAsync(tag.ID);
             return Page();
         }
 
@@ -76,6 +69,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
 
             if (!ModelState.IsValid)
             {
+                await LoadAsync(tag.ID);
                 return Page();
             }
 
@@ -95,6 +89,26 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             }
 
             return RedirectToPage("Index");
+        }
+
+        private async Task LoadAsync(int id)
+        {
+            ListaAssoc = await _context.EmpresaTags
+                .Include(et => et.Empresa)
+                .Where(et => et.TagID == id)
+                .Select(et => new TagAssocVM
+                {
+                    EmpresaID = et.EmpresaID,
+                    Nome = et.Empresa.Nome,
+                    Situacao = et.Empresa.Situacao,
+                    Grau = (int)(et.Grau * 100),
+                })
+                .ToListAsync();
+
+            if(!ListaAssoc.Where(et => et.Situacao == Situacao.ATIVA).Any())
+            {
+                TagHiddenMessage = Resources.ValidationResources.ErrTagHiddenCloud;
+            }
         }
     }
 }

@@ -223,6 +223,15 @@ namespace EmpreendedorismoEIT.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Esta tag só estará disponível na nuvem de tags quando for associada a alguma empresa ativa..
+        /// </summary>
+        public static string ErrTagHiddenCloud {
+            get {
+                return ResourceManager.GetString("ErrTagHiddenCloud", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deve incluir o DDD.
         /// </summary>
         public static string ErrTelefone {

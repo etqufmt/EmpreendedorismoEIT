@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 namespace EmpreendedorismoEIT.ViewModels
 {
 
-    public class TagCloudVM
+    public class CloudTagVM
     {
         public int ID { get; set; }
 

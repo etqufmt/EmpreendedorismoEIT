@@ -27,7 +27,7 @@ namespace EmpreendedorismoEIT.Pages
         [BindProperty]
         public string ListaTagsTxt { get; set; }
 
-        public List<EmpCloudVM> ListaResEmp { get; set; }
+        public List<CloudEmpVM> ListaResEmp { get; set; }
 
         public IActionResult OnGet()
         {
@@ -59,7 +59,7 @@ namespace EmpreendedorismoEIT.Pages
                 .Include(e => e.DadosJunior)
                 .Include(e => e.DadosIncubada)
                 .Include(e => e.RedesSociais.OrderBy(rs => rs.Plataforma))
-                .Select(e => new EmpCloudVM
+                .Select(e => new CloudEmpVM
                 {
                     ID = e.ID,
                     Nome = e.Nome,
