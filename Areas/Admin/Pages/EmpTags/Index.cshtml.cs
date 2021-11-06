@@ -54,6 +54,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
             ListaET = new List<EmpTagVM>();
             var allTags = await _context.Tags
                 .Include(t => t.EmpresasAssociadas.Where(e => e.EmpresaID == Empresa.ID))
+                .OrderBy(t => t.Nome)
                 .AsNoTracking()
                 .ToListAsync();
             foreach (var tag in allTags)

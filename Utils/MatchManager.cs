@@ -1,4 +1,5 @@
 ﻿using EmpreendedorismoEIT.Data;
+using EmpreendedorismoEIT.Models;
 using EmpreendedorismoEIT.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -54,11 +55,13 @@ namespace EmpreendedorismoEIT.Utils
 
             //Listar todas as associação entre empresas e tags
             var listaAssoc = await context.EmpresaTags
+                .Include(et => et.Empresa)
+                .Where(et => et.Empresa.Situacao == Situacao.ATIVA)
                 .AsNoTracking()
                 .ToListAsync();
             if (listaAssoc.Count == 0)
             {
-                logger.LogError("[DEBUG] MatchManager: Nenhuma tag associada");
+                logger.LogError("[DEBUG] MatchManager: Nenhuma tag associada a empresa ativa");
                 return res;
             }
 

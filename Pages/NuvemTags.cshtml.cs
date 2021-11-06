@@ -25,12 +25,14 @@ namespace EmpreendedorismoEIT.Pages
         public async Task<IActionResult> OnGetAsync()
         {
             ListaTags = await _context.Tags
+                .Include(t => t.EmpresasAssociadas)
+                .ThenInclude(et => et.Empresa)
                 .Select(t => new TagCloudVM
                 {
                     ID = t.ID,
                     Nome = t.Nome,
                     Cor = t.Cor,
-                    NumAssociacoes = t.EmpresasAssociadas.Count,
+                    NumAssociacoes = t.EmpresasAssociadas.Where(et => et.Empresa.Situacao == Situacao.ATIVA).Count(),
                 })
                 .AsNoTracking()
                 .ToListAsync();
