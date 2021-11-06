@@ -55,7 +55,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
             {
                 _logger.LogError(ex, "[DEBUG] Tags: Erro ao executar delete");
                 StatusMessage = Resources.ValidationResources.ErrDelete;
-                return RedirectToPage("Index");
+                return RedirectToPage("Edit", new { id });
             }
 
             return RedirectToPage("Index");

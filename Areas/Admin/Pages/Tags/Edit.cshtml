@@ -12,6 +12,7 @@
     <div class="row">
         <div class="col-lg-6 mb-3">
             <partial name="_ValidationMessage" />
+            <partial name="_StatusMessage" model="Model.StatusMessage" />
             <partial name="_StatusMessage" model="Model.TagHiddenMessage" />
             <input type="hidden" asp-for="TagVM.ID" />
             <div class="form-group">
@@ -27,10 +28,11 @@
             </div>
             <div class="form-group text-right">
                 <a asp-page="Index" class="btn btn-outline-secondary">Voltar</a>
+                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal-delete">Excluir</button>
                 <input type="submit" value="Salvar" class="btn btn-primary" />
             </div>
         </div>
-        @if(Model.ListaAssoc.Count > 0)
+        @if (Model.ListaAssoc.Count > 0)
         {
             <div class="col-lg-6 mb-3">
                 <div class="card">
@@ -51,6 +53,30 @@
         }
     </div>
 </form>
+
+@* Modal de exclusão *@
+<div class="modal fade" id="modal-delete" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Excluir tag</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir o item "@Model.TagVM.Nome"?</p>
+            </div>
+            <div class="modal-footer">
+                <form method="post" asp-page="Delete">
+                    <input type="hidden" asp-for="TagVM.ID" class="modal-item-id" />
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                    <input type="submit" value="Excluir" class="btn btn-danger" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

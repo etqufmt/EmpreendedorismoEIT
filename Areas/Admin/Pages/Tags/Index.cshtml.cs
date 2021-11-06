@@ -23,9 +23,6 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
         public TagVM TagVM { get; set; }
         public IList<TagVM> ListaTags { get;set; }
 
-        [TempData]
-        public string StatusMessage { get; set; }
-
         public async Task OnGetAsync()
         {
             ListaTags = await _context.Tags.Select(t => new TagVM {

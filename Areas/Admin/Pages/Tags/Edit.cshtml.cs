@@ -28,7 +28,12 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
         [BindProperty]
         public TagVM TagVM { get; set; }
         public List<TagAssocVM> ListaAssoc { get; set; }
+
+        
+        [TempData]
+        public string StatusMessage { get; set; }
         public string TagHiddenMessage { get; set; }
+
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -105,7 +110,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.Tags
                 })
                 .ToListAsync();
 
-            if(!ListaAssoc.Where(et => et.Situacao == Situacao.ATIVA).Any())
+            if(!ListaAssoc.Where(et => et.Situacao == Situacao.ATIVA).Any() && String.IsNullOrEmpty(StatusMessage))
             {
                 TagHiddenMessage = Resources.ValidationResources.ErrTagHiddenCloud;
             }

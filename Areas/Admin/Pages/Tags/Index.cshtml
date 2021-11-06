@@ -19,7 +19,6 @@
         <a asp-page="Create" class="btn btn-outline-primary w-100">Adicionar</a>
     </div>
 </div>
-<partial name="_StatusMessage" model="Model.StatusMessage" />
 @if (Model.ListaTags.Count == 0)
 {
     <div class="row">
@@ -37,38 +36,8 @@
                style="background-color: @item.CorHTML;">
                 <span id="tag-nome-@item.ID">@Html.DisplayFor(modelItem => item.Nome)</span>
             </a>
-            <button type="button" class="btn btn-secondary tag-button"
-                    data-toggle="modal" data-target="#modal-delete"
-                    data-id="@item.ID" data-tag="tag-nome-@item.ID"
-                    style="background-color: @item.CorHTML;">
-                <span aria-hidden="true"><i class="bi bi-x"></i></span>
-            </button>
         </div>
     }
-</div>
-
-@* Modal de exclusão *@
-<div class="modal fade" id="modal-delete" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Excluir tag</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Tem certeza que deseja excluir o item "<span class="modal-item-text"></span>"?</p>
-            </div>
-            <div class="modal-footer">
-                <form method="post" asp-page="Delete">
-                    <input type="hidden" asp-for="TagVM.ID" class="modal-item-id" />
-                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
-                    <input type="submit" value="Excluir" class="btn btn-danger" />
-                </form>
-            </div>
-        </div>
-    </div>
 </div>
 
 @section Scripts {
