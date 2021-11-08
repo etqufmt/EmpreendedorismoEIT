@@ -23,6 +23,7 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
 
         [BindProperty]
         public Empresa Empresa { get; set; }
+        public string ReturnURL { get; set; }
 
         [TempData]
         public string StatusMessage { get; set; }
@@ -40,30 +41,39 @@ namespace EmpreendedorismoEIT.Areas.Admin.Pages.EmpTags
                 return NotFound();
             }
 
-            var empReset = await _context.Empresas
+            Empresa = await _context.Empresas
                 .Include(e => e.TagsAssociadas)
                 .FirstOrDefaultAsync(m => m.ID == id);
 
-            if (empReset == null)
+            if (Empresa == null)
             {
                 return NotFound();
             }
 
-            empReset.TagsAssociadas.Clear();
-            empReset.UltimaModificacao = DateTime.Now;
+            Empresa.TagsAssociadas.Clear();
+            Empresa.UltimaModificacao = DateTime.Now;
 
             try
             {
-                _context.Attach(empReset).State = EntityState.Modified;
+                _context.Attach(Empresa).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)
             {
                 _logger.LogError(ex, "[DEBUG] EmpresaTags: Erro ao executar update");
                 StatusMessage = Resources.ValidationResources.ErrUpdate;
+                return RedirectToPage("Index", new { id });
             }
 
-            return RedirectToPage("Index", new { id = empReset.ID });
+            if (Empresa.Tipo == Tipo.JUNIOR)
+            {
+                ReturnURL = "/Juniores/Details";
+            }
+            if (Empresa.Tipo == Tipo.INCUBADA)
+            {
+                ReturnURL = "/Incubadas/Details";
+            }
+            return RedirectToPage(ReturnURL, new { id });
         }
     }
 }

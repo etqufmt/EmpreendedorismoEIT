@@ -5,13 +5,14 @@
 @{
     ViewData["Title"] = "Editar EJ";
     ViewData["Section"] = SectionManager.Juniores;
-    ViewData["SectionTitle"] = Html.DisplayFor(model => model.JuniorVM.Nome);
+    ViewData["SectionTitle"] = "Editar empresa júnior";
 }
 
 <form method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col">
             <partial name="_ValidationMessage" />
+            <input type="hidden" asp-for="JuniorVM.ID" />
         </div>
     </div>
     <div class="row">

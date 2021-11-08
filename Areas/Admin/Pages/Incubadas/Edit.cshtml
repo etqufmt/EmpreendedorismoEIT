@@ -6,13 +6,14 @@
 @{
     ViewData["Title"] = "Editar EI";
     ViewData["Section"] = SectionManager.Incubadas;
-    ViewData["SectionTitle"] = Html.DisplayFor(model => model.IncubadaVM.Nome);
+    ViewData["SectionTitle"] = "Editar empresa incubada";
 }
 
 <form method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col">
             <partial name="_ValidationMessage" />
+            <input type="hidden" asp-for="IncubadaVM.ID" />
         </div>
     </div>
     <div class="row">
